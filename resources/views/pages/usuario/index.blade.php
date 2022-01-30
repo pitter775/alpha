@@ -13,7 +13,7 @@
                 <input type="hidden" value="" name="id_geral" id="id_geral">
                 
                 <div class="modal-header mb-1">
-                    <h5 class="modal-title" id="exampleModalLabel"><span class="ediadi">Adicionar</span> Usuário</h5>
+                    <h5 class="modal-title" id="exampleModalLabel"><span class="ediadi">Adicionar</span> Usuário teste de envio</h5>
                 </div>
                 <div class="modal-body flex-grow-1">
                     <div class="row"> 

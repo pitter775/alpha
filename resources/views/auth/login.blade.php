@@ -34,7 +34,7 @@
                                 </g>
                             </g>
                         </g>
-                    </svg> <span class="nomelog" style=" ">Vênus</span>
+                    </svg> <span class="nomelog" style=" ">Alpha</span>
                     
                 </div>
 
