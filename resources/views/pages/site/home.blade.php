@@ -28,7 +28,7 @@
     <meta property="og:type" content="website">
     <meta property="og:url" content="http://educacaofuturo.org.br/">
     <meta property="og:image:type" content="image/jpeg">
-    <meta property="og:image" content="https://educacaofuturo.org.br/paper/assets/img/logo_preto2.png" />
+    <meta property="og:image" content="https://educacaofuturo.org.br/paper/assets/img/logo_preto3.png" />
     
   <!-- Favicons -->
   <link href="{{ asset('paper') }}/assets/img/icon_logo.png" rel="icon">
