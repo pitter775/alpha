@@ -1142,6 +1142,7 @@ section {
   .team .member {
     margin-bottom: 110px;
   }
+  
 }
 
 /*--------------------------------------------------------------
@@ -1440,5 +1441,19 @@ section {
 @media (max-width: 575px) {
   #footer .footer-top .footer-info {
     margin: -20px 0 30px 0;
+  }
+ 
+}
+
+@media (max-width: 767px) {
+  #footer .footer-top h4 {
+    padding-top: 20px;
+  }
+
+  #footer .imgfooter {
+    margin: 0 auto !important;
+  }
+  #footer {
+    text-align: center;
   }
 }

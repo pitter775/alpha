@@ -383,8 +383,8 @@
         <div class="row" data-aos="fade-up" data-aos-delay="200">
 
           <div class="col-lg-12 ">
-          
-          <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d228.82375345208848!2d-46.879907838797536!3d-23.417862073282244!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94cf1cec75f2952b%3A0x45765c78e47e1b53!2sR.%20da%20Orbita%2C%20182%20-%20Ch%C3%A1cara%20do%20Solar%20II%20(Fazendinha)%2C%20Santana%20de%20Parna%C3%ADba%20-%20SP%2C%2006531-095!5e0!3m2!1spt-BR!2sbr!4v1643656961194!5m2!1spt-BR!2sbr" width="100%" height="384px" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
+          <!-- <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d286721.71387962415!2d-47.01129978459403!3d-23.460731644602056!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94cf1cec75f2952b%3A0x45765c78e47e1b53!2sR.%20da%20Orbita%2C%20182%20-%20Ch%C3%A1cara%20do%20Solar%20II%20(Fazendinha)%2C%20Santana%20de%20Parna%C3%ADba%20-%20SP%2C%2006531-095!5e0!3m2!1spt-BR!2sbr!4v1643661618679!5m2!1spt-BR!2sbr" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"></iframe> -->
+          <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d286721.71387962415!2d-47.01129978459403!3d-23.460731644602056!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94cf1cec75f2952b%3A0x45765c78e47e1b53!2sR.%20da%20Orbita%2C%20182%20-%20Ch%C3%A1cara%20do%20Solar%20II%20(Fazendinha)%2C%20Santana%20de%20Parna%C3%ADba%20-%20SP%2C%2006531-095!5e0!3m2!1spt-BR!2sbr!4v1643661618679!5m2!1spt-BR!2sbr" width="100%" height="384px" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
             <!-- <iframe class="mb-4 mb-lg-0" src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d12097.433213460943!2d-74.0062269!3d40.7101282!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0xb89d1fe6bc499443!2sDowntown+Conference+Center!5e0!3m2!1smk!2sbg!4v1539943755621" frameborder="0" style="border:0; width: 100%; height: 384px;" allowfullscreen></iframe> -->
           </div>
 
@@ -404,12 +404,9 @@
           <div class="col-lg-4 col-md-4">
             
             <div data-aos="fade-up" data-aos-delay="50">
-            <img src="{{ asset('paper') }}/assets/img/lgo-g.png" alt="" style="max-width: 300px; display: inline;">
+            <img src="{{ asset('paper') }}/assets/img/lgo-g.png" alt="" class="imgfooter" style="max-width: 300px; display: inline;">
             <br>
     
-         
-
-     
             </div>
           </div>
 
@@ -422,7 +419,7 @@
           </div>
 
           <div class="col-md-4 footer-links" data-aos="fade-up" data-aos-delay="250">
-            <img src="{{ asset('paper') }}/assets/img/logo-pmsp.png" alt="" style="display: inline; float: left; width: 80px">
+            <img src="{{ asset('paper') }}/assets/img/logo-pmsp.png" alt="" style="display: inline; width: 80px">
             <img src="{{ asset('paper') }}/assets/img/capa_2_1.gif" alt="" style="display: inline; width: 80px"><br><br>
             <img src="{{ asset('paper') }}/assets/img/objetivo.png" alt="" style="display: inline;width: 180px">
           </div>
