@@ -11,7 +11,7 @@
 
 
     <!-- Palavras chave -->
-    <meta name="keywords" content="Funeral sp, velorio sp, funeraria em são paulo, funeraria sp, funeraria 24h, funeraria 24 horas, velorios em sao paulo, velorio covid, velorios na pandemia, velorios na grande sao paulo, cemiterios em são paulo, enterros em sao paulo, enterro gratuito sp, cremação em sao paulo, cremação sp, urnas para cremação." />
+    <meta name="keywords" content="Educação, Futuro" />
     
 
 <!-- Descrição do site -->
