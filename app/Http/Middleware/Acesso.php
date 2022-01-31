@@ -14,9 +14,9 @@ class Acesso
         $pagina_atual = Route::getFacadeRoot()->current()->uri();
         $perfil = false;
         $urls = [];
-        if(!isset(Auth::user()->perfil)){
-            return redirect()->route('login');
-        }
+        // if(!isset(Auth::user()->perfil)){
+        //     return redirect()->route('login');
+        // }
         if(Auth::user()->perfil == '10'){ 
             $perfil = true;
         }
