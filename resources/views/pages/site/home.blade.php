@@ -356,7 +356,7 @@
             <div class="info-box mb-4">
               <i class="bx bx-map"></i>
               <h3>Nosso Endereço</h3>
-              <p>Rua órbita 182 chácara solar Jaguari Santana do Parnaíba</p>
+              <p>Rua Órbita 182 Chácara Solar Jaguari Santana do Parnaíba</p>
             </div>
           </div>
 
@@ -364,7 +364,7 @@
             <div class="info-box  mb-4">
               <i class="bx bx-envelope"></i>
               <h3>Email</h3>
-              <p>contato@educacaofuturo.org.br</p>
+              <p>relacionamento@educacaofuturo.org.br</p>
             </div>
           </div>
 
