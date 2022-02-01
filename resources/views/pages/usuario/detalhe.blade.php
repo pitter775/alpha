@@ -10,7 +10,7 @@
    .custom-control-label {
       cursor: pointer !important;
    }
-   .text-adm { color: #7367f0 !important;}
+   .text-adm { color: #66619c !important;}
 </style>
 <!-- BEGIN: Content-->
 <div class="content-wrapper" data-aos=fade-left data-aos-delay=0>

@@ -66,8 +66,8 @@
 
  .sidebar-file-manager .sidebar-inner .sidebar-list .active {
   background-color: transparent;
-  border-color: #7367f0;
-  color: #7367f0; }
+  border-color: #66619c;
+  color: #66619c; }
 
  .sidebar-file-manager.show {
   transition: all 0.25s ease, background 0s !important;
@@ -144,7 +144,7 @@
   margin-bottom: 0; }
 
  .view-container .file-manager-item.selected {
-  border-color: #7367f0; }
+  border-color: #66619c; }
 
  .view-container .file-name {
   width: calc(100%);

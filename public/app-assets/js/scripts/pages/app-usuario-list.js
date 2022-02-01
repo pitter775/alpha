@@ -17,6 +17,7 @@ $(function () {
         newUserForm = $('.add-new-user'); //formula
     var tableHistory = false;
     var tableUser = false;
+    datauser();
 
     flatpickr('.flatpickr-basic', {
         "dateFormat": 'd/m/Y' // locale for this instance only
@@ -100,7 +101,7 @@ $(function () {
         tableHistory = groupingTable;
     }
 
-    datauser();
+    
     // Datatable - user
     function datauser() {
         if (tableUser) {
@@ -368,21 +369,17 @@ $(function () {
         }
         tableUser = groupingTable;
     }
-
-
     function dataBR(data) {
         //do americano para portugues
         let datef = new Date(data);
         let dataFormatada = datef.toLocaleDateString('pt-BR', { timeZone: 'UTC' });
         return dataFormatada
     }
-
     function dataUS(data) {
         //do portugues para o americano
         let dataFormatada = data.split('/').reverse().join('-');
         return dataFormatada
     }
-
     // Check Validity
     function checkValidity(el) {
         if (el.validate().checkForm()) {
@@ -424,7 +421,6 @@ $(function () {
             }
         });
     }
-
     function editarlinha(serealize, data) {
         datauser();
         //mensagem
@@ -521,8 +517,6 @@ $(function () {
         $('#empresa').trigger('change');
 
     });
-
-
     $(document).on('click', '#deletar_td', function () {
         var t = dtUserTable.DataTable();
         var row = dtUserTable.DataTable().row($(this).parents('tr')).node();
@@ -573,7 +567,6 @@ $(function () {
             }
         });
     });
-
     $(document).on('click', '.deletar_td_history', function () {
         var t = dtUserHistoryTable.DataTable();
         var row = dtUserHistoryTable.DataTable().row($(this).parents('tr')).node();

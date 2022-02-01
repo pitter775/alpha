@@ -17,7 +17,7 @@
 <!-- Descrição do site -->
 
     <meta name="description" content="Qualquer esforço pela educação é um sonho de sociedade mais justa."/>
-    <meta name="theme-color" content="#2b275b">
+    <meta name="theme-color" content="#66619c">
     <meta name="author" content="pitter775@gmail.com">
 
     <meta property="og:site_name" content="Educação para o Futuro">
@@ -71,7 +71,7 @@
           <li><a href="#portfolio">Fotos</a></li>
           <!-- <li><a href="#team">Team</a></li>  -->
           <li><a href="#contact">Contato</a></li>
-          <li style="background:none"><a href="/clientes" title="Entrar no sistema" class="nav-link" style="color: #2b275b;"><i class="icofont-user icofont-1x"></i></a></li>
+          <li style="background:none"><a href="/home" title="Entrar no sistema" class="nav-link" style="color: #66619c;"><i class="icofont-user icofont-1x"></i></a></li>
 
         </ul>
       </nav><!-- .nav-menu -->
@@ -400,12 +400,10 @@
     <div class="footer-top">
       <div class="container">
         <div class="row">
-
-          <div class="col-lg-4 col-md-4">
-            
+          <div class="col-lg-4 col-md-4">            
             <div data-aos="fade-up" data-aos-delay="50">
             <img src="{{ asset('paper') }}/assets/img/lgo-g.png" alt="" class="imgfooter" style="max-width: 300px; display: inline;">
-            <br>
+              <br>
     
             </div>
           </div>

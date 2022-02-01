@@ -12,7 +12,7 @@ switch ($user->perfil) {
 ?>
 <style>
    .icongetuser {
-      color: #7367f0;
+      color: #66619c;
       margin-right: 10px
    }
 </style>
