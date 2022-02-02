@@ -364,17 +364,17 @@
             <div class="info-box  mb-4">
               <i class="bx bx-envelope"></i>
               <h3>Email</h3>
-              <p>relacionamento@educacaofuturo.org.br</p>
+              <p style="font-size: 13px">secretaria@educacaofuturo.org.br</p>
             </div>
           </div>
 
           <div class="col-lg-3 col-md-6">
             <div class="info-box  mb-4">
-            <a href="https://api.whatsapp.com/send?phone=5511994662825">
+            {{-- <a href="https://api.whatsapp.com/send?phone=5511994662825"> --}}
             <i class="bx bx-phone-call"></i>
               <h3>Telefone</h3>
               <p>11 4257-2198</p>
-            </a>
+            {{-- </a> --}}
             </div>
           </div>
 
@@ -411,7 +411,7 @@
           <div class="col-md-4 footer-links" data-aos="fade-up" data-aos-delay="150">
             <h4>Instituto Educação para o Futuro</h4>
             <p>11 4257-2198<br>
-              educacaofuturo@educacaofuro.com.br<br>
+              secretaria@educacaofuturo.org.br<br>
               R: Duque de Caixias - 241<br>
               Centro - Barueri - SP</p>
           </div>
