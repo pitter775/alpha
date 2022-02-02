@@ -13,7 +13,7 @@
                 <input type="hidden" value="" name="id_geral" id="id_geral">
                 
                 <div class="modal-header mb-1">
-                    <h5 class="modal-title" id="exampleModalLabel"><span class="ediadi">Adicionar</span> Usuário teste de envio</h5>
+                    <h5 class="modal-title" id="exampleModalLabel"><span class="ediadi">Adicionar</span> Usuário</h5>
                 </div>
                 <div class="modal-body flex-grow-1">
                     <div class="row"> 
@@ -47,29 +47,7 @@
                 
 
                 </div>
-            </form>
-         
-            <form class="historico" style="margin-top: 50px">
-                @csrf 
-                <input type="hidden" value="" name="id_geral" id="id_geral">
-                <div class="modal-header" style="margin-bottom: -10px !important; padding-bottom: -10px; ">
-                    <h5 class="modal-title" id="exampleModalLabel">Histórico de Alterações</h5>
-                </div>
-
-                <table class="history-list-table table table-sm table-responsive-lg" >
-                        <thead class="thead-light">
-                            <tr>
-                                <th></th>
-                                <th>Tipo</th>
-                                <th>Alteração</th>
-                                <th>Data</th>
-                                <th>Actions</th>
-                            </tr>
-                        </thead>
-                    </table>
-
-                
-            </form>
+            </form>         
         </div>
 
     </div>
@@ -114,16 +92,6 @@
                                 <th style="width: 150px">Email</th>
                                 <th style="width: 150px">Perfil</th> 
                                 <th style="width: 150px">Status</th>
-                                <th style="width: 150px">Salário</th>
-                                <th style="width: 150px">Admissão</th>
-                                <th style="width: 150px">Tarifa</th>
-                                <th style="width: 150px">Supervisão</th>
-                                <th style="width: 150px">Setor</th>
-                                <th style="width: 150px">Alocações</th>
-                                <th style="width: 150px">Frente</th>
-                                <th style="width: 150px">Cargo</th>
-                                <th style="width: 150px">Regime</th>
-                                <th style="width: 150px">Empresa</th>
                             </tr>
                         </thead>
                     </table>

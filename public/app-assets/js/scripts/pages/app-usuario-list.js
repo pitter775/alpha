@@ -138,38 +138,16 @@ $(function () {
                     // { data: 'perfil' },
                     { //format perfil
                         data: function (dados) {
-                            if (dados.perfil == 1) { return 'Usuario'; }
-                            if (dados.perfil == 10) { return 'ADM'; }
+                            if (dados.use_perfil == 1) { return 'Usuario'; }
+                            if (dados.use_perfil == 10) { return 'ADM'; }
                         }
                     },
                     {
                         data: function (dados) {
-                            if (dados.status == 2) { return '<span class="badge bg-light-danger">Inativo</span>'; }
-                            if (dados.status == 1) { return '<span class="badge bg-light-success">Ativo</span>'; }
+                            if (dados.use_status == 2) { return '<span class="badge bg-light-danger">Inativo</span>'; }
+                            if (dados.use_status == 1) { return '<span class="badge bg-light-success">Ativo</span>'; }
                         }
-                    },
-                    { data: 'salario' },
-                    { //formatando a data para pt-br
-                        data: function (dados) {
-                            if (dados.admissao) {
-                                var datef = new Date(dados.admissao);
-                                var dataFormatada = datef.toLocaleDateString('pt-BR', { timeZone: 'UTC' });
-                                return dataFormatada;
-                            } else {
-                                return null;
-                            }
-
-                        }
-                    },
-                    { data: 'tarifa' },
-                    { data: 'supervisao' },
-                    { data: 'setor' },
-                    { data: 'alocacao' },
-                    { data: 'frente' },
-                    { data: 'cargo' },
-                    { data: 'regime' },
-                    { data: 'empresa' }
-
+                    }
                 ],
                 columnDefs: [
                     // {
@@ -193,18 +171,9 @@ $(function () {
                             var $id = full['id'],
                                 $name = full['name'],
                                 $email = full['email'],
-                                $perfil = full['perfil'],
-                                $status = full['status'],
-                                $salario = full['salario'],
-                                $admissao = dataBR(full['admissao']),
-                                $tarifa = full['tarifas_id'],
-                                $supervisao = full['supervisaos_id'],
-                                $setor = full['setors_id'],
-                                $alocacao = full['alocacaos_id'],
-                                $frente = full['frentes_id'],
-                                $cargo = full['cargos_id'],
-                                $regime = full['regime'],
-                                $empresa = full['empresas_id'];
+                                $perfil = full['use_perfil'],
+                                $status = full['use_status'];
+
 
                             return (
                                 '<div class="btn-group">' +
@@ -296,11 +265,11 @@ $(function () {
                 initComplete: function () {
                     // Adding role filter once table initialized
                     this.api()
-                        .columns(12)
+                        .columns(2)
                         .every(function () {
                             var column = this;
                             var select = $(
-                                '<select id="UserRole" class="form-control select2 "><option value=""> Frente </option></select>'
+                                '<select id="UserRole" class="form-control select2 "><option value=""> Nome </option></select>'
                             )
                                 .appendTo('.user_role')
                                 .on('change', function () {
@@ -318,11 +287,11 @@ $(function () {
                         });
                     // Adding plan filter once table initialized
                     this.api()
-                        .columns(14)
+                        .columns(3)
                         .every(function () {
                             var column = this;
                             var select = $(
-                                '<select id="UserPlan" class="form-control select2"><option value=""> Regime </option></select>'
+                                '<select id="UserPlan" class="form-control select2"><option value=""> Email </option></select>'
                             )
                                 .appendTo('.user_plan')
                                 .on('change', function () {
@@ -341,11 +310,11 @@ $(function () {
                     // Adding status filter once table initialized
 
                     this.api()
-                        .columns(11)
+                        .columns(4)
                         .every(function () {
                             var column = this;
                             var select = $(
-                                '<select id="UserStatus" class="form-control select2"><option value=""> Alocação </option></select>'
+                                '<select id="UserStatus" class="form-control select2"><option value=""> Perfil </option></select>'
                             )
                                 .appendTo('.user_status')
                                 .on('change', function () {
@@ -440,37 +409,8 @@ $(function () {
                 "name": serealize[2]['value'],
                 "perfil": serealize[4]['value'],
                 "status": serealize[3]['value'],
-                "salario": null,
-                "admissao": null,
-                "alocacao": null,
-                "cargo": null,
-                "empresa": null,
-                "frente": null,
-                "regime": null,
-                "setor": null,
-                "supervisao": null,
-                "tarifa": null,
                 "": ""
             }).draw().node();
-
-
-
-        // $('.editar_td').each(function(index) { 
-        //   if($(this).attr('data-id') == data)
-        //   {
-        //     $(this).attr('data-tarifa', null);
-        //     $(this).attr('data-status', serealize[3]['value']);
-        //     $(this).attr('data-admissao', null);
-        //     $(this).attr('data-supervisao', null);
-        //     $(this).attr('data-setor', null);
-        //     $(this).attr('data-alocacao', null);
-        //     $(this).attr('data-frente', null);
-        //     $(this).attr('data-cargo', null);
-        //     $(this).attr('data-regime', null);
-        //     $(this).attr('data-empresa', null);    
-        //   }
-        // });
-
 
         $(rowNode).css('opacity', '0');
         $(rowNode).css('background-color', '#71c754');

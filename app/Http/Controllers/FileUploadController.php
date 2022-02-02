@@ -36,19 +36,19 @@ class FileUploadController extends Controller
       $image->move(public_path('arquivos/' . $id_user), $imageName);
 
       $dados = new Arquivo();
-      $dados->name_ref = $nameRef;
-      $dados->tipo = $tipo;
-      $dados->url = $id_user . '/' . $nameRef . '.' . $tipo;
-      $dados->users_id = $id_user;
-      $dados->size = $size;
-      $dados->name_arq = $image->getClientOriginalName();
+      $dados->arq_name_ref = $nameRef;
+      $dados->arq_tipo = $tipo;
+      $dados->arq_url = $id_user . '/' . $nameRef . '.' . $tipo;
+      $dados->arq_users_id = $id_user;
+      $dados->arq_size = $size;
+      $dados->arq_name_arq = $image->getClientOriginalName();
       $dados->save();
 
       return response()->json(['success' => $imageName]);
    }
    public function getfiles($id)
    {
-      $files = Arquivo::where('users_id', $id)->get();
+      $files = Arquivo::where('arq_users_id', $id)->get();
       return view('pages.usuario.file', compact('files'));
    }
 

@@ -19,43 +19,47 @@
         <div class="shadow-bottom"></div>
         <div class="main-menu-content">
             <ul class="navigation navigation-main" id="main-menu-navigation" data-menu="menu-navigation">
-                
-                <li class=" navigation-header"><span data-i18n="Apps &amp; Pages">Dependências  do Usuário</span><i data-feather="more-horizontal"></i></li>
-
+                <li class="{{ $elementActive == 'dashboard' ? 'active' : '' }} nav-item">
+                    <a class="d-flex align-items-center" href="/home" onclick="link('/home')">
+                    <i data-feather='home'></i><span class="menu-title text-truncate" data-i18n="deshboard">Dashboard</span></a>
+                </li>
                 <li class="{{ $elementActive == 'usuario' ? 'active' : '' }} nav-item">
                     <a class="d-flex align-items-center" href="/usuario" onclick="link('/usuario')">
-                    <i data-feather="users"></i><span class="menu-title text-truncate" data-i18n="Pessoas">Usuários</span></a>
+                    <i data-feather="users"></i><span class="menu-title text-truncate" data-i18n="Usuários">Usuários</span></a>
                 </li>
+                <li class="{{ $elementActive == 'escolas' ? 'active' : '' }} nav-item">
+                    <a class="d-flex align-items-center" href="/escolas" onclick="link('/escolas')">
+                    <i data-feather='codesandbox'></i><span class="menu-title text-truncate" data-i18n="Escolas">Escolas</span></a>
+                </li>
+                <li class="{{ $elementActive == 'cardapio' ? 'active' : '' }} nav-item">
+                    <a class="d-flex align-items-center" href="/cardapio" onclick="link('/cardapio')">
+                    <i data-feather='coffee'></i><span class="menu-title text-truncate" data-i18n="Cardápio">Cardápios</span></a>
+                </li>
+                <li class="{{ $elementActive == 'series' ? 'active' : '' }} nav-item">
+                    <a class="d-flex align-items-center" href="/series" onclick="link('/series')">
+                    <i data-feather='edit'></i><span class="menu-title text-truncate" data-i18n="Séries">Séries</span></a>
+                </li>
+                <li class="{{ $elementActive == 'diciplina' ? 'active' : '' }} nav-item">
+                    <a class="d-flex align-items-center" href="/diciplina" onclick="link('/diciplina')">
+                        <i data-feather='command'></i><span class="menu-title text-truncate" data-i18n="disciplinas">Disciplinas</span></a>
+                </li>
+                
+                <!-- <li class=" navigation-header"><span data-i18n="Apps &amp; Pages">Dependências  do Usuário</span><i data-feather="more-horizontal"></i></li> -->
 
-                <li class="nav-item"><a class="d-flex align-items-center" href="#"><i data-feather="file-text"></i><span class="menu-title text-truncate" data-i18n="Invoice">Variáveis</span></a>
+            
+
+                <li class="nav-item"><a class="d-flex align-items-center" href="#">
+                    <i data-feather='git-pull-request'></i><span class="menu-title text-truncate" data-i18n="Invoice">Relacionamentos</span></a>
                     <ul class="menu-content">
-                        <!-- <li class="{{ $elementActive == 'usuario' ? 'active' : '' }}">
-                            <a class="d-flex align-items-center"  href="/usuario" onclick="link('/usuario')"><i data-feather="circle"></i><span class="menu-item text-truncate" data-i18n="Pessoas">Pessoas</span></a>
-                        </li>                         -->
-                        <li class="{{ $elementActive == 'supervisao' ? 'active' : '' }}">
-                            <a class="d-flex align-items-center"  href="/supervisao" onclick="link('/supervisao')"><i data-feather="circle"></i><span class="menu-item text-truncate" data-i18n="Supervisões">Supervisões</span></a>
+                        <li class="{{ $elementActive == 'professores' ? 'active' : '' }}">
+                            <a class="d-flex align-items-center"  href="/professores" onclick="link('/professores')"><i data-feather="circle"></i><span class="menu-item text-truncate" data-i18n="Professores">Professores</span></a>
                         </li>                        
-                        <li class="{{ $elementActive == 'tarifa' ? 'active' : '' }}">
-                            <a class="d-flex align-items-center"  href="/tarifa" onclick="link('/tarifa')"><i data-feather="circle"></i><span class="menu-item text-truncate" data-i18n="Tarifas">Tarifas</span></a>
+                        <li class="{{ $elementActive == 'series' ? 'active' : '' }}">
+                            <a class="d-flex align-items-center"  href="/series" onclick="link('/series')"><i data-feather="circle"></i><span class="menu-item text-truncate" data-i18n="Séries">Séries</span></a>
                         </li>                        
-                        <li class="{{ $elementActive == 'cargo' ? 'active' : '' }}">
-                            <a class="d-flex align-items-center"  href="/cargo" onclick="link('/cargo')"><i data-feather="circle"></i><span class="menu-item text-truncate" data-i18n="Cargos">Cargos</span></a>
-                        </li>                        
-                        <li class="{{ $elementActive == 'regime' ? 'active' : '' }}">
-                            <a class="d-flex align-items-center"  href="/regime" onclick="link('/regime')"><i data-feather="circle"></i><span class="menu-item text-truncate" data-i18n="Regimes">Regimes</span></a>
-                        </li>                        
-                        <li class="{{ $elementActive == 'empresa' ? 'active' : '' }}">
-                            <a class="d-flex align-items-center"  href="/empresa" onclick="link('/empresa')"><i data-feather="circle"></i><span class="menu-item text-truncate" data-i18n="Empresas">Empresas</span></a>
-                        </li>                        
-                        <li class="{{ $elementActive == 'alocacao' ? 'active' : '' }}">
-                            <a class="d-flex align-items-center"  href="/alocacao" onclick="link('/alocacao')"><i data-feather="circle"></i><span class="menu-item text-truncate" data-i18n="Alocaçãos">Alocaçãos</span></a>
-                        </li>                        
-                        <li class="{{ $elementActive == 'setor' ? 'active' : '' }}">
-                            <a class="d-flex align-items-center"  href="/setor" onclick="link('/setor')"><i data-feather="circle"></i><span class="menu-item text-truncate" data-i18n="Setores">Setores</span></a>
-                        </li>                        
-                        <li class="{{ $elementActive == 'frente' ? 'active' : '' }}">
-                            <a class="d-flex align-items-center"  href="/frente" onclick="link('/frente')"><i data-feather="circle"></i><span class="menu-item text-truncate" data-i18n="Frentes">Frentes</span></a>
-                        </li>                        
+                        <li class="{{ $elementActive == 'diciplina' ? 'active' : '' }}">
+                            <a class="d-flex align-items-center"  href="/diciplina" onclick="link('/diciplina')"><i data-feather="circle"></i><span class="menu-item text-truncate" data-i18n="Disciplinas">Disciplinas</span></a>
+                        </li>                                              
                     </ul>
                 </li>
 

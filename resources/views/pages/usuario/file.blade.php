@@ -34,8 +34,8 @@
    @foreach($files as $key => $value)
 
    <div class="card file-manager-item file">
-      <a href="" data-id="{{$value->id}}" data-name="{{$value->name_arq}}" class="btn btn-outline-danger waves-effect btfechar">X</a>
-      <div class="baixararquivo" data-url="{{$value->url}}" data-name="{{$value->name_arq}}" data-tipo="{{$value->tipo}}">
+      <a href="" data-id="{{$value->id}}" data-name="{{$value->arq_name_arq}}" class="btn btn-outline-danger waves-effect btfechar">X</a>
+      <div class="baixararquivo" data-url="{{$value->arq_url}}" data-name="{{$value->arq_name_arq}}" data-tipo="{{$value->arq_tipo}}">
          <div class="card-img-top file-logo-wrapper" >
             <div class="d-flex align-items-center justify-content-center w-100">
                @switch( $value->tipo )
@@ -92,9 +92,9 @@
          </div>
          <div class="card-body">
             <div class="content-wrapper">
-               <p class="card-text file-name mb-0">{{$value->name_arq}}</p>
+               <p class="card-text file-name mb-0">{{$value->arq_name_arq}}</p>
             </div>
-            <small class="file-accessed text-muted">{{$value->size}}</small>
+            <small class="file-accessed text-muted">{{$value->arq_size}}</small>
             <small class="file-accessed text-muted" style="float: right;">{{ date( 'd/m/Y' , strtotime($value->created_at))}}</small>
          </div>
       </div>

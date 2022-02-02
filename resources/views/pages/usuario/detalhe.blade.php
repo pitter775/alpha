@@ -15,7 +15,7 @@
 <!-- BEGIN: Content-->
 <div class="content-wrapper" data-aos=fade-left data-aos-delay=0>
    <input type="hidden" value="{{$user->id ?? ''}}" name="iduser" id="iduser">
-   <input type="hidden" value="{{$user->perfil ?? ''}}" name="perfiluser" id="perfiluser">
+   <input type="hidden" value="{{$user->use_perfil ?? ''}}" name="perfiluser" id="perfiluser">
 
    <div class="content-body">
       <section class="app-user-view-account">
@@ -67,12 +67,12 @@
                                  <div class="row">
                                     <div class="col-md-8">
                                        <div class="media mb-2">
-                                          @if($user->foto == null)
+                                          @if($user->use_foto == null)
                                           <img src=" {{asset('app-assets/images/avatars/avatar.png')}}" alt="users avatar" data-tipo="avatar" id="fotouser" class="user-avatar users-avatar-shadow rounded mr-2 my-25 cursor-pointer" height="90" width="90" />
                                   
                                           @endif
-                                          @if($user->foto !== null)
-                                          <img src="{{asset('arquivos').'/'.$user->foto}}" alt="users avatar" data-tipo="nova" id="fotouser" class="user-avatar users-avatar-shadow rounded mr-2 my-25 cursor-pointer" height="90" width="90" />
+                                          @if($user->use_foto !== null)
+                                          <img src="{{asset('arquivos').'/'.$user->use_foto}}" alt="users avatar" data-tipo="nova" id="fotouser" class="user-avatar users-avatar-shadow rounded mr-2 my-25 cursor-pointer" height="90" width="90" />
                                 
                                           @endif
 
@@ -138,8 +138,8 @@
                                        <div class="form-group">
                                           <label for="perfil">Perfil</label>
                                           <select id="perfil" name="perfil" class="form-control select2">
-                                             <option value="1" @if($user->perfil == 1) selected @endif>Usuário</option>
-                                             <option value="10" @if($user->perfil == 10) selected @endif>ADM</option>
+                                             <option value="1" @if($user->use_perfil == 1) selected @endif>Usuário</option>
+                                             <option value="10" @if($user->use_perfil == 10) selected @endif>ADM</option>
                                           </select>
                                        </div>
                                     </div>
@@ -160,8 +160,8 @@
                                        <div class="form-group">
                                           <label for="status">Status</label>
                                           <select id="status" name="status" class="form-control select2">
-                                             <option value="1" @if($user->status == 1) selected @endif >Ativo</option>
-                                             <option value="2" @if($user->status == 2) selected @endif >Inativo</option>
+                                             <option value="1" @if($user->use_status == 1) selected @endif >Ativo</option>
+                                             <option value="2" @if($user->use_status == 2) selected @endif >Inativo</option>
                                           </select>
                                        </div>
                                     </div>
@@ -192,7 +192,7 @@
                                                 <i data-feather='calendar'></i>
                                              </span>
                                           </div>
-                                          <input id="dt_nascimento" type="text" class="form-control flatpickr-basic" value="@if($user-> dt_nascimento ) {{date( 'd/m/Y' , strtotime($user-> dt_nascimento )) }} @endif" name="dt_nascimento" />
+                                          <input id="dt_nascimento" type="text" class="form-control flatpickr-basic" value="@if($user-> use_dt_nascimento ) {{date( 'd/m/Y' , strtotime($user-> use_dt_nascimento )) }} @endif" name="dt_nascimento" />
                                        </div>
                                     </div>
 
@@ -204,7 +204,7 @@
                                                 <i data-feather='phone'></i>
                                              </span>
                                           </div>
-                                          <input id="telefone" type="text" class="form-control" value="{{$user->telefone ?? ''}}" name="telefone" />
+                                          <input id="telefone" type="text" class="form-control" value="{{$user->use_telefone ?? ''}}" name="telefone" />
                                        </div>
                                     </div>
 
@@ -212,10 +212,7 @@
                                        <div class="form-group">
                                           <label for="estado_civil">Estado Civil</label>
                                           <select id="estado_civil" name="estado_civil" class="form-control select2">
-                                             <option value="Casado" @if($user->estado_civil == 'Casado') selected @endif>Casado</option>
-                                             <option value="Solteiro" @if($user->estado_civil == 'Solteiro') selected @endif>Solteiro</option>
-                                             <option value="Divorciado" @if($user->estado_civil == 'Divorciado') selected @endif>Divorciado</option>
-                                             <option value="Viuvo(a)" @if($user->estado_civil == 'Viuvo(a)') selected @endif>Viuvo(a)</option>
+                                             
                                           </select>
                                        </div>
                                     </div>
@@ -228,7 +225,7 @@
                                                 <i data-feather='alert-circle'></i>
                                              </span>
                                           </div>
-                                          <input id="cnh_numero" type="text" class="form-control" value="{{$user->cnh_numero ?? ''}}" name="cnh_numero" />
+                                          <input id="cnh_numero" type="text" class="form-control" value="" name="cnh_numero" />
                                        </div>
                                     </div>
 
@@ -240,7 +237,7 @@
                                                 <i data-feather='calendar'></i>
                                              </span>
                                           </div>
-                                          <input id="cnh_dt_vencimento" type="text" class="form-control flatpickr-basic" value="@if($user-> cnh_dt_vencimento ) {{date( 'd/m/Y' , strtotime($user-> cnh_dt_vencimento )) }} @endif" name="cnh_dt_vencimento" />
+                                          <input id="cnh_dt_vencimento" type="text" class="form-control flatpickr-basic" value="" name="cnh_dt_vencimento" />
                                        </div>
                                     </div>
 
@@ -248,10 +245,7 @@
                                        <div class="form-group">
                                           <label for="cnh_tipo">CNH Tipo</label>
                                           <select id="cnh_tipo" name="cnh_tipo" class="form-control select2">
-                                             <option value="A" @if($user->cnh_tipo == 'A') selected @endif>A</option>
-                                             <option value="B" @if($user->cnh_tipo == 'B') selected @endif>B</option>
-                                             <option value="C" @if($user->cnh_tipo == 'C') selected @endif>C</option>
-                                             <option value="AB" @if($user->cnh_tipo == 'AB') selected @endif>AB</option>
+
                                           </select>
                                        </div>
                                     </div>
@@ -264,7 +258,7 @@
                                                 <i data-feather='alert-circle'></i>
                                              </span>
                                           </div>
-                                          <input id="rg" type="text" class="form-control" value="{{$user->rg ?? ''}}" name="rg" />
+                                          <input id="rg" type="text" class="form-control" value="{{$user->use_rg ?? ''}}" name="rg" />
                                        </div>
                                     </div>
                                     <div class="col-md-4">
@@ -275,7 +269,7 @@
                                                 <i data-feather='alert-circle'></i>
                                              </span>
                                           </div>
-                                          <input id="cpf" type="text" class="form-control" value="{{$user->cpf ?? ''}}" name="cpf" />
+                                          <input id="cpf" type="text" class="form-control" value="{{$user->use_cpf ?? ''}}" name="cpf" />
                                        </div>
                                     </div>
 
@@ -308,7 +302,7 @@
                                                 <i data-feather='map-pin'></i>
                                              </span>
                                           </div>
-                                          <input id="rua" type="text" class="form-control" value="{{$user->rua ?? ''}}" name="rua" />
+                                          <input id="rua" type="text" class="form-control" value="{{$user->end_rua ?? ''}}" name="rua" />
                                        </div>
                                     </div>
                                     <div class="col-md-2">
@@ -319,7 +313,7 @@
                                                 <i data-feather='map-pin'></i>
                                              </span>
                                           </div>
-                                          <input id="numero" type="text" class="form-control" value="{{$user->numero ?? ''}}" name="numero" />
+                                          <input id="numero" type="text" class="form-control" value="{{$user->end_numero ?? ''}}" name="numero" />
                                        </div>
                                     </div>
                                     <div class="col-md-5" style="margin-bottom: 15px;">
@@ -330,7 +324,7 @@
                                                 <i data-feather='map-pin'></i>
                                              </span>
                                           </div>
-                                          <input id="complemento" type="text" class="form-control" value="{{$user->complemento ?? ''}}" name="complemento" />
+                                          <input id="complemento" type="text" class="form-control" value="{{$user->end_complemento ?? ''}}" name="complemento" />
                                        </div>
                                     </div>
                                     <div class="col-lg-4 col-md-6">
@@ -341,7 +335,7 @@
                                                 <i data-feather='map-pin'></i>
                                              </span>
                                           </div>
-                                          <input id="cep" type="text" class="form-control" value="{{$user->cep ?? ''}}" name="cep" />
+                                          <input id="cep" type="text" class="form-control" value="{{$user->end_cep ?? ''}}" name="cep" />
                                        </div>
                                     </div>
                                     <div class="col-lg-4 col-md-6">
@@ -352,7 +346,7 @@
                                                 <i data-feather='map-pin'></i>
                                              </span>
                                           </div>
-                                          <input id="cidade" type="text" class="form-control" value="{{$user->cidade ?? ''}}" name="cidade" />
+                                          <input id="cidade" type="text" class="form-control" value="{{$user->end_cidade ?? ''}}" name="cidade" />
                                        </div>
                                     </div>
                                     <div class="col-lg-4 col-md-6">
@@ -363,7 +357,7 @@
                                                 <i data-feather='map-pin'></i>
                                              </span>
                                           </div>
-                                          <input id="estado" type="text" class="form-control" value="{{$user->estado ?? ''}}" name="estado" />
+                                          <input id="estado" type="text" class="form-control" value="{{$user->end_estado ?? ''}}" name="estado" />
                                        </div>
                                     </div>
                                     <div class="col-12 d-flex flex-sm-row flex-column mt-2">
@@ -404,33 +398,27 @@
                                     <div class="col-md-3">
                                        <div class="form-group">
                                           <label for="empresa">Empresa</label>
-                                          <input type="hidden" id="hempresa" value="{{$user->empresas_id ?? ''}}">
+                                          <input type="hidden" id="hempresa" value="">
                                           <select id="empresa" name="empresa" class="form-control select2">
-                                             @foreach($empresa as $key => $value)
-                                             <option value="{{ $value->id }}" @if($user->empresas_id == $value->id) selected @endif >{{ $value->name }}</option>
-                                             @endforeach
+                               
                                           </select>
                                        </div>
                                     </div>
                                     <div class="col-md-3">
                                        <div class="form-group">
                                           <label for="cargo">Cargo</label>
-                                          <input type="hidden" id="hcargo" value="{{$user->cargos_id ?? ''}}">
+                                          <input type="hidden" id="hcargo" value="">
                                           <select id="cargo" name="cargo" class="form-control select2">
-                                             @foreach($cargo as $key => $value)
-                                             <option value="{{ $value->id }}" @if($user->cargos_id == $value->id) selected @endif >{{ $value->name }}</option>
-                                             @endforeach
+                              
                                           </select>
                                        </div>
                                     </div>
                                     <div class="col-md-3">
                                        <div class="form-group">
                                           <label for="alocacao">Alocação</label>
-                                          <input type="hidden" id="halocacao" value="{{$user->alocacaos_id ?? ''}}">
+                                          <input type="hidden" id="halocacao" value="">
                                           <select id="alocacao" name="alocacao" class="form-control select2">
-                                             @foreach($alocacao as $key => $value)
-                                             <option value="{{ $value->id }}" @if($user->alocacaos_id == $value->id) selected @endif >{{ $value->name }}</option>
-                                             @endforeach
+                              
                                           </select>
                                        </div>
                                     </div>
@@ -442,7 +430,7 @@
                                                 <i data-feather='dollar-sign'></i>
                                              </span>
                                           </div>
-                                          <input id="salario" type="text" class="form-control"  value="{{$user->salario ?? ''}}" name="salario" />
+                                          <input id="salario" type="text" class="form-control"  value="" name="salario" />
                                        </div>
                                        <small class="text-muted text-adm">Custo: <span id="custoval"></span> </small>
                                     </div>
@@ -450,11 +438,9 @@
                                     <div class="col-md-2">
                                        <div class="form-group">
                                           <label for="frente">Frente</label>
-                                          <input type="hidden" id="hfrente" value="{{$user->frentes_id ?? ''}}">
+                                          <input type="hidden" id="hfrente" value="">
                                           <select id="frente" name="frente" class="form-control select2">
-                                             @foreach($frente as $key => $value)
-                                             <option value="{{ $value->id }}" @if($user->frentes_id == $value->id) selected @endif >{{ $value->name }}</option>
-                                             @endforeach
+                         
                                           </select>
                                        </div>
                                     </div>
@@ -466,7 +452,7 @@
                                                 <i data-feather='calendar'></i>
                                              </span>
                                           </div>
-                                          <input id="dt_mob_sabesp" type="text" class="form-control flatpickr-basic" value="@if($user-> dt_mob_sabesp) {{date( 'd/m/Y' , strtotime($user-> dt_mob_sabesp)) }} @endif" name="dt_mob_sabesp" />
+                                          <input id="dt_mob_sabesp" type="text" class="form-control flatpickr-basic" value="" name="dt_mob_sabesp" />
                                        </div>
                                     </div>
                                     <div class="col-md-3">
@@ -477,18 +463,18 @@
                                                 <i data-feather='calendar'></i>
                                              </span>
                                           </div>
-                                          <input id="dt_desmob_sabesp" type="text" class="form-control flatpickr-basic" value="@if($user-> dt_desmob_sabesp ) {{date( 'd/m/Y' , strtotime($user-> dt_desmob_sabesp )) }} @endif" name="dt_desmob_sabesp" />
+                                          <input id="dt_desmob_sabesp" type="text" class="form-control flatpickr-basic" value="" name="dt_desmob_sabesp" />
                                        </div>
                                     </div>
                                     <div class="col-md-4">
                                        <div class="form-group">
                                           <label class="d-block mb-1">Regime</label>
                                           <div class="custom-control custom-radio custom-control-inline">
-                                             <input type="radio" id="pj" name="regime" value="Prestador de Serviço" class="custom-control-input" @if($user->regime == 'Prestador de Serviço') checked @endif />
+                                             <input type="radio" id="pj" name="regime" value="Prestador de Serviço" class="custom-control-input"  />
                                              <label class="custom-control-label" for="pj">Prestador de Serviço</label>
                                           </div>
                                           <div class="custom-control custom-radio custom-control-inline">
-                                             <input type="radio" id="regis" name="regime" value="Celetista" class="custom-control-input" @if($user->regime == 'Celetista') checked @endif/>
+                                             <input type="radio" id="regis" name="regime" value="Celetista" class="custom-control-input" />
                                              <label class="custom-control-label" for="regis">Celetista</label>
                                           </div>
                                        </div>
@@ -511,7 +497,7 @@
                                                 <i data-feather='star'></i>
                                              </span>
                                           </div>
-                                          <input id="ordem_servico" type="text" class="form-control" value="{{$user->ordem_servico ?? ''}}" name="ordem_servico" />
+                                          <input id="ordem_servico" type="text" class="form-control" value="" name="ordem_servico" />
                                        </div>
                                     </div>
                                     <div class="col-md-3">
@@ -522,7 +508,7 @@
                                                 <i data-feather='calendar'></i>
                                              </span>
                                           </div>
-                                          <input id="dt_aso_inicial" type="text" class="form-control flatpickr-basic" value="@if($user-> dt_aso_inicial ) {{date( 'd/m/Y' , strtotime($user-> dt_aso_inicial )) }} @endif" name="dt_aso_inicial" />
+                                          <input id="dt_aso_inicial" type="text" class="form-control flatpickr-basic" value="" name="dt_aso_inicial" />
                                        </div>
                                     </div>
                                     <div class="col-md-3">
@@ -533,7 +519,7 @@
                                                 <i data-feather='calendar'></i>
                                              </span>
                                           </div>
-                                          <input id="dt_aso_demissional" type="text" class="form-control flatpickr-basic" value="@if($user-> dt_aso_demissional ) {{date( 'd/m/Y' , strtotime($user-> dt_aso_demissional )) }} @endif" name="dt_aso_demissional" />
+                                          <input id="dt_aso_demissional" type="text" class="form-control flatpickr-basic" value="" name="dt_aso_demissional" />
                                        </div>
                                     </div>
 
@@ -554,7 +540,7 @@
                                                 <i data-feather='briefcase'></i>
                                              </span>
                                           </div>
-                                          <input id="nome_fantasia" type="text" class="form-control" value="{{$user->nome_fantasia ?? ''}}" name="nome_fantasia" />
+                                          <input id="nome_fantasia" type="text" class="form-control" value="" name="nome_fantasia" />
                                        </div>
                                     </div>
                                     <div class="col-md-4">
@@ -565,7 +551,7 @@
                                                 <i data-feather='briefcase'></i>
                                              </span>
                                           </div>
-                                          <input id="representante" type="text" class="form-control" value="{{$user->representante ?? ''}}" name="representante" />
+                                          <input id="representante" type="text" class="form-control" value="" name="representante" />
                                        </div>
                                     </div>
                                     <div class="col-md-4" style="margin-bottom: 15px;">
@@ -576,7 +562,7 @@
                                                 <i data-feather='briefcase'></i>
                                              </span>
                                           </div>
-                                          <input id="cnpj" type="text" class="form-control" value="{{$user->cnpj ?? ''}}" name="cnpj" />
+                                          <input id="cnpj" type="text" class="form-control" value="" name="cnpj" />
                                        </div>
                                     </div>
                                     <div class="col-md-4">
@@ -587,7 +573,7 @@
                                                 <i data-feather='calendar'></i>
                                              </span>
                                           </div>
-                                          <input id="dt_prest_inicio" type="text" class="form-control flatpickr-basic" value="@if($user-> dt_prest_inicio ) {{date( 'd/m/Y' , strtotime($user-> dt_prest_inicio )) }} @endif" name="dt_prest_inicio" />
+                                          <input id="dt_prest_inicio" type="text" class="form-control flatpickr-basic" value="" name="dt_prest_inicio" />
                                        </div>
                                     </div>
                                     <div class="col-md-4">
@@ -598,7 +584,7 @@
                                                 <i data-feather='calendar'></i>
                                              </span>
                                           </div>
-                                          <input id="dt_prest_fim" type="text" class="form-control flatpickr-basic" value="@if($user-> dt_prest_fim ) {{date( 'd/m/Y' , strtotime($user-> dt_prest_fim )) }} @endif" name="dt_prest_fim" />
+                                          <input id="dt_prest_fim" type="text" class="form-control flatpickr-basic" value="" name="dt_prest_fim" />
                                        </div>
                                     </div>
                                  </div>
@@ -610,7 +596,7 @@
                               <div class="divaditivos" style="margin-top: 40px;">
                                  <form class="form-aditivo">
                                     @csrf
-                                    <input type="hidden" value="{{$user->contratos_prestacao_servicos_id ?? ''}}" name="id_pj" id="id_pj" />
+                                    <input type="hidden" value="" name="id_pj" id="id_pj" />
                                     <div class="table-responsive border rounded mt-1">
                                        <h4 class="py-1 mx-1 mb-0 font-medium-2">
                                           <i data-feather="dollar-sign" class="font-medium-4 mr-25"></i>
@@ -769,12 +755,11 @@
 
 <script src="../../../app-assets/js/scripts/forms/form-select2.js"></script>
 <script src="../../../app-assets/js/scripts/extensions/ext-component-sweet-alerts.js"></script>
-<script src="../../../app-assets/js/scripts/pages/app-usuario-detalhe.js"></script>
 <script src="../../../app-assets/js/scripts/forms/pickers/form-pickers.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/dropzone/5.7.2/min/dropzone.min.js"></script>
 <script src="../../../app-assets/js/scripts/forms/form-file-uploader.js"></script>
-
-<script src="https://igorescobar.github.io/jQuery-Mask-Plugin/js/jquery.mask.min.js"></script>     
+<script src="https://igorescobar.github.io/jQuery-Mask-Plugin/js/jquery.mask.min.js"></script>    
+<script src="../../../app-assets/js/scripts/pages/app-usuario-detalhe.js"></script> 
 
 
 @endpush

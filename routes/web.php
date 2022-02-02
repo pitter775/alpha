@@ -19,13 +19,10 @@ use App\Models\User;
 
 Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('site');
 Route::get('/logout', [App\Http\Controllers\Auth\LoginController::class, 'logout']);
+Route::get('/home', [App\Http\Controllers\DashboardController::class, 'index']);
 
 Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\UsuarioController::class, 'index'])->name('home');
-Route::get('/blog', [App\Http\Controllers\BlogController::class, 'index'])->name('blog');
-Route::get('/teste', [App\Http\Controllers\TesteController::class, 'index'])->name('teste');
-Route::get('/produto', [App\Http\Controllers\ProdutoController::class, 'index'])->name('produto');
 
 Route::get('/upload-ui', [App\Http\Controllers\FileUploadController::class, 'dropzoneUi' ]);
 Route::post('/file-upload', [App\Http\Controllers\FileUploadController::class, 'dropzoneFileUpload' ])->name('dropzoneFileUpload');
@@ -34,13 +31,15 @@ Route::get('/file-upload/delete/{id}', [App\Http\Controllers\FileUploadControlle
 
 Route::group(['middleware' => 'acesso'], function () {
 
-    Route::get('/alocacao', [App\Http\Controllers\AlocacaoController::class, 'index'])->name('index');
+    
+
+    Route::get('/alocacao', [App\Http\Controllers\AlocacaoController::class, 'index']);
     Route::get('/alocacao/all', [App\Http\Controllers\AlocacaoController::class, 'all']);
     Route::post('/alocacao/cadastro', [App\Http\Controllers\AlocacaoController::class, 'cadastro']);
     Route::get('/alocacao/delete/{id}', [App\Http\Controllers\AlocacaoController::class, 'delete']);
 
 
-    Route::get('/usuario', [App\Http\Controllers\UsuarioController::class, 'index'])->name('usuario');
+    Route::get('/usuario', [App\Http\Controllers\UsuarioController::class, 'index']);
     Route::get('/usuario/all', [App\Http\Controllers\UsuarioController::class, 'all']);
     Route::post('/usuario/cadastro', [App\Http\Controllers\UsuarioController::class, 'cadastro']);    
     Route::post('/usuario/addAditivos', [App\Http\Controllers\UsuarioController::class, 'addAditivos']);    

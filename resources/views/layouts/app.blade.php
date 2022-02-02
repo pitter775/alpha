@@ -5,12 +5,19 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width,initial-scale=1.0,user-scalable=0,minimal-ui">
     <meta HTTP-EQUIV="CACHE-CONTROL" CONTENT="Public">
+    <meta name="theme-color" content="#66619c">
+    <meta name="author" content="pitter775@gmail.com">
+
+
+    <!-- Favicons -->
+    <link href="{{ asset('paper') }}/assets/img/icon_logo_ge.png" rel="icon">
+    <link href="{{ asset('paper') }}/assets/img/icon_logo_ge.png" rel="apple-touch-icon">
 
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>Alpha - Gestão Escolar - Education</title>
-    <link rel="shortcut icon" type="image/x-icon" href="{{asset('app-assets/images/ico/favicon.ico')}}">
+    <title>Gestão Escolar</title>
+    <!-- <link rel="shortcut icon" type="image/x-icon" href="{{asset('app-assets/images/ico/favicon.ico')}}"> -->
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;1,400;1,500;1,600" rel="stylesheet">

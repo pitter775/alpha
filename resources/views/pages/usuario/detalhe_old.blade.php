@@ -61,13 +61,13 @@
                                  <div class="row">
                                     <div class="col-md-8">
                                        <div class="media mb-2">
-                                          @if($user->foto == null)
+                                          @if($user->use_foto == null)
                                           <img src=" {{asset('app-assets/images/avatars/avatar.png')}}" alt="users avatar" data-tipo="avatar" id="fotouser" class="user-avatar users-avatar-shadow rounded mr-2 my-25 cursor-pointer" height="90" width="90" />
                                           <input type="hidden" value="" name="foto" id="foto" />
                                           @endif
-                                          @if($user->foto !== null)
-                                          <img src=" {{$user->foto}}" alt="users avatar" data-tipo="nova" id="fotouser" class="user-avatar users-avatar-shadow rounded mr-2 my-25 cursor-pointer" height="90" width="90" />
-                                          <input type="hidden" value="{{$user->foto}}" name="foto" id="foto" />
+                                          @if($user->use_foto !== null)
+                                          <img src=" {{$user->use_foto}}" alt="users avatar" data-tipo="nova" id="fotouser" class="user-avatar users-avatar-shadow rounded mr-2 my-25 cursor-pointer" height="90" width="90" />
+                                          <input type="hidden" value="{{$user->use_foto}}" name="foto" id="foto" />
                                           @endif
 
                                           <div class="media-body mt-50">
@@ -112,8 +112,8 @@
                                        <div class="form-group">
                                           <label for="status">Status</label>
                                           <select id="status" name="status" class="form-control select2">
-                                             <option value="1" @if($user->status == 1) selected @endif >Ativo</option>
-                                             <option value="2" @if($user->status == 2) selected @endif >Inativo</option>
+                                             <option value="1" @if($user->use_status == 1) selected @endif >Ativo</option>
+                                             <option value="2" @if($user->use_status == 2) selected @endif >Inativo</option>
                                           </select>
                                        </div>
                                     </div>
@@ -121,8 +121,8 @@
                                        <div class="form-group">
                                           <label for="perfil">Perfil</label>
                                           <select id="perfil" name="perfil" class="form-control select2">
-                                             <option value="1" @if($user->perfil == 1) selected @endif>Usuário</option>
-                                             <option value="10" @if($user->perfil == 10) selected @endif>ADM</option>
+                                             <option value="1" @if($user->use_perfil == 1) selected @endif>Usuário</option>
+                                             <option value="10" @if($user->use_perfil == 10) selected @endif>ADM</option>
                                           </select>
                                        </div>
                                     </div>

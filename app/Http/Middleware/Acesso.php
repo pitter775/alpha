@@ -15,7 +15,7 @@ class Acesso
         $perfil = false;
         $urls = [];
 
-        if(Auth::user()->perfil == '10'){ 
+        if(Auth::user()->use_perfil == '10'){ 
             $perfil = true;
         }
 
