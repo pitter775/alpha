@@ -91,12 +91,15 @@ class UsuarioController extends Controller
                 $image = $request->file('file');
 
                 if (isset($image)) {
+                    $mensagem['existe-imagem1'] = 'imagem ok';
                     $tipo = $image->extension();
                     $nameRef =  rand(0, time()) . time();
                     $imageName = $nameRef . '.' . $tipo;
+                    $mensagem['existe-imagem2'] = $imageName;
                     $image->move(public_path('arquivos/' . $id_user), $imageName);
                     $dados->use_foto = $id_user . '/' . $nameRef . '.' . $tipo;
                 }else{
+                    $mensagem['existe-imagem3'] = 'nao tem';
                     $dados->use_foto = null;
                 }
                 $dados->name = $request->input('fullname');
