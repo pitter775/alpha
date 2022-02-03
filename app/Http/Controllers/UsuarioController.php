@@ -101,7 +101,10 @@ class UsuarioController extends Controller
                         $imageName = $nameRef . '.' . $tipo;
                         $mensagem['existe-imagem2'] = $imageName;
                         $image->move(public_path('arquivos/' . $id_user), $imageName);
+
                         $dados->use_foto = $id_user . '/' . $nameRef . '.' . $tipo;
+                        $mensagem['dados-gravados'] = $dados->use_foto;
+
                     }
                 }
                 
