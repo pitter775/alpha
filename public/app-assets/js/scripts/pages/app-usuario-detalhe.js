@@ -354,7 +354,7 @@ $(function () {
       selector: '[data-toggle="tooltip"]',
       container: 'body'
    });
-   $(document).on('click', '.btmudar', function (e) {
+   $(document).on('click', '.btmudar', function () {
       $('#fotouser').data('tipo', 'nova');
       $('#temfoto').val('tem');
    });

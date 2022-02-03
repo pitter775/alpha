@@ -84,6 +84,7 @@ class UsuarioController extends Controller
         } else {
             $dados = User::find($id_geral);
             $mensagem['tipo-geral'] = 'editado';
+            $mensagem['inputtemfoto'] = $request->input('temfoto');
 
             if ($bt_salvar == 'conta') {
                 // $dados->foto = $request->input('foto');
