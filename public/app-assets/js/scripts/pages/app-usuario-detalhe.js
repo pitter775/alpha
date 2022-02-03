@@ -356,6 +356,7 @@ $(function () {
    });
    $(document).on('click', '.btmudar', function (e) {
       $('#fotouser').data('tipo', 'nova');
+      $('#temfoto').val('tem');
    });
    $(document).on('click', '.btreset', function (e) {
       e.preventDefault();
@@ -363,6 +364,7 @@ $(function () {
 
       var img = document.querySelector("#fotouser");
       img.setAttribute('src', '/app-assets/images/avatars/avatar.png');
+      $('#temfoto').val('naotem');
    });
    // Form Conta
    if (formConta.length) {

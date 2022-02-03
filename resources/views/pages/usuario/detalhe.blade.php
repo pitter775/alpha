@@ -69,11 +69,11 @@
                                        <div class="media mb-2">
                                           @if($user->use_foto == null)
                                           <img src=" {{asset('app-assets/images/avatars/avatar.png')}}" alt="users avatar" data-tipo="avatar" id="fotouser" class="user-avatar users-avatar-shadow rounded mr-2 my-25 cursor-pointer" height="90" width="90" />
-                                  
+                                          <input type="hidden" value="naotem" name="temfoto" id="temfoto" />
                                           @endif
                                           @if($user->use_foto !== null)
                                           <img src="{{asset('arquivos').'/'.$user->use_foto}}" alt="users avatar" data-tipo="nova" id="fotouser" class="user-avatar users-avatar-shadow rounded mr-2 my-25 cursor-pointer" height="90" width="90" />
-                                
+                                          <input type="hidden" value="tem" name="temfoto" id="temfoto" />
                                           @endif
 
                                           
