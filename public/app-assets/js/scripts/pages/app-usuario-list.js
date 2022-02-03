@@ -125,7 +125,7 @@ $(function () {
                         data: function (dados) {
                             let image = '';
                             if (dados.use_foto !== '' && dados.use_foto !== null && dados.use_foto !== 'undefined'){
-                                image = '<img src="/arquivos/'+dados.use_foto+'" alt="Avatar" height="26" width="26"/>'
+                                image = '<img src="/arquivos/'+dados.use_foto+'" alt="Avatar" height="26" title="b" width="26"/>'
                             }else{
                                 image = '<img src="/app-assets/images/avatars/avatar.png" alt="Avatar" height="26" width="26" />'
                             }
