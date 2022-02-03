@@ -398,6 +398,7 @@ $(function () {
                processData: false,
                contentType: false,
                success: function (data) {
+                  console.log(data);
                   console.log('conta');
 
                   // var divcarhistory = $('#divcarhistory');

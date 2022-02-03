@@ -84,7 +84,6 @@ class UsuarioController extends Controller
         } else {
             $dados = User::find($id_geral);
             $mensagem['tipo-geral'] = 'editado';
-            // $addHistorico = app('App\Http\Controllers\HistoricoController')->cadastro($request, $dados);
 
             if ($bt_salvar == 'conta') {
                 // $dados->foto = $request->input('foto');
@@ -148,90 +147,7 @@ class UsuarioController extends Controller
                 if (isset($enderecos_id)) {
                     $dados->enderecos_id = $enderecos_id;
                 }
-            }
-
-            // if ($bt_salvar == 'controle') {
-            //     $dt_mob_sabesp = $request->input('dt_mob_sabesp');
-            //     if (isset($dt_mob_sabesp)) {
-            //         $dt_mob_sabesp = $this->dateEmMysql($dt_mob_sabesp);
-            //         $dados->dt_mob_sabesp = $dt_mob_sabesp;
-            //     } else {
-            //         $dados->dt_mob_sabesp = null;
-            //     }
-            //     $dt_desmob_sabesp = $request->input('dt_desmob_sabesp');
-            //     if (isset($dt_desmob_sabesp)) {
-            //         $dt_desmob_sabesp = $this->dateEmMysql($dt_desmob_sabesp);
-            //         $dados->dt_desmob_sabesp = $dt_desmob_sabesp;
-            //     } else {
-            //         $dados->dt_desmob_sabesp = null;
-            //     }
-
-
-
-            //     $regime = $request->input('regime');
-            //     // Cadastro de empresa
-            //     if ($regime == 'Prestador de Serviço') {
-            //         $prestador = $dados->contratos_prestacao_servicos_id;
-            //         if (isset($prestador)) {
-            //             $dadosEmpresa = Contratos_prestacao_servico::find($prestador);
-            //             $mensagem['tipo-pj'] = 'editado';
-            //         } else {
-            //             $dadosEmpresa = new Contratos_prestacao_servico();
-            //             $mensagem['tipo-pj'] = 'novo';
-            //         }
-            //         $dadosEmpresa->nome_fantasia = $request->input('nome_fantasia');
-            //         $dadosEmpresa->representante = $request->input('representante');
-            //         $dadosEmpresa->cnpj = $request->input('cnpj');
-            //         $dt_prest_inicio = $request->input('dt_prest_inicio');
-            //         if (isset($dt_prest_inicio)) {
-            //             $dt_prest_inicio = $this->dateEmMysql($dt_prest_inicio);
-            //             $dadosEmpresa->dt_prest_inicio = $dt_prest_inicio;
-            //         } else {
-            //             $dadosEmpresa->dt_prest_inicio = null;
-            //         }
-            //         $dt_prest_fim = $request->input('dt_prest_fim');
-            //         if (isset($dt_prest_fim)) {
-            //             $dt_prest_fim = $this->dateEmMysql($dt_prest_fim);
-            //             $dadosEmpresa->dt_prest_fim = $dt_prest_fim;
-            //         } else {
-            //             $dadosEmpresa->dt_prest_fim = null;
-            //         }
-
-            //         $dadosEmpresa->save();
-            //         $mensagem['id-pj'] = $dadosEmpresa->id;
-            //         $dados->contratos_prestacao_servicos_id = $dadosEmpresa->id;
-            //     }
-            //     if ($regime == 'Celetista') {
-            //         $celetista = $dados->celetistas_id;
-            //         if (isset($celetista)) {
-            //             $dadosCeletista = Celetista::find($celetista);
-            //             $mensagem['tipo-celetista'] = 'editado';
-            //         } else {
-            //             $dadosCeletista = new Celetista();
-            //             $mensagem['tipo-celetista'] = 'novo';
-            //         }
-
-            //         $dadosCeletista->ordem_servico = $request->input('ordem_servico');
-            //         $dt_aso_inicial = $request->input('dt_aso_inicial');
-            //         if (isset($dt_aso_inicial)) {
-            //             $dt_aso_inicial = $this->dateEmMysql($dt_aso_inicial);
-            //             $dadosCeletista->dt_aso_inicial = $dt_aso_inicial;
-            //         } else {
-            //             $dadosCeletista->dt_aso_inicial = null;
-            //         }
-
-            //         $dt_aso_demissional = $request->input('dt_aso_demissional');
-            //         if (isset($dt_aso_demissional)) {
-            //             $dt_aso_demissional = $this->dateEmMysql($dt_aso_demissional);
-            //             $dadosCeletista->dt_aso_demissional = $dt_aso_demissional;
-            //         } else {
-            //             $dadosCeletista->dt_aso_demissional = null;
-            //         }
-            //         $dadosCeletista->save();
-            //         $mensagem['id-celetista'] = $dadosCeletista->id;
-            //         $dados->celetistas_id = $dadosCeletista->id;
-            //     }
-            // }
+            }            
 
         }
 
