@@ -5,7 +5,7 @@
     #fullpage {margin-left: 1px; }
     html,body{ background-color: #FFF; background-image: url("{{asset('app-assets/images/bglogin.jpg')}} " ); background-repeat: no-repeat; background-attachment: fixed;background-position: center;  }
     .header-navbar-shadow{ display: none !important;}
-    .nomelog{color: #66619c; padding-left: 1rem;margin-bottom: 0;font-weight: 600;letter-spacing: 0.01rem;font-size: 1.45rem;}
+    .nomelog{color: #2b275b; padding-left: 1rem;margin-bottom: 0;font-weight: 600;letter-spacing: 0.01rem;font-size: 2.2rem; font-family: Kefa;}
 </style>
 <div class="container">
     <div class="row justify-content-center">

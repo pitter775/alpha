@@ -16,8 +16,9 @@ body {
 @font-face {
   font-family: Richela;
   src: url("../img/richela.otf") format("opentype");
-   /* background: url(../img/section-title-bg.png) no-repeat; */
 }
+
+
 
 /* @font-face {
   font-family: GraublauWeb;

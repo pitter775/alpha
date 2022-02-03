@@ -69,15 +69,20 @@ body {
   outline: 0 !important;
 }
 
+
+@font-face {
+  font-family: Kefa;
+  src: url("../font/Kefa-Regular.otf") format("opentype");
+}
+
 hr {
   box-sizing: content-box;
   height: 0;
   overflow: visible;
 }
 
-h1, h2, h3, h4, h5, h6 {
-  margin-top: 0;
-  margin-bottom: 0.5rem;
+h1, h2, h3, h4{
+  font-family: "Kefa" !important;
 }
 
 p {
