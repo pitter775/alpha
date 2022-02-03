@@ -400,15 +400,17 @@ $(function () {
                success: function (data) {
                   console.log('conta');
 
-                  var divcarhistory = $('#divcarhistory');
-                  divcarhistory.animate({ opacity: 0, marginTop: "100px" }, 500, "easeInQuart", function () {
-                     //historyList();
-                     divcarhistory.animate({ opacity: 1, marginTop: "0" }, 500, "easeOutQuart", function () { });
-                  });
+                  // var divcarhistory = $('#divcarhistory');
+                  // divcarhistory.animate({ opacity: 0, marginTop: "100px" }, 500, "easeInQuart", function () {
+                  //    //historyList();
+                  //    divcarhistory.animate({ opacity: 1, marginTop: "0" }, 500, "easeOutQuart", function () { });
+                  // });
 
                   var divcarduser = $('#divcarduser');
                   divcarduser.animate({ opacity: 0, marginTop: "100px" }, 500, "easeInQuart", function () {
+                     console.log('animando');
                      divUser();
+                     console.log('trocou');
                      divcarduser.animate({ opacity: 1, marginTop: "0" }, 500, "easeOutQuart", function () { });
                   });
 
