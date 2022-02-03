@@ -31,6 +31,7 @@ Route::get('/file-upload/delete/{id}', [App\Http\Controllers\FileUploadControlle
 
 Route::group(['middleware' => 'acesso'], function () {
 
+    Route::get('/escolas', [App\Http\Controllers\EscolaController::class, 'index']);
     
 
     Route::get('/alocacao', [App\Http\Controllers\AlocacaoController::class, 'index']);
