@@ -402,7 +402,7 @@
         <div class="row">
           <div class="col-lg-4 col-md-4">            
             <div data-aos="fade-up" data-aos-delay="50">
-            <img src="{{ asset('paper') }}/assets/img/lgo-g.png" alt="" class="imgfooter" style="max-width: 300px; display: inline;">
+            <img src="{{ asset('paper') }}/assets/img/lgo-g.png" alt="" class="imgfooter" style="width: 200px; display: inline;">
               <br>
     
             </div>
