@@ -107,7 +107,7 @@ class UsuarioController extends Controller
 
                     }
                 }
-                
+                $mensagem['pegando1'] = 'nome e email'; 
                 $dados->name = $request->input('fullname');
                 $dados->email = $request->input('email');
 
@@ -123,6 +123,7 @@ class UsuarioController extends Controller
                         $dados->use_perfil = $request->input('perfil');
                     }
                 }
+                $mensagem['pegando2'] = 'ok 2'; 
             }
 
             if ($bt_salvar == 'informacoes') {
@@ -161,6 +162,8 @@ class UsuarioController extends Controller
         }
 
         $dados->save();
+        $mensagem['gravados'] = 'tudo ok';
+        
         if ($mensagem['tipo-geral'] == 'novo') {
             $mensagem['id-geral'] = $dados->id;
         }
