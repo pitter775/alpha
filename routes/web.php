@@ -32,7 +32,7 @@ Route::get('/file-upload/delete/{id}', [App\Http\Controllers\FileUploadControlle
 Route::group(['middleware' => 'acesso'], function () {
 
     Route::get('/escolas', [App\Http\Controllers\EscolaController::class, 'index']);
-    
+    Route::get('/testetetett', [App\Http\Controllers\EscolaController::class, 'index']);
 
     Route::get('/alocacao', [App\Http\Controllers\AlocacaoController::class, 'index']);
     Route::get('/alocacao/all', [App\Http\Controllers\AlocacaoController::class, 'all']);
@@ -42,14 +42,14 @@ Route::group(['middleware' => 'acesso'], function () {
 
     Route::get('/usuario', [App\Http\Controllers\UsuarioController::class, 'index']);
     Route::get('/usuario/all', [App\Http\Controllers\UsuarioController::class, 'all']);
-    Route::post('/usuario/cadastro', [App\Http\Controllers\UsuarioController::class, 'cadastro']);    
-    Route::post('/usuario/addAditivos', [App\Http\Controllers\UsuarioController::class, 'addAditivos']);    
+    Route::post('/usuario/cadastro', [App\Http\Controllers\UsuarioController::class, 'cadastro']);
+    Route::post('/usuario/addAditivos', [App\Http\Controllers\UsuarioController::class, 'addAditivos']);
     Route::get('/usuario/delete/{id}', [App\Http\Controllers\UsuarioController::class, 'delete']);
     Route::get('/usuario/detalhes/{id}', [App\Http\Controllers\UsuarioController::class, 'detalhe']);
     Route::get('/usuario/getuser/{id}', [App\Http\Controllers\UsuarioController::class, 'getuser']);
 
 
-    
+
 });
 
 
