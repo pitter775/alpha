@@ -20,6 +20,7 @@ use App\Models\User;
 Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('site');
 Route::get('/logout', [App\Http\Controllers\Auth\LoginController::class, 'logout']);
 Route::get('/home', [App\Http\Controllers\DashboardController::class, 'index']);
+Route::get('/matriculas', [App\Http\Controllers\HomeController::class, 'matricula']);
 
 Auth::routes();
 
@@ -32,7 +33,6 @@ Route::get('/file-upload/delete/{id}', [App\Http\Controllers\FileUploadControlle
 Route::group(['middleware' => 'acesso'], function () {
 
     Route::get('/escolas', [App\Http\Controllers\EscolaController::class, 'index']);
-    Route::get('/testetetett', [App\Http\Controllers\EscolaController::class, 'index']);
 
     Route::get('/alocacao', [App\Http\Controllers\AlocacaoController::class, 'index']);
     Route::get('/alocacao/all', [App\Http\Controllers\AlocacaoController::class, 'all']);

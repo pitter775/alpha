@@ -176,6 +176,11 @@ label {
   color: #9a95ac;
   font-size: 0.757rem; 
   font-weight: 700;
+  padding-top: 15px;
+}
+label.check {
+  
+  padding-top: 0;
 }
 
 .form-control::placeholder {

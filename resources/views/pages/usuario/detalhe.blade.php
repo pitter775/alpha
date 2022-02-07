@@ -20,6 +20,51 @@
    <div class="content-body">
       <section class="app-user-view-account">
          <div class="row">
+            <div class="col-12">
+               <ul class="nav nav-pills" role="tablist">
+                  <li class="nav-item">
+                     <a class="nav-link d-flex align-items-center active" id="account-tab" data-toggle="tab" href="#account" aria-controls="account" role="tab" aria-selected="true">
+                        <i data-feather="user"></i><span class="d-none d-sm-block">Conta</span>
+                     </a>
+                  </li>
+                  <li class="nav-item">
+                     <a class="nav-link d-flex align-items-center" id="information-tab" data-toggle="tab" href="#information" aria-controls="information" role="tab" aria-selected="false">
+                        <i data-feather="info"></i><span class="d-none d-sm-block">Informações</span>
+                     </a>
+                  </li>
+                  <li class="nav-item">
+                     <a class="nav-link d-flex align-items-center" id="endereco-tab" data-toggle="tab" href="#endereco" aria-controls="endereco" role="tab" aria-selected="false">
+                        <i data-feather="info"></i><span class="d-none d-sm-block">Endereço</span>
+                     </a>
+                  </li>
+                  <li class="nav-item">
+                     <a class="nav-link d-flex align-items-center" id="responsaveis-tab" data-toggle="tab" href="#responsaveis" aria-controls="responsaveis" role="tab" aria-selected="false">
+                        <i data-feather="info"></i><span class="d-none d-sm-block">Responsaveis</span>
+                     </a>
+                  </li>
+                  <li class="nav-item">
+                     <a class="nav-link d-flex align-items-center" id="saude-tab" data-toggle="tab" href="#saude" aria-controls="saude" role="tab" aria-selected="false">
+                        <i data-feather="info"></i><span class="d-none d-sm-block">Saúde</span>
+                     </a>
+                  </li>
+                  <li class="nav-item">
+                     <a class="nav-link d-flex align-items-center" id="alimentares-tab" data-toggle="tab" href="#alimentares" aria-controls="alimentares" role="tab" aria-selected="false">
+                        <i data-feather="info"></i><span class="d-none d-sm-block">Alimentares</span>
+                     </a>
+                  </li>
+
+                  <li class="nav-item">
+                     <a class="nav-link d-flex align-items-center" id="arquivos-tab" data-toggle="tab" href="#arquivos" aria-controls="arquivos" role="tab" aria-selected="false">
+                        <i data-feather='file'></i><span class="d-none d-sm-block">Arquivos</span>
+                     </a>
+                  </li>
+                  <li class="nav-item">
+                     <a class="nav-link d-flex align-items-center" id="controle-tab" data-toggle="tab" href="#controle" aria-controls="controle" role="tab" aria-selected="false">
+                        <i data-feather='file'></i><span class="d-none d-sm-block">Controle</span>
+                     </a>
+                  </li>
+               </ul>
+            </div>
             <!-- User Sidebar -->
             <div class="col-xl-3 col-lg-4 col-md-4 order-1 order-md-0">
                <!-- User Card -->
@@ -37,616 +82,56 @@
                <section class="app-user-edit">
                   <div class="card">
                      <div class="card-body">
-                        <ul class="nav nav-pills" role="tablist">
-                           <li class="nav-item">
-                              <a class="nav-link d-flex align-items-center active" id="account-tab" data-toggle="tab" href="#account" aria-controls="account" role="tab" aria-selected="true">
-                                 <i data-feather="user"></i><span class="d-none d-sm-block">Conta</span>
-                              </a>
-                           </li>
-                           <li class="nav-item">
-                              <a class="nav-link d-flex align-items-center" id="information-tab" data-toggle="tab" href="#information" aria-controls="information" role="tab" aria-selected="false">
-                                 <i data-feather="info"></i><span class="d-none d-sm-block">Informações</span>
-                              </a>
-                           </li>
-                           <li class="nav-item">
-                              <a class="nav-link d-flex align-items-center" id="controle-tab" data-toggle="tab" href="#controle" aria-controls="controle" role="tab" aria-selected="false">
-                                 <i data-feather='activity'></i><span class="d-none d-sm-block">Controle</span>
-                              </a>
-                           </li>
-                           <li class="nav-item">
-                              <a class="nav-link d-flex align-items-center" id="arquivos-tab" data-toggle="tab" href="#arquivos" aria-controls="arquivos" role="tab" aria-selected="false">
-                                 <i data-feather='file'></i><span class="d-none d-sm-block">Arquivos</span>
-                              </a>
-                           </li>
-                        </ul>
+                        
                         <div class="tab-content">
                            <div class="tab-pane active" id="account" aria-labelledby="account-tab" role="tabpanel">
                               <form class="form-conta" enctype="multipart/form-data">
                                  @csrf
-                                 <input type="hidden" value="{{$user->id ?? ''}}" name="id_geral" id="id_geral" />
-                                 <div class="row">
-                                    <div class="col-md-8">
-                                       <div class="media mb-2">
-                                          @if($user->use_foto == null)
-                                          <img src=" {{asset('app-assets/images/avatars/avatar.png')}}" alt="users avatar" data-tipo="avatar" id="fotouser" class="user-avatar users-avatar-shadow rounded mr-2 my-25 cursor-pointer" height="90" width="90" />
-                                          <input type="hidden" value="naotem" name="temfoto" id="temfoto" />
-                                          @endif
-                                          @if($user->use_foto !== null)
-                                          <img src="{{asset('arquivos').'/'.$user->use_foto}}" alt="users avatar" data-tipo="nova" id="fotouser" class="user-avatar users-avatar-shadow rounded mr-2 my-25 cursor-pointer" height="90" width="90" />
-                                          <input type="hidden" value="tem" name="temfoto" id="temfoto" />
-                                          @endif
-
-                                          
-                                          <div class="media-body mt-50">
-                                             <h4>{{$user->name}}</h4>
-                                             <div class="col-12 d-flex mt-1 px-0">
-                                                <label class="btn btn-primary mr-75 mb-0" for="change-picture">
-                                                   <span class="d-none d-sm-block btmudar">Mudar</span>
-                                                   <input class="form-control" type="file" name="file" id="change-picture" hidden accept="image/png, image/jpeg, image/jpg" />
-                                                   <span class="d-block d-sm-none">
-                                                      <i class="mr-0" data-feather="edit"></i>
-                                                   </span>
-                                                </label>
-                                                <button class="btn btn-outline-secondary btreset">Reset</button>
-                                       
-                                             </div>
-                                          </div>
-                                       </div>
-                                    </div>
-
-                                    <div class="col-md-4">
-                                       <label for="alteracao">Data Alteração</label>
-                                       <div class="input-group input-group-merge">
-                                          <div class="input-group-prepend">
-                                             <span class="input-group-text">
-                                                <i data-feather='calendar'></i>
-                                             </span>
-                                          </div>
-                                          <input id="alteracao" type="text" class="form-control flatpickr-basic" name="alteracao" />
-
-                                       </div>
-                                       <small class="text-muted">Se a alteração for retroativa, altere a data.</small>
-                                    </div>
-
-                                    <div class="col-md-7">
-                                       <label for="fullname">Nome</label>
-                                       <div class="input-group input-group-merge">
-                                          <div class="input-group-prepend">
-                                             <span class="input-group-text">
-                                                <i data-feather='user'></i>
-                                             </span>
-                                          </div>
-                                          <input id="fullname" type="text" class="form-control" value="{{$user->name}}" name="fullname" />
-                                       </div>
-                                    </div>
-
-                                    <div class="col-md-5" style="margin-bottom: 15px;">
-                                       <label for="email">Email</label>
-                                       <div class="input-group input-group-merge">
-                                          <div class="input-group-prepend">
-                                             <span class="input-group-text">
-                                                <i data-feather='mail'></i>
-                                             </span>
-                                          </div>
-                                          <input id="email" type="text" class="form-control" value="{{$user->email}}" name="email" />
-                                       </div>
-                                    </div>
-
-
-
-                                    <div class="col-md-4">
-                                       <div class="form-group">
-                                          <label for="perfil">Perfil</label>
-                                          <select id="perfil" name="perfil" class="form-control select2">
-                                             <option value="1" @if($user->use_perfil == 1) selected @endif>Usuário</option>
-                                             <option value="10" @if($user->use_perfil == 10) selected @endif>ADM</option>
-                                          </select>
-                                       </div>
-                                    </div>
-
-                                    <div class="col-md-4">
-                                       <label for="senha">Nova Senha</label>
-                                       <div class="input-group input-group-merge">
-                                          <div class="input-group-prepend">
-                                             <span class="input-group-text">
-                                                <i data-feather='key'></i>
-                                             </span>
-                                          </div>
-                                          <input id="senha" type="text" class="form-control" placeholder="Nova Senha" name="senha" />
-                                       </div>
-                                    </div>
-
-                                    <div class="col-md-4">
-                                       <div class="form-group">
-                                          <label for="status">Status</label>
-                                          <select id="status" name="status" class="form-control select2">
-                                             <option value="1" @if($user->use_status == 1) selected @endif >Ativo</option>
-                                             <option value="2" @if($user->use_status == 2) selected @endif >Inativo</option>
-                                          </select>
-                                       </div>
-                                    </div>
-
-                                    <div class="col-12 d-flex flex-sm-row flex-column mt-2">
-                                       <button type="submit" class="btn btn-primary mb-1 mb-sm-0 mr-0 mr-sm-1">Salvar Dados</button>
-                                       <input type="hidden" value="conta" name="salvarDados">
-                                    </div>
-                                 </div>
+                                 <input type="hidden" value="{{$user->id ?? ''}}" name="id_geral" id="id_geral" />                        
+                                 @include('pages.usuario.conta')
                               </form>
                            </div>
                            <div class="tab-pane fade " id="information" aria-labelledby="information-tab" role="tabpanel">
                               <form class="form-pessoais">
                                  @csrf
                                  <input type="hidden" value="{{$user->id ?? ''}}" name="id_geral" id="id_geral" />
-                                 <div class="row mt-1">
-                                    <div class="col-12">
-                                       <h4 class="mb-1">
-                                          <i data-feather="user" class="font-medium-4 mr-25"></i>
-                                          <span class="align-middle">Informações Pessoais</span>
-                                       </h4>
-                                    </div>
-                                    <div class="col-lg-4">
-                                       <label for="dt_nascimento">Data de Nascimento</label>
-                                       <div class="input-group input-group-merge">
-                                          <div class="input-group-prepend">
-                                             <span class="input-group-text">
-                                                <i data-feather='calendar'></i>
-                                             </span>
-                                          </div>
-                                          <input id="dt_nascimento" type="text" class="form-control flatpickr-basic" value="@if($user-> use_dt_nascimento ) {{date( 'd/m/Y' , strtotime($user-> use_dt_nascimento )) }} @endif" name="dt_nascimento" />
-                                       </div>
-                                    </div>
-
-                                    <div class="col-md-4">
-                                       <label for="telefone">Telefone</label>
-                                       <div class="input-group input-group-merge">
-                                          <div class="input-group-prepend">
-                                             <span class="input-group-text">
-                                                <i data-feather='phone'></i>
-                                             </span>
-                                          </div>
-                                          <input id="telefone" type="text" class="form-control" value="{{$user->use_telefone ?? ''}}" name="telefone" />
-                                       </div>
-                                    </div>
-
-                                    <div class="col-md-4">
-                                       <div class="form-group">
-                                          <label for="estado_civil">Estado Civil</label>
-                                          <select id="estado_civil" name="estado_civil" class="form-control select2">
-                                             
-                                          </select>
-                                       </div>
-                                    </div>
-
-                                    <div class="col-md-6">
-                                       <label for="cnh_numero">CNH Nº</label>
-                                       <div class="input-group input-group-merge">
-                                          <div class="input-group-prepend">
-                                             <span class="input-group-text">
-                                                <i data-feather='alert-circle'></i>
-                                             </span>
-                                          </div>
-                                          <input id="cnh_numero" type="text" class="form-control" value="" name="cnh_numero" />
-                                       </div>
-                                    </div>
-
-                                    <div class="col-lg-4">
-                                       <label for="cnh_dt_vencimento">CNH Vencimento</label>
-                                       <div class="input-group input-group-merge">
-                                          <div class="input-group-prepend">
-                                             <span class="input-group-text">
-                                                <i data-feather='calendar'></i>
-                                             </span>
-                                          </div>
-                                          <input id="cnh_dt_vencimento" type="text" class="form-control flatpickr-basic" value="" name="cnh_dt_vencimento" />
-                                       </div>
-                                    </div>
-
-                                    <div class="col-md-2">
-                                       <div class="form-group">
-                                          <label for="cnh_tipo">CNH Tipo</label>
-                                          <select id="cnh_tipo" name="cnh_tipo" class="form-control select2">
-
-                                          </select>
-                                       </div>
-                                    </div>
-
-                                    <div class="col-md-4">
-                                       <label for="rg">RG</label>
-                                       <div class="input-group input-group-merge">
-                                          <div class="input-group-prepend">
-                                             <span class="input-group-text">
-                                                <i data-feather='alert-circle'></i>
-                                             </span>
-                                          </div>
-                                          <input id="rg" type="text" class="form-control" value="{{$user->use_rg ?? ''}}" name="rg" />
-                                       </div>
-                                    </div>
-                                    <div class="col-md-4">
-                                       <label for="cpf">CPF</label>
-                                       <div class="input-group input-group-merge">
-                                          <div class="input-group-prepend">
-                                             <span class="input-group-text">
-                                                <i data-feather='alert-circle'></i>
-                                             </span>
-                                          </div>
-                                          <input id="cpf" type="text" class="form-control" value="{{$user->use_cpf ?? ''}}" name="cpf" />
-                                       </div>
-                                    </div>
-
-
-                                    <div class="col-md-4 ">
-                                       <div class="form-group">
-                                          <label class="d-block mb-1">Sexo</label>
-                                          <div class="custom-control custom-radio custom-control-inline">
-                                             <input type="radio" id="male" name="sexo" value="Masculino" class="custom-control-input" checked />
-                                             <label class="custom-control-label" for="male">Masculino</label>
-                                          </div>
-                                          <div class="custom-control custom-radio custom-control-inline">
-                                             <input type="radio" id="female" name="sexo" class="custom-control-input" value="Fenimino" />
-                                             <label class="custom-control-label" for="female">Fenimino</label>
-                                          </div>
-                                       </div>
-                                    </div>
-
-                                    <div class="col-12" style="margin-top: 20px;">
-                                       <h4 class="mb-1 mt-2">
-                                          <i data-feather="map-pin" class="font-medium-4 mr-25"></i>
-                                          <span class="align-middle">Endereço</span>
-                                       </h4>
-                                    </div>
-                                    <div class="col-md-5">
-                                       <label for="rua">Rua</label>
-                                       <div class="input-group input-group-merge">
-                                          <div class="input-group-prepend">
-                                             <span class="input-group-text">
-                                                <i data-feather='map-pin'></i>
-                                             </span>
-                                          </div>
-                                          <input id="rua" type="text" class="form-control" value="{{$user->end_rua ?? ''}}" name="rua" />
-                                       </div>
-                                    </div>
-                                    <div class="col-md-2">
-                                       <label for="numero">Número</label>
-                                       <div class="input-group input-group-merge">
-                                          <div class="input-group-prepend">
-                                             <span class="input-group-text">
-                                                <i data-feather='map-pin'></i>
-                                             </span>
-                                          </div>
-                                          <input id="numero" type="text" class="form-control" value="{{$user->end_numero ?? ''}}" name="numero" />
-                                       </div>
-                                    </div>
-                                    <div class="col-md-5" style="margin-bottom: 15px;">
-                                       <label for="complemento">Complemento</label>
-                                       <div class="input-group input-group-merge">
-                                          <div class="input-group-prepend">
-                                             <span class="input-group-text">
-                                                <i data-feather='map-pin'></i>
-                                             </span>
-                                          </div>
-                                          <input id="complemento" type="text" class="form-control" value="{{$user->end_complemento ?? ''}}" name="complemento" />
-                                       </div>
-                                    </div>
-                                    <div class="col-lg-4 col-md-6">
-                                       <label for="cep">CEP</label>
-                                       <div class="input-group input-group-merge">
-                                          <div class="input-group-prepend">
-                                             <span class="input-group-text">
-                                                <i data-feather='map-pin'></i>
-                                             </span>
-                                          </div>
-                                          <input id="cep" type="text" class="form-control" value="{{$user->end_cep ?? ''}}" name="cep" />
-                                       </div>
-                                    </div>
-                                    <div class="col-lg-4 col-md-6">
-                                       <label for="cidade">Cidade</label>
-                                       <div class="input-group input-group-merge">
-                                          <div class="input-group-prepend">
-                                             <span class="input-group-text">
-                                                <i data-feather='map-pin'></i>
-                                             </span>
-                                          </div>
-                                          <input id="cidade" type="text" class="form-control" value="{{$user->end_cidade ?? ''}}" name="cidade" />
-                                       </div>
-                                    </div>
-                                    <div class="col-lg-4 col-md-6">
-                                       <label for="estado">Estado</label>
-                                       <div class="input-group input-group-merge">
-                                          <div class="input-group-prepend">
-                                             <span class="input-group-text">
-                                                <i data-feather='map-pin'></i>
-                                             </span>
-                                          </div>
-                                          <input id="estado" type="text" class="form-control" value="{{$user->end_estado ?? ''}}" name="estado" />
-                                       </div>
-                                    </div>
-                                    <div class="col-12 d-flex flex-sm-row flex-column mt-2">
-                                       <button type="submit" class="btn btn-primary mb-1 mb-sm-0 mr-0 mr-sm-1">Salvar Dados</button>
-                                       <input type="hidden" value="informacoes" name="salvarDados">
-                                    </div>
-                                 </div>
+                                 @include('pages.usuario.pessoais')                     
+                              </form>
+                           </div>
+                           <div class="tab-pane fade " id="endereco" aria-labelledby="endereco-tab" role="tabpanel">
+                              <form class="form-pessoais">
+                                 @csrf
+                                 <input type="hidden" value="{{$user->id ?? ''}}" name="id_geral" id="id_geral" />
+                                 @include('pages.usuario.endereco')                     
+                              </form>
+                           </div>
+                           <div class="tab-pane fade " id="responsaveis" aria-labelledby="responsaveis-tab" role="tabpanel">
+                              <form class="form-pessoais">
+                                 @csrf
+                                 <input type="hidden" value="{{$user->id ?? ''}}" name="id_geral" id="id_geral" />
+                                 @include('pages.usuario.responsaveis')                     
+                              </form>
+                           </div>
+                           <div class="tab-pane fade " id="saude" aria-labelledby="saude-tab" role="tabpanel">
+                              <form class="form-pessoais">
+                                 @csrf
+                                 <input type="hidden" value="{{$user->id ?? ''}}" name="id_geral" id="id_geral" />
+                                 @include('pages.usuario.saude')                     
+                              </form>
+                           </div>
+                           <div class="tab-pane fade " id="alimentares" aria-labelledby="alimentares-tab" role="tabpanel">
+                              <form class="form-pessoais">
+                                 @csrf
+                                 <input type="hidden" value="{{$user->id ?? ''}}" name="id_geral" id="id_geral" />
+                                 @include('pages.usuario.alimentares')                     
                               </form>
                            </div>
                            <div class="tab-pane fade " id="controle" aria-labelledby="controle-tab" role="tabpanel">
-                              <form class="form-controle">
+                              <form class="form-pessoais">
                                  @csrf
                                  <input type="hidden" value="{{$user->id ?? ''}}" name="id_geral" id="id_geral" />
-
-                                 <div class="row mt-1  pb-50 mb-1">
-                                    <div class="col-md-8">
-                                       <h4 class="mb-1">
-                                          <i data-feather="user" class="font-medium-4 mr-25"></i>
-                                          <span class="align-middle">Dados Gerais</span>
-                                       </h4>
-                                    </div>
-
-                                    <div class="col-md-4">
-                                       <label for="alteracao2">Data Alteração</label>
-                                       <div class="input-group input-group-merge">
-                                          <div class="input-group-prepend">
-                                             <span class="input-group-text">
-                                                <i data-feather='calendar'></i>
-                                             </span>
-                                          </div>
-                                          <input id="alteracao2" type="text" class="form-control flatpickr-basic" name="alteracao" />
-
-                                       </div>
-                                       <small class="text-muted">Se a alteração for retroativa, altere a data.</small>
-                                    </div>
-
-
-                                    <div class="col-md-3">
-                                       <div class="form-group">
-                                          <label for="empresa">Empresa</label>
-                                          <input type="hidden" id="hempresa" value="">
-                                          <select id="empresa" name="empresa" class="form-control select2">
-                               
-                                          </select>
-                                       </div>
-                                    </div>
-                                    <div class="col-md-3">
-                                       <div class="form-group">
-                                          <label for="cargo">Cargo</label>
-                                          <input type="hidden" id="hcargo" value="">
-                                          <select id="cargo" name="cargo" class="form-control select2">
-                              
-                                          </select>
-                                       </div>
-                                    </div>
-                                    <div class="col-md-3">
-                                       <div class="form-group">
-                                          <label for="alocacao">Alocação</label>
-                                          <input type="hidden" id="halocacao" value="">
-                                          <select id="alocacao" name="alocacao" class="form-control select2">
-                              
-                                          </select>
-                                       </div>
-                                    </div>
-                                    <div class="col-md-3">
-                                       <label for="salario">Salário</label>
-                                       <div class="input-group input-group-merge">
-                                          <div class="input-group-prepend">
-                                             <span class="input-group-text">
-                                                <i data-feather='dollar-sign'></i>
-                                             </span>
-                                          </div>
-                                          <input id="salario" type="text" class="form-control"  value="" name="salario" />
-                                       </div>
-                                       <small class="text-muted text-adm">Custo: <span id="custoval"></span> </small>
-                                    </div>
-
-                                    <div class="col-md-2">
-                                       <div class="form-group">
-                                          <label for="frente">Frente</label>
-                                          <input type="hidden" id="hfrente" value="">
-                                          <select id="frente" name="frente" class="form-control select2">
-                         
-                                          </select>
-                                       </div>
-                                    </div>
-                                    <div class="col-md-3">
-                                       <label for="dt_mob_sabesp">Mobilização Sabesp</label>
-                                       <div class="input-group input-group-merge">
-                                          <div class="input-group-prepend">
-                                             <span class="input-group-text">
-                                                <i data-feather='calendar'></i>
-                                             </span>
-                                          </div>
-                                          <input id="dt_mob_sabesp" type="text" class="form-control flatpickr-basic" value="" name="dt_mob_sabesp" />
-                                       </div>
-                                    </div>
-                                    <div class="col-md-3">
-                                       <label for="dt_desmob_sabesp">Desmobilização Sabesp</label>
-                                       <div class="input-group input-group-merge">
-                                          <div class="input-group-prepend">
-                                             <span class="input-group-text">
-                                                <i data-feather='calendar'></i>
-                                             </span>
-                                          </div>
-                                          <input id="dt_desmob_sabesp" type="text" class="form-control flatpickr-basic" value="" name="dt_desmob_sabesp" />
-                                       </div>
-                                    </div>
-                                    <div class="col-md-4">
-                                       <div class="form-group">
-                                          <label class="d-block mb-1">Regime</label>
-                                          <div class="custom-control custom-radio custom-control-inline">
-                                             <input type="radio" id="pj" name="regime" value="Prestador de Serviço" class="custom-control-input"  />
-                                             <label class="custom-control-label" for="pj">Prestador de Serviço</label>
-                                          </div>
-                                          <div class="custom-control custom-radio custom-control-inline">
-                                             <input type="radio" id="regis" name="regime" value="Celetista" class="custom-control-input" />
-                                             <label class="custom-control-label" for="regis">Celetista</label>
-                                          </div>
-                                       </div>
-                                    </div>
-                                 </div>
-
-
-                                 <div class="row mt-1" id="divCeletista">
-                                    <div class="col-12">
-                                       <h4 class="mb-1">
-                                          <i data-feather="shield" class="font-medium-4 mr-25"></i>
-                                          <span class="align-middle">Celetista</span>
-                                       </h4>
-                                    </div>
-                                    <div class="col-md-6">
-                                       <label for="ordem_servico">Ordem de Serviço</label>
-                                       <div class="input-group input-group-merge">
-                                          <div class="input-group-prepend">
-                                             <span class="input-group-text">
-                                                <i data-feather='star'></i>
-                                             </span>
-                                          </div>
-                                          <input id="ordem_servico" type="text" class="form-control" value="" name="ordem_servico" />
-                                       </div>
-                                    </div>
-                                    <div class="col-md-3">
-                                       <label for="dt_aso_inicial">ASO Inicial</label>
-                                       <div class="input-group input-group-merge">
-                                          <div class="input-group-prepend">
-                                             <span class="input-group-text">
-                                                <i data-feather='calendar'></i>
-                                             </span>
-                                          </div>
-                                          <input id="dt_aso_inicial" type="text" class="form-control flatpickr-basic" value="" name="dt_aso_inicial" />
-                                       </div>
-                                    </div>
-                                    <div class="col-md-3">
-                                       <label for="dt_aso_demissional">ASO Demissional</label>
-                                       <div class="input-group input-group-merge">
-                                          <div class="input-group-prepend">
-                                             <span class="input-group-text">
-                                                <i data-feather='calendar'></i>
-                                             </span>
-                                          </div>
-                                          <input id="dt_aso_demissional" type="text" class="form-control flatpickr-basic" value="" name="dt_aso_demissional" />
-                                       </div>
-                                    </div>
-
-                                 </div>
-                                 <div class="row mt-1 " id="divPrestodor">
-                                    <div class="col-12">
-                                       <h4 class="mb-1">
-                                          <i data-feather="shield" class="font-medium-4 mr-25"></i>
-                                          <span class="align-middle">Prestador de Serviços</span>
-
-                                       </h4>
-                                    </div>
-                                    <div class="col-md-4">
-                                       <label for="nome_fantasia">Nome da Empresa</label>
-                                       <div class="input-group input-group-merge">
-                                          <div class="input-group-prepend">
-                                             <span class="input-group-text">
-                                                <i data-feather='briefcase'></i>
-                                             </span>
-                                          </div>
-                                          <input id="nome_fantasia" type="text" class="form-control" value="" name="nome_fantasia" />
-                                       </div>
-                                    </div>
-                                    <div class="col-md-4">
-                                       <label for="representante">Representante Social</label>
-                                       <div class="input-group input-group-merge">
-                                          <div class="input-group-prepend">
-                                             <span class="input-group-text">
-                                                <i data-feather='briefcase'></i>
-                                             </span>
-                                          </div>
-                                          <input id="representante" type="text" class="form-control" value="" name="representante" />
-                                       </div>
-                                    </div>
-                                    <div class="col-md-4" style="margin-bottom: 15px;">
-                                       <label for="cnpj">CNPJ</label>
-                                       <div class="input-group input-group-merge">
-                                          <div class="input-group-prepend">
-                                             <span class="input-group-text">
-                                                <i data-feather='briefcase'></i>
-                                             </span>
-                                          </div>
-                                          <input id="cnpj" type="text" class="form-control" value="" name="cnpj" />
-                                       </div>
-                                    </div>
-                                    <div class="col-md-4">
-                                       <label for="dt_prest_inicio">Início</label>
-                                       <div class="input-group input-group-merge">
-                                          <div class="input-group-prepend">
-                                             <span class="input-group-text">
-                                                <i data-feather='calendar'></i>
-                                             </span>
-                                          </div>
-                                          <input id="dt_prest_inicio" type="text" class="form-control flatpickr-basic" value="" name="dt_prest_inicio" />
-                                       </div>
-                                    </div>
-                                    <div class="col-md-4">
-                                       <label for="dt_prest_fim">Término</label>
-                                       <div class="input-group input-group-merge">
-                                          <div class="input-group-prepend">
-                                             <span class="input-group-text">
-                                                <i data-feather='calendar'></i>
-                                             </span>
-                                          </div>
-                                          <input id="dt_prest_fim" type="text" class="form-control flatpickr-basic" value="" name="dt_prest_fim" />
-                                       </div>
-                                    </div>
-                                 </div>
-                                 <div class="col-12 d-flex flex-sm-row flex-column mt-2" style="margin-left: -12px;">
-                                    <button type="submit" class="btn btn-primary mb-1 mb-sm-0 mr-0 mr-sm-1">Salvar Dados</button>
-                                    <input type="hidden" value="controle" name="salvarDados">
-                                 </div>
+                                 @include('pages.usuario.controle')                     
                               </form>
-                              <div class="divaditivos" style="margin-top: 40px;">
-                                 <form class="form-aditivo">
-                                    @csrf
-                                    <input type="hidden" value="" name="id_pj" id="id_pj" />
-                                    <div class="table-responsive border rounded mt-1">
-                                       <h4 class="py-1 mx-1 mb-0 font-medium-2">
-                                          <i data-feather="dollar-sign" class="font-medium-4 mr-25"></i>
-                                          <span class="align-middle">Aditivos</span>
-                                       </h4>
-                                       <div class="row" style="margin:0px">
-                                          <div class="col-md-4" style="margin-bottom: 15px;">
-                                             <div class="form-group">
-                                                <label for="valor_aditivo">Valor Aditivo</label>
-                                                <div class="input-group input-group-merge">
-                                                   <div class="input-group-prepend">
-                                                      <span class="input-group-text">
-                                                         <i data-feather='dollar-sign'></i>
-                                                      </span>
-                                                   </div>
-                                                   <input id="valor_aditivo" type="text" class="form-control" value="" name="valor_aditivo" />
-                                                </div>
-                                             </div>
-                                          </div>
-                                          <div class="col-md-4">
-                                             <label for="dt_aditivo">Data Aditivo</label>
-                                             <div class="input-group input-group-merge">
-                                                <div class="input-group-prepend">
-                                                   <span class="input-group-text">
-                                                      <i data-feather='calendar'></i>
-                                                   </span>
-                                                </div>
-                                                <input id="dt_aditivo" type="text" class="form-control flatpickr-basic" value="" name="dt_aditivo" />
-                                             </div>
-                                          </div>
-                                          <div class="col-md-4">
-                                             <button type="submit" style="margin-top: 30px;" class="btn btn-outline-primary waves-effect">Adicionar Aditivo</button>
-                                          </div>
-                                       </div>
-
-
-                                       <table class="aditivo-list-table table table-sm table-responsive-lg">
-                                          <thead class="thead-light">
-                                             <tr>
-                                                <th></th>
-                                                <th>Valor</th>
-                                                <th>Data do Aditivo</th>
-                                                <th></th>
-                                             </tr>
-                                          </thead>
-                                       </table>
-
-                                    </div>
-                                 </form>
-                              </div>
                            </div>
                            <div class="tab-pane fade " id="arquivos" aria-labelledby="arquivos-tab" role="tabpanel">
                               <form action="{{ route('dropzoneFileUpload') }}" class="dropzone" id="file-upload" enctype="multipart/form-data" style="height: 200px;">
@@ -671,27 +156,6 @@
                </section>
                <!-- /Project table -->
 
-               <!-- Activity Timeline -->
-               <div id="divcarhistory" style="padding-bottom: 40px;" >
-                  <h4 class="" style="padding-top: 20px;">Histórico de Alterações</h4>
-                  <div class="">
-                     <form class="historico">
-                        @csrf
-                        <table class="history-list-table table table-sm table-responsive-lg">
-                           <thead class="thead-light">
-                              <tr>
-                                 <th></th>
-                                 <th>Tipo</th>
-                                 <th>Valor</th>
-                                 <th>Data</th>
-                                 <th></th>
-                              </tr>
-                           </thead>
-                        </table>
-                     </form>
-                  </div>
-               </div>
-               <!-- /Activity Timeline -->
             </div>
             <!--/ User Content -->
          </div>

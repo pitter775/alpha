@@ -15,16 +15,20 @@ class Acesso
         $perfil = false;
         $urls = [];
 
+        if(!isset(Auth::user()->use_perfil)){
+            return redirect()->route('login');
+        }
+
         if(Auth::user()->use_perfil == '10'){ 
             $perfil = true;
         }
 
         if(Auth::user()->perfil == '1' || Auth::user()->perfil == '0'){          
             $urls = [
-                'storage/{filename}',
-                'home','home/get_card',
-                'meuscontratos','meuscontratos/add/{card}','meuscontratos/delete/{id}','meuscontratos/get_produtos/{id}','meuscontratos/cadastro',
-                'horas','horas/add/{card}','horas/delete/{id}','horas/editar/{id}','horas/cadastro','horas/permissao_selecao','horas/delete/add_atv-0','horas/delete/remove_atv', 'horas/horasOk'             
+                // 'storage/{filename}',
+                // 'home','home/get_card',
+                // 'meuscontratos','meuscontratos/add/{card}','meuscontratos/delete/{id}','meuscontratos/get_produtos/{id}','meuscontratos/cadastro',
+                // 'horas','horas/add/{card}','horas/delete/{id}','horas/editar/{id}','horas/cadastro','horas/permissao_selecao','horas/delete/add_atv-0','horas/delete/remove_atv', 'horas/horasOk'             
             ];
 
         }        

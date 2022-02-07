@@ -25,5 +25,9 @@ class HomeController extends Controller
     {
         return view('pages.site.home'); 
     }
+    public function matricula()
+    {
+        return view('pages.site.matricula'); 
+    }
     
 }
