@@ -18,12 +18,12 @@ License: You must have a valid license purchased only from themeforest(the above
     <!-- <meta content="width=device-width, initial-scale=1.0" name="viewport"> -->
     <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0, shrink-to-fit=no' name='viewport' />
   
-    <title>Educação para o Futuro</title>
+    <title>Matricula - Educação para o Futuro</title>
   
   
   
-      <!-- Palavras chave -->
-      <meta name="keywords" content="Educação, Futuro" />
+    <!-- Palavras chave -->
+    <meta name="keywords" content="Educação, Futuro" />
       
   
   <!-- Descrição do site -->
@@ -34,7 +34,7 @@ License: You must have a valid license purchased only from themeforest(the above
   
       <meta property="og:site_name" content="Educação para o Futuro">
       <meta property="og:title" content="Instituto Educação para o Futuro">
-      <meta property="og:description" content="Qualquer esforço pela educação é um sonho de sociedade mais justa."/>
+      <meta property="og:description" content="Matrículas abertas!"/>
       <meta property="og:type" content="website"/>
       <meta property="og:locale" content="pt_BR"/>    
       <meta property="og:type" content="website">

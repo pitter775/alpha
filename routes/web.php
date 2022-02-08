@@ -21,6 +21,14 @@ Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('si
 Route::get('/logout', [App\Http\Controllers\Auth\LoginController::class, 'logout']);
 Route::get('/home', [App\Http\Controllers\DashboardController::class, 'index']);
 Route::get('/matriculas', [App\Http\Controllers\HomeController::class, 'matricula']);
+Route::get('/envio-email', function(){
+    $user = new stdClass();
+    $user->name = 'Pitter';
+    $user->email = 'pitter775@gmail.com';
+    //return new \App\Mail\newLaravelTips($user);
+    \Illuminate\Support\Facades\Mail::send(new \App\Mail\newLaravelTips($user));
+});
+
 
 Auth::routes();
 

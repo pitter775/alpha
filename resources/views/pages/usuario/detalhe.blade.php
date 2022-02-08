@@ -25,7 +25,7 @@
                   <li class="nav-item">
                      <a class="nav-link d-flex align-items-center active" id="account-tab" data-toggle="tab" href="#account" aria-controls="account" role="tab" aria-selected="true">
                         <i data-feather="user"></i><span class="d-none d-sm-block">Conta</span>
-                     </a>
+                     </a> 
                   </li>
                   <li class="nav-item">
                      <a class="nav-link d-flex align-items-center" id="information-tab" data-toggle="tab" href="#information" aria-controls="information" role="tab" aria-selected="false">
