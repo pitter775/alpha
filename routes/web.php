@@ -25,7 +25,7 @@ Route::get('/envio-email', function(){
     $user = new stdClass();
     $user->name = 'Pitter';
     $user->email = 'pitter775@gmail.com';
-    //return new \App\Mail\newLaravelTips($user);
+    return new \App\Mail\newLaravelTips($user);
     \Illuminate\Support\Facades\Mail::send(new \App\Mail\newLaravelTips($user));
 });
 
