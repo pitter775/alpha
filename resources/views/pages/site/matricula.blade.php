@@ -16,36 +16,34 @@ License: You must have a valid license purchased only from themeforest(the above
   <head>
     <meta charset="utf-8">
     <!-- <meta content="width=device-width, initial-scale=1.0" name="viewport"> -->
-    <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0, shrink-to-fit=no' name='viewport' />
-  
-    <title>Matricula - Educação para o Futuro</title>
-  
-  
+    <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0, shrink-to-fit=no' name='viewport' />  
+    <title>Matricula - Educação para o Futuro</title> 
   
     <!-- Palavras chave -->
-    <meta name="keywords" content="Educação, Futuro" />
-      
+    <meta name="keywords" content="Educação, Futuro" />     
   
+
   <!-- Descrição do site -->
-  
+
       <meta name="description" content="Qualquer esforço pela educação é um sonho de sociedade mais justa."/>
       <meta name="theme-color" content="#66619c">
       <meta name="author" content="pitter775@gmail.com">
-  
+
       <meta property="og:site_name" content="Educação para o Futuro">
       <meta property="og:title" content="Instituto Educação para o Futuro">
       <meta property="og:description" content="Matrículas abertas!"/>
       <meta property="og:type" content="website"/>
-      <meta property="og:locale" content="pt_BR"/>    
+      <meta property="og:locale" content="pt_BR"/>
       <meta property="og:type" content="website">
       <meta property="og:url" content="http://educacaofuturo.org.br/">
       <meta property="og:image:type" content="image/jpeg">
       <meta property="og:image" content="https://educacaofuturo.org.br/paper/assets/img/logo_preto3.png" />
-      
+
     <!-- Favicons -->
     <link href="{{ asset('paper') }}/assets/img/icon_logo_ge.png" rel="icon">
     <link href="{{ asset('paper') }}/assets/img/icon_logo_ge.png" rel="apple-touch-icon">
-  
+    
+
 
     <!-- BEGIN: Vendor CSS-->
     <link rel="stylesheet" type="text/css" href="../../../app-assets/vendors/css/vendors.min.css">
@@ -99,16 +97,16 @@ License: You must have a valid license purchased only from themeforest(the above
               <!-- Register-->
               <div class="d-flex col-lg-4 align-items-center auth-bg px-2 p-lg-5">
                 <div class="col-12 col-sm-8 col-md-6 col-lg-12 px-xl-2 mx-auto">
-                        
+
                   <h2 class="card-title font-weight-bold mb-1">Matrículas Abertas!</h2>
                   <p class="card-text mb-2">Insira seu email para receber o link de cadastro ou continuar uma matrícula em andamento.</p>
-                  <form class="auth-register-form mt-2" action="index.html" method="POST">
-               
+                  <form class="auth-register-form mt-2" action="{{ route('matricula_enviar_email') }}" method="POST">
+                      @csrf
                     <div class="form-group">
                       <label class="form-label" for="register-email">Email</label>
                       <input class="form-control" id="register-email" type="text" name="register-email" placeholder="nome@gmail.com" aria-describedby="register-email" tabindex="2"/>
                     </div>
-                   
+
                     <button class="btn btn-primary btn-block" tabindex="5">Enviar</button>
                   </form>
 
@@ -140,11 +138,11 @@ License: You must have a valid license purchased only from themeforest(the above
                     </div>
                 </div>
 
-                
-  
-                  
+
+
+
                 </div>
-                
+
               </div>
               <!-- /Register-->
             </div>
