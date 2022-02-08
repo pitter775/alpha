@@ -31,7 +31,7 @@ class newLaravelTips extends Mailable
     {
         $this->subject('Matricula - Instituto Educacao para o Futuro');
         $this->to($this->user->email, $this->user->name);
-        return $this->markdown('mail.newLaravelTipsb',[
+        return $this->markdown('Mail.newLaravelTipsb',[
             'user' => $this->user
         ]);
     }
