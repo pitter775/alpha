@@ -17,27 +17,26 @@
                 </div>
                 <div class="modal-body flex-grow-1">
                     <div class="row"> 
-                        <div class="col-md-12">
+                        <div class="col-md-9">
                             <div class="form-group">
                                 <label class="form-label" for="fullname">Nome</label>
                                 <input type="text" class="form-control dt-full-name" id="fullname" placeholder="Nome do Usuário" name="fullname" aria-label="John Doe" aria-describedby="fullname2" />
                             </div>
-                        </div>
-                        <div class="col-md-9">
-                            <div class="form-group">
-                                <label class="form-label" for="email">Email</label>
-                                <input type="email" id="email" class="form-control dt-email" placeholder="usuario@example.com" aria-label="usuario@example.com" aria-describedby="email2" name="email" />                            
-                            </div>
-                        </div>
+                        </div>                        
+
                         <div class="col-md-3">
                             <div class="form-group">
-                                <label class="form-label" for="status">Status</label>
-                                <select id="status" name="status" class="form-control select2" > 
-                                    <option value="1">Ativo</option>
-                                    <option value="2">Inativo</option>                           
-                                </select>
+                               <label for="use_perfil">Perfil</label>
+                               <select id="use_perfil" name="use_perfil" class="form-control select2">
+                                  <option value="11">Aluno</option>
+                                  <option value="12">Professor</option>
+                                  <option value="13">Diretoria</option>
+                                  <option value="14">Secretaria</option>
+                                  <option value="16">Link Site</option>
+                                  <option value="10">ADM</option>
+                               </select>
                             </div>
-                        </div>  
+                         </div>
                     </div>                                             
                     
                     <button type="submit" class="btn btn-primary mr-1 data-submit add waves-effect"><i data-feather='check-circle'></i> Salvar</button>

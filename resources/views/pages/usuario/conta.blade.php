@@ -2,11 +2,11 @@
    <div class="col-md-8">
       <div class="media mb-2">
          @if($user->use_foto == null)
-         <img src=" {{asset('app-assets/images/avatars/avatar.png')}}" alt="users avatar" data-tipo="avatar" id="fotouser" class="user-avatar users-avatar-shadow rounded mr-2 my-25 cursor-pointer" height="90" width="90" />
+         <img src=" {{asset('app-assets/images/avatars/avatar.png')}}" alt="users avatar" data-tipo="avatar" id="fotouser" class="user-avatar users-avatar-shadow rounded mr-2 my-25 cursor-pointer" height="100"  />
          <input type="hidden" value="naotem" name="temfoto" id="temfoto" />
          @endif
          @if($user->use_foto !== null)
-         <img src="{{asset('arquivos').'/'.$user->use_foto}}" alt="users avatar" data-tipo="nova" id="fotouser" class="user-avatar users-avatar-shadow rounded mr-2 my-25 cursor-pointer" height="90" width="90" />
+         <img src="{{asset('arquivos').'/'.$user->use_foto}}" alt="users avatar" data-tipo="nova" id="fotouser" class="user-avatar users-avatar-shadow rounded mr-2 my-25 cursor-pointer" height="100"  />
          <input type="hidden" value="tem" name="temfoto" id="temfoto" />
          @endif
 
@@ -57,9 +57,13 @@
 
    <div class="col-md-4">
       <div class="form-group">
-         <label for="perfil">Perfil</label>
-         <select id="perfil" name="perfil" class="form-control select2">
-            <option value="1" @if($user->use_perfil == 1) selected @endif>Usuário</option>
+         <label for="use_perfil">Perfil</label>
+         <select id="use_perfil" name="use_perfil" class="form-control select2">
+            <option value="11" @if($user->use_perfil == 11) selected @endif>Aluno</option>
+            <option value="12" @if($user->use_perfil == 12) selected @endif>Professor</option>
+            <option value="13" @if($user->use_perfil == 13) selected @endif>Diretoria</option>
+            <option value="14" @if($user->use_perfil == 14) selected @endif>Secretaria</option>
+            <option value="16" @if($user->use_perfil == 16) selected @endif>Link Site</option>
             <option value="10" @if($user->use_perfil == 10) selected @endif>ADM</option>
          </select>
       </div>
@@ -79,10 +83,11 @@
 
    <div class="col-md-4">
       <div class="form-group">
-         <label for="status">Status</label>
-         <select id="status" name="status" class="form-control select2">
+         <label for="use_status">Status</label>
+         <select id="use_status" name="use_status" class="form-control select2">
             <option value="1" @if($user->use_status == 1) selected @endif >Ativo</option>
             <option value="2" @if($user->use_status == 2) selected @endif >Inativo</option>
+            <option value="3" @if($user->use_status == 3) selected @endif >Solicitação de Matrícula</option>
          </select>
       </div>
    </div>

@@ -34,22 +34,22 @@
                   </li>
                   <li class="nav-item">
                      <a class="nav-link d-flex align-items-center" id="endereco-tab" data-toggle="tab" href="#endereco" aria-controls="endereco" role="tab" aria-selected="false">
-                        <i data-feather="info"></i><span class="d-none d-sm-block">Endereço</span>
+                        <i data-feather='map-pin'></i><span class="d-none d-sm-block">Endereço</span>
                      </a>
                   </li>
                   <li class="nav-item">
                      <a class="nav-link d-flex align-items-center" id="responsaveis-tab" data-toggle="tab" href="#responsaveis" aria-controls="responsaveis" role="tab" aria-selected="false">
-                        <i data-feather="info"></i><span class="d-none d-sm-block">Responsaveis</span>
+                        <i data-feather='user-check'></i><span class="d-none d-sm-block">Responsaveis</span>
                      </a>
                   </li>
                   <li class="nav-item">
                      <a class="nav-link d-flex align-items-center" id="saude-tab" data-toggle="tab" href="#saude" aria-controls="saude" role="tab" aria-selected="false">
-                        <i data-feather="info"></i><span class="d-none d-sm-block">Saúde</span>
+                        <i data-feather='heart'></i><span class="d-none d-sm-block">Saúde</span>
                      </a>
                   </li>
                   <li class="nav-item">
                      <a class="nav-link d-flex align-items-center" id="alimentares-tab" data-toggle="tab" href="#alimentares" aria-controls="alimentares" role="tab" aria-selected="false">
-                        <i data-feather="info"></i><span class="d-none d-sm-block">Alimentares</span>
+                        <i data-feather='coffee'></i><span class="d-none d-sm-block">Alimentares</span>
                      </a>
                   </li>
 
@@ -60,7 +60,7 @@
                   </li>
                   <li class="nav-item">
                      <a class="nav-link d-flex align-items-center" id="controle-tab" data-toggle="tab" href="#controle" aria-controls="controle" role="tab" aria-selected="false">
-                        <i data-feather='file'></i><span class="d-none d-sm-block">Controle</span>
+                        <i data-feather='edit'></i><span class="d-none d-sm-block">Controle</span>
                      </a>
                   </li>
                </ul>
@@ -99,35 +99,35 @@
                               </form>
                            </div>
                            <div class="tab-pane fade " id="endereco" aria-labelledby="endereco-tab" role="tabpanel">
-                              <form class="form-pessoais">
+                              <form class="form-endereco">
                                  @csrf
                                  <input type="hidden" value="{{$user->id ?? ''}}" name="id_geral" id="id_geral" />
                                  @include('pages.usuario.endereco')                     
                               </form>
                            </div>
                            <div class="tab-pane fade " id="responsaveis" aria-labelledby="responsaveis-tab" role="tabpanel">
-                              <form class="form-pessoais">
+                              <form class="form-responsavel">
                                  @csrf
                                  <input type="hidden" value="{{$user->id ?? ''}}" name="id_geral" id="id_geral" />
                                  @include('pages.usuario.responsaveis')                     
                               </form>
                            </div>
                            <div class="tab-pane fade " id="saude" aria-labelledby="saude-tab" role="tabpanel">
-                              <form class="form-pessoais">
+                              <form class="form-saude">
                                  @csrf
                                  <input type="hidden" value="{{$user->id ?? ''}}" name="id_geral" id="id_geral" />
                                  @include('pages.usuario.saude')                     
                               </form>
                            </div>
-                           <div class="tab-pane fade " id="alimentares" aria-labelledby="alimentares-tab" role="tabpanel">
-                              <form class="form-pessoais">
+                           <div class="tab-pane fade " id="alimentares" aria-labelledby="alimentares-tab" role="tabpanel" >
+                              <form class="form-alimentares">
                                  @csrf
                                  <input type="hidden" value="{{$user->id ?? ''}}" name="id_geral" id="id_geral" />
                                  @include('pages.usuario.alimentares')                     
                               </form>
                            </div>
                            <div class="tab-pane fade " id="controle" aria-labelledby="controle-tab" role="tabpanel">
-                              <form class="form-pessoais">
+                              <form class="form-controle">
                                  @csrf
                                  <input type="hidden" value="{{$user->id ?? ''}}" name="id_geral" id="id_geral" />
                                  @include('pages.usuario.controle')                     
@@ -171,16 +171,14 @@
 @endsection
 
 @push('css_vendor')
-<link rel="stylesheet" type="text/css" href="../../../app-assets/vendors/css/tables/datatable/dataTables.bootstrap4.min.css">
-<link rel="stylesheet" type="text/css" href="../../../app-assets/vendors/css/tables/datatable/responsive.bootstrap4.min.css">
-<link rel="stylesheet" type="text/css" href="../../../app-assets/vendors/css/tables/datatable/buttons.bootstrap4.min.css">
-<link rel="stylesheet" type="text/css" href="../../../app-assets/vendors/css/tables/datatable/rowGroup.bootstrap4.min.css">
+
 <link rel="stylesheet" type="text/css" href="../../../app-assets/vendors/css/pickers/flatpickr/flatpickr.min.css">
 <link rel="stylesheet" type="text/css" href="../../../app-assets/vendors/css/forms/select/select2.min.css">
 <link rel="stylesheet" type="text/css" href="../../../app-assets/vendors/css/extensions/toastr.min.css">
 
 <link rel="stylesheet" type="text/css" href="../../../app-assets/vendors/css/pickers/pickadate/pickadate.css">
 <link rel="stylesheet" type="text/css" href="../../../app-assets/vendors/css/pickers/flatpickr/flatpickr.min.css">
+<link rel="stylesheet" type="text/css" href="../../../app-assets/vendors/css/forms/spinner/jquery.bootstrap-touchspin.css">
 
 
 @endpush
@@ -200,23 +198,12 @@
 
 
 
+
 @endpush
 
 @push('js_page')
-<script src="../../../app-assets/vendors/js/tables/datatable/jquery.dataTables.min.js"></script>
+
 <script src="../../../app-assets/vendors/js/forms/validation/jquery.validate.min.js"></script>
-<script src="../../../app-assets/vendors/js/tables/datatable/datatables.bootstrap4.min.js"></script>
-<script src="../../../app-assets/vendors/js/tables/datatable/dataTables.responsive.min.js"></script>
-<script src="../../../app-assets/vendors/js/tables/datatable/responsive.bootstrap4.js"></script>
-<script src="../../../app-assets/vendors/js/tables/datatable/datatables.checkboxes.min.js"></script>
-<script src="../../../app-assets/vendors/js/tables/datatable/datatables.buttons.min.js"></script>
-<script src="../../../app-assets/vendors/js/tables/datatable/jszip.min.js"></script>
-<script src="../../../app-assets/vendors/js/tables/datatable/vfs_fonts.js"></script>
-<script src="../../../app-assets/vendors/js/tables/datatable/buttons.html5.min.js"></script>
-<script src="../../../app-assets/vendors/js/tables/datatable/buttons.print.min.js"></script>
-<script src="../../../app-assets/vendors/js/tables/datatable/dataTables.rowGroup.min.js"></script>
-
-
 <script src="../../../app-assets/js/scripts/forms/form-select2.js"></script>
 <script src="../../../app-assets/js/scripts/extensions/ext-component-sweet-alerts.js"></script>
 <script src="../../../app-assets/js/scripts/forms/pickers/form-pickers.js"></script>
@@ -224,6 +211,7 @@
 <script src="../../../app-assets/js/scripts/forms/form-file-uploader.js"></script>
 <script src="https://igorescobar.github.io/jQuery-Mask-Plugin/js/jquery.mask.min.js"></script>    
 <script src="../../../app-assets/js/scripts/pages/app-usuario-detalhe.js"></script> 
+<script src="../../../app-assets/js/scripts/forms/form-number-input.js"></script>
 
 
 @endpush

@@ -135,17 +135,24 @@ $(function () {
                     },
                     { data: 'name' },
                     { data: 'email' },
-                    // { data: 'perfil' },
                     { //format perfil
                         data: function (dados) {
                             if (dados.use_perfil == 1) { return 'Usuario'; }
                             if (dados.use_perfil == 10) { return 'ADM'; }
+                            if (dados.use_perfil == 11) { return 'Aluno'; }
+                            if (dados.use_perfil == 12) { return 'Professor'; }
+                            if (dados.use_perfil == 13) { return 'Diretoria'; }
+                            if (dados.use_perfil == 14) { return 'Secretaria'; }
+                            if (dados.use_perfil == 16) { return 'Site - Matricula'; }
                         }
                     },
                     {
                         data: function (dados) {
+                            if (dados.use_status == null) { return '<span class="badge bg-light-danger">Sem status</span>'; }
                             if (dados.use_status == 2) { return '<span class="badge bg-light-danger">Inativo</span>'; }
                             if (dados.use_status == 1) { return '<span class="badge bg-light-success">Ativo</span>'; }
+                            if (dados.use_status == 3) { return '<span class="badge bg-light-danger">Criando matricula</span>'; }
+                            if (dados.use_status == 4) { return '<span class="badge bg-light-danger">Fechamento de matricula</span>'; }
                         }
                     }
                 ],
@@ -194,7 +201,7 @@ $(function () {
                 displayLength: 10,
                 lengthMenu: [10, 25, 50, 75, 100],
                 language: {
-                    "url": "https://cdn.datatables.net/plug-ins/1.11.3/i18n/pt_br.json",
+                    "url": "/app-assets/pt_br.json",
                     paginate: {
                         // remove previous & next text da pagina
                         previous: '&nbsp;',
@@ -255,7 +262,7 @@ $(function () {
                 ],
 
                 language: {
-                    "url": "https://cdn.datatables.net/plug-ins/1.11.3/i18n/pt_br.json",
+                    "url": "/app-assets/pt_br.json",
                     paginate: {
                         // remove previous & next text from pagination
                         previous: '&nbsp;',
@@ -363,7 +370,6 @@ $(function () {
             errorClass: 'error',
             rules: {
                 'fullname': { required: true },
-                'email': { required: true },
                 'status': { required: true }
             }
         });
@@ -429,32 +435,6 @@ $(function () {
         $('#id_geral').val('');
         $('#fullname').val('');
         $('#email').val('');
-        $('#salario').val('');
-        $('#admissao').val('');
-
-        $('#alocacao').val(0);
-        $('#alocacao').trigger('change');
-
-        $('#tarifa').val(0);
-        $('#tarifa').trigger('change');
-
-        $('#supervisao').val(0);
-        $('#supervisao').trigger('change');
-
-        $('#setor').val(0);
-        $('#setor').trigger('change');
-
-        $('#frente').val(0);
-        $('#frente').trigger('change');
-
-        $('#cargo').val(0);
-        $('#cargo').trigger('change');
-
-        $('#regime').val(0);
-        $('#regime').trigger('change');
-
-        $('#empresa').val(0);
-        $('#empresa').trigger('change');
 
     });
     $(document).on('click', '#deletar_td', function () {

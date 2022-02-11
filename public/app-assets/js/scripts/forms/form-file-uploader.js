@@ -63,9 +63,12 @@ $(function () {
    });
    getfiles();
    function getfiles() {
-      $.get('/file-upload/getfiles/' + iduser, function (retorno) {
-         $('#cardArquivos').html(retorno);
-      });
+      if(iduser){
+         $.get('/file-upload/getfiles/' + iduser, function (retorno) {
+            $('#cardArquivos').html(retorno);
+         });
+      }
+     
    }
 
    function down_file(url, name) {

@@ -27,6 +27,10 @@
                     <a class="d-flex align-items-center" href="/usuario" onclick="link('/usuario')">
                     <i data-feather="users"></i><span class="menu-title text-truncate" data-i18n="Usuários">Usuários</span></a>
                 </li>
+                <li class="{{ $elementActive == 'matricula' ? 'active' : '' }} nav-item">
+                    <a class="d-flex align-items-center" href="/matriculas" onclick="link('/matriculas')">
+                    <i data-feather="users"></i><span class="menu-title text-truncate" data-i18n="Usuários">Matrículas</span></a>
+                </li>
                 <li class="{{ $elementActive == 'escolas' ? 'active' : '' }} nav-item">
                     <a class="d-flex align-items-center" href="/escolas" onclick="link('/escolas')">
                     <i data-feather='codesandbox'></i><span class="menu-title text-truncate" data-i18n="Escolas">Escolas</span></a>

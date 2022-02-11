@@ -124,7 +124,7 @@ $(function () {
       ],  
 
       language: {
-        "url": "https://cdn.datatables.net/plug-ins/1.11.3/i18n/pt_br.json",
+        "url": "/app-assets/pt_br.json",
         paginate: {
           // remove previous & next text from pagination
           previous: '&nbsp;',

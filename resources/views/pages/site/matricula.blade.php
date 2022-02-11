@@ -1,16 +1,5 @@
 <!DOCTYPE html>
-<!--
-Template Name: Vuexy - Vuejs, HTML & Laravel Admin Dashboard Template
-Author: PixInvent
-Website: http://www.pixinvent.com/
-Contact: hello@pixinvent.com
-Follow: www.twitter.com/pixinvents
-Like: www.facebook.com/pixinvents
-Purchase: https://1.envato.market/vuexy_admin
-Renew Support: https://1.envato.market/vuexy_admin
-License: You must have a valid license purchased only from themeforest(the above link) in order to legally use the theme for your project.
 
--->
 <html class="loading" lang="en" data-textdirection="ltr">
   <!-- BEGIN: Head-->
   <head>
@@ -100,14 +89,15 @@ License: You must have a valid license purchased only from themeforest(the above
 
                   <h2 class="card-title font-weight-bold mb-1">Matrículas Abertas!</h2>
                   <p class="card-text mb-2">Insira seu email para receber o link de cadastro ou continuar uma matrícula em andamento.</p>
-                  <form class="auth-register-form mt-2" action="{{ route('matricula_enviar_email') }}" method="POST">
+                  <form class="form-link-email">
                       @csrf
                     <div class="form-group">
-                      <label class="form-label" for="register-email">Email</label>
-                      <input class="form-control" id="register-email" type="text" name="register-email" placeholder="nome@gmail.com" aria-describedby="register-email" tabindex="2"/>
+                      <label class="form-label" for="email">Email</label>
+                      <input class="form-control" id="email" type="text" name="email" placeholder="nome@gmail.com" aria-describedby="email" tabindex="1"/>
+                      <input type="hidden" value="linkEmail" name="salvarDados">
                     </div>
 
-                    <button class="btn btn-primary btn-block" tabindex="5">Enviar</button>
+                    <button type="submit" class="btn btn-primary btn-block" tabindex="5">Enviar</button>
                   </form>
 
                   <div style="height: 30px" ></div>
@@ -167,7 +157,9 @@ License: You must have a valid license purchased only from themeforest(the above
     <!-- END: Theme JS-->
 
     <!-- BEGIN: Page JS-->
-    <script src="../../../app-assets/js/scripts/pages/page-auth-register.min.js"></script>
+    <script src="../../../app-assets/js/scripts/pages/app-matricula-site.js"></script>
+
+
     <!-- END: Page JS-->
 
     <script>

@@ -40,15 +40,15 @@
                             <span class="user-status">{{$perfil}}</span>
                         </div>
                         <span class="avatar">
-                            @if(Auth::user()->foto == null)
+                            @if(Auth::user()->use_foto == null)
                             <img src=" {{asset('app-assets/images/avatars/avatar.png')}}" alt="avatar" height="40" width="40">
 
                             @endif
-                            @if(Auth::user()->foto !== null)
-                            <img src="{{asset('arquivos').'/'.Auth::user()->foto}}" alt="avatar" height="40" width="40">
-
+                            @if(Auth::user()->use_foto !== null)
+                            <img src="{{asset('arquivos').'/'.Auth::user()->use_foto}}" alt="avatar" height="40" width="40">
                             @endif
-                            <span class="avatar-status-online"></span>
+                            {{-- <span class="avatar-status-online"></span> --}}
+
                         </span>
                     </a>
                     <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdown-user">

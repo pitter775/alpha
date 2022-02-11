@@ -4,7 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Setor extends Model
+class Social extends Model
 {
     public $timestamps = false;
 }

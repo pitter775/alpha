@@ -73,7 +73,7 @@
                 <div class="profile-image-wrapper">
                 <div class="profile-image">
                     <div class="avatar">
-                        <img src="{{asset('app-assets/images/escola-drummond.png')}}" />
+                        <img src="{{asset('app-assets/images/escola-drummond.jpg')}}" />
                     </div>
                 </div>
                 </div>
@@ -94,8 +94,7 @@
                 </div>
             </div>
             </div>
-        </div>
-        
+        </div>        
     </div>
 
 </div>

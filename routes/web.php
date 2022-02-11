@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Resources\UserResource;
 use App\Models\User;
+use Illuminate\Http\Request;
 
 /*
 |--------------------------------------------------------------------------
@@ -20,14 +21,15 @@ use App\Models\User;
 Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('site');
 Route::get('/logout', [App\Http\Controllers\Auth\LoginController::class, 'logout']);
 Route::get('/home', [App\Http\Controllers\DashboardController::class, 'index']);
+
 Route::get('/matriculas', [App\Http\Controllers\HomeController::class, 'matricula']);
-Route::get('/envio-email', function(){
-    $user = new stdClass();
-    $user->name = 'Pitter';
-    $user->email = 'pitter775@gmail.com';
-    return new \App\Mail\newLaravelTips($user);
-    \Illuminate\Support\Facades\Mail::send(new \App\Mail\newLaravelTips($user));
-});
+Route::post('/matriculas/link', [App\Http\Controllers\SitematriculaController::class, 'link']);
+Route::post('/matriculas/telacadastro', [App\Http\Controllers\SitematriculaController::class, 'telacadastro']);
+Route::get('/matriculas/tela/{id}', [App\Http\Controllers\SitematriculaController::class, 'telamatricula'])->name('telamatricula');
+Route::get('/matriculas/getuser/{id}', [App\Http\Controllers\SitematriculaController::class, 'getuser']);
+Route::post('/matriculas/cadastro', [App\Http\Controllers\SitematriculaController::class, 'cadastro']);
+
+Route::get('/enviolink', [App\Http\Controllers\EmailsController::class, 'enviarlink']);
 
 
 Auth::routes();
