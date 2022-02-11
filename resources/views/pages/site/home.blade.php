@@ -70,7 +70,7 @@
           <li><a href="#portfolio">Fotos</a></li>
           <!-- <li><a href="#team">Team</a></li>  -->
           <li><a href="#contact">Contato</a></li>
-          <li><a href="/home" title="Entrar no sistema" style="padding: 15px 15px" ><i class="icofont-gnome icofont-2x"></i></a></li>
+          <li><a href="/home" title="Entrar no sistema" style="padding: 15px 15px" ><i class=" icofont-gnome icofont-2x"></i></a></li>
 
         </ul>
       </nav><!-- .nav-menu -->
