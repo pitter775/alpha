@@ -8,6 +8,14 @@
     <meta name="theme-color" content="#66619c">
     <meta name="author" content="pitter775@gmail.com">
 
+    <style>
+        body{
+            background-image:url('/../app-assets/images/bglateral2.png');
+            background-position: bottom;
+            background-repeat: repeat-x;
+        }
+    </style>
+
 
     <!-- Favicons -->
     <link href="{{ asset('paper') }}/assets/img/icon_logo_ge.png" rel="icon">
