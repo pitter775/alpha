@@ -9,6 +9,7 @@ $(function () {
    'use strict';
 
    var changePicture = $('#change-picture'),
+      isRtl = $('html').attr('data-textdirection') === 'rtl',
       userAvatar = $('.user-avatar');
    var formConta = $('.form-conta'); //formulario
    var formPessoais = $('.form-pessoais'); //formulario
@@ -46,6 +47,9 @@ $(function () {
          reader.readAsDataURL(files[0]);
       });
    }
+   $('#fullname').on('keyup', function () {
+      $('.namefull').text($(this).val());
+   });
 
    function divUser() {
       console.log('divuser');
@@ -93,11 +97,7 @@ $(function () {
          }
 
          if (isValid) {
-            //let serealize = formConta.serializeArray();
             var serealize = new FormData(formConta[0]);
-            //serealize.push({ name: "file", value: new FormData(formConta[0]) });
-            console.log(serealize);
-
             $.ajax({
                type: "POST",
                url: '/matriculas/cadastro',
@@ -105,14 +105,14 @@ $(function () {
                processData: false,
                contentType: false,
                success: function (data) {
-                  
-                  console.log('conta');
-
-                  // var divcarhistory = $('#divcarhistory');
-                  // divcarhistory.animate({ opacity: 0, marginTop: "100px" }, 500, "easeInQuart", function () {
-                  //    //historyList();
-                  //    divcarhistory.animate({ opacity: 1, marginTop: "0" }, 500, "easeOutQuart", function () { });
-                  // });
+                  if(data['gravados'] == 'tudo ok'){
+                     //mensagem
+                     toastr['success']('👋 Dados da conta alterada.', 'Sucesso!', {
+                        closeButton: true,
+                        tapToDismiss: true,
+                        rtl: isRtl
+                     });
+                  }
 
                   var divcarduser = $('#divcarduser');
                   divcarduser.animate({ opacity: 0, marginTop: "100px" }, 500, "easeInQuart", function () {
@@ -141,17 +141,23 @@ $(function () {
       formPessoais.on('submit', function (e) {
          e.preventDefault();
          var isValid = formPessoais.valid();
-         let serealize = formPessoais.serializeArray();
 
          if (isValid) {
             let serealize = formPessoais.serializeArray();
-            console.log(serealize);
 
             $.ajax({
                type: "POST",
                url: '/matriculas/cadastro',
                data: serealize,
                success: function (data) {
+                  if(data['gravados'] == 'tudo ok'){
+                     //mensagem
+                     toastr['success']('👋 Dados Pessoais alterada.', 'Sucesso!', {
+                        closeButton: true,
+                        tapToDismiss: true,
+                        rtl: isRtl
+                     });
+                  }
                   var divcarduser = $('#divcarduser');
                   divcarduser.animate({
                      opacity: 0,
@@ -184,17 +190,23 @@ $(function () {
       formEndereco.on('submit', function (e) {
          e.preventDefault();
          var isValid = formEndereco.valid();
-         let serealize = formEndereco.serializeArray();
 
          if (isValid) {
             let serealize = formEndereco.serializeArray();
-            console.log(serealize);
 
             $.ajax({
                type: "POST",
                url: '/matriculas/cadastro',
                data: serealize,
                success: function (data) {
+                  if(data['gravados'] == 'tudo ok'){
+                     //mensagem
+                     toastr['success']('👋 Endereço alterado.', 'Sucesso!', {
+                        closeButton: true,
+                        tapToDismiss: true,
+                        rtl: isRtl
+                     });
+                  }
                   var divcarduser = $('#divcarduser');
                   divcarduser.animate({
                      opacity: 0,
@@ -237,6 +249,14 @@ $(function () {
                url: '/matriculas/cadastro',
                data: serealize,
                success: function (data) {
+                  if(data['gravados'] == 'tudo ok'){
+                     //mensagem
+                     toastr['success']('👋 Dados dos responsáveis .', 'Sucesso!', {
+                        closeButton: true,
+                        tapToDismiss: true,
+                        rtl: isRtl
+                     });
+                  }
                   var divcarduser = $('#divcarduser');
                   divcarduser.animate({
                      opacity: 0,
@@ -272,13 +292,20 @@ $(function () {
 
          if (isValid) {
             let serealize = formSaude.serializeArray();
-            console.log(serealize);
 
             $.ajax({
                type: "POST",
                url: '/matriculas/cadastro',
                data: serealize,
                success: function (data) {
+                  if(data['gravados'] == 'tudo ok'){
+                     //mensagem
+                     toastr['success']('👋 Dados da saúde alterada.', 'Sucesso!', {
+                        closeButton: true,
+                        tapToDismiss: true,
+                        rtl: isRtl
+                     });
+                  }
                   var divcarduser = $('#divcarduser');
                   divcarduser.animate({
                      opacity: 0,
@@ -314,13 +341,20 @@ $(function () {
 
          if (isValid) {
             let serealize = formAlimento.serializeArray();
-            console.log(serealize);
 
             $.ajax({
                type: "POST",
                url: '/matriculas/cadastro',
                data: serealize,
                success: function (data) {
+                  if(data['gravados'] == 'tudo ok'){
+                     //mensagem
+                     toastr['success']('👋 Dados alimentares alterada.', 'Sucesso!', {
+                        closeButton: true,
+                        tapToDismiss: true,
+                        rtl: isRtl
+                     });
+                  }
                   var divcarduser = $('#divcarduser');
                   divcarduser.animate({
                      opacity: 0,
@@ -339,10 +373,5 @@ $(function () {
          }
       });
    }
-
-
-
-
-
 
 });

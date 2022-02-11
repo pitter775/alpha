@@ -18,7 +18,7 @@
 
          
          <div class="media-body mt-50">
-            <h4>{{$user->name ?? ''}}</h4>
+            <h4 class="namefull">{{$user->name ?? ''}}</h4>
             <div class="col-12 d-flex mt-1 px-0">
                <label class="btn btn-primary mr-75 mb-0" for="change-picture">
                   <span class="d-none d-sm-block btmudar">Mudar</span>
@@ -43,11 +43,16 @@
          </div>
          <input id="fullname" type="text" class="form-control" value="{{$user->name ?? ''}}" name="fullname" />
       </div>
+
+
+         <button type="submit" class="btn btn-primary mb-1 mb-sm-0 mr-0 mr-sm-1" style=" margin-top: 30px">Salvar Dados</button>
+         <input type="hidden" value="conta" name="salvarDados">
+
    </div>
    <div class="col-md-5">
       <div class="row" style="margin-top: 20px">
          <div class="col-12">
-             <div class="card card-profile">
+             <div class="card card-profile" style="margin-bottom: 0">
              <img
                  src="{{asset('app-assets/images/banner-escola.jpg')}}"
                  class="img-fluid card-img-top"
@@ -70,10 +75,7 @@
      </div>
    </div>
 
-   <div class="col-12 d-flex flex-sm-row flex-column mt-2">
-      <button type="submit" class="btn btn-primary mb-1 mb-sm-0 mr-0 mr-sm-1">Salvar Dados</button>
-      <input type="hidden" value="conta" name="salvarDados">
-   </div>
+   
 </div>
 
 

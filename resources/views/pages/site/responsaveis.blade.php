@@ -3,7 +3,7 @@
 
    <div class="col-12" >
       <h4 class="mb-1">
-         <i data-feather="map-pin" class="font-medium-4 mr-25"></i>
+         <i data-feather="user-check" class="font-medium-4 mr-25"></i>
          <span class="align-middle">Pais</span>
       </h4>
    </div>
@@ -12,7 +12,7 @@
       <div class="input-group input-group-merge">
          <div class="input-group-prepend">
             <span class="input-group-text">
-               <i class="mr-0" data-feather="edit"></i>
+               <i class="mr-0" data-feather="user"></i>
             </span>
          </div>
          <input id="res_nome_pai" type="text" class="form-control" value="{{$user->res_nome_pai ?? ''}}" name="res_nome_pai" />
@@ -46,7 +46,7 @@
       <div class="input-group input-group-merge">
          <div class="input-group-prepend">
             <span class="input-group-text">
-               <i class="mr-0" data-feather="edit"></i>
+               <i class="mr-0" data-feather="user"></i>
             </span>
          </div>
          <input id="res_nome_mae" type="text" class="form-control" value="{{$user->res_nome_mae ?? ''}}" name="res_nome_mae" />
@@ -87,7 +87,7 @@
       <div class="input-group input-group-merge">
          <div class="input-group-prepend">
             <span class="input-group-text">
-               <i class="mr-0" data-feather="edit"></i>
+               <i class="mr-0" data-feather="user"></i>
             </span>
          </div>
          <input id="res_nome_res" type="text" class="form-control" value="{{$user->res_nome_res ?? ''}}" name="res_nome_res" />

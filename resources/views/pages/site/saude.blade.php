@@ -1,7 +1,7 @@
 <div class="row mt-1">
    <div class="col-12">
       <h4 class="mb-1">
-         <i data-feather="user" class="font-medium-4 mr-25"></i>
+         <i data-feather="heart" class="font-medium-4 mr-25"></i>
          <span class="align-middle">Dados de Saúde</span>
       </h4>
    </div>
@@ -82,7 +82,7 @@
       <div class="input-group input-group-merge">
          <div class="input-group-prepend">
             <span class="input-group-text">
-               <i data-feather='alert-circle'></i>
+               <i data-feather='heart'></i>
             </span>
          </div>
          <input id="sau_parto_complicacoes" type="text" class="form-control" value="{{$user->sau_parto_complicacoes ?? ''}}" name="sau_parto_complicacoes" />
@@ -114,7 +114,7 @@
       <div class="input-group input-group-merge">
          <div class="input-group-prepend">
             <span class="input-group-text">
-               <i data-feather='alert-circle'></i>
+               <i data-feather='heart'></i>
             </span>
          </div>
          <input id="sau_alergia_detalhe" type="text" class="form-control" value="{{$user->sau_alergia_detalhe ?? ''}}" name="sau_alergia_detalhe" />
@@ -142,7 +142,7 @@
       <div class="input-group input-group-merge">
          <div class="input-group-prepend">
             <span class="input-group-text">
-               <i data-feather='alert-circle'></i>
+               <i data-feather='heart'></i>
             </span>
          </div>
          <input id="sau_intolerancia_outros" type="text" class="form-control" value="{{$user->sau_intolerancia_outros ?? ''}}" name="sau_intolerancia_outros" />
@@ -153,7 +153,7 @@
       <div class="input-group input-group-merge">
          <div class="input-group-prepend">
             <span class="input-group-text">
-               <i data-feather='alert-circle'></i>
+               <i data-feather='heart'></i>
             </span>
          </div>
          <input id="sau_alergia_medicamentos" type="text" class="form-control" value="{{$user->sau_alergia_medicamentos ?? ''}}" name="sau_alergia_medicamentos" />
@@ -185,7 +185,7 @@
       <div class="input-group input-group-merge">
          <div class="input-group-prepend">
             <span class="input-group-text">
-               <i data-feather='alert-circle'></i>
+               <i data-feather='heart'></i>
             </span>
          </div>
          <input id="sau_benzetacil_motivo" type="text" class="form-control" value="{{$user->sau_benzetacil_motivo ?? ''}}" name="sau_benzetacil_motivo" />
@@ -217,7 +217,7 @@
       <div class="input-group input-group-merge">
          <div class="input-group-prepend">
             <span class="input-group-text">
-               <i data-feather='alert-circle'></i>
+               <i data-feather='heart'></i>
             </span>
          </div>
          <input id="sau_convulsoes_motivo" type="text" class="form-control" value="{{$user->sau_convulsoes_motivo ?? ''}}" name="sau_convulsoes_motivo" />
@@ -335,7 +335,7 @@
       <div class="input-group input-group-merge">
          <div class="input-group-prepend">
             <span class="input-group-text">
-               <i data-feather='alert-circle'></i>
+               <i data-feather='heart'></i>
             </span>
          </div>
          <input id="sau_cirurgia_motivo" type="text" class="form-control" value="{{$user->sau_cirurgia_motivo ?? ''}}" name="sau_cirurgia_motivo" />
@@ -368,7 +368,7 @@
       <div class="input-group input-group-merge">
          <div class="input-group-prepend">
             <span class="input-group-text">
-               <i data-feather='alert-circle'></i>
+               <i data-feather='heart'></i>
             </span>
          </div>
          <input id="sau_internado_motivo" type="text" class="form-control" value="{{$user->sau_internado_motivo ?? ''}}" name="sau_internado_motivo" />
@@ -401,7 +401,7 @@
       <div class="input-group input-group-merge">
          <div class="input-group-prepend">
             <span class="input-group-text">
-               <i data-feather='alert-circle'></i>
+               <i data-feather='heart'></i>
             </span>
          </div>
          <input id="sau_tratamento_motivo" type="text" class="form-control" value="{{$user->sau_tratamento_motivo ?? ''}}" name="sau_tratamento_motivo" />
@@ -434,7 +434,7 @@
       <div class="input-group input-group-merge">
          <div class="input-group-prepend">
             <span class="input-group-text">
-               <i data-feather='alert-circle'></i>
+               <i data-feather='heart'></i>
             </span>
          </div>
          <input id="sau_medicamento_qual" type="text" class="form-control" value="{{$user->sau_medicamento_qual ?? ''}}" name="sau_medicamento_qual" />
@@ -534,7 +534,7 @@
       <div class="input-group input-group-merge">
          <div class="input-group-prepend">
             <span class="input-group-text">
-               <i data-feather='alert-circle'></i>
+               <i data-feather='heart'></i>
             </span>
          </div>
          <input id="sau_descricao_saude" type="text" class="form-control" value="{{$user->sau_descricao_saude ?? ''}}" name="sau_descricao_saude" />
@@ -567,7 +567,7 @@
       <div class="input-group input-group-merge">
          <div class="input-group-prepend">
             <span class="input-group-text">
-               <i data-feather='alert-circle'></i>
+               <i data-feather='heart'></i>
             </span>
          </div>
          <input id="sau_animais_qual" type="text" class="form-control" value="{{$user->sau_animais_qual ?? ''}}" name="sau_animais_qual" />

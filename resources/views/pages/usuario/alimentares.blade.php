@@ -5,7 +5,7 @@
 <div class="row mt-1">
    <div class="col-12">
       <h4 class="mb-1">
-         <i data-feather="user" class="font-medium-4 mr-25"></i>
+         <i data-feather="coffee" class="font-medium-4 mr-25"></i>
          <span class="align-middle">Hábitos alimentares da criança</span>
       </h4>
    </div>

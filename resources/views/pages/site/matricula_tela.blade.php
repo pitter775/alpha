@@ -57,7 +57,7 @@
                   </li>
                   <li class="nav-item">
                      <a class="nav-link d-flex align-items-center" id="responsaveis-tab" data-toggle="tab" href="#responsaveis" aria-controls="responsaveis" role="tab" aria-selected="false">
-                        <i data-feather='user-check'></i><span class="d-none d-sm-block">Responsaveis</span>
+                        <i data-feather='user-check'></i><span class="d-none d-sm-block">Responsáveis</span>
                      </a>
                   </li>
                   <li class="nav-item">

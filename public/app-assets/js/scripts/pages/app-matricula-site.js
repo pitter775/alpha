@@ -6,11 +6,11 @@
     contato: pitter775@gmail.com / +55 11-94950 6267
 ==========================================================================================*/
 $(function () {
-    'use strict';
+    'use strict';    
+    var isRtl = $('html').attr('data-textdirection') === 'rtl';
     var formLinkEmail = $('.form-link-email'); //formulario
 
-
-    console.log('tesa');
+    console.log(isRtl);
 
 
    if (formLinkEmail.length) {
@@ -37,23 +37,7 @@ $(function () {
                 console.log(retorno);
                 enviar_mail(retorno['email'], retorno['tipo-token']);
 
-                // if (retorno['tipo-pj'] == 'novo') {
-                //    $('#id_pj').val(retorno['id-pj'])
-                //    $('.divaditivos').fadeIn(500);
-                // }
-                // var divcarduser = $('#divcarduser');
-                // divcarduser.animate({
-                //    opacity: 0,
-                //    marginTop: "100px"
-                // }, 500, "easeInQuart", function () {
-                //    divUser();
-                //    divcarduser.animate({
-                //       opacity: 1,
-                //       marginTop: "0"
-                //    }, 500, "easeOutQuart", function () {
-                //      //historyList();
-                //    });
-                // });
+                
              }
           });
        }
@@ -67,11 +51,16 @@ $(function () {
             data: {'email':email, 'token':token },
             success: function (retorno) {
                console.log('email enviado!');
-               toastr['success']('👋 Link do cadastro enviado para o email.', 'Sucesso!', {
-                closeButton: true,
-                tapToDismiss: false,
-                rtl: isRtl
-            });
+
+       
+                //mensagem
+                toastr['success']('👋 Enviado o link para o email '+email+'', 'Sucesso!', {
+                   closeButton: true,
+                   tapToDismiss: true,
+                   rtl: isRtl
+                });
+             
+
             }
         });
     }

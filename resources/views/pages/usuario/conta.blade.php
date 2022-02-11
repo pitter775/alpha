@@ -12,7 +12,7 @@
 
          
          <div class="media-body mt-50">
-            <h4>{{$user->name}}</h4>
+            <h4 class="namefull">{{$user->name ?? ''}}</h4>
             <div class="col-12 d-flex mt-1 px-0">
                <label class="btn btn-primary mr-75 mb-0" for="change-picture">
                   <span class="d-none d-sm-block btmudar">Mudar</span>

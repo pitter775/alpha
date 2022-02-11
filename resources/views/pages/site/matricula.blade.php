@@ -35,7 +35,10 @@
 
 
     <!-- BEGIN: Vendor CSS-->
-    <link rel="stylesheet" type="text/css" href="../../../app-assets/vendors/css/vendors.min.css">
+    <link rel="stylesheet" type="text/css" href="../../../app-assets/vendors/css/vendors.min.css">    
+    <link rel="stylesheet" type="text/css" href="../../../app-assets/vendors/css/extensions/toastr.min.css">
+    <link rel="stylesheet" type="text/css" href="{{asset('app-assets/css/plugins/forms/form-validation.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{asset('app-assets/css/plugins/extensions/ext-component-toastr.css')}}">
     <!-- END: Vendor CSS-->
 
     <!-- BEGIN: Theme CSS-->
@@ -54,7 +57,8 @@
     <!-- END: Page CSS-->
 
     <!-- BEGIN: Custom CSS-->
-    <link rel="stylesheet" type="text/css" href="../../../assets/css/style.css">
+    <link rel="stylesheet" type="text/css" href="{{asset('assets/css/style.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{asset('assets/aos/aos.css')}}">
     <!-- END: Custom CSS-->
 
   </head>
@@ -154,6 +158,17 @@
     <!-- BEGIN: Theme JS-->
     <script src="../../../app-assets/js/core/app-menu.min.js"></script>
     <script src="../../../app-assets/js/core/app.min.js"></script>
+        
+<!-- BEGIN: Theme JS-->
+<script src="{{asset('app-assets/js/core/app-menu.js')}}"></script>
+<script src="{{asset('app-assets/js/core/app.js')}}"></script>
+<script src="{{asset('js/jsfull.js')}}"></script>
+<script src="{{asset('js/jquery.color.js')}}"></script>
+<script src="{{asset('js/jquery-ui.js')}}"></script>
+<script src="{{asset('assets/aos/aos.js')}}"></script>    
+<script src="{{asset('app-assets/vendors/js/extensions/toastr.min.js')}}"></script>    
+<script src="{{asset('app-assets/vendors/js/extensions/sweetalert2.all.min.js')}}"></script>    
+
     <!-- END: Theme JS-->
 
     <!-- BEGIN: Page JS-->
