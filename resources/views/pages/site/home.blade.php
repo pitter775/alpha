@@ -60,7 +60,6 @@
       <div class="logo mr-auto">
         <h1 class="text-light"><img src="{{ asset('paper') }}/img/logo_edu.png" alt="" class="img-fluid" style="margin-right: 20px;"><a href="index.html"></a> </h1>
         <!-- Uncomment below if you prefer to use an image logo -->
-        <!-- <a href="index.html"><img src="{{ asset('paper') }}/assets/img/logo.png" alt="" class="img-fluid"></a> -->
       </div>
  
       <nav class="nav-menu d-none d-lg-block">
@@ -71,7 +70,7 @@
           <li><a href="#portfolio">Fotos</a></li>
           <!-- <li><a href="#team">Team</a></li>  -->
           <li><a href="#contact">Contato</a></li>
-          <li style="background:none"><a href="/home" title="Entrar no sistema" class="nav-link" style="color: #66619c;"><i class="icofont-user icofont-1x"></i></a></li>
+          <li><a href="/home" title="Entrar no sistema" style="padding: 15px 15px" ><i class="icofont-gnome icofont-2x"></i></a></li>
 
         </ul>
       </nav><!-- .nav-menu -->

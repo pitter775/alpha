@@ -7,7 +7,8 @@
 <div class="content-wrapper" data-aos=fade-left data-aos-delay=0>
     
     <div class="content-header row">
-        <h4>Dashboard</h4>
+        <div class="col-md-12"><h4>Dashboard</h4> </div>
+        
     </div>
 
 </div>
