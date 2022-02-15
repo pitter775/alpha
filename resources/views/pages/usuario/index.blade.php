@@ -87,10 +87,12 @@
                             <tr>
                                 <th></th>
                                 <th style="width: 20px"></th>
-                                <th style="width: 350px">Nome</th>
-                                <th style="width: 150px">Email</th>
-                                <th style="width: 150px">Perfil</th> 
-                                <th style="width: 150px">Status</th>
+                                <th style="width: 250px">Nome</th>
+                                <th>Email</th>
+                                <th>Cidade</th>
+                                <th>Sexo</th>
+                                <th style="width: 100px">Perfil</th> 
+                                <th>Status</th>
                             </tr>
                         </thead>
                     </table>

@@ -31,6 +31,7 @@ class UsuarioController extends Controller
     {
         // $users = User::all();
         $users  = DB::table('users AS u')
+            ->leftjoin('enderecos', 'enderecos.end_users_id', 'u.id')  
             ->select('*')
             ->get();
 

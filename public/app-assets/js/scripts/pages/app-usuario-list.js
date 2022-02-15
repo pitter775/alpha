@@ -23,83 +23,7 @@ $(function () {
         "dateFormat": 'd/m/Y' // locale for this instance only
     });
 
-    // Datatable - history
-    function historyList() {
-        var iduser = $('#id_geral').val();
-        var groupColumn = 3;
 
-        if (tableHistory) {
-            tableHistory.destroy();
-        }
-
-        if (dtUserHistoryTable.length) {
-            var groupingTable = dtUserHistoryTable.DataTable({
-                // ajax: assetPath + 'data/table-datatable.json',
-                retrieve: true,
-                ajax: {
-                    url: "/historico/user/" + iduser, dataSrc: ""
-                },
-                columns: [
-                    { data: 'id' },
-                    { data: 'name' },
-                    { data: 'valor' },
-                    { data: 'data' },
-                    { data: '' }
-                ],
-                columnDefs: [
-                    {
-
-                        // For Responsive
-                        className: 'control',
-                        orderable: false,
-                        responsivePriority: 2,
-                        targets: 0
-                    },
-                    {
-                        // Actions<i data-feather='x-circle'></i>
-                        targets: 4,
-                        title: 'Ação',
-                        orderable: false,
-                        render: function (data, type, full, meta) {
-                            var name = full['name'];
-                            var valor = full['valor'];
-                            var id = full['id'];
-                            return (
-                                '<a href="javascript:;" class="item-edit deletar_td_history" data-name="' + name + ': ' + valor + ' " data-id="' + id + '" style="color: #f54b20 !important">' +
-                                feather.icons['x-circle'].toSvg({ class: 'font-small-4' }) +
-                                '</a>'
-                            );
-                        }
-                    }
-                ],
-                order: [[1, 'asc']],
-                dom:
-                    '<"d-flex justify-content-between align-items-center mx-0">',
-                displayLength: 1000,
-                lengthMenu: [7, 10, 25, 50, 75, 100],
-
-
-                language: {
-                    paginate: {
-                        // remove previous & next text from pagination
-                        previous: '&nbsp;',
-                        next: '&nbsp;'
-                    }
-                }
-            });
-
-            // Order by the grouping
-            $('.dt-row-grouping tbody').on('click', 'tr.group', function () {
-                var currentOrder = table.order()[0];
-                if (currentOrder[0] === groupColumn && currentOrder[1] === 'asc') {
-                    groupingTable.order([groupColumn, 'desc']).draw();
-                } else {
-                    groupingTable.order([groupColumn, 'asc']).draw();
-                }
-            });
-        }
-        tableHistory = groupingTable;
-    }
 
     
     // Datatable - user
@@ -113,14 +37,10 @@ $(function () {
         if (dtUserTable.length) {
             var groupingTable = dtUserTable.DataTable({
                 retrieve: true,
-                //busca uma rota 
-                // ajax: assetPath + 'data/user-list.json', // JSON file to add data
                 ajax: { url: "/usuario/all", dataSrc: "" },
                 columns: [
-                    // columns according to JSON
 
-                    { data: 'id' },
-                    // { data: 'foto' }, //<img src="../../../app-assets/images/icons/angular.svg" class="mr-75" height="20" width="20" alt="Angular" />      
+                    { data: 'id' },                    
                     {
                         data: function (dados) {
                             let image = '';
@@ -135,6 +55,8 @@ $(function () {
                     },
                     { data: 'name' },
                     { data: 'email' },
+                    { data: 'end_cidade' },
+                    { data: 'use_sexo' },
                     { //format perfil
                         data: function (dados) {
                             if (dados.use_perfil == 1) { return 'Usuario'; }
@@ -272,11 +194,11 @@ $(function () {
                 initComplete: function () {
                     // Adding role filter once table initialized
                     this.api()
-                        .columns(2)
+                        .columns(5)
                         .every(function () {
                             var column = this;
                             var select = $(
-                                '<select id="UserRole" class="form-control select2 "><option value=""> Nome </option></select>'
+                                '<select id="UserRole" class="form-control select2 "><option value=""> Sexo </option></select>'
                             )
                                 .appendTo('.user_role')
                                 .on('change', function () {
@@ -294,11 +216,11 @@ $(function () {
                         });
                     // Adding plan filter once table initialized
                     this.api()
-                        .columns(3)
+                        .columns(6)
                         .every(function () {
                             var column = this;
                             var select = $(
-                                '<select id="UserPlan" class="form-control select2"><option value=""> Email </option></select>'
+                                '<select id="UserPlan" class="form-control select2"><option value=""> Perfil </option></select>'
                             )
                                 .appendTo('.user_plan')
                                 .on('change', function () {
@@ -317,11 +239,11 @@ $(function () {
                     // Adding status filter once table initialized
 
                     this.api()
-                        .columns(4)
+                        .columns(7)
                         .every(function () {
                             var column = this;
                             var select = $(
-                                '<select id="UserStatus" class="form-control select2"><option value=""> Perfil </option></select>'
+                                '<select id="UserStatus" class="form-control select2"><option value=""> Status </option></select>'
                             )
                                 .appendTo('.user_status')
                                 .on('change', function () {
@@ -334,6 +256,11 @@ $(function () {
                                 .unique()
                                 .sort()
                                 .each(function (d, j) {
+                                    if(d == '<span class="badge bg-light-danger">Sem status</span>'){d = 'Sem status';}
+                                    if(d == '<span class="badge bg-light-danger">Inativo</span>'){d = 'Inativo';}
+                                    if(d == '<span class="badge bg-light-success">Ativo</span>'){d = 'Ativo';}
+                                    if(d == '<span class="badge bg-light-danger">Criando matricula</span>'){d = 'Criando matricula';}
+                                    if(d == '<span class="badge bg-light-danger">Fechamento de matricula</span>'){d = 'Fechamento de matricula';}
                                     select.append('<option value="' + d + '" class="text-capitalize">' + d + '</option>');
                                 });
                         });
