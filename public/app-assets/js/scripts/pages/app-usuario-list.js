@@ -103,6 +103,8 @@ $(function () {
                                 $perfil = full['use_perfil'],
                                 $status = full['use_status'];
 
+                                console.log(full);
+
 
                             return (
                                 '<div class="btn-group">' +
