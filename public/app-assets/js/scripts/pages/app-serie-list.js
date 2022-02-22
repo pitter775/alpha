@@ -1,5 +1,5 @@
 /*=========================================================================================
-    File Name: app-cargo.js
+    File Name: app-serie.js
     Description: criação edição dos usuários
     --------------------------------------------------------------------------------------
     autor: Pitter R. Bico
@@ -10,39 +10,56 @@ $(function () {
   var password = true;
   var row_edit = '';
   var confirmText = $('#confirm-text');
-  var dtcargoTable = $('.cargo-list-table'), //id da tabela q esta na div  
-    newcargoSidebar = $('.new-cargo-modal'), //name do modal
+  var dtserieTable = $('.serie-list-table'), //id da tabela q esta na div  
+    newserieSidebar = $('.new-serie-modal'), //name do modal
     isRtl = $('html').attr('data-textdirection') === 'rtl',
-    newcargoForm = $('.add-new-cargo'); //formula
+    newserieForm = $('.add-new-serie'); //formula
 
   // Datatable
-  if (dtcargoTable.length) {
-    dtcargoTable.DataTable({
+  if (dtserieTable.length) {
+    dtserieTable.DataTable({
       //busca uma rota 
-      // ajax: assetPath + 'data/cargo-list.json', // JSON file to add data
-      ajax:{url:"/cargo/all",dataSrc:""},
+      // ajax: assetPath + 'data/serie-list.json', // JSON file to add data
+      ajax:{url:"/serie/all",dataSrc:""},
       columns: [
         // columns according to JSON
         { data: 'id' },
-        { data: 'name' },
+        { data: 'ser_escolas_id' },
+        { data: 'ser_nome' },
+        { data: 'ser_periodo' },
+        { data: 'ser_apelido' },
         { data: '' }
       ],
       columnDefs: [      
+        {
+            "targets": [ 0 ],
+            "visible": false,
+            "searchable": false
+        },
+        {
+            "targets": [ 1 ],
+            "visible": false,
+            "searchable": false
+        },
         {
           // For Responsive
           className: 'control',
           orderable: false,
           responsivePriority: 2,
-          targets: 0
+          targets: 5
         },
         {
           // Actions
-          targets: -1,
+          targets: 5,
           title: 'Ação',
           orderable: false,
           render: function (data, type, full, meta) {
+            console.log(full);
             var $id = full['id'],
-               $name = full['name'];
+               $ser_escolas_id = full['ser_escolas_id'],
+               $ser_nome = full['ser_nome'],
+               $ser_periodo = full['ser_periodo'],
+               $ser_apelido = full['ser_apelido'];
 
             return (
               '<div class="btn-group">' +
@@ -51,8 +68,9 @@ $(function () {
               '</a>' +
               '<div class="dropdown-menu dropdown-menu-right">' +
                 '<a class="dropdown-item">' +feather.icons['file-text'].toSvg({ class: 'font-small-4 mr-50' }) +'Detalhes</a>' +
-                '<a data-name="'+$name+'" data-id="'+$id+'" class="dropdown-item" data-toggle="modal" data-target="#modals-slide-in" id="editar_td">' + feather.icons['archive'].toSvg({ class: 'font-small-4 mr-50' }) + 'Editar</a>' +
-                '<a href="javascript:;" class="dropdown-item delete-record" data-id="'+$id+'" data-name="'+$name+'"  id="deletar_td">' +feather.icons['trash-2'].toSvg({ class: 'font-small-4 mr-50' }) +'Deletar</a></div>' +
+                '<a data-ser_nome="'+$ser_nome+'" data-id="'+$id+'" data-ser_escolas_id="'+$ser_escolas_id+'" data-ser_nome="'+$ser_nome+'" data-ser_periodo="'+$ser_periodo+'" data-ser_apelido="'+$ser_apelido+'"     ' +
+                'class="dropdown-item" data-toggle="modal" data-target="#modals-slide-in" id="editar_td">' + feather.icons['archive'].toSvg({ class: 'font-small-4 mr-50' }) + 'Editar</a>' +
+                '<a href="javascript:;" class="dropdown-item delete-record" data-id="'+$id+'"  id="deletar_td">' +feather.icons['trash-2'].toSvg({ class: 'font-small-4 mr-50' }) +'Deletar</a></div>' +
               '</div>' +
               '</div>'
             );
@@ -111,7 +129,7 @@ $(function () {
           }
         },
         {
-          text: feather.icons['plus'].toSvg({ class: 'mr-50 font-small-4 ' }) + 'Novo Cargo',
+          text: feather.icons['plus'].toSvg({ class: 'mr-50 font-small-4 ' }) + 'Nova Série',
           className: 'create-new btn btn-primary waves-effect',
           attr: {
             'data-toggle': 'modal',
@@ -131,44 +149,12 @@ $(function () {
           next: '&nbsp;'
         }
       },
-      initComplete: function () {
-       // Adding role filter once table initialized
-       this.api()
-       .columns(1)
-       .every(function () {
-         var column = this;
-         var select = $(
-           '<select id="cargoRole" class="form-control select2 "><option value=""> name </option></select>'
-         )
-           .appendTo('.cargo_role')
-           .on('change', function () {
-             var val = $.fn.dataTable.util.escapeRegex($(this).val());
-             column.search(val ? '^' + val + '$' : '', true, false).draw();
-           });
-
-         column
-           .data()
-           .unique()
-           .sort()
-           .each(function (d, j) {
-             select.append('<option value="' + d + '" class="text-capitalize">' + d + '</option>');
-           });
-       });        
-      }
     });
-    $('div.head-label').html('<h6 class="mb-0">Listando todas as cargos</h6>');
-  }
-  // Check Validity
-  function checkValidity(el) {
-    if (el.validate().checkForm()) {
-      submitBtn.attr('disabled', false);
-    } else {
-      submitBtn.attr('disabled', true);
-    }
+    $('div.head-label').html('<h6 class="mb-0">Listando todas as series</h6>');
   }
   // Form Validation
-  if (newcargoForm.length) {
-    newcargoForm.validate({
+  if (newserieForm.length) {
+    newserieForm.validate({
       errorClass: 'error',
       rules: {
         'name': {
@@ -177,15 +163,15 @@ $(function () {
       }
   });
 
-  newcargoForm.on('submit', function (e) {
-      var isValid = newcargoForm.valid();
+  newserieForm.on('submit', function (e) {
+      var isValid = newserieForm.valid();
       e.preventDefault();
       if (isValid) {   
-        let serealize = newcargoForm.serializeArray();
+        let serealize = newserieForm.serializeArray();
         console.log(serealize);
         $.ajax({
             type: "POST",
-            url: '/cargo/cadastro',
+            url: '/serie/cadastro',
             data: serealize, 
             success: function(data)
             {
@@ -196,7 +182,7 @@ $(function () {
                 }else{
                   addnovalinha(serealize, data);   
                 }
-                newcargoSidebar.modal('hide');
+                newserieSidebar.modal('hide');
               }                
             }
         });        
@@ -205,10 +191,15 @@ $(function () {
   }  
   function editarlinha(serealize, data){
     $(row_edit).addClass( 'alteraressatr');
-    //  var rowData = dtcargoTable.DataTable().row($('.alteraressatr')).data();  //mostra todos os dados dessa tr;
-    dtcargoTable.DataTable().row($('.alteraressatr')).data({
-         "id":   serealize[1]['value'],
-       "name":   serealize[2]['value'],
+    //  var rowData = dtserieTable.DataTable().row($('.alteraressatr')).data();  //mostra todos os dados dessa tr;
+    console.log('editar linha');
+    console.log(serealize);
+    dtserieTable.DataTable().row($('.alteraressatr')).data({
+          "id":   serealize[1]['value'],
+          "ser_escolas_id":   serealize[2]['value'],
+          "ser_nome":   serealize[3]['value'],
+          "ser_apelido":   serealize[4]['value'],
+          "ser_periodo":   serealize[5]['value'],
            "": ""
     }).draw();
 
@@ -227,13 +218,18 @@ $(function () {
     });
   }
   function addnovalinha(serealize, data){
-    var t = dtcargoTable.DataTable();    
-    var rowNode = t
-    .row.add( {
-      "id":     data,
-      "name":   serealize[2]['value'],
-      "": ""
-    }).draw().node();
+    var t = dtserieTable.DataTable();    
+    console.log('novalinha');
+    console.log(data);
+
+    var rowNode = t.row.add( {
+                  "id":     data,
+                  "ser_escolas_id": ser_escolas_id,
+                  "ser_nome":   serealize[3]['value'],
+                  "ser_periodo":   serealize[5]['value'],
+                  "ser_apelido":   serealize[4]['value'],
+                  "": ""
+                }).draw().node();
 
     $( rowNode  ).css( 'opacity', '0' );
     $( rowNode  ).css( 'background-color', '#71c754' );
@@ -245,27 +241,30 @@ $(function () {
   }
   $(document).on('click','.create-new', function(){ 
     $("#senha").prop('required',true);
- $(".ediadi").text('Adicionar');
+    $(".ediadi").text('Adicionar');
     $("#senhalabel").text('Senha');
     $('#id_geral').val('');    
     $('#name').val('');
   });
   $(document).on('click','#editar_td', function(){ 
     $("#senha").prop('required',false);
- $(".ediadi").text('Editar');
+    $(".ediadi").text('Editar');
     $("#senhalabel").text('Nova Senha');
 
-    $('#id_geral').val($(this).data('id'))
-    $('#name').val($(this).data('name'));
-    row_edit = dtcargoTable.DataTable().row( $(this).parents('tr')).node(); 
+    $('#id_geral').val($(this).data('id'));
+    $('#ser_escolas_id').val($(this).data('ser_escolas_id'));
+    $('#ser_apelido').val($(this).data('ser_apelido'));
+    $('#ser_periodo').val($(this).data('ser_periodo'));
+    $('#ser_nome').val($(this).data('ser_nome'));
+    row_edit = dtserieTable.DataTable().row( $(this).parents('tr')).node(); 
   });
   $(document).on('click','#deletar_td', function(){ 
-    var t = dtcargoTable.DataTable();
-    var row = dtcargoTable.DataTable().row( $(this).parents('tr') ).node(); 
+    var t = dtserieTable.DataTable();
+    var row = dtserieTable.DataTable().row( $(this).parents('tr') ).node(); 
     var id = $(this).data('id');
     //mensagem de confirmar 
     Swal.fire({
-      title: 'Remover o Cargo',
+      title: 'Remover Séries',
       text: $(this).data('name') + '?',
       icon: 'warning',
       showCancelButton: true,
@@ -277,7 +276,7 @@ $(function () {
       buttonsStyling: false
     }).then(function (result) {
       if (result.value) {
-        $.get('/cargo/delete/'+id, function(retorno){      
+        $.get('/serie/delete/'+id, function(retorno){      
           if(retorno == 'Erro'){
               //mensagem
               toastr['danger']('👋 Arquivo comprometido, não pode excluir.', 'Erro!', {

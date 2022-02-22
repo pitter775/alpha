@@ -31,29 +31,32 @@
                     <a class="d-flex align-items-center" href="/escolas" onclick="link('/escolas')">
                     <i data-feather='codesandbox'></i><span class="menu-title text-truncate" data-i18n="Escolas">Escolas</span></a>
                 </li>
+            
+                <li class="{{ $elementActive == 'serie' ? 'active' : '' }} nav-item">
+                    <a class="d-flex align-items-center" href="/serie" onclick="link('/serie')">
+                    <i data-feather='edit'></i><span class="menu-title text-truncate" data-i18n="Séries">Séries</span></a>
+                </li>
+
                 <li class="{{ $elementActive == 'cardapio' ? 'active' : '' }} nav-item">
                     <a class="d-flex align-items-center" href="/cardapio" onclick="link('/cardapio')">
                     <i data-feather='coffee'></i><span class="menu-title text-truncate" data-i18n="Cardápio">Cardápios</span></a>
                 </li>
-                <li class="{{ $elementActive == 'series' ? 'active' : '' }} nav-item">
-                    <a class="d-flex align-items-center" href="/series" onclick="link('/series')">
-                    <i data-feather='edit'></i><span class="menu-title text-truncate" data-i18n="Séries">Séries</span></a>
-                </li>
-                <li class="{{ $elementActive == 'diciplina' ? 'active' : '' }} nav-item">
+                {{-- <li class="{{ $elementActive == 'professores' ? 'active' : '' }}">
+                    <a class="d-flex align-items-center"  href="/professores" onclick="link('/professores')"><i data-feather='award'></i><span class="menu-item text-truncate" data-i18n="Professores">Professores</span></a>
+                </li>   --}}
+                {{-- <li class="{{ $elementActive == 'diciplina' ? 'active' : '' }} nav-item">
                     <a class="d-flex align-items-center" href="/diciplina" onclick="link('/diciplina')">
                         <i data-feather='command'></i><span class="menu-title text-truncate" data-i18n="disciplinas">Disciplinas</span></a>
-                </li>
+                </li> --}}
                 
                 <!-- <li class=" navigation-header"><span data-i18n="Apps &amp; Pages">Dependências  do Usuário</span><i data-feather="more-horizontal"></i></li> -->
 
             
 
-                <li class="nav-item"><a class="d-flex align-items-center" href="#">
+                {{-- <li class="nav-item"><a class="d-flex align-items-center" href="#">
                     <i data-feather='git-pull-request'></i><span class="menu-title text-truncate" data-i18n="Invoice">Relacionamentos</span></a>
                     <ul class="menu-content">
-                        <li class="{{ $elementActive == 'professores' ? 'active' : '' }}">
-                            <a class="d-flex align-items-center"  href="/professores" onclick="link('/professores')"><i data-feather="circle"></i><span class="menu-item text-truncate" data-i18n="Professores">Professores</span></a>
-                        </li>                        
+                                              
                         <li class="{{ $elementActive == 'series' ? 'active' : '' }}">
                             <a class="d-flex align-items-center"  href="/series" onclick="link('/series')"><i data-feather="circle"></i><span class="menu-item text-truncate" data-i18n="Séries">Séries</span></a>
                         </li>                        
@@ -61,14 +64,7 @@
                             <a class="d-flex align-items-center"  href="/diciplina" onclick="link('/diciplina')"><i data-feather="circle"></i><span class="menu-item text-truncate" data-i18n="Disciplinas">Disciplinas</span></a>
                         </li>                                              
                     </ul>
-                </li>
-
-
-               
-                
-             
-              
-                               
+                </li> --}}
             </ul>
         </div>
     </div>

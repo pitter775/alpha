@@ -7,7 +7,7 @@
 <div class="content-wrapper" data-aos=fade-left data-aos-delay=0>
     
     <div class="content-header row">
-        <div class="col-md-12"><h4>Dashboard</h4> </div>        
+        <div class="col-md-12"><h4>Não foram encontrados métricas para criar o dashboard</h4> </div>        
     </div>
 
 </div>

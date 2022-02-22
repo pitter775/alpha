@@ -230,7 +230,7 @@ $(function () {
     var t = dtalocacaoTable.DataTable();    
     var rowNode = t
     .row.add( {
-      "id":     data,
+      "id":  data,
       "name":   serealize[2]['value'],
       "": ""
     }).draw().node();

@@ -9,18 +9,41 @@ $(function () {
    'use strict';
 
    var changePicture = $('#change-picture'),
-      isRtl = $('html').attr('data-textdirection') === 'rtl',
-      userAvatar = $('.user-avatar');
+       isRtl = $('html').attr('data-textdirection') === 'rtl',
+       userAvatar = $('.user-avatar');
    var formConta = $('.form-conta'); //formulario
    var formPessoais = $('.form-pessoais'); //formulario
    var formEndereco = $('.form-endereco'); //formulario
    var formResponsavel = $('.form-responsavel'); //formulario
    var formSaude = $('.form-saude'); //formulario
    var formAlimento = $('.form-alimentares'); //formulario
+   var formControle = $('.form-controle'); //formulario
    var iduser = $('#iduser').val();
+   var perfiluser = $('#perfiluser').val();
+   var tableProf = false;
 
-
+   console.log(perfiluser);
+   
+   var dtProfTable = $('.prof-list-table');
    divUser();
+   dataprof();
+
+   $('.divperfilAluno').hide(); $('.divperfilProfessor').hide(); $('.divperfilOutro').hide();
+
+   if(perfiluser == 11){
+      $('#salvarDados-cont').val('controle-aluno');
+      $('.divperfilAluno').show();
+      $('#titcont').text('do Aluno');
+   }
+   if(perfiluser == 12){
+      $('#salvarDados-cont').val('controle-professor');
+      $('#titcont').text('do Professor');
+      $('.divperfilProfessor').show();
+      $('.liresp').hide();
+      $('.liinfo').hide();
+      $('.lisaud').hide();
+      $('.lialimen').hide();
+   }
 
    if ($('#hempresa').val() == '') {
       $('#empresa').val(0); $('#empresa').trigger('change');
@@ -58,7 +81,6 @@ $(function () {
          $('#divcarduser').html(retorno);
       });
    }
-
    // To initialize tooltip with body container
    $('body').tooltip({
       selector: '[data-toggle="tooltip"]',
@@ -76,6 +98,58 @@ $(function () {
       img.setAttribute('src', '/app-assets/images/avatars/avatar.png');
       $('#temfoto').val('naotem');
    });
+   $(document).on('click','#deletar_td', function(){ 
+      var t = dtProfTable.DataTable();
+      var row = dtProfTable.DataTable().row( $(this).parents('tr') ).node(); 
+      var id = $(this).data('id');
+      //mensagem de confirmar 
+      Swal.fire({
+        title: 'Remover Serie do Professor',
+        text: $(this).data('nome') + '?',
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonText: 'Sim, pode deletar!',
+        customClass: {
+          confirmButton: 'btn btn-primary',
+          cancelButton: 'btn btn-outline-danger ml-1'
+        },
+        buttonsStyling: false
+      }).then(function (result) {
+        if (result.value) {
+          $.get('/usuario/prof/delete/'+id, function(retorno){      
+            if(retorno == 'Erro'){
+                //mensagem
+                toastr['danger']('👋 Arquivo comprometido, não pode excluir.', 'Erro!', {
+                  closeButton: true,
+                  tapToDismiss: false,
+                  rtl: isRtl
+                });
+            }else{                  
+              //animação de saida
+              $(row).css( 'background-color', '#fe7474' );
+              $(row).css( 'color', '#fff' );
+              $(row).animate({
+                  opacity: 0,
+                  left: "0",
+                  backgroundColor: '#c74747'
+                  }, 1000, "linear", function() {
+                    var linha = $(this).closest('tr');
+                    t.row(linha).remove().draw()
+              }); 
+              // mensagem info
+              toastr['success']('👋 Arquivo Removido.', 'Sucesso!', {
+                closeButton: true,
+                tapToDismiss: false,
+                rtl: isRtl
+              });
+      
+            }                             
+          });
+        }
+      });
+  
+  
+    });
    // Form Conta
    if (formConta.length) {
       formConta.validate({
@@ -371,5 +445,145 @@ $(function () {
          }
       });
    }
+   // Form Controle
+   if (formControle.length) {
+      formControle.validate({
+          errorClass: 'error',
+          rules: {
+            //   'end_rua': { required: true },
+            //   'end_numero': { required: true },
+            //   'end_cep': { required: true }
+          }
+      });
+
+      formControle.on('submit', function (e) {
+         e.preventDefault();
+         var isValid = formControle.valid();
+
+         if (isValid) {
+            let serealize = formControle.serializeArray();
+
+            console.log(serealize);
+
+            $.ajax({
+               type: "POST",
+               url: '/usuario/cadastro',
+               data: serealize,
+               success: function (data) {
+                  if(data['gravados'] == 'tudo ok'){
+                     //mensagem
+                     toastr['success']('👋 Dados alimentares alterada.', 'Sucesso!', {
+                        closeButton: true,
+                        tapToDismiss: true,
+                        rtl: isRtl
+                     });
+                  }
+                  var divcarduser = $('#divcarduser');
+                  divcarduser.animate({
+                     opacity: 0,
+                     marginTop: "100px"
+                  }, 500, "easeInQuart", function () {
+                     divUser();
+                     dataprof();
+                     divcarduser.animate({
+                        opacity: 1,
+                        marginTop: "0"
+                     }, 500, "easeOutQuart", function () {
+                        //historyList();
+                     });
+                  });
+               }
+            });
+         }
+      });
+   }
+
+   // Datatable - user
+   function dataprof() {
+      if (tableProf) {
+          tableProf.destroy();
+      }
+      if (dtProfTable.length) {
+          var groupingTable = dtProfTable.DataTable({
+              retrieve: true,
+              ajax: { url: "/usuario/seriesProfAll/"+iduser, dataSrc: "" },
+              columns: [
+
+                  { data: 'id' },  
+                  { data: 'prof_users_id' },
+                  {
+                     data: function (dados) {
+                        return '<span class="badge bg-light-info">'+dados.ser_nome+'</span> <span class="badge bg-light-info">'+dados.ser_periodo+'</span> <span class="badge bg-light-success"> '+dados.ser_apelido+'</span>';
+                     }
+                  },
+                  // { data: 'ser_nome' },
+                  { data: 'prof_escolas_id' }
+                  
+              ],
+              columnDefs: [
+                  {
+                      "targets": [ 1 ],
+                      "visible": false,
+                      "searchable": false
+                  },
+                  {
+                      "targets": [ 3 ],
+                      "visible": false,
+                      "searchable": false
+                  },
+                  {
+                      // para responsividade
+                      className: 'control',
+                      orderable: false,
+                      responsivePriority: 2,
+                      targets: 0
+                  },
+                  {
+                      // Actions
+                      targets: 0,
+                      title: 'Ação',
+                      orderable: false,
+                      render: function (data, type, full, meta) {
+                          var $id = full['id'];
+                          var $nome = full['ser_nome'];
+                          return (
+                              '<div class="btn-group">' +
+                              '<a class="btn btn-sm dropdown-toggle hide-arrow" data-toggle="dropdown">' +
+                              feather.icons['more-vertical'].toSvg({ class: 'font-small-4' }) +
+                              '</a>' +
+                              '<div class="dropdown-menu dropdown-menu-right">' +                              
+                              '<a href="javascript:;" class="dropdown-item delete-record" data-nome="'+$nome+'" data-id="' + $id + '"  id="deletar_td">' + feather.icons['trash-2'].toSvg({ class: 'font-small-4 mr-50' }) + 'Deletar</a></div>' +
+                              '</div>' +
+                              '</div>'
+                          );
+                      }
+                  }
+              ],
+              order: [[1, 'asc']],
+              dom: '<"d-flex justify-content-between align-items-center mx-0">',
+              displayLength: 10,
+              lengthMenu: [10, 25, 50, 75, 100],
+              language: {
+                  "url": "/app-assets/pt_br.json",
+                  paginate: {
+                      // remove previous & next text da pagina
+                      previous: '&nbsp;',
+                      next: '&nbsp;'
+                  }
+              },
+              
+              language: {
+                  "url": "/app-assets/pt_br.json",
+                  paginate: {
+                      // remove previous & next text from pagination
+                      previous: '&nbsp;',
+                      next: '&nbsp;'
+                  }
+              },
+          });
+          $('div.head-label').html('<h6 class="mb-0">Todos os Usuários</h6>');
+      }
+      tableProf = groupingTable;
+  }
 
 });

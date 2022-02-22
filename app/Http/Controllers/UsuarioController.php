@@ -7,7 +7,9 @@ use App\Models\User;
 use App\Models\Social;
 use App\Models\Endereco;
 use App\Models\Matricula;
+use App\Models\Professore;
 use App\Models\Responsavei;
+use App\Models\Serie;
 use App\Models\Saude_user;
 use App\Models\Habitos_alimentare;
 use Illuminate\Http\Request;
@@ -41,6 +43,22 @@ class UsuarioController extends Controller
         //dd($users);
         return json_encode($users);
     }
+    public function seriesProfAll($id)
+    {
+
+        // $users = Professore::where('prof_users_id',$id)->get();
+
+        $users  = DB::table('professores AS u')
+        ->select('*', 'u.id AS id')
+        ->leftjoin('series', 'u.prof_series_id', 'series.id') 
+        ->where('u.prof_users_id', $id)
+        ->get();
+
+
+
+
+        return json_encode($users);
+    }
     public function detalhe($id)
     {
         $user  = DB::table('users AS u')
@@ -53,9 +71,10 @@ class UsuarioController extends Controller
             ->leftjoin('habitos_alimentares', 'habitos_alimentares.hab_users_id', 'u.id')   
             ->where('u.id', $id)
             ->first();
+            $series = Serie::all();
 
 
-        return view('pages.usuario.detalhe', compact('user'));
+        return view('pages.usuario.detalhe', compact('user', 'series'));
     }
     public function getuser($id)
     {
@@ -63,6 +82,7 @@ class UsuarioController extends Controller
             ->leftjoin('socials', 'socials.id', 'u.use_social_id')  
             ->leftjoin('enderecos', 'enderecos.end_users_id', 'u.id')  
             ->leftjoin('matriculas', 'matriculas.mat_users_id', 'u.id')  
+            ->leftjoin('series', 'matriculas.mat_series_id', 'series.id')  
             ->leftjoin('responsaveis', 'responsaveis.res_users_id', 'u.id')  
             ->leftjoin('saude_users', 'saude_users.sau_users_id', 'u.id')  
             ->leftjoin('habitos_alimentares', 'habitos_alimentares.hab_users_id', 'u.id')  
@@ -73,6 +93,8 @@ class UsuarioController extends Controller
             )
             ->where('u.id', $id)
             ->first();
+
+            // dd($user);
         return view('pages.usuario.getuser', compact('user'));
     }
     public function cadastro(Request $request)
@@ -126,7 +148,7 @@ class UsuarioController extends Controller
                 $dados->name = $request->input('fullname');
                 $dados->email = $request->input('email');
                 $dados->use_status = $request->input('use_status');
-                $perfil = $request->input('perfil');
+                $perfil = $request->input('use_perfil');
                 $password = $request->input('senha');
                 if (isset($password)) {
                     if ($password !== '') {
@@ -135,7 +157,7 @@ class UsuarioController extends Controller
                 }
                 if (isset($perfil)) {
                     if ($perfil !== '') {
-                        $dados->use_perfil = $request->input('perfil');
+                        $dados->use_perfil = $perfil;
                     }
                 }
                 $mensagem['pegando2'] = 'ok 2'; 
@@ -316,7 +338,22 @@ class UsuarioController extends Controller
                 $dados_alime->hab_chocolate = $request->input('hab_chocolate');
                 $dados_alime->hab_ovos = $request->input('hab_ovos');
                 $dados_alime->save();               
-            }     
+            }
+            if ($bt_salvar == 'controle-aluno') {
+                $mensagem['dados-cont-aluno'] = 'entrou';
+                $mensagem['dados-matriculas_id'] = $matriculas_id;  
+                $dados_mat = Matricula::find($matriculas_id);
+                $dados_mat->mat_series_id = $request->input('mat_series_id_alu');             
+                $dados_mat->save();               
+            }   
+            if ($bt_salvar == 'controle-professor') {
+                $mensagem['dados-cont-professor'] = 'entrou';
+                $dados_prof = new Professore();      
+                $dados_prof->prof_users_id = $id_geral;
+                $dados_prof->prof_series_id = $request->input('prof_series_id'); 
+                $dados_prof->prof_escolas_id = $request->input('mat_escolas_id'); 
+                $dados_prof->save();
+            } 
 
         }
         
@@ -354,6 +391,20 @@ class UsuarioController extends Controller
     public function delete($id)
     {
         $deletar = User::find($id);
+        if (isset($deletar)) {
+            try {
+                $deletar->delete();
+                return 'Ok';
+            } catch (PDOException $e) {
+                if (isset($e->errorInfo[1]) && $e->errorInfo[1] == '1451') {
+                    return 'Erro';
+                }
+            }
+        }
+    }
+    public function deleteProf($id)
+    {
+        $deletar = Professore::find($id);
         if (isset($deletar)) {
             try {
                 $deletar->delete();

@@ -70,6 +70,21 @@ switch ($user->use_perfil) {
                   @endif
                </li>
             @endif 
+            @if ($user->mat_series_id)
+            
+               <li class="mb-75">
+                  <i data-feather='flag'  class="icongetuser"></i>
+                  <span class="me-25"> {{$user->ser_nome}}</span>
+               </li>
+               <li class="mb-75">
+                  <i data-feather='flag'  class="icongetuser"></i>
+                  <span class="me-25"> {{$user->ser_apelido}}</span>
+               </li>
+               <li class="mb-75">
+                  <i data-feather='flag'  class="icongetuser"></i>
+                  <span class="me-25"> {{$user->ser_periodo}}</span>
+               </li>
+            @endif 
             @if ($user->email)
                <li class="mb-75">
                   <i data-feather='mail' class="icongetuser"></i>

@@ -21,22 +21,7 @@
                                 <label class="form-label" for="fullname">Nome</label>
                                 <input type="text" class="form-control dt-full-name" id="fullname" placeholder="Nome do Usuário" name="fullname" aria-label="John Doe" aria-describedby="fullname2" />
                             </div>
-                        </div>
-                        <div class="col-md-9">
-                            <div class="form-group">
-                                <label class="form-label" for="email">Email</label>
-                                <input type="email" id="email" class="form-control dt-email" placeholder="usuario@example.com" aria-label="usuario@example.com" aria-describedby="email2" name="email" />                            
-                            </div>
-                        </div>
-                        <div class="col-md-3">
-                            <div class="form-group">
-                                <label class="form-label" for="status">Status</label>
-                                <select id="status" name="status" class="form-control select2" > 
-                                    <option value="1">Ativo</option>
-                                    <option value="2">Inativo</option>                           
-                                </select>
-                            </div>
-                        </div>  
+                        </div>                         
                     </div>                                             
                     
                     <button type="submit" class="btn btn-primary mr-1 data-submit add waves-effect"><i data-feather='check-circle'></i> Salvar</button>
@@ -78,18 +63,18 @@
                 </div>
                 </div>
                 <h3>Carlos Drummond de Andrade</h3>
-                <h6 class="text-muted">JD. Florida</h6>
+                <h6 class="text-muted">Chácara Solar Jaguari Santana do Parnaíba</h6>
                 <div class="badge badge-light-primary profile-badge">Ativo</div>
                 <hr class="mb-2" />
                 <div class="d-flex justify-content-between align-items-center">
                 <div>
                     <h6 class="text-muted font-weight-bolder">Alunos</h6>
-                    <h3 class="mb-0">2.5k</h3>
+                    <h3 class="mb-0">xxx</h3>
                 </div>
 
                 <div>
                     <h6 class="text-muted font-weight-bolder">Professores</h6>
-                    <h3 class="mb-0">12</h3>
+                    <h3 class="mb-0">xx</h3>
                 </div>
                 </div>
             </div>

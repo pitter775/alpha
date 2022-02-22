@@ -16,6 +16,7 @@
 <div class="content-wrapper" data-aos=fade-left data-aos-delay=0>
    <input type="hidden" value="{{$user->id ?? ''}}" name="iduser" id="iduser">
    <input type="hidden" value="{{$user->use_perfil ?? ''}}" name="perfiluser" id="perfiluser">
+   
 
    <div class="content-body">
       <section class="app-user-view-account">
@@ -37,17 +38,17 @@
                         <i data-feather='map-pin'></i><span class="d-none d-sm-block">Endereço</span>
                      </a>
                   </li>
-                  <li class="nav-item">
+                  <li class="nav-item liresp">
                      <a class="nav-link d-flex align-items-center" id="responsaveis-tab" data-toggle="tab" href="#responsaveis" aria-controls="responsaveis" role="tab" aria-selected="false">
                         <i data-feather='user-check'></i><span class="d-none d-sm-block">Responsáveis</span>
                      </a>
                   </li>
-                  <li class="nav-item">
+                  <li class="nav-item lisaud">
                      <a class="nav-link d-flex align-items-center" id="saude-tab" data-toggle="tab" href="#saude" aria-controls="saude" role="tab" aria-selected="false">
                         <i data-feather='heart'></i><span class="d-none d-sm-block">Saúde</span>
                      </a>
                   </li>
-                  <li class="nav-item">
+                  <li class="nav-item lialimen">
                      <a class="nav-link d-flex align-items-center" id="alimentares-tab" data-toggle="tab" href="#alimentares" aria-controls="alimentares" role="tab" aria-selected="false">
                         <i data-feather='coffee'></i><span class="d-none d-sm-block">Alimentares</span>
                      </a>
@@ -105,21 +106,21 @@
                                  @include('pages.usuario.endereco')                     
                               </form>
                            </div>
-                           <div class="tab-pane fade " id="responsaveis" aria-labelledby="responsaveis-tab" role="tabpanel">
+                           <div class="tab-pane fade liresp" id="responsaveis" aria-labelledby="responsaveis-tab" role="tabpanel">
                               <form class="form-responsavel">
                                  @csrf
                                  <input type="hidden" value="{{$user->id ?? ''}}" name="id_geral" id="id_geral" />
                                  @include('pages.usuario.responsaveis')                     
                               </form>
                            </div>
-                           <div class="tab-pane fade " id="saude" aria-labelledby="saude-tab" role="tabpanel">
+                           <div class="tab-pane fade lisaud" id="saude" aria-labelledby="saude-tab" role="tabpanel">
                               <form class="form-saude">
                                  @csrf
                                  <input type="hidden" value="{{$user->id ?? ''}}" name="id_geral" id="id_geral" />
                                  @include('pages.usuario.saude')                     
                               </form>
                            </div>
-                           <div class="tab-pane fade " id="alimentares" aria-labelledby="alimentares-tab" role="tabpanel" >
+                           <div class="tab-pane fade lialimen" id="alimentares" aria-labelledby="alimentares-tab" role="tabpanel" >
                               <form class="form-alimentares">
                                  @csrf
                                  <input type="hidden" value="{{$user->id ?? ''}}" name="id_geral" id="id_geral" />
@@ -132,6 +133,9 @@
                                  <input type="hidden" value="{{$user->id ?? ''}}" name="id_geral" id="id_geral" />
                                  @include('pages.usuario.controle')                     
                               </form>
+                              @include('pages.usuario.controle-prof-list')
+
+                     
                            </div>
                            <div class="tab-pane fade " id="arquivos" aria-labelledby="arquivos-tab" role="tabpanel">
                               <form action="{{ route('dropzoneFileUpload') }}" class="dropzone" id="file-upload" enctype="multipart/form-data" style="height: 200px;">
@@ -171,6 +175,10 @@
 @endsection
 
 @push('css_vendor')
+<link rel="stylesheet" type="text/css" href="../../../app-assets/vendors/css/tables/datatable/dataTables.bootstrap4.min.css">
+<link rel="stylesheet" type="text/css" href="../../../app-assets/vendors/css/tables/datatable/responsive.bootstrap4.min.css">
+<link rel="stylesheet" type="text/css" href="../../../app-assets/vendors/css/tables/datatable/buttons.bootstrap4.min.css">
+<link rel="stylesheet" type="text/css" href="../../../app-assets/vendors/css/tables/datatable/rowGroup.bootstrap4.min.css">
 
 <link rel="stylesheet" type="text/css" href="../../../app-assets/vendors/css/pickers/flatpickr/flatpickr.min.css">
 <link rel="stylesheet" type="text/css" href="../../../app-assets/vendors/css/forms/select/select2.min.css">
@@ -191,7 +199,7 @@
 <link rel="stylesheet" type="text/css" href="../../../app-assets/css/plugins/forms/pickers/form-flat-pickr.css">
 <link rel="stylesheet" type="text/css" href="../../../app-assets/css/plugins/forms/pickers/form-pickadate.css">
 <link rel="stylesheet" type="text/css" href="../../../app-assets/css/plugins/forms/form-validation.css">
-<link href="https://cdnjs.cloudflare.com/ajax/libs/dropzone/5.7.2/dropzone.min.css" rel="stylesheet">
+<link rel="stylesheet" type="text/css" href="../../../app-assets/css/dropzone.min.css">
 <link rel="stylesheet" type="text/css" href="../../../app-assets/vendors/css/file-uploaders/dropzone.min.css">
 <link rel="stylesheet" type="text/css" href="../../../app-assets/css/plugins/forms/form-file-uploader.css">
 <link rel="stylesheet" type="text/css" href="../../../app-assets/css/pages/app-file-manager.css">
@@ -203,15 +211,29 @@
 
 @push('js_page')
 
+<script src="../../../app-assets/vendors/js/tables/datatable/jquery.dataTables.min.js"></script>
+<script src="../../../app-assets/vendors/js/tables/datatable/datatables.bootstrap4.min.js"></script>
+<script src="../../../app-assets/vendors/js/tables/datatable/dataTables.responsive.min.js"></script>
+<script src="../../../app-assets/vendors/js/tables/datatable/responsive.bootstrap4.js"></script>
+<script src="../../../app-assets/vendors/js/tables/datatable/datatables.checkboxes.min.js"></script> 
+<script src="../../../app-assets/vendors/js/tables/datatable/datatables.buttons.min.js"></script>
+<script src="../../../app-assets/vendors/js/tables/datatable/jszip.min.js"></script>
+<script src="../../../app-assets/vendors/js/tables/datatable/vfs_fonts.js"></script>
+<script src="../../../app-assets/vendors/js/tables/datatable/buttons.html5.min.js"></script>
+<script src="../../../app-assets/vendors/js/tables/datatable/buttons.print.min.js"></script>
+<script src="../../../app-assets/vendors/js/tables/datatable/dataTables.rowGroup.min.js"></script>
+
 <script src="../../../app-assets/vendors/js/forms/validation/jquery.validate.min.js"></script>
 <script src="../../../app-assets/js/scripts/forms/form-select2.js"></script>
 <script src="../../../app-assets/js/scripts/extensions/ext-component-sweet-alerts.js"></script>
 <script src="../../../app-assets/js/scripts/forms/pickers/form-pickers.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/dropzone/5.7.2/min/dropzone.min.js"></script>
+<script src="../../../app-assets/js/scripts/dropzone.min.js"></script>
 <script src="../../../app-assets/js/scripts/forms/form-file-uploader.js"></script>
 <script src="https://igorescobar.github.io/jQuery-Mask-Plugin/js/jquery.mask.min.js"></script>    
 <script src="../../../app-assets/js/scripts/pages/app-usuario-detalhe.js"></script> 
 <script src="../../../app-assets/js/scripts/forms/form-number-input.js"></script>
+
+
 
 
 @endpush
@@ -226,7 +248,6 @@
 <script src="../../../app-assets/vendors/js/pickers/pickadate/picker.time.js"></script>
 <script src="../../../app-assets/vendors/js/pickers/pickadate/legacy.js"></script>
 <script src="../../../app-assets/vendors/js/pickers/flatpickr/flatpickr.min.js"></script>
-<!-- <script src="../../../app-assets/vendors/js/extensions/dropzone.min.js"></script> -->
 
 
 @endpush

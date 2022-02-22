@@ -72,7 +72,7 @@
          </div>
       </div>
    </div>
-   <div class="col-md-12 ">
+   <div class="col-md-12 liinfo">
       <div class="form-group">
          <label class="d-block mb-1">Raça / Cor definidas pelo IBGE</label>
          <?php
@@ -108,26 +108,26 @@
       </div>
    </div>
 
-   <div class="col-12" style="border-top: solid 1px #eee; margin-top: 20px" >
+   <div class="col-12 liinfo" style="border-top: solid 1px #eee; margin-top: 20px" >
       <h4 class="mb-1 mt-2">
          <i data-feather="map-pin" class="font-medium-4 mr-25"></i>
          <span class="align-middle">Dados Sócio-Econômicos</span>
       </h4>
    </div>
-   <div class="col-md-3">
+   <div class="col-md-3 liinfo">
       <label for="soc_residencia_comodos">Cômodos na residência</label>
       <div class="input-group input-group-merge">
      
             <input id="soc_residencia_comodos" type="number" class="touchspin" value="{{$user->soc_residencia_comodos ?? '0'}}" name="soc_residencia_comodos" />
          </div>
    </div>
-   <div class="col-md-3">
+   <div class="col-md-3 liinfo">
       <label for="soc_residentes">Nº de residêntes</label>
       <div class="input-group">
          <input id="soc_residentes" type="number" class="touchspin" value="{{$user->soc_residentes ?? '0'}}" name="soc_residentes" />
       </div>
    </div>
-   <div class="col-md-6 ">
+   <div class="col-md-6 liinfo">
       <div class="form-group">
          <label class="d-block mb-1">Tipo de Residência</label>
          <?php
@@ -137,16 +137,16 @@
          }
          ?>
      
-         <div class="custom-control custom-radio custom-control-inline">
+         <div class="custom-control custom-radio custom-control-inline liinfo">
             {{-- <input type="radio" id="Própria" name="soc_tipo_residencia" value="Própria" class="custom-control-input" @if(isset($user->soc_tipo_residencia) == '1'){ $checked = 'checked';}} /> --}}
             <input type="radio" id="Própria" name="soc_tipo_residencia" value="Própria" class="custom-control-input" <?php if($checkedCasa == 'Própria'){ echo 'checked';} ?>/>
             <label class="custom-control-label check" for="Própria">Própria</label>
          </div>
-         <div class="custom-control custom-radio custom-control-inline">
+         <div class="custom-control custom-radio custom-control-inline liinfo">
             <input type="radio" id="Alugada" name="soc_tipo_residencia" class="custom-control-input" value="Alugada" <?php if($checkedCasa == 'Alugada'){ echo 'checked';} ?> />
             <label class="custom-control-label check" for="Alugada">Alugada</label>
          </div>
-         <div class="custom-control custom-radio custom-control-inline">
+         <div class="custom-control custom-radio custom-control-inline liinfo">
             <input type="radio" id="Cedida" name="soc_tipo_residencia" class="custom-control-input" value="Cedida" <?php if($checkedCasa == 'Cedida'){ echo 'checked';} ?>/>
             <label class="custom-control-label check" for="Cedida">Cedida</label>
          </div>
@@ -154,7 +154,7 @@
    </div>
 
 
-   <div class="col-md-12 ">
+   <div class="col-md-12 liinfo">
       <div class="form-group">
          <label class="d-block mb-1">Recursos</label>
 
@@ -190,7 +190,7 @@
       </div>
    </div>
 
-   <div class="col-md-12">
+   <div class="col-md-12 liinfo">
       <div class="form-group">
          <label class="d-block mb-1">Renda Familiar</label>
          <?php

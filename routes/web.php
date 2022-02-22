@@ -55,8 +55,15 @@ Route::group(['middleware' => 'acesso'], function () {
     Route::post('/usuario/cadastro', [App\Http\Controllers\UsuarioController::class, 'cadastro']);
     Route::post('/usuario/addAditivos', [App\Http\Controllers\UsuarioController::class, 'addAditivos']);
     Route::get('/usuario/delete/{id}', [App\Http\Controllers\UsuarioController::class, 'delete']);
+    Route::get('/usuario/prof/delete/{id}', [App\Http\Controllers\UsuarioController::class, 'deleteProf']);
     Route::get('/usuario/detalhes/{id}', [App\Http\Controllers\UsuarioController::class, 'detalhe']);
     Route::get('/usuario/getuser/{id}', [App\Http\Controllers\UsuarioController::class, 'getuser']);
+    Route::get('/usuario/seriesProfAll/{id}', [App\Http\Controllers\UsuarioController::class, 'seriesProfAll']);
+
+    Route::get('/serie', [App\Http\Controllers\SerieController::class, 'index']);
+    Route::get('/serie/all', [App\Http\Controllers\SerieController::class, 'all']);
+    Route::post('/serie/cadastro', [App\Http\Controllers\SerieController::class, 'cadastro']);
+    Route::get('/serie/delete/{id}', [App\Http\Controllers\SerieController::class, 'delete']);
 
 
 

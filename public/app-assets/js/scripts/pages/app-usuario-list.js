@@ -19,6 +19,7 @@ $(function () {
     var tableUser = false;
     datauser();
 
+
     flatpickr('.flatpickr-basic', {
         "dateFormat": 'd/m/Y' // locale for this instance only
     });
