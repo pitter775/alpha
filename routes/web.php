@@ -62,8 +62,11 @@ Route::group(['middleware' => 'acesso'], function () {
 
     Route::get('/serie', [App\Http\Controllers\SerieController::class, 'index']);
     Route::get('/serie/all', [App\Http\Controllers\SerieController::class, 'all']);
+    Route::get('/serie/chamada/{id}', [App\Http\Controllers\SerieController::class, 'chamada']);
     Route::post('/serie/cadastro', [App\Http\Controllers\SerieController::class, 'cadastro']);
     Route::get('/serie/delete/{id}', [App\Http\Controllers\SerieController::class, 'delete']);
+
+    Route::post('/presenca/cadastro', [App\Http\Controllers\SerieController::class, 'cadastro_presenca']);
 
 
 

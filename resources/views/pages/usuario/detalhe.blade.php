@@ -61,7 +61,7 @@
                   </li>
                   <li class="nav-item">
                      <a class="nav-link d-flex align-items-center" id="controle-tab" data-toggle="tab" href="#controle" aria-controls="controle" role="tab" aria-selected="false">
-                        <i data-feather='edit'></i><span class="d-none d-sm-block">Controle</span>
+                        <i data-feather='activity'></i><span class="d-none d-sm-block">Controle</span>
                      </a>
                   </li>
                </ul>

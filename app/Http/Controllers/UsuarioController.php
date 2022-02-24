@@ -364,15 +364,15 @@ class UsuarioController extends Controller
         
         if ($mensagem['tipo-geral'] == 'novo') {
             $mensagem['id-geral'] = $dados->id;
-            if($dados->use_perfil == 11){
+            // if($dados->use_perfil == 11){
                 $mensagem['perfil'] = '11';// aluno;                
                 //cadastrar matricula
                 $dados_matricula = new Matricula();
                 $dados_matricula->mat_users_id = $dados->id;
-                $dados_matricula->mat_escolas_id = 1; 
+                $dados_matricula->mat_escolas_id = $request->input('mat_escolas_id');; 
                 $dados_matricula->mat_token = $token; 
                 $dados_matricula->save();    
-            }
+            // }
         }
 
         return $mensagem;

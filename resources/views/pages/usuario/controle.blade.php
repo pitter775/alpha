@@ -7,7 +7,7 @@
 
    <div class="col-12">
       <h4 class="mb-1">
-         <i data-feather='edit' class="font-medium-4 mr-25"></i>
+         <i data-feather='activity' class="font-medium-4 mr-25"></i>
          <span class="align-middle">Controle <span id="titcont"></span></span>
       </h4>
       <div class="divperfilAluno row" >

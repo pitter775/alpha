@@ -22,6 +22,11 @@ class Acesso
         if(Auth::user()->use_perfil == '10'){ 
             $perfil = true;
         }
+        if(Auth::user()->use_perfil == '12'){ 
+            $urls = [
+                'presenca/cadastro',  'serie/chamada/{id}'       
+            ];
+        }
 
         if(Auth::user()->perfil == '1' || Auth::user()->perfil == '0'){          
             $urls = [

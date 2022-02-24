@@ -21,6 +21,7 @@
                             <div class="form-group">
                                 <label class="form-label" for="fullname">Nome</label>
                                 <input type="text" class="form-control dt-full-name" id="fullname" placeholder="Nome do Usuário" name="fullname" aria-label="John Doe" aria-describedby="fullname2" />
+                                <input type="hidden" name="mat_escolas_id" value="1"  />
                             </div>
                         </div>                        
 

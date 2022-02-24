@@ -40,10 +40,10 @@
                 
 <div class="content-wrapper" data-aos=fade-left data-aos-delay=0>
 
-    <button type="button" class="btn btn-outline-primary"  data-toggle="modal", data-target= "#modals-slide-in"> 
+    {{-- <button type="button" class="btn btn-outline-primary"  data-toggle="modal", data-target= "#modals-slide-in"> 
         <i data-feather="home" class="mr-25"></i>
         <span>Nova Escola</span>
-    </button>
+    </button> --}}
     
     <!-- Profile Card -->
     <div class="row" style="margin-top: 20px">
