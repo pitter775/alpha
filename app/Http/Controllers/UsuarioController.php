@@ -399,6 +399,11 @@ class UsuarioController extends Controller
         $deletar = User::find($id);
         if (isset($deletar)) {
             try {
+                $idmatricula = Matricula::where('mat_users_id', $id)->first();
+                if (isset($idmatricula)) {
+                    $idmatricula->delete();
+                }
+
                 $deletar->delete();
                 return 'Ok';
             } catch (PDOException $e) {
