@@ -24,7 +24,7 @@
                     <i data-feather='home'></i><span class="menu-title text-truncate" data-i18n="deshboard">Dashboard</span></a>
                 </li>
 
-                <?php  if(Auth::user()->use_perfil == '10'){ ?>
+                <?php  if(Auth::user()->use_perfil == '10' || Auth::user()->use_perfil == '13' || Auth::user()->use_perfil == '14'){ ?>
                     <li class="{{ $elementActive == 'usuario' ? 'active' : '' }} nav-item">
                         <a class="d-flex align-items-center" href="/usuario" onclick="link('/usuario')">
                         <i data-feather="users"></i><span class="menu-title text-truncate" data-i18n="Usuários">Usuários</span></a>
