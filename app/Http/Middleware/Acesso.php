@@ -19,7 +19,7 @@ class Acesso
             return redirect()->route('login');
         }
 
-        if(Auth::user()->use_perfil == '10'){ 
+        if(Auth::user()->use_perfil == '10' || Auth::user()->use_perfil == '13' || Auth::user()->use_perfil == '14'){ 
             $perfil = true;
         }
         if(Auth::user()->use_perfil == '12'){ 
