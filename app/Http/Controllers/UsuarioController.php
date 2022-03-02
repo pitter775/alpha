@@ -357,7 +357,7 @@ class UsuarioController extends Controller
                 $dados_prof = new Professore();      
                 $dados_prof->prof_users_id = $id_geral;
                 $dados_prof->prof_series_id = $request->input('prof_series_id'); 
-                $dados_prof->prof_escolas_id = $request->input('mat_escolas_id'); 
+                $dados_prof->prof_escolas_id = 1; 
                 $dados_prof->save();
             } 
 

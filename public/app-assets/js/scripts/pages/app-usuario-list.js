@@ -5,13 +5,13 @@
     autor: Pitter R. Bico
     contato: pitter775@gmail.com / +55 11-94950 6267
 ==========================================================================================*/
-$(function () {
+$(function() {
     'use strict';
     var password = true;
     var row_edit = '';
     var confirmText = $('#confirm-text');
     var dtUserTable = $('.user-list-table');
-    var dtUserHistoryTable = $('.history-list-table'),//id da tabela q esta na div  
+    var dtUserHistoryTable = $('.history-list-table'), //id da tabela q esta na div  
         newUserSidebar = $('.new-user-modal'), //nome do modal
         isRtl = $('html').attr('data-textdirection') === 'rtl',
         newUserForm = $('.add-new-user'); //formula
@@ -26,7 +26,7 @@ $(function () {
 
 
 
-    
+
     // Datatable - user
     function datauser() {
         if (tableUser) {
@@ -41,17 +41,17 @@ $(function () {
                 ajax: { url: "/usuario/all", dataSrc: "" },
                 columns: [
 
-                    { data: 'id' },                    
+                    { data: 'id' },
                     {
-                        data: function (dados) {
+                        data: function(dados) {
                             let image = '';
-                            if (dados.use_foto !== '' && dados.use_foto !== null && dados.use_foto !== 'undefined'){
-                                image = '<img src="/arquivos/'+dados.use_foto+'" alt="Avatar" height="26" title="b" width="26"/>'
-                            }else{
+                            if (dados.use_foto !== '' && dados.use_foto !== null && dados.use_foto !== 'undefined') {
+                                image = '<img src="/arquivos/' + dados.use_foto + '" alt="Avatar" height="26" title="b" width="26"/>'
+                            } else {
                                 image = '<img src="/app-assets/images/avatars/avatar.png" alt="Avatar" height="26" width="26" />'
                             }
-                            return '<div data-toggle="tooltip" data-popup="tooltip-custom" data-placement="top" title="" class="avatar pull-up my-0" data-original-title="'+dados.name+'">'
-                                + image + '</div>';
+                            return '<div data-toggle="tooltip" data-popup="tooltip-custom" data-placement="top" title="" class="avatar pull-up my-0" data-original-title="' + dados.name + '">' +
+                                image + '</div>';
                         }
                     },
                     { data: 'name' },
@@ -59,7 +59,7 @@ $(function () {
                     { data: 'end_cidade' },
                     { data: 'use_sexo' },
                     { //format perfil
-                        data: function (dados) {
+                        data: function(dados) {
                             if (dados.use_perfil == 1) { return 'Usuario'; }
                             if (dados.use_perfil == 10) { return 'ADM'; }
                             if (dados.use_perfil == 11) { return 'Aluno'; }
@@ -70,7 +70,7 @@ $(function () {
                         }
                     },
                     {
-                        data: function (dados) {
+                        data: function(dados) {
                             if (dados.use_status == null) { return '<span class="badge bg-light-danger">Sem status</span>'; }
                             if (dados.use_status == 2) { return '<span class="badge bg-light-danger">Inativo</span>'; }
                             if (dados.use_status == 1) { return '<span class="badge bg-light-success">Ativo</span>'; }
@@ -97,14 +97,14 @@ $(function () {
                         targets: 0,
                         title: 'Ação',
                         orderable: false,
-                        render: function (data, type, full, meta) {
+                        render: function(data, type, full, meta) {
                             var $id = full['id'],
                                 $name = full['name'],
                                 $email = full['email'],
                                 $perfil = full['use_perfil'],
                                 $status = full['use_status'];
 
-                                console.log(full);
+                            console.log(full);
 
 
                             return (
@@ -121,7 +121,9 @@ $(function () {
                         }
                     }
                 ],
-                order: [[1, 'asc']],
+                order: [
+                    [1, 'asc']
+                ],
                 dom: '<"card-header border-bottom p-1"<"head-label"><"dt-action-buttons text-right"B>><"d-flex justify-content-between align-items-center mx-0 row"<"col-sm-12 col-md-6"l><"col-sm-12 col-md-6"f>>t<"d-flex justify-content-between mx-0 row"<"col-sm-12 col-md-6"i><"col-sm-12 col-md-6"p>>',
                 displayLength: 10,
                 lengthMenu: [10, 25, 50, 75, 100],
@@ -134,13 +136,11 @@ $(function () {
                     }
                 },
                 // Buttons with Dropdown
-                buttons: [
-                    {
+                buttons: [{
                         extend: 'collection',
                         className: 'btn btn-outline-secondary dropdown-toggle mr-2 waves-effect',
                         text: feather.icons['share'].toSvg({ class: 'font-small-4 mr-50 ' }) + 'Export',
-                        buttons: [
-                            {
+                        buttons: [{
                                 extend: 'print',
                                 text: feather.icons['printer'].toSvg({ class: 'font-small-4 mr-50' }) + 'Print',
                                 className: 'dropdown-item',
@@ -165,10 +165,10 @@ $(function () {
                                 exportOptions: { columns: [0, 1, 2] }
                             }
                         ],
-                        init: function (api, node, config) {
+                        init: function(api, node, config) {
                             $(node).removeClass('btn-secondary');
                             $(node).parent().removeClass('btn-group');
-                            setTimeout(function () {
+                            setTimeout(function() {
                                 $(node).closest('.dt-buttons').removeClass('btn-group').addClass('d-inline-flex');
                             }, 50);
                         }
@@ -180,7 +180,7 @@ $(function () {
                             'data-toggle': 'modal',
                             'data-target': '#modals-slide-in'
                         },
-                        init: function (api, node, config) {
+                        init: function(api, node, config) {
                             $(node).removeClass('btn-secondary');
                         }
                     }
@@ -194,17 +194,17 @@ $(function () {
                         next: '&nbsp;'
                     }
                 },
-                initComplete: function () {
+                initComplete: function() {
                     // Adding role filter once table initialized
                     this.api()
                         .columns(5)
-                        .every(function () {
+                        .every(function() {
                             var column = this;
                             var select = $(
-                                '<select id="UserRole" class="form-control select2 "><option value=""> Sexo </option></select>'
-                            )
+                                    '<select id="UserRole" class="form-control select2 "><option value=""> Sexo </option></select>'
+                                )
                                 .appendTo('.user_role')
-                                .on('change', function () {
+                                .on('change', function() {
                                     var val = $.fn.dataTable.util.escapeRegex($(this).val());
                                     column.search(val ? '^' + val + '$' : '', true, false).draw();
                                 });
@@ -213,20 +213,20 @@ $(function () {
                                 .data()
                                 .unique()
                                 .sort()
-                                .each(function (d, j) {
+                                .each(function(d, j) {
                                     select.append('<option value="' + d + '" class="text-capitalize">' + d + '</option>');
                                 });
                         });
                     // Adding plan filter once table initialized
                     this.api()
                         .columns(6)
-                        .every(function () {
+                        .every(function() {
                             var column = this;
                             var select = $(
-                                '<select id="UserPlan" class="form-control select2"><option value=""> Perfil </option></select>'
-                            )
+                                    '<select id="UserPlan" class="form-control select2"><option value=""> Perfil </option></select>'
+                                )
                                 .appendTo('.user_plan')
-                                .on('change', function () {
+                                .on('change', function() {
                                     var val = $.fn.dataTable.util.escapeRegex($(this).val());
                                     column.search(val ? '^' + val + '$' : '', true, false).draw();
                                 });
@@ -235,7 +235,7 @@ $(function () {
                                 .data()
                                 .unique()
                                 .sort()
-                                .each(function (d, j) {
+                                .each(function(d, j) {
                                     select.append('<option value="' + d + '" class="text-capitalize">' + d + '</option>');
                                 });
                         });
@@ -243,13 +243,13 @@ $(function () {
 
                     this.api()
                         .columns(7)
-                        .every(function () {
+                        .every(function() {
                             var column = this;
                             var select = $(
-                                '<select id="UserStatus" class="form-control select2"><option value=""> Status </option></select>'
-                            )
+                                    '<select id="UserStatus" class="form-control select2"><option value=""> Status </option></select>'
+                                )
                                 .appendTo('.user_status')
-                                .on('change', function () {
+                                .on('change', function() {
                                     var val = $.fn.dataTable.util.escapeRegex($(this).val());
                                     column.search(val ? '^' + val + '$' : '', true, false).draw();
                                 });
@@ -258,12 +258,12 @@ $(function () {
                                 .data()
                                 .unique()
                                 .sort()
-                                .each(function (d, j) {
-                                    if(d == '<span class="badge bg-light-danger">Sem status</span>'){d = 'Sem status';}
-                                    if(d == '<span class="badge bg-light-danger">Inativo</span>'){d = 'Inativo';}
-                                    if(d == '<span class="badge bg-light-success">Ativo</span>'){d = 'Ativo';}
-                                    if(d == '<span class="badge bg-light-danger">Criando matricula</span>'){d = 'Criando matricula';}
-                                    if(d == '<span class="badge bg-light-danger">Fechamento de matricula</span>'){d = 'Fechamento de matricula';}
+                                .each(function(d, j) {
+                                    if (d == '<span class="badge bg-light-danger">Sem status</span>') { d = 'Sem status'; }
+                                    if (d == '<span class="badge bg-light-danger">Inativo</span>') { d = 'Inativo'; }
+                                    if (d == '<span class="badge bg-light-success">Ativo</span>') { d = 'Ativo'; }
+                                    if (d == '<span class="badge bg-light-danger">Criando matricula</span>') { d = 'Criando matricula'; }
+                                    if (d == '<span class="badge bg-light-danger">Fechamento de matricula</span>') { d = 'Fechamento de matricula'; }
                                     select.append('<option value="' + d + '" class="text-capitalize">' + d + '</option>');
                                 });
                         });
@@ -275,12 +275,14 @@ $(function () {
         }
         tableUser = groupingTable;
     }
+
     function dataBR(data) {
         //do americano para portugues
         let datef = new Date(data);
         let dataFormatada = datef.toLocaleDateString('pt-BR', { timeZone: 'UTC' });
         return dataFormatada
     }
+
     function dataUS(data) {
         //do portugues para o americano
         let dataFormatada = data.split('/').reverse().join('-');
@@ -304,7 +306,7 @@ $(function () {
             }
         });
 
-        newUserForm.on('submit', function (e) {
+        newUserForm.on('submit', function(e) {
             var isValid = newUserForm.valid();
             e.preventDefault();
             if (isValid) {
@@ -313,11 +315,11 @@ $(function () {
                     type: "POST",
                     url: '/usuario/cadastro',
                     data: serealize,
-                    success: function (data) {
-                        if(data['tipo-geral'] == 'novo'){
-                            window.location.href = "/usuario/detalhes/"+data['id-geral'];
+                    success: function(data) {
+                        if (data['tipo-geral'] == 'novo') {
+                            window.location.href = "/usuario/detalhes/" + data['id-geral'];
                         }
-                        if(data['tipo-geral'] == 'editado'){
+                        if (data['tipo-geral'] == 'editado') {
                             editarlinha(serealize, data);
                             newUserSidebar.modal('hide');
                         }
@@ -326,6 +328,7 @@ $(function () {
             }
         });
     }
+
     function editarlinha(serealize, data) {
         datauser();
         //mensagem
@@ -335,6 +338,7 @@ $(function () {
             rtl: isRtl
         });
     }
+
     function addnovalinha(serealize, data) {
         console.log(serealize);
         var t = dtUserTable.DataTable();
@@ -356,7 +360,7 @@ $(function () {
             backgroundColor: '#fff'
         }, 1000, "linear");
     }
-    $(document).on('click', '.create-new', function () {
+    $(document).on('click', '.create-new', function() {
         $("#senha").prop('required', true);
         $(".ediadi").text('Adicionar');
         $("#senhalabel").text('Senha');
@@ -367,7 +371,7 @@ $(function () {
         $('#email').val('');
 
     });
-    $(document).on('click', '#deletar_td', function () {
+    $(document).on('click', '#deletar_td', function() {
         var t = dtUserTable.DataTable();
         var row = dtUserTable.DataTable().row($(this).parents('tr')).node();
         var id = $(this).data('id');
@@ -383,9 +387,9 @@ $(function () {
                 cancelButton: 'btn btn-outline-danger ml-1'
             },
             buttonsStyling: false
-        }).then(function (result) {
+        }).then(function(result) {
             if (result.value) {
-                $.get('/usuario/delete/' + id, function (retorno) {
+                $.get('/usuario/delete/' + id, function(retorno) {
                     if (retorno == 'Erro') {
                         //mensagem
                         toastr['danger']('👋 Arquivo comprometido, não pode excluir.', 'Erro!', {
@@ -401,7 +405,7 @@ $(function () {
                             opacity: 0,
                             left: "0",
                             backgroundColor: '#c74747'
-                        }, 1000, "linear", function () {
+                        }, 1000, "linear", function() {
                             var linha = $(this).closest('tr');
                             t.row(linha).remove().draw()
                         });
@@ -417,7 +421,7 @@ $(function () {
             }
         });
     });
-    $(document).on('click', '.deletar_td_history', function () {
+    $(document).on('click', '.deletar_td_history', function() {
         var t = dtUserHistoryTable.DataTable();
         var row = dtUserHistoryTable.DataTable().row($(this).parents('tr')).node();
         var id = $(this).data('id');
@@ -433,9 +437,9 @@ $(function () {
                 cancelButton: 'btn btn-outline-danger ml-1'
             },
             buttonsStyling: false
-        }).then(function (result) {
+        }).then(function(result) {
             if (result.value) {
-                $.get('/historico/delete/' + id, function (retorno) {
+                $.get('/historico/delete/' + id, function(retorno) {
                     if (retorno == 'Erro') {
                         //mensagem
                         toastr['danger']('👋 Arquivo comprometido, não pode excluir.', 'Erro!', {
@@ -451,7 +455,7 @@ $(function () {
                             opacity: 0,
                             left: "0",
                             backgroundColor: '#c74747'
-                        }, 1000, "linear", function () {
+                        }, 1000, "linear", function() {
                             var linha = $(this).closest('tr');
                             t.row(linha).remove().draw()
                         });
