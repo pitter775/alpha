@@ -45,6 +45,9 @@
                                     <i data-feather='map-pin'></i><span class="d-none d-sm-block">Endereço</span>
                                 </a>
                             </li>
+
+                            @if ($user->use_perfil == 11)
+
                             <li class="nav-item liresp">
                                 <a class="nav-link d-flex align-items-center" id="responsaveis-tab" data-toggle="tab"
                                     href="#responsaveis" aria-controls="responsaveis" role="tab" aria-selected="false">
@@ -63,6 +66,8 @@
                                     <i data-feather='coffee'></i><span class="d-none d-sm-block">Alimentares</span>
                                 </a>
                             </li>
+
+                            @endif
 
                             <li class="nav-item">
                                 <a class="nav-link d-flex align-items-center" id="arquivos-tab" data-toggle="tab"
