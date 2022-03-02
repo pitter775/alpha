@@ -19,19 +19,19 @@
                     <div class="col-md-12">
                         <div class="form-group">
                             <label class="form-label" for="ser_nome">Nome</label>
-                            <input type="text" class="form-control dt-full-ser_nome" id="ser_nome" placeholder="Nome da Alocação" name="ser_nome" aria-label="Nome da série exp: Maternal I" aria-describedby="ser_nome2" />
+                            <input type="text" class="form-control dt-full-ser_nome" id="ser_nome" placeholder="Nome da Série" name="ser_nome" aria-label="Nome da série exp: Maternal I" aria-describedby="ser_nome2" />
                         </div>
                     </div>
                     <div class="col-md-7">
                         <div class="form-group">
                             <label class="form-label" for="ser_apelido">Apelido</label>
-                            <input type="text" class="form-control dt-full-ser_apelido" id="ser_apelido" placeholder="Nome da Alocação" name="ser_apelido" aria-label="Apelido da série exp: Coragem" aria-describedby="ser_apelido2" />
+                            <input type="text" class="form-control dt-full-ser_apelido" id="ser_apelido" placeholder="Apelido da Série exp: Coragem" name="ser_apelido" aria-label="Apelido da série exp: Coragem" aria-describedby="ser_apelido2" />
                         </div>
                     </div>
                     <div class="col-md-5">
                         <div class="form-group">
                             <label class="form-label" for="ser_periodo">Periodo</label>
-                            <input type="text" class="form-control dt-full-ser_periodo" id="ser_periodo" placeholder="Nome da Alocação" name="ser_periodo" aria-label="exp: Integral" aria-describedby="ser_periodo2" />
+                            <input type="text" class="form-control dt-full-ser_periodo" id="ser_periodo" placeholder="exp: Manhã ou Tarde" name="ser_periodo" aria-label="exp: Integral" aria-describedby="ser_periodo2" />
                         </div>
                     </div>
                 </div>

@@ -148,6 +148,8 @@
     <script src="../../../app-assets/js/scripts/extensions/ext-component-sweet-alerts.js"></script>
     <script src="../../../app-assets/js/scripts/forms/pickers/form-pickers.js"></script>
     <script src="../../../app-assets/js/scripts/pages/app-usuario-list.js"></script>
+
+    
 @endpush
 
 @push('js_vendor')

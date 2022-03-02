@@ -10,6 +10,7 @@ use App\Models\Matricula;
 use App\Models\Professore;
 use App\Models\Responsavei;
 use App\Models\Serie;
+use App\Models\Presenca;
 use App\Models\Saude_user;
 use App\Models\Habitos_alimentare;
 use Illuminate\Http\Request;
@@ -71,10 +72,15 @@ class UsuarioController extends Controller
             ->leftjoin('habitos_alimentares', 'habitos_alimentares.hab_users_id', 'u.id')   
             ->where('u.id', $id)
             ->first();
-            $series = Serie::all();
+        
+        $series = Serie::all();
+
+        $presenca = Presenca::where([['users_id',  $id]])->get();
 
 
-        return view('pages.usuario.detalhe', compact('user', 'series'));
+
+
+        return view('pages.usuario.detalhe', compact('user', 'series' ,'presenca'));
     }
     public function getuser($id)
     {
