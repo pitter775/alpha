@@ -72,7 +72,7 @@ $(function() {
                                             dadoshtml2 += item.ser_apelido + ', ';
                                             $(classe).text(dadoshtml2);
                                         });
-                                    }, 100);
+                                    }, 500);
 
 
 
