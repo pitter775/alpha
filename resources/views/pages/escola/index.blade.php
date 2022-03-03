@@ -69,12 +69,12 @@
                 <div class="d-flex justify-content-between align-items-center">
                 <div>
                     <h6 class="text-muted font-weight-bolder">Alunos</h6>
-                    <h3 class="mb-0">xxx</h3>
+                    <h3 class="mb-0">{{count($alunos) ?? 'xx'}}</h3>
                 </div>
 
                 <div>
                     <h6 class="text-muted font-weight-bolder">Professores</h6>
-                    <h3 class="mb-0">xx</h3>
+                    <h3 class="mb-0">{{count($professores) ?? 'xx'}}</h3>
                 </div>
                 </div>
             </div>
