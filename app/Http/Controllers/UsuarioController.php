@@ -231,6 +231,7 @@ class UsuarioController extends Controller
                 $dados_end->end_numero = $request->input('end_numero');
                 $dados_end->end_complemento = $request->input('end_complemento');
                 $dados_end->end_cep = $request->input('end_cep');
+                $dados_end->end_bairro = $request->input('end_bairro');
                 $dados_end->end_cidade = $request->input('end_cidade');
                 $dados_end->end_estado = $request->input('end_estado');
                 $dados_end->end_pais = $request->input('end_pais');
