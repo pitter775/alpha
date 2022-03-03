@@ -61,9 +61,6 @@ class UsuarioController extends Controller
         ->where('u.prof_users_id', $id)
         ->get();
 
-
-
-
         return json_encode($users);
     }
     public function detalhe($id)

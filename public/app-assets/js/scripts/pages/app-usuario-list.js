@@ -1,9 +1,9 @@
 /*=========================================================================================
-    File Name: app-user.js
-    Description: criação edição dos usuários
-    --------------------------------------------------------------------------------------
-    autor: Pitter R. Bico
-    contato: pitter775@gmail.com / +55 11-94950 6267
+File Name: app-user.js
+Description: criação edição dos usuários
+--------------------------------------------------------------------------------------
+autor: Pitter R. Bico
+contato: pitter775@gmail.com / +55 11-94950 6267
 ==========================================================================================*/
 $(function() {
     'use strict';
@@ -57,12 +57,43 @@ $(function() {
                     { data: 'name' },
                     {
                         data: function(dados) {
-                            if (dados.ser_apelido == null) { return 'sem classe'; } else {
-                                return dados.ser_apelido + ' - ' + dados.ser_nome;
+
+
+                            if (dados.use_perfil == 12) {
+                                let dadoshtml = '...';
+
+
+                                $.get("/usuario/seriesProfAll/" + dados.id, function(data) {
+                                    let dadoshtml2 = '';
+
+
+                                    $.each(JSON.parse(data), function(i, item) {
+                                        console.log(dadoshtml2);
+                                        let classe = '.classe' + dados.id;
+                                        dadoshtml2 += item.ser_apelido + ', ';
+                                        $(classe).text(dadoshtml2);
+                                    });
+
+                                });
+                                return '<span class="classe' + dados.id + '">' + dadoshtml + '</span>';
+
+
+
+
+                            } else {
+                                if (dados.ser_apelido == null) { return 'sem classe'; } else {
+                                    return dados.ser_apelido + ' - ' + dados.ser_nome;
+                                }
                             }
+
                         }
                     },
-                    { data: 'end_cidade' },
+                    { //format perfil
+                        data: function(dados) {
+                            let bairro = dados.end_bairro + ' - ';
+                            return bairro + dados.end_cidade;
+                        }
+                    },
                     { data: 'use_sexo' },
                     { //format perfil
                         data: function(dados) {
@@ -110,7 +141,7 @@ $(function() {
                                 $perfil = full['use_perfil'],
                                 $status = full['use_status'];
 
-                            console.log(full);
+
 
 
                             return (
@@ -265,12 +296,10 @@ $(function() {
                                 .unique()
                                 .sort()
                                 .each(function(d, j) {
-                                    if (d == '<span class="badge bg-light-danger">Sem status</span>') { d = 'Sem status'; }
-                                    if (d == '<span class="badge bg-light-danger">Inativo</span>') { d = 'Inativo'; }
-                                    if (d == '<span class="badge bg-light-success">Ativo</span>') { d = 'Ativo'; }
-                                    if (d == '<span class="badge bg-light-danger">Criando matricula</span>') { d = 'Criando matricula'; }
-                                    if (d == '<span class="badge bg-light-danger">Fechamento de matricula</span>') { d = 'Fechamento de matricula'; }
-                                    select.append('<option value="' + d + '" class="text-capitalize">' + d + '</option>');
+                                    console.log(d);
+                                    if (d.substr(0, 5) !== "<span") {
+                                        select.append('<option value="' + d + '" class="text-capitalize">' + d + '</option>');
+                                    }
                                 });
                         });
                     // Adding status filter once table initialized
@@ -346,7 +375,7 @@ $(function() {
     }
 
     function addnovalinha(serealize, data) {
-        console.log(serealize);
+
         var t = dtUserTable.DataTable();
         var rowNode = t
             .row.add({

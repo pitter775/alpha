@@ -90,7 +90,7 @@
                                 <th style="width: 20px"></th>
                                 <th style="width: 250px">Nome</th>
                                 <th>Classe</th>
-                                <th>Cidade</th>
+                                <th>Endereço</th>
                                 <th>Sexo</th>
                                 <th style="width: 100px">Perfil</th> 
                                 <th>Status</th>
