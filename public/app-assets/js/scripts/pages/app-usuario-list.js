@@ -72,38 +72,20 @@ $(function() {
                             let valordados = '';
 
                             if (dados.use_perfil == 12) {
-                                let dadoshtml = '...';
-                                $.get("/usuario/seriesProfAll/" + dados.id, function(data) {
-                                    let dadoshtml2 = '';
-                                    setTimeout(function() {
-                                        $.each(JSON.parse(data), function(i, item) {
-
-                                            let classe = '.classe' + dados.id;
-                                            dadoshtml2 += item.ser_apelido + ', ';
-                                            $(classe).text(dadoshtml2);
-                                            console.log('-', dadoshtml2);
-                                            console.log('feito em - ', classe);
-
-                                        });
-                                    }, 600);
-                                });
-
-                                valordados = '<span class="classe' + dados.id + '">' + dadoshtml + '</span>';
-
-
+                                if (dados.name) {
+                                    return '<span class="classe' + dados.id + '"> ... </span>';
+                                }
                             } else {
                                 if (dados.ser_apelido == null) { return 'sem classe'; } else {
-                                    valordados = dados.ser_apelido + ' - ' + dados.ser_nome;
+                                    return dados.ser_apelido + ' - ' + dados.ser_nome;
                                 }
                             }
-
-                            return valordados;
-
                         }
                     },
                     { //format perfil
                         data: function(dados) {
                             let bairro = dados.end_bairro + ' - ';
+                            addclassprof(dados.id);
                             return bairro + dados.end_cidade;
                         }
                     },
@@ -374,6 +356,19 @@ $(function() {
                     }
                 });
             }
+        });
+    }
+
+    function addclassprof(params) {
+        $.get("/usuario/seriesProfAll/" + params, function(data) {
+            let dadoshtml2 = '';
+            $.each(JSON.parse(data), function(i, item) {
+                let classe = '.classe' + params;
+                dadoshtml2 += item.ser_apelido + ', ';
+                $(classe).text(dadoshtml2);
+                console.log(params + '-', dadoshtml2);
+                console.log(params + 'feito em - ', classe);
+            });
         });
     }
 
