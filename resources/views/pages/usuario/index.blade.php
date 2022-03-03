@@ -89,7 +89,7 @@
                                 <th></th>
                                 <th style="width: 20px"></th>
                                 <th style="width: 250px">Nome</th>
-                                <th>Email</th>
+                                <th>Classe</th>
                                 <th>Cidade</th>
                                 <th>Sexo</th>
                                 <th style="width: 100px">Perfil</th> 

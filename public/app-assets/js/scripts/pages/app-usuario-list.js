@@ -55,7 +55,13 @@ $(function() {
                         }
                     },
                     { data: 'name' },
-                    { data: 'email' },
+                    {
+                        data: function(dados) {
+                            if (dados.ser_apelido == null) { return 'sem classe'; } else {
+                                return dados.ser_apelido + ' - ' + dados.ser_nome;
+                            }
+                        }
+                    },
                     { data: 'end_cidade' },
                     { data: 'use_sexo' },
                     { //format perfil
@@ -242,11 +248,11 @@ $(function() {
                     // Adding status filter once table initialized
 
                     this.api()
-                        .columns(7)
+                        .columns(3)
                         .every(function() {
                             var column = this;
                             var select = $(
-                                    '<select id="UserStatus" class="form-control select2"><option value=""> Status </option></select>'
+                                    '<select id="UserStatus" class="form-control select2"><option value=""> Série </option></select>'
                                 )
                                 .appendTo('.user_status')
                                 .on('change', function() {

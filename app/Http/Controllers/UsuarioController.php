@@ -34,7 +34,13 @@ class UsuarioController extends Controller
     {
         // $users = User::all();
         $users  = DB::table('users AS u')
-            ->leftjoin('enderecos', 'enderecos.end_users_id', 'u.id')  
+        ->leftjoin('socials', 'socials.id', 'u.use_social_id')  
+        ->leftjoin('enderecos', 'enderecos.end_users_id', 'u.id')  
+        ->leftjoin('matriculas', 'matriculas.mat_users_id', 'u.id')  
+        ->leftjoin('series', 'matriculas.mat_series_id', 'series.id')  
+        ->leftjoin('responsaveis', 'responsaveis.res_users_id', 'u.id') 
+        ->leftjoin('saude_users', 'saude_users.sau_users_id', 'u.id')   
+        ->leftjoin('habitos_alimentares', 'habitos_alimentares.hab_users_id', 'u.id')   
             ->select(
                 '*',
                 'u.id AS id'
@@ -67,6 +73,7 @@ class UsuarioController extends Controller
             ->leftjoin('socials', 'socials.id', 'u.use_social_id')  
             ->leftjoin('enderecos', 'enderecos.end_users_id', 'u.id')  
             ->leftjoin('matriculas', 'matriculas.mat_users_id', 'u.id')  
+            ->leftjoin('series', 'matriculas.mat_series_id', 'series.id')  
             ->leftjoin('responsaveis', 'responsaveis.res_users_id', 'u.id') 
             ->leftjoin('saude_users', 'saude_users.sau_users_id', 'u.id')   
             ->leftjoin('habitos_alimentares', 'habitos_alimentares.hab_users_id', 'u.id')   
