@@ -27,14 +27,16 @@
                 <div class="row">
                     <div class="col-12">
                         <ul class="nav nav-pills" role="tablist">
+                            @if (Auth::user()->use_perfil !== 12)
                             <li class="nav-item">
-                                <a class="nav-link d-flex align-items-center active" id="account-tab" data-toggle="tab"
+                                <a class="nav-link d-flex align-items-center" id="account-tab" data-toggle="tab"
                                     href="#account" aria-controls="account" role="tab" aria-selected="true">
                                     <i data-feather="user"></i><span class="d-none d-sm-block">Conta</span>
                                 </a>
                             </li>
+                            @endif
                             <li class="nav-item">
-                                <a class="nav-link d-flex align-items-center" id="information-tab" data-toggle="tab"
+                                <a class="nav-link d-flex align-items-center active" id="information-tab" data-toggle="tab"
                                     href="#information" aria-controls="information" role="tab" aria-selected="false">
                                     <i data-feather="info"></i><span class="d-none d-sm-block">Informações</span>
                                 </a>
@@ -102,7 +104,7 @@
                                 <div class="card-body">
 
                                     <div class="tab-content">
-                                        <div class="tab-pane active" id="account" aria-labelledby="account-tab"
+                                        <div class="tab-pane fade" id="account" aria-labelledby="account-tab"
                                             role="tabpanel">
                                             <form class="form-conta" enctype="multipart/form-data">
                                                 @csrf
@@ -111,7 +113,7 @@
                                                 @include('pages.usuario.conta')
                                             </form>
                                         </div>
-                                        <div class="tab-pane fade " id="information" aria-labelledby="information-tab"
+                                        <div class="tab-pane active " id="information" aria-labelledby="information-tab"
                                             role="tabpanel">
                                             <form class="form-pessoais">
                                                 @csrf

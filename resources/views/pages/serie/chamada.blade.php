@@ -65,7 +65,7 @@
                                 $fotoo = "/arquivos/$seri->use_foto";
                             }
                             ?>
-                            <div class="avatar mr-75"
+                            <div class="avatar btavataruser mr-75" data-iduser="{{$seri->id}}"
                                 style="background-image:url({{ $fotoo }}); background-size: cover;height: 48px; width:48px ">
                             </div>
                             <div class="mail-items">
@@ -116,7 +116,8 @@
     <script src="../../../app-assets/vendors/js/pickers/flatpickr/flatpickr.min.js"></script>
     <script src="../../../app-assets/js/scripts/forms/form-select2.js"></script>
     <script src="../../../app-assets/js/scripts/extensions/ext-component-sweet-alerts.js"></script>
-    <script src="../../../app-assets/js/scripts/pages/app-serie-list.js"></script>
+    
+    <script src="../../../app-assets/js/scripts/pages/app-chamada.js"></script>
     {{-- <script src="../../../app-assets/js/scripts/pages/app-email.js"></script> --}}
 @endpush
 
