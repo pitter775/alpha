@@ -50,7 +50,7 @@ $(function() {
                             } else {
                                 image = '<img src="/app-assets/images/avatars/avatar.png" alt="Avatar" height="26" width="26" />'
                             }
-                            return '<div data-toggle="tooltip" data-popup="tooltip-custom" data-placement="top" title="" class="avatar pull-up my-0" data-original-title="' + dados.name + '">' +
+                            return '<div data-toggle="tooltip" data-popup="tooltip-custom" data-placement="top" title="" data-iduser="' + dados.id + '" class="avatar btavataruser pull-up my-0" data-original-title="' + dados.name + '">' +
                                 image + '</div>';
                         }
                     },
@@ -476,6 +476,11 @@ $(function() {
                 });
             }
         });
+    });
+    $(document).on('click', '.btavataruser', function() {
+        console.log('btavataruser');
+        let iduser = $(this).data('iduser');
+        window.location.href = "/usuario/detalhes/" + iduser;
     });
     // To initialize tooltip with body container
     $('body').tooltip({
