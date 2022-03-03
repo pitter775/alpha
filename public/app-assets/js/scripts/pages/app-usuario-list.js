@@ -25,7 +25,19 @@ $(function() {
     });
 
 
-
+    function addclass(params) {
+        $.get("/usuario/seriesProfAll/" + params, function(data) {
+            let dadoshtml2 = '';
+            setTimeout(function() {
+                $.each(JSON.parse(data), function(i, item) {
+                    console.log(dadoshtml2);
+                    let classe = '.classe' + dados.id;
+                    dadoshtml2 += item.ser_apelido + ', ';
+                    $(classe).text(dadoshtml2);
+                });
+            }, 600);
+        });
+    }
 
     // Datatable - user
     function datauser() {
@@ -57,12 +69,10 @@ $(function() {
                     { data: 'name' },
                     {
                         data: function(dados) {
-
+                            let valordados = '';
 
                             if (dados.use_perfil == 12) {
                                 let dadoshtml = '...';
-
-
                                 $.get("/usuario/seriesProfAll/" + dados.id, function(data) {
                                     let dadoshtml2 = '';
                                     setTimeout(function() {
@@ -72,21 +82,19 @@ $(function() {
                                             dadoshtml2 += item.ser_apelido + ', ';
                                             $(classe).text(dadoshtml2);
                                         });
-                                    }, 500);
-
-
-
+                                    }, 600);
                                 });
-                                return '<span class="classe' + dados.id + '">' + dadoshtml + '</span>';
 
-
+                                valordados = '<span class="classe' + dados.id + '">' + dadoshtml + '</span>';
 
 
                             } else {
                                 if (dados.ser_apelido == null) { return 'sem classe'; } else {
-                                    return dados.ser_apelido + ' - ' + dados.ser_nome;
+                                    valordados = dados.ser_apelido + ' - ' + dados.ser_nome;
                                 }
                             }
+
+                            return valordados;
 
                         }
                     },
