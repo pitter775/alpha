@@ -277,6 +277,7 @@ class UsuarioController extends Controller
 
                 $dados_sau->sau_users_id = $id_geral;
                 $dados_sau->sau_sarampo = $request->input('sau_sarampo');
+                $dados_sau->sau_sus = $request->input('sau_sus');
                 $dados_sau->sau_caxumba = $request->input('sau_caxumba');
                 $dados_sau->sau_coqueluche = $request->input('sau_coqueluche');
                 $dados_sau->sau_catapora = $request->input('sau_catapora');

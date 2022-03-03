@@ -5,6 +5,18 @@
          <span class="align-middle">Dados de Saúde</span>
       </h4>
    </div>
+
+   <div class="col-md-10">
+      <label for="sau_sus">Cartão Nascional de Saúde - SUS</label>
+      <div class="input-group input-group-merge">
+         <div class="input-group-prepend">
+            <span class="input-group-text">
+               <i data-feather='heart'></i>
+            </span>
+         </div>
+         <input id="sau_sus" type="text" class="form-control" value="{{$user->sau_sus ?? ''}}" name="sau_sus" />
+      </div>
+   </div>
    
    <div class="col-md-12 ">
       <div class="form-group">

@@ -115,6 +115,12 @@ switch ($user->use_perfil) {
                   <span class="me-25">{{$user->sau_alergia}} tem Alergia</span>
                </li>
             @endif            
+            @if ($user->sau_sus)
+               <li class="mb-75">
+                  <i data-feather='heart' class="icongetuser"></i>
+                  <span class="me-25"> SUS - {{$user->sau_sus}}</span>
+               </li>
+            @endif            
             
          </ul>
       </div>
