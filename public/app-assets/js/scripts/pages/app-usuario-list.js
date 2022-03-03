@@ -77,10 +77,13 @@ $(function() {
                                     let dadoshtml2 = '';
                                     setTimeout(function() {
                                         $.each(JSON.parse(data), function(i, item) {
-                                            console.log('-', dadoshtml2);
+
                                             let classe = '.classe' + dados.id;
                                             dadoshtml2 += item.ser_apelido + ', ';
                                             $(classe).text(dadoshtml2);
+                                            console.log('-', dadoshtml2);
+                                            console.log('feito em - ', classe);
+
                                         });
                                     }, 600);
                                 });
