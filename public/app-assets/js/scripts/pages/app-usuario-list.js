@@ -65,14 +65,16 @@ $(function() {
 
                                 $.get("/usuario/seriesProfAll/" + dados.id, function(data) {
                                     let dadoshtml2 = '';
+                                    setTimeout(function() {
+                                        $.each(JSON.parse(data), function(i, item) {
+                                            console.log(dadoshtml2);
+                                            let classe = '.classe' + dados.id;
+                                            dadoshtml2 += item.ser_apelido + ', ';
+                                            $(classe).text(dadoshtml2);
+                                        });
+                                    }, 100);
 
 
-                                    $.each(JSON.parse(data), function(i, item) {
-                                        console.log(dadoshtml2);
-                                        let classe = '.classe' + dados.id;
-                                        dadoshtml2 += item.ser_apelido + ', ';
-                                        $(classe).text(dadoshtml2);
-                                    });
 
                                 });
                                 return '<span class="classe' + dados.id + '">' + dadoshtml + '</span>';
