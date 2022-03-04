@@ -85,7 +85,9 @@ $(function() {
                     { //format perfil
                         data: function(dados) {
                             let bairro = dados.end_bairro + ' - ';
-                            addclassprof(dados.id);
+                            if (dados.use_perfil == 12) {
+                                addclassprof(dados.id);
+                            }
                             return bairro + dados.end_cidade;
                         }
                     },
