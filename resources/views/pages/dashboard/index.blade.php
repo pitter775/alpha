@@ -170,7 +170,7 @@
                                 </div>
 
                             </div>
-                            <div class="card-body">
+                            <div class="card-body" style="padding-top: 30px">
                                 @foreach ($tiporesidencia as $tipores)
                                     <div class="browser-states">
                                         <div class="media">
