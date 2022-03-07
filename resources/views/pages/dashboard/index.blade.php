@@ -119,7 +119,7 @@
                 </div>
 
                 <div class="row match-height">
-                    <!--  Card -->
+                    <!--  Professores -->
                     <div class="col-lg-4 col-md-6 col-12">
                         <div class="card card-developer-meetup">
                             <div class="meetup-img-wrapper rounded-top text-center">
@@ -139,26 +139,21 @@
                                 </div>
 
                                 <div class="avatar-group">
-                                    <div data-toggle="tooltip" data-popup="tooltip-custom" data-placement="bottom"
-                                        data-original-title="Billy Hopkins" class="avatar pull-up">
-                                        <img src="../../../app-assets/images/portrait/small/avatar-s-9.jpg" alt="Avatar"
-                                            width="33" height="33" />
-                                    </div>
-                                    <div data-toggle="tooltip" data-popup="tooltip-custom" data-placement="bottom"
-                                        data-original-title="Amy Carson" class="avatar pull-up">
-                                        <img src="../../../app-assets/images/portrait/small/avatar-s-6.jpg" alt="Avatar"
-                                            width="33" height="33" />
-                                    </div>
-                                    <div data-toggle="tooltip" data-popup="tooltip-custom" data-placement="bottom"
-                                        data-original-title="Brandon Miles" class="avatar pull-up">
-                                        <img src="../../../app-assets/images/portrait/small/avatar-s-8.jpg" alt="Avatar"
-                                            width="33" height="33" />
-                                    </div>
-                                    <div data-toggle="tooltip" data-popup="tooltip-custom" data-placement="bottom"
-                                        data-original-title="Daisy Weber" class="avatar pull-up">
-                                        <img src="../../../app-assets/images/portrait/small/avatar-s-20.jpg" alt="Avatar"
-                                            width="33" height="33" />
-                                    </div>
+                                    @foreach ($professores->take(4) as $prof)
+                                        <div data-toggle="tooltip" data-popup="tooltip-custom" data-placement="bottom"
+                                            data-original-title="{{ $prof->name }}" class="avatar pull-up">
+
+                                            @if ($prof->use_foto == null)
+                                                <img src=" {{ asset('app-assets/images/avatars/avatar.png') }}"
+                                                    class="avatar pull-up" width="33" height="33" alt="avatar" />
+                                            @endif
+                                            @if ($prof->use_foto !== null)
+                                                <img src="{{ asset('arquivos') . '/' . $prof->use_foto }}"
+                                                    class="avatar pull-up" width="33" height="33" alt="avatar" />
+                                            @endif
+                                        </div>
+                                    @endforeach
+
                                     <h6 class="align-self-center cursor-pointer ml-50 mb-0">+10</h6>
                                 </div>
                             </div>
@@ -166,7 +161,7 @@
                     </div>
                     <!--/  Card -->
 
-                    <!-- Browser States Card -->
+                    <!-- Tipo de residência -->
                     <div class="col-lg-4 col-md-6 col-12">
                         <div class="card card-browser-states">
                             <div class="card-header">
@@ -176,89 +171,54 @@
 
                             </div>
                             <div class="card-body">
-                                <div class="browser-states">
-                                    <div class="media">
-                                        <img src="../../../app-assets/images/icons/google-chrome.png" class="rounded mr-1"
-                                            height="30" alt="Google Chrome" />
-                                        <h6 class="align-self-center mb-0">Google Chrome</h6>
+                                @foreach ($tiporesidencia as $tipores)
+                                    <div class="browser-states">
+                                        <div class="media">
+                                            <img src="../../../app-assets/images/icons/home.png" class="rounded mr-1"
+                                                height="30" alt="Google Chrome" />
+                                            <h6 class="align-self-center mb-0">
+                                                {{ $tipores->soc_tipo_residencia ?? 'Sem definição' }}</h6>
+                                        </div>
+                                        <div class="d-flex align-items-center">
+                                            <div class="font-weight-bold text-body-heading mr-1">
+                                                {{ $tipores->sum ?? '' }}
+                                            </div>
+
+                                        </div>
                                     </div>
-                                    <div class="d-flex align-items-center">
-                                        <div class="font-weight-bold text-body-heading mr-1">54.4%</div>
-                                        <div id="browser-state-chart-primary"></div>
-                                    </div>
-                                </div>
-                                <div class="browser-states">
-                                    <div class="media">
-                                        <img src="../../../app-assets/images/icons/mozila-firefox.png"
-                                            class="rounded mr-1" height="30" alt="Mozila Firefox" />
-                                        <h6 class="align-self-center mb-0">Mozila Firefox</h6>
-                                    </div>
-                                    <div class="d-flex align-items-center">
-                                        <div class="font-weight-bold text-body-heading mr-1">6.1%</div>
-                                        <div id="browser-state-chart-warning"></div>
-                                    </div>
-                                </div>
-                                <div class="browser-states">
-                                    <div class="media">
-                                        <img src="../../../app-assets/images/icons/apple-safari.png" class="rounded mr-1"
-                                            height="30" alt="Apple Safari" />
-                                        <h6 class="align-self-center mb-0">Apple Safari</h6>
-                                    </div>
-                                    <div class="d-flex align-items-center">
-                                        <div class="font-weight-bold text-body-heading mr-1">14.6%</div>
-                                        <div id="browser-state-chart-secondary"></div>
-                                    </div>
-                                </div>
-                                <div class="browser-states">
-                                    <div class="media">
-                                        <img src="../../../app-assets/images/icons/internet-explorer.png"
-                                            class="rounded mr-1" height="30" alt="Internet Explorer" />
-                                        <h6 class="align-self-center mb-0">Internet Explorer</h6>
-                                    </div>
-                                    <div class="d-flex align-items-center">
-                                        <div class="font-weight-bold text-body-heading mr-1">4.2%</div>
-                                        <div id="browser-state-chart-info"></div>
-                                    </div>
-                                </div>
-                                <div class="browser-states">
-                                    <div class="media">
-                                        <img src="../../../app-assets/images/icons/opera.png" class="rounded mr-1"
-                                            height="30" alt="Opera Mini" />
-                                        <h6 class="align-self-center mb-0">Opera Mini</h6>
-                                    </div>
-                                    <div class="d-flex align-items-center">
-                                        <div class="font-weight-bold text-body-heading mr-1">8.4%</div>
-                                        <div id="browser-state-chart-danger"></div>
-                                    </div>
-                                </div>
+                                @endforeach
+
                             </div>
                         </div>
                     </div>
-                    <!--/ Browser States Card -->
 
-                    <!-- Goal Overview Card -->
+                    <!-- Tolerantes a lactose -->
                     <div class="col-lg-4 col-md-6 col-12">
                         <div class="card">
                             <div class="card-header d-flex justify-content-between align-items-center">
-                                <h4 class="card-title">Tolerantes a lactose</h4>
+                                <h4 class="card-title">Não Alergicos</h4>
 
                             </div>
                             <div class="card-body p-0">
-                                <div id="goal-overview-radial-bar-chart" class="my-2"></div>
+                                <?php $nalerg = ($saude[1]->sum * 100) / $totalalunos; ?>
+
+                                <div id="goal-overview-radial-bar-chart" class="my-2"
+                                    data-nalerg="{{ $nalerg }}"></div>
                                 <div class="row border-top text-center mx-0">
                                     <div class="col-6 border-right py-1">
-                                        <p class="card-text text-muted mb-0">Tolerantes</p>
-                                        <h3 class="font-weight-bolder mb-0">415</h3>
+                                        <p class="card-text text-muted mb-0">Não Alergicos</p>
+                                        {{-- <h3 class="font-weight-bolder mb-0">{{$saude[1]->sau_alergia}}</h3> --}}
+                                        <h3 class="font-weight-bolder mb-0">{{ $saude[1]->sum }}</h3>
                                     </div>
                                     <div class="col-6 py-1">
-                                        <p class="card-text text-muted mb-0">Intolerantes</p>
-                                        <h3 class="font-weight-bolder mb-0">20</h3>
+                                        <p class="card-text text-muted mb-0">Alergicos</p>
+                                        {{-- <h3 class="font-weight-bolder mb-0">{{$saude[2]->sau_alergia}}</h3> --}}
+                                        <h3 class="font-weight-bolder mb-0">{{ $saude[2]->sum }}</h3>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <!--/ Goal Overview Card -->
 
                     <!-- Company Table Card -->
                     <div class="col-lg-12 col-12">
@@ -281,7 +241,8 @@
                                                         <div class="d-flex align-items-center">
                                                             <div class="avatar rounded">
                                                                 <div class="avatar-content">
-                                                                    <img src="../../../app-assets/images/icons/rocket.svg" alt="{{ $serie->ser_apelido ?? '' }}" />
+                                                                    <img src="../../../app-assets/images/icons/rocket.svg"
+                                                                        alt="{{ $serie->ser_apelido ?? '' }}" />
                                                                 </div>
                                                             </div>
                                                             <div>

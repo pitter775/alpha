@@ -22,7 +22,10 @@ class DashboardController extends Controller
     $socio5e10 = $this->socio5e10();
     $sociomaisde10 = $this->sociomaisde10();
     $allseries = $this->allseries();
-    return view("pages.dashboard.index", compact('totalalunos','meninos','meninas','socio1e2','socio3e4','socio5e10','sociomaisde10','allseries'));
+    $tiporesidencia = $this->tiporesidencia();
+    $saude = $this->saude();
+    $professores = $this->professores();
+    return view("pages.dashboard.index", compact('totalalunos','meninos','meninas','socio1e2','socio3e4','socio5e10','sociomaisde10','allseries','tiporesidencia','saude','professores'));
   }
 
   public function alunos()
@@ -95,6 +98,7 @@ class DashboardController extends Controller
          ->leftjoin('socials', 'socials.id', 'u.use_social_id')  
          ->select('u.id AS id')
          ->where('socials.soc_renda_familiar', 'mais de 10 salários')
+         ->where('u.use_perfil', 11)
          ->count();
 
           return $users;
@@ -107,18 +111,38 @@ class DashboardController extends Controller
   }
 
   public function tiporesidencia(){
-   $tipores = DB::table('useres AS u')
-   ->join('periodos', 'periodos.id', 'u.periodos_id')
-   ->join('contratos', 'contratos.id', 'u.contratos_id')
-   ->join('produtos', 'produtos.id', 'u.produtos_id')
-   ->join('atividades', 'atividades.id', 'u.atividades_id')
-   ->select('*', DB::raw('sum( time_to_sec (u.horas)) as horas'), 'u.id As id','atividades.atdescricao','u.atividades_id' )
-   ->whereYear('periodos.datainicio', '=', $data_ano)
-   ->whereMonth('periodos.datainicio', '=', $data_mes)
-   ->orderBy('atividades.atdescricao', 'asc')
-   ->groupBy('u.atividades_id')
-   ->where([['u.users_id', $user]])
-   ->get();
+        $tipores  = DB::table('users AS u')
+        ->join('socials', 'socials.id', 'u.use_social_id')  
+        ->groupBy('socials.soc_tipo_residencia')
+        ->selectRaw('socials.soc_tipo_residencia, count(*) as sum')
+        ->where('u.use_perfil', 11)
+        ->get();
+
    return $tipores;
   }
+   public function saude(){
+      $saude  = DB::table('users AS u')
+      ->leftjoin('saude_users', 'u.id', 'saude_users.sau_users_id')  
+      ->groupBy('saude_users.sau_alergia')
+        ->selectRaw('saude_users.sau_alergia, count(*) as sum')
+        ->where('u.use_perfil', 11)
+        ->get();
+      // ->where('u.use_perfil', 11)
+      // ->where('saude_users.sau_alergia', 'Sim')
+      // ->count();
+      // dd($saude);
+
+   return $saude;
+   }
+
+   public function professores(){
+      $prof  = DB::table('users AS u')
+         ->join('professores', 'professores.prof_users_id', 'u.id')  
+         ->select('*')
+         ->get();
+
+         // dd($prof);
+
+         return $prof;
+   }
 }

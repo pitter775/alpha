@@ -21,6 +21,7 @@ use Illuminate\Http\Request;
 Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('site');
 Route::get('/logout', [App\Http\Controllers\Auth\LoginController::class, 'logout']);
 Route::get('/home', [App\Http\Controllers\DashboardController::class, 'index']);
+Route::get('/dashboard/tiporesidencia', [App\Http\Controllers\DashboardController::class, 'tiporesidencia']);
 
 Route::get('/matriculas', [App\Http\Controllers\HomeController::class, 'matricula']);
 Route::post('/matriculas/link', [App\Http\Controllers\SitematriculaController::class, 'link']);
