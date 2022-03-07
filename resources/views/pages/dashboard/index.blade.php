@@ -279,7 +279,7 @@
                                                                 ->leftjoin('series', 'series.id', 'matriculas.mat_series_id')
                                                                 ->select('u.id AS id')
                                                                 ->where('series.ser_apelido', $serie->ser_apelido)
-                                                                ->where('u.use_sexo', 'Fenimino')
+                                                                ->where('u.use_sexo', 'Feminino')
                                                                 ->count();
                                                             
                                                             ?>

@@ -53,7 +53,7 @@ class DashboardController extends Controller
       // $users = User::all();
       $users  = DB::table('users AS u')
          ->select('u.id AS id')
-         ->where('u.use_sexo', 'Fenimino')
+         ->where('u.use_sexo', 'Feminino')
          ->count();
 
           return $users;

@@ -72,9 +72,9 @@
             <label class="custom-control-label check" for="male">Masculino</label>
          </div>
          <div class="custom-control custom-radio custom-control-inline">
-            <input type="radio" id="female" name="use_sexo" class="custom-control-input" value="Fenimino" 
-            <?php if($checkedsexo == 'Fenimino'){ echo 'checked';} ?> />
-            <label class="custom-control-label check" for="female">Fenimino</label>
+            <input type="radio" id="female" name="use_sexo" class="custom-control-input" value="Feminino" 
+            <?php if($checkedsexo == 'Feminino'){ echo 'checked';} ?> />
+            <label class="custom-control-label check" for="female">Feminino</label>
          </div>
       </div>
    </div>
