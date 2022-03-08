@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-
+use App\Models\Arquivo;
 use App\Models\User;
 use App\Models\Social;
 use App\Models\Endereco;
@@ -41,10 +41,12 @@ class UsuarioController extends Controller
         ->leftjoin('responsaveis', 'responsaveis.res_users_id', 'u.id') 
         ->leftjoin('saude_users', 'saude_users.sau_users_id', 'u.id')   
         ->leftjoin('habitos_alimentares', 'habitos_alimentares.hab_users_id', 'u.id')   
+        
             ->select(
                 '*',
                 'u.id AS id'
             )
+            ->orderBy('u.name', 'asc')
             ->get();
 
         //dd($users);
@@ -80,9 +82,6 @@ class UsuarioController extends Controller
         $series = Serie::all();
 
         $presenca = Presenca::where([['users_id',  $id]])->get();
-
-
-
 
         return view('pages.usuario.detalhe', compact('user', 'series' ,'presenca'));
     }
@@ -408,6 +407,27 @@ class UsuarioController extends Controller
                 $idmatricula = Matricula::where('mat_users_id', $id)->first();
                 if (isset($idmatricula)) {
                     $idmatricula->delete();
+                }
+                $idend = Endereco::where('end_users_id', $id)->first();
+                if (isset($idend)) {
+                    $idend->delete();
+                }
+                $idsau = Saude_user::where('sau_users_id', $id)->first();
+                if (isset($idsau)) {
+                    $idsau->delete();
+                }
+
+                $idpre = Presenca::where('users_id', $id)->get();
+                if (isset($idpre)) {
+                    $idpre->delete();
+                }
+                $idarq = Arquivo::where('arq_users_id', $id)->get();
+                if (isset($idarq)) {
+                    $idarq->delete();
+                }
+                $idresp = Responsavei::where('res_users_id', $id)->get();
+                if (isset($idresp)) {
+                    $idresp->delete();
                 }
 
                 $deletar->delete();
