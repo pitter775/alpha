@@ -82,14 +82,14 @@
             }
          ?>
          <div class="custom-control custom-radio custom-control-inline">
-            <input type="radio" id="male" name="use_gemeo" value="Sim" class="custom-control-input" 
+            <input type="radio" id="maleg" name="use_gemeo" value="Sim" class="custom-control-input" 
             <?php if($checkedgemeo == 'Sim'){ echo 'checked';} ?> />
-            <label class="custom-control-label check" for="male">Sim</label>
+            <label class="custom-control-label check" for="maleg">Sim</label>
          </div>
          <div class="custom-control custom-radio custom-control-inline">
-            <input type="radio" id="female" name="use_gemeo" class="custom-control-input" value="Não" 
+            <input type="radio" id="femaleg" name="use_gemeo" class="custom-control-input" value="Não" 
             <?php if($checkedgemeo == 'Não'){ echo 'checked';} ?> />
-            <label class="custom-control-label check" for="female">Não</label>
+            <label class="custom-control-label check" for="femaleg">Não</label>
          </div>
       </div>
    </div>
