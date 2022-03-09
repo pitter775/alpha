@@ -34,6 +34,7 @@ class DashboardController extends Controller
       $users  = DB::table('users AS u')
          ->select('u.id AS id')
          ->where('u.use_perfil', 11)
+         ->where('u.use_status', 1)
          ->count();
 
           return $users;
