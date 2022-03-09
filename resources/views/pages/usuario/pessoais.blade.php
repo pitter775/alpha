@@ -39,7 +39,7 @@
       </div>
    </div>
 
-   <div class="col-md-6">
+   <div class="col-md-5">
       <label for="use_regiao_nascimento">Reg. nascimento</label>
       <div class="input-group input-group-merge">
          <div class="input-group-prepend">
@@ -69,6 +69,27 @@
             <input type="radio" id="female" name="use_sexo" class="custom-control-input" value="Feminino" 
             <?php if($checkedsexo == 'Feminino'){ echo 'checked';} ?> />
             <label class="custom-control-label check" for="female">Feminino</label>
+         </div>
+      </div>
+   </div>
+   <div class="col-md-4 ">
+      <div class="form-group">
+         <label class="d-block mb-1">Possui irmão gemeo?</label>
+         <?php
+            $checkedgemeo = null;
+            if(isset($user->use_gemeo)){
+               $checkedgemeo = $user->use_gemeo;
+            }
+         ?>
+         <div class="custom-control custom-radio custom-control-inline">
+            <input type="radio" id="male" name="use_gemeo" value="Sim" class="custom-control-input" 
+            <?php if($checkedgemeo == 'Sim'){ echo 'checked';} ?> />
+            <label class="custom-control-label check" for="male">Sim</label>
+         </div>
+         <div class="custom-control custom-radio custom-control-inline">
+            <input type="radio" id="female" name="use_gemeo" class="custom-control-input" value="Não" 
+            <?php if($checkedgemeo == 'Não'){ echo 'checked';} ?> />
+            <label class="custom-control-label check" for="female">Não</label>
          </div>
       </div>
    </div>

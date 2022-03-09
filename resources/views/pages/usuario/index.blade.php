@@ -92,6 +92,7 @@
                                 <th>Classe</th>
                                 <th>Endereço</th>
                                 <th>Sexo</th>
+                                <th>Gemeo</th>
                                 <th style="width: 100px">Perfil</th> 
                                 <th>Status</th>
                             </tr>

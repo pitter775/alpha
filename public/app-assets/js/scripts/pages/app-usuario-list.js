@@ -92,6 +92,7 @@ $(function() {
                         }
                     },
                     { data: 'use_sexo' },
+                    { data: 'use_gemeo' },
                     { //format perfil
                         data: function(dados) {
                             if (dados.use_perfil == 1) { return 'Usuario'; }

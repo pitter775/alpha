@@ -434,7 +434,7 @@ class UsuarioController extends Controller
                 return 'Ok';
             } catch (PDOException $e) {
                 if (isset($e->errorInfo[1]) && $e->errorInfo[1] == '1451') {
-                    return 'Erro';
+                    return $e->errorInfo[1];
                 }
             }
         }
