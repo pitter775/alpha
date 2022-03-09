@@ -72,7 +72,7 @@
          </div>
       </div>
    </div>
-   <div class="col-md-4 ">
+   <div class="col-md-3 ">
       <div class="form-group">
          <label class="d-block mb-1">Possui irmão gemeo?</label>
          <?php
