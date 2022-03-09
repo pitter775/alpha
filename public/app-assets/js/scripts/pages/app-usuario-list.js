@@ -254,7 +254,7 @@ $(function() {
                         });
                     // Adding plan filter once table initialized
                     this.api()
-                        .columns(6)
+                        .columns(7)
                         .every(function() {
                             var column = this;
                             var select = $(
