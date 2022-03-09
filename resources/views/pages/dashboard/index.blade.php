@@ -130,7 +130,7 @@
                                 <div class="meetup-header d-flex align-items-center">
                                     <div class="meetup-day">
                                         <h6 class="mb-0">total</h6>
-                                        <h3 class="mb-0">14</h3>
+                                        <h3 class="mb-0">{{count($professores)}}</h3>
                                     </div>
                                     <div class="my-auto">
                                         <h4 class="card-title mb-25">Professores</h4>
@@ -154,7 +154,7 @@
                                         </div>
                                     @endforeach
 
-                                    <h6 class="align-self-center cursor-pointer ml-50 mb-0">+10</h6>
+                                    <h6 class="align-self-center cursor-pointer ml-50 mb-0">+{{count($professores)-4}}</h6>
                                 </div>
                             </div>
                         </div>

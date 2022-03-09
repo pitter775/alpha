@@ -27,10 +27,16 @@ class EscolaController extends Controller
      */
     public function index()
     {
-        $professores  = DB::table('professores AS u')
-            ->select('*', 'u.id AS id')
-            ->leftjoin('series', 'u.prof_series_id', 'series.id')
+
+
+            $professores  = DB::table('users AS u')
+            ->join('professores', 'professores.prof_users_id', 'u.id')  
+            ->where('u.use_perfil', 12)
+            ->groupBy('u.id')
+            ->select('*')
             ->get();
+
+            // dd($professores);
 
         $alunos  = DB::table('users AS u')
             ->leftjoin('matriculas', 'matriculas.mat_users_id', 'u.id')

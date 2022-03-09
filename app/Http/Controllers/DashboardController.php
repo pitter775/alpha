@@ -139,6 +139,7 @@ class DashboardController extends Controller
    public function professores(){
       $prof  = DB::table('users AS u')
          ->join('professores', 'professores.prof_users_id', 'u.id')  
+         ->groupBy('u.id')
          ->select('*')
          ->get();
 
