@@ -520,7 +520,8 @@ $(function() {
     $(document).on('click', '.btavataruser', function() {
         console.log('btavataruser');
         let iduser = $(this).data('iduser');
-        window.location.href = "/usuario/detalhes/" + iduser;
+        window.open('/usuario/detalhes/' + iduser, '_blank');
+        // window.location.href = "/usuario/detalhes/" + iduser;
     });
     // To initialize tooltip with body container
     $('body').tooltip({
