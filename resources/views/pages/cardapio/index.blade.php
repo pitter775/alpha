@@ -17,22 +17,33 @@
                 <div class="modal-body flex-grow-1">
 
                     <div class="row mb-25">
-                        <div class="col-md-7">
-                            <label for="alteracao">Data Alteração</label>
+                        <div class="col-md-4">
+                            <label for="car_data">Data Alteração</label>
                             <div class="input-group input-group-merge">
                                 <div class="input-group-prepend">
                                     <span class="input-group-text">
                                         <i data-feather='calendar'></i>
                                     </span>
                                 </div>
-                                <input id="alteracao" type="text" class="form-control flatpickr-basic" name="alteracao" />
+                                <input id="car_data" type="text" class="form-control flatpickr-basic" name="car_data" />
+                            </div>
+                        </div>
+                        <div class="col-md-8">
+                            <div class="form-group">
+                                <label for='series_id'>Classes</label>
+                                <select class="form-control select2" name="series_id[]" id="series_id" multiple>
+                                    @foreach ($series as $value)
+                                        <option value="{{ $value->id }}">{{ $value->ser_apelido }}</option>
+                                    @endforeach
+                                </select>
+                                <input type="hidden" name="apelido" value="">
                             </div>
                         </div>
                         <div class="col-md-12">
                             <div class="form-group">
-                                <label for="exampleFormControlTextarea1">Cardápio</label>
-                                <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"
-                                    placeholder="Textarea" style="height: 214px;"></textarea>
+                                <label for="car_cardapio">Cardápio</label>
+                                <textarea class="form-control" id="car_cardapio" name="car_cardapio" rows="3" placeholder="Textarea"
+                                    style="height: 214px;"></textarea>
                             </div>
                         </div>
 
@@ -76,10 +87,12 @@
                             <thead class="thead-light">
                                 <tr>
                                     <th>id</th>
-                                    <th>escola</th>
-                                    <th>Nome</th>
-                                    <th>Período</th>
-                                    <th>Apelido</th>
+                                    <th>cardápio</th>
+                                    <th>data</th>
+                                    <th>series_id</th>
+                                    <th>ser_nome</th>
+                                    <th>ser_periodo</th>
+                                    <th>Série</th>
                                     <th></th>
                                 </tr>
                             </thead>

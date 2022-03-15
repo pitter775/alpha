@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\cardapio;
 use App\Models\Presenca;
+use App\Models\Serie;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use PDOException;
@@ -18,79 +19,44 @@ class CardapioController extends Controller
 
     public function index()
     {
-        return view('pages.cardapio.index');
+        $series = Serie::all();
+        return view('pages.cardapio.index', compact('series'));
     }
     public function all()
     {
-        $cardapio = Cardapio::all();
-        return json_encode($cardapio);
+        $cardapio  = DB::table('cardapios AS c')
+        ->leftjoin('series', 'c.series_id', 'series.id') 
+        ->select('*', 'c.id AS id')
+        ->get();
+
+        return $cardapio;
     }
-    public function chamada($id)
-    {
-        $cardapios  = DB::table('users AS u')
-            ->select('*', 'u.id AS id', 'u.name as name')
-            ->leftjoin('matriculas', 'matriculas.mat_users_id', 'u.id')
-            ->leftjoin('cardapios', 'cardapios.id', 'matriculas.mat_cardapios_id')
-            ->where('cardapios.id', $id)
-            ->get();        
-      
-
-        return view('pages.cardapio.chamada', compact('cardapios'));
-    }
-    public function cadastro_presenca(Request $request)
-    {
-        $datanaw = $this->dateEmMysql($request->input('datanaw')); 
-        $iduser = $request->input('iduser');
-        $tipo = $request->input('tipo');
-
-        $mensagem['cadastro'] = 'cadastrando';
-
-        $tem = Presenca::where([['pres_datanaw', $datanaw], ['users_id',  $iduser]])->get();
-        if (count($tem) == 0) {
-            $dados = new Presenca();
-            $mensagem['cadastro-1'] = 'novo cadastro';
-        }else{
-            $dados = Presenca::where([['pres_datanaw', $datanaw], ['users_id', $iduser]])->first();
-            $mensagem['cadastro-1'] = 'editando';
-        }
-        $dados->users_id = $iduser;
-        $dados->pres_tipo = $tipo;
-        $dados->users_id = $iduser;
-        $dados->pres_datanaw = $datanaw;
-        $dados->save();
 
 
-        return $mensagem;
-        
-    }
     public function cadastro(Request $request)
     {
-        $id_geral = $request->input('id_geral');
-        $mensagem = '';
+        
 
-        if ($id_geral == '') {
-            $tem = Cardapio::where('ser_nome', $request->input('ser_nome'))->get();
-            if (!count($tem) == 0) {
-                return 'Erro, Já existe esse nome cadastrado no sistema.';
-            }
+        foreach($request->input('series_id') as  $value){ 
             $dados = new cardapio();
-            $mensagem = 'novo';
-        } else {
-            $dados = Cardapio::find($id_geral);
-            $mensagem = 'editado';
+            $car_data = $request->input('car_data');
+            if (isset($car_data)) {
+                $car_data = $this->dateEmMysql($car_data);
+                $dados->car_data = $car_data;
+            } else {
+                $dados->car_data = null;
+            }
+            $dados->car_cardapio =  $request->input('car_cardapio');;
+            $dados->series_id = $value;
+            $dados->save();
         }
-        $dados->ser_escolas_id =  $request->input('ser_escolas_id');
-        $dados->ser_nome = $request->input('ser_nome');
-        $dados->ser_periodo = $request->input('ser_periodo');
-        $dados->ser_apelido = $request->input('ser_apelido');
 
+        
+            
+        
 
-        $dados->save();
-        if ($mensagem == 'novo') {
-            return $dados->id;
-        } else {
-            return $mensagem;
-        }
+        return 'ok';
+
     }
     public function delete($id)
     {
@@ -117,4 +83,5 @@ class CardapioController extends Controller
             return null;
         }
     }
+    
 }
