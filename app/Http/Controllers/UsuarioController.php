@@ -418,16 +418,19 @@ class UsuarioController extends Controller
                 }
 
                 $idpre = Presenca::where('users_id', $id)->get();
-                if (isset($idpre)) {
-                    $idpre->delete();
+                foreach($idpre as $val)
+                if (isset($val)) {
+                    $val->delete();
                 }
                 $idarq = Arquivo::where('arq_users_id', $id)->get();
-                if (isset($idarq)) {
-                    $idarq->delete();
+                foreach($idarq as $val)
+                if (isset($val)) {
+                    $val->delete();
                 }
                 $idresp = Responsavei::where('res_users_id', $id)->get();
-                if (isset($idresp)) {
-                    $idresp->delete();
+                foreach($idresp as $val)
+                if (isset($val)) {
+                    $val->delete();
                 }
 
                 $deletar->delete();
