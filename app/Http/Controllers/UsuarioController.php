@@ -401,43 +401,70 @@ class UsuarioController extends Controller
     }
     public function delete($id)
     {
+        $mensagem = array();
+        $mensagem['deletando...'] = 'ok';
         $deletar = User::find($id);
+        $mensagem['usuario'] = $id;
         if (isset($deletar)) {
             try {
+                $idresp = Responsavei::where('res_users_id', $id)->get();
+                foreach($idresp as $val)
+                if (isset($val)) {
+                    $val->delete();
+                    $mensagem['respo'] = 'ok';
+                }else{
+                    $mensagem['respo'] = 'sem respons';
+                }
+
+                
                 $idmatricula = Matricula::where('mat_users_id', $id)->first();
                 if (isset($idmatricula)) {
                     $idmatricula->delete();
+                    $mensagem['matricula'] = 'ok';
+                }else{
+                    $mensagem['matricula'] = 'sem matricula';
                 }
                 $idend = Endereco::where('end_users_id', $id)->first();
                 if (isset($idend)) {
                     $idend->delete();
+                    $mensagem['endereco'] = 'ok';
+                }else{
+                    $mensagem['endereco'] = 'sem endereço';
                 }
                 $idsau = Saude_user::where('sau_users_id', $id)->first();
                 if (isset($idsau)) {
                     $idsau->delete();
+                    $mensagem['saude'] = 'ok';
+                }else{
+                    $mensagem['saude'] = 'sem saude';
                 }
 
                 $idpre = Presenca::where('users_id', $id)->get();
                 foreach($idpre as $val)
                 if (isset($val)) {
                     $val->delete();
+                    $mensagem['presenca'] = 'ok';
+                }else{
+                    $mensagem['presenca'] = 'sem presenca';
                 }
                 $idarq = Arquivo::where('arq_users_id', $id)->get();
                 foreach($idarq as $val)
                 if (isset($val)) {
                     $val->delete();
+                    $mensagem['arquivo'] = 'ok';
+                }else{
+                    $mensagem['arquivo'] = 'sem arquivos';
                 }
-                $idresp = Responsavei::where('res_users_id', $id)->get();
-                foreach($idresp as $val)
-                if (isset($val)) {
-                    $val->delete();
-                }
+                
 
                 $deletar->delete();
-                return 'Ok';
+                $mensagem['delete user'] = 'ok';
+                return  $mensagem;
             } catch (PDOException $e) {
                 if (isset($e->errorInfo[1]) && $e->errorInfo[1] == '1451') {
-                    return $e->errorInfo[1];
+                    $mensagem['erro'] = $e->errorInfo[1]; 
+                    $mensagem['erro2'] = $e->errorInfo; 
+                    return $mensagem; 
                 }
             }
         }
