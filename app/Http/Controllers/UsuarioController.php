@@ -435,12 +435,14 @@ class UsuarioController extends Controller
                     $mensagem['saude'] = 'sem saude';
                 }
 
+                $mensagem['removendo Habitos_alimentare'] = '....';
+
                 $idhab = Habitos_alimentare::where('hab_users_id', $id)->first();
                 if (isset($idhab)) {
                     $idhab->delete();
-                    $mensagem['habitos'] = 'ok';
+                    $mensagem['habitoss'] = 'ok';
                 }else{
-                    $mensagem['habitos'] = 'sem habitos';
+                    $mensagem['habitoss'] = 'sem habitos';
                 }
 
                 $idpre = Presenca::where('users_id', $id)->get();
