@@ -417,13 +417,7 @@ class UsuarioController extends Controller
                 }
 
                 
-                $idmatricula = Matricula::where('mat_users_id', $id)->first();
-                if (isset($idmatricula)) {
-                    $idmatricula->delete();
-                    $mensagem['matricula'] = 'ok';
-                }else{
-                    $mensagem['matricula'] = 'sem matricula';
-                }
+                
                 $idend = Endereco::where('end_users_id', $id)->first();
                 if (isset($idend)) {
                     $idend->delete();
@@ -431,12 +425,22 @@ class UsuarioController extends Controller
                 }else{
                     $mensagem['endereco'] = 'sem endereço';
                 }
+
+
                 $idsau = Saude_user::where('sau_users_id', $id)->first();
                 if (isset($idsau)) {
                     $idsau->delete();
                     $mensagem['saude'] = 'ok';
                 }else{
                     $mensagem['saude'] = 'sem saude';
+                }
+
+                $idhab = Habitos_alimentare::where('hab_users_id', $id)->first();
+                if (isset($idhab)) {
+                    $idhab->delete();
+                    $mensagem['habitos'] = 'ok';
+                }else{
+                    $mensagem['habitos'] = 'sem habitos';
                 }
 
                 $idpre = Presenca::where('users_id', $id)->get();
@@ -447,6 +451,8 @@ class UsuarioController extends Controller
                 }else{
                     $mensagem['presenca'] = 'sem presenca';
                 }
+
+
                 $idarq = Arquivo::where('arq_users_id', $id)->get();
                 foreach($idarq as $val)
                 if (isset($val)) {
@@ -454,6 +460,16 @@ class UsuarioController extends Controller
                     $mensagem['arquivo'] = 'ok';
                 }else{
                     $mensagem['arquivo'] = 'sem arquivos';
+                }
+
+
+
+                $idmatricula = Matricula::where('mat_users_id', $id)->first();
+                if (isset($idmatricula)) {
+                    $idmatricula->delete();
+                    $mensagem['matricula'] = 'ok';
+                }else{
+                    $mensagem['matricula'] = 'sem matricula';
                 }
                 
 
