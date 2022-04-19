@@ -436,7 +436,7 @@ $(function() {
         }).then(function(result) {
             if (result.value) {
                 $.get('/usuario/delete/' + id, function(retorno) {
-                    if (retorno == 'Erro') {
+                    if (retorno == 'erro') {
                         //mensagem
                         toastr['error']('👋 Arquivo comprometido, não pode excluir.', 'Erro!', {
                             closeButton: true,

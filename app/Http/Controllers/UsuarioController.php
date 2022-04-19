@@ -479,7 +479,8 @@ class UsuarioController extends Controller
             } catch (PDOException $e) {
                 if (isset($e->errorInfo[1]) && $e->errorInfo[1] == '1451') {
                     $mensagem['erro'] = $e->errorInfo[1]; 
-                    $mensagem['erro2'] = $e->errorInfo; 
+                    // $mensagem['erro2'] = $e->errorInfo; 
+                    $mensagem = 'erro'; 
                     return $mensagem; 
                 }
             }
