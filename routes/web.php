@@ -74,6 +74,10 @@ Route::group(['middleware' => 'acesso'], function () {
     Route::post('/cardapio/cadastro', [App\Http\Controllers\CardapioController::class, 'cadastro']);
     Route::get('/cardapio/delete/{id}', [App\Http\Controllers\CardapioController::class, 'delete']);
 
+    Route::get('/piloto', [App\Http\Controllers\PilotoController::class, 'index']);
+    Route::post('/piloto/tabela', [App\Http\Controllers\PilotoController::class, 'tabela']);
+
+
 
 
 });

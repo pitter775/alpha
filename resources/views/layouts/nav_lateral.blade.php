@@ -43,6 +43,11 @@
                         <a class="d-flex align-items-center" href="/cardapio" onclick="link('/cardapio')">
                         <i data-feather='award'></i><span class="menu-title text-truncate" data-i18n="Cardápio">Cardápios</span></a>
                     </li>
+
+                    <li class="{{ $elementActive == 'piloto' ? 'active' : '' }} nav-item">
+                        <a class="d-flex align-items-center" href="/piloto" onclick="link('/piloto')">
+                        <i data-feather='server'></i><span class="menu-title text-truncate" data-i18n="piloto">Tabela piloto</span></a>
+                    </li>
                 <?php } if(Auth::user()->use_perfil == '12'){ ?>
 
   
