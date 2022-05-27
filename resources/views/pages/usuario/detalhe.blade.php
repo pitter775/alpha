@@ -83,6 +83,12 @@
                                     <i data-feather='activity'></i><span class="d-none d-sm-block">Controle</span>
                                 </a>
                             </li>
+                            <li class="nav-item">
+                                <a class="nav-link d-flex align-items-center" onclick="addCalendar()" id="observacao-tab" data-toggle="tab"
+                                    href="#observacao" aria-controls="observacao" role="tab" aria-selected="false">
+                                    <i data-feather='message-square'></i><span class="d-none d-sm-block">Observações</span>
+                                </a>
+                            </li>
                         </ul>
                     </div>
                     <!-- User Sidebar -->
@@ -167,6 +173,19 @@
                                                 @include('pages.usuario.controle')
                                             </form>
                                             @include('pages.usuario.controle-prof-list')
+
+
+                                        </div>
+                                        <div class="tab-pane fade " id="observacao" aria-labelledby="observacao-tab"
+                                            role="tabpanel">
+                                            <form class="form-observacao">
+                                                @csrf
+                                                <input type="hidden" value="{{ $user->id ?? '' }}" name="id_geral"
+                                                    id="id_geral" />
+                                                @include('pages.usuario.observacao')
+                                            </form>
+
+                                            @include('pages.usuario.observacao-list')
 
 
                                         </div>
@@ -261,6 +280,7 @@
     <script src="../../../app-assets/vendors/js/tables/datatable/buttons.html5.min.js"></script>
     <script src="../../../app-assets/vendors/js/tables/datatable/buttons.print.min.js"></script>
     <script src="../../../app-assets/vendors/js/tables/datatable/dataTables.rowGroup.min.js"></script>
+    <script src="../../../app-assets/vendors/js/tables/datatable/datetime.js"></script>
 
     <script src="../../../app-assets/vendors/js/forms/validation/jquery.validate.min.js"></script>
     <script src="../../../app-assets/js/scripts/forms/form-select2.js"></script>

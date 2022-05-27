@@ -60,6 +60,7 @@ Route::group(['middleware' => 'acesso'], function () {
     Route::get('/usuario/detalhes/{id}', [App\Http\Controllers\UsuarioController::class, 'detalhe']);
     Route::get('/usuario/getuser/{id}', [App\Http\Controllers\UsuarioController::class, 'getuser']);
     Route::get('/usuario/seriesProfAll/{id}', [App\Http\Controllers\UsuarioController::class, 'seriesProfAll']);
+    Route::get('/usuario/observacoes/{id}', [App\Http\Controllers\UsuarioController::class, 'observacoes']);
 
     Route::get('/serie', [App\Http\Controllers\SerieController::class, 'index']);
     Route::get('/serie/all', [App\Http\Controllers\SerieController::class, 'all']);

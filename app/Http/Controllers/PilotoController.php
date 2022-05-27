@@ -29,8 +29,9 @@ class PilotoController extends Controller
         $series =  Schema::getColumnListing('series');
         $socials =  Schema::getColumnListing('socials');
         $users =  Schema::getColumnListing('users');
+        $enderecos =  Schema::getColumnListing('enderecos');
 
-        return view('pages.piloto.index', compact('matriculas','alimentares','presencas', 'professores', 'responsaveis', 'saude_users', 'series', 'socials', 'users'));
+        return view('pages.piloto.index', compact('matriculas','alimentares','presencas', 'professores', 'responsaveis', 'saude_users', 'series', 'socials', 'users', 'enderecos'));
     }
     public function tabela(Request $request)
     {
@@ -85,6 +86,12 @@ class PilotoController extends Controller
                 array_push($colunas, $a); 
             }     
         }
+        if(isset($request->enderecos)){
+            array_push($tabelas, "enderecos");       
+            foreach ($request->enderecos as  $a){
+                array_push($colunas, $a); 
+            }     
+        }
 
         $tabArray = $this->filtros($tabelas, $colunas);
 
@@ -120,6 +127,9 @@ class PilotoController extends Controller
             }
             if($tab == 'socials'){
                 $join .= ' LEFT JOIN socials ON socials.id = u.use_social_id';
+            }
+            if($tab == 'enderecos'){
+                $join .= ' LEFT JOIN enderecos ON enderecos.end_users_id = u.id';
             }
         }      
 

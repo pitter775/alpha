@@ -65,6 +65,16 @@ class UsuarioController extends Controller
 
         return json_encode($users);
     }
+    public function observacoes($id)
+    {
+        $users  = DB::table('observacaos AS u')
+        ->select('*', 'u.id AS id', (DB::raw("(SELECT users.name FROM users WHERE u.obs_users_id = users.id) as criador")), 
+                                    (DB::raw("(SELECT users.name FROM users WHERE u.obs_aluno_id = users.id) as aluno")))
+        ->where('u.obs_aluno_id', $id)
+        ->get();
+
+        return json_encode($users);
+    }
     public function detalhe($id)
     {
         $user  = DB::table('users AS u')

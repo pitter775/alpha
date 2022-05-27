@@ -49,11 +49,10 @@
             </div>
         </div>
         <div class="divperfilOutro row"></div>
+        <div class="col-12 d-flex flex-sm-row flex-column mt-2">
+            @if (Auth::user()->use_perfil !== 12) <button type="submit" class="btn btn-primary mb-1 mb-sm-0 mr-0 mr-sm-1">Salvar Dadoss</button> @endif
+            <input type="hidden" value="controle-aluno" id="salvarDados-cont" name="salvarDados">
+        </div>
     </div>
 
-
-    <div class="col-12 d-flex flex-sm-row flex-column mt-2">
-        @if (Auth::user()->use_perfil !== 12) <button type="submit" class="btn btn-primary mb-1 mb-sm-0 mr-0 mr-sm-1">Salvar Dados</button> @endif
-        <input type="hidden" value="controle-aluno" id="salvarDados-cont" name="salvarDados">
-    </div>
 </div>

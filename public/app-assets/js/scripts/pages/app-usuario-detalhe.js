@@ -18,15 +18,21 @@ $(function() {
     var formSaude = $('.form-saude'); //formulario
     var formAlimento = $('.form-alimentares'); //formulario
     var formControle = $('.form-controle'); //formulario
+    var formObservacao = $('.form-observacao'); //formulario
     var iduser = $('#iduser').val();
     var perfiluser = $('#perfiluser').val();
     var tableProf = false;
+    var tableObservacao = false;
 
     console.log(perfiluser);
 
     var dtProfTable = $('.prof-list-table');
+    var dtObservacaoTable = $('.observacao-list-table');
+
     divUser();
     dataprof();
+    console.log('dataob');
+    dataobservacao();
 
     $('.divperfilAluno').hide();
     $('.divperfilProfessor').hide();
@@ -46,7 +52,6 @@ $(function() {
         $('.lisaud').hide();
         $('.lialimen').hide();
     }
-
     if ($('#hempresa').val() == '') {
         $('#empresa').val(0);
         $('#empresa').trigger('change');
@@ -76,7 +81,6 @@ $(function() {
             reader.readAsDataURL(files[0]);
         });
     }
-
     $('#fullname').on('keyup', function() {
         $('.namefull').text($(this).val());
     });
@@ -478,7 +482,59 @@ $(function() {
                     success: function(data) {
                         if (data['gravados'] == 'tudo ok') {
                             //mensagem
-                            toastr['success']('👋 Dados alimentares alterada.', 'Sucesso!', {
+                            toastr['success']('👋 Dados de controle alterado.', 'Sucesso!', {
+                                closeButton: true,
+                                tapToDismiss: true,
+                                rtl: isRtl
+                            });
+                        }
+                        var divcarduser = $('#divcarduser');
+                        divcarduser.animate({
+                            opacity: 0,
+                            marginTop: "100px"
+                        }, 500, "easeInQuart", function() {
+                            divUser();
+                            dataprof();
+                            divcarduser.animate({
+                                opacity: 1,
+                                marginTop: "0"
+                            }, 500, "easeOutQuart", function() {
+                                //historyList();
+                            });
+                        });
+                    }
+                });
+            }
+        });
+    }
+    // Form Observacao
+    if (formObservacao.length) {
+        formObservacao.validate({
+            errorClass: 'error',
+            rules: {
+                //   'end_rua': { required: true },
+                //   'end_numero': { required: true },
+                //   'end_cep': { required: true }
+            }
+        });
+
+        formObservacao.on('submit', function(e) {
+            e.preventDefault();
+            var isValid = formObservacao.valid();
+
+            if (isValid) {
+                let serealize = formObservacao.serializeArray();
+
+                console.log(serealize);
+
+                $.ajax({
+                    type: "POST",
+                    url: '/usuario/cadastro',
+                    data: serealize,
+                    success: function(data) {
+                        if (data['gravados'] == 'tudo ok') {
+                            //mensagem
+                            toastr['success']('👋 Dados de Observacao alterado.', 'Sucesso!', {
                                 closeButton: true,
                                 tapToDismiss: true,
                                 rtl: isRtl
@@ -591,6 +647,90 @@ $(function() {
             $('div.head-label').html('<h6 class="mb-0">Todos os Usuários</h6>');
         }
         tableProf = groupingTable;
+    }
+    // Datatable - observacao
+    function dataobservacao() {
+        if (tableObservacao) {
+            tableObservacao.destroy();
+        }
+        if (dtObservacaoTable.length) {
+            var groupingTable = dtObservacaoTable.DataTable({
+                retrieve: true,
+                ajax: { url: "/usuario/observacoes/" + iduser, dataSrc: "" },
+                columns: [
+
+                    { data: 'id' },
+                    { data: 'obs_titulo' },
+                    { data: 'obs_texto' },
+                    { data: 'obs_users_id' },
+                    { data: 'obs_aluno_id' },
+                    { data: 'created_at' },
+                    { data: 'updated_at' },
+                    { data: 'criador' },
+                    { data: 'aluno' }
+
+                ],
+                columnDefs: [
+                    // {
+                    //     "targets": [1],
+                    //     "visible": false,
+                    //     "searchable": false
+                    // },
+                    {
+                        // para responsividade
+                        className: 'control',
+                        orderable: false,
+                        responsivePriority: 2,
+                        targets: 0
+                    },
+                    {
+                        // Actions
+                        targets: 0,
+                        title: 'Ação',
+                        orderable: false,
+                        render: function(data, type, full, meta) {
+                            var $id = full['id'];
+                            var $nome = full['name'];
+                            return (
+                                '<div class="btn-group">' +
+                                '<a class="btn btn-sm dropdown-toggle hide-arrow" data-toggle="dropdown">' +
+                                feather.icons['more-vertical'].toSvg({ class: 'font-small-4' }) +
+                                '</a>' +
+                                '<div class="dropdown-menu dropdown-menu-right">' +
+                                '<a href="javascript:;" class="dropdown-item delete-record" data-nome="' + $nome + '" data-id="' + $id + '"  id="deletar_td">' + feather.icons['trash-2'].toSvg({ class: 'font-small-4 mr-50' }) + 'Deletar</a></div>' +
+                                '</div>' +
+                                '</div>'
+                            );
+                        }
+                    }
+                ],
+                order: [
+                    [1, 'asc']
+                ],
+                dom: '<"d-flex justify-content-between align-items-center mx-0">',
+                displayLength: 10,
+                lengthMenu: [10, 25, 50, 75, 100],
+                language: {
+                    "url": "/app-assets/pt_br.json",
+                    paginate: {
+                        // remove previous & next text da pagina
+                        previous: '&nbsp;',
+                        next: '&nbsp;'
+                    }
+                },
+
+                language: {
+                    "url": "/app-assets/pt_br.json",
+                    paginate: {
+                        // remove previous & next text from pagination
+                        previous: '&nbsp;',
+                        next: '&nbsp;'
+                    }
+                },
+            });
+            $('div.head-label').html('<h6 class="mb-0">Todos os Usuários</h6>');
+        }
+        tableObservacao = groupingTable;
     }
 
 });

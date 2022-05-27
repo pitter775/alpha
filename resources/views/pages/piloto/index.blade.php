@@ -111,6 +111,16 @@
                                         </optgroup>                                    
                                     </select>
                                 </div>
+                                <div class="col-md-4 mb-1">
+                                    <label>Endereço</label>
+                                    <select class="select2 form-control" name="enderecos[]" id="enderecos" multiple>
+                                        <optgroup label="Todas as colunas da tabela">
+                                            @foreach($enderecos as $key => $value)
+                                                <option value="{{ $value }}" >{{ $value }}</option>
+                                            @endforeach
+                                        </optgroup>                                    
+                                    </select>
+                                </div>
                                 <div class="col-md-12 mb-1" ><tr></tr></div>
                                 <div class="col-md-12 mb-1" >
                                     <button type="submit" class="btn btn-primary mb-1 mb-sm-0 mr-0 mr-sm-1">Criar tabela com campos selecionados</button>                        
