@@ -159,6 +159,59 @@ $(function() {
 
 
     });
+    $(document).on('click', '#deletar_td_observacao', function() {
+        var t = dtObservacaoTable.DataTable();
+        var row = dtObservacaoTable.DataTable().row($(this).parents('tr')).node();
+        var id = $(this).data('id');
+        console.log($(this));
+        //mensagem de confirmar 
+        Swal.fire({
+            title: 'Remover Observações',
+            text: $(this).data('titulo') + '?',
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonText: 'Sim, pode deletar!',
+            customClass: {
+                confirmButton: 'btn btn-primary',
+                cancelButton: 'btn btn-outline-danger ml-1'
+            },
+            buttonsStyling: false
+        }).then(function(result) {
+            if (result.value) {
+                $.get('/usuario/observacao/delete/' + id, function(retorno) {
+                    if (retorno == 'Erro') {
+                        //mensagem
+                        toastr['danger']('👋 Arquivo comprometido, não pode excluir.', 'Erro!', {
+                            closeButton: true,
+                            tapToDismiss: false,
+                            rtl: isRtl
+                        });
+                    } else {
+                        //animação de saida
+                        $(row).css('background-color', '#fe7474');
+                        $(row).css('color', '#fff');
+                        $(row).animate({
+                            opacity: 0,
+                            left: "0",
+                            backgroundColor: '#c74747'
+                        }, 1000, "linear", function() {
+                            var linha = $(this).closest('tr');
+                            t.row(linha).remove().draw()
+                        });
+                        // mensagem info
+                        toastr['success']('👋 Arquivo Removido.', 'Sucesso!', {
+                            closeButton: true,
+                            tapToDismiss: false,
+                            rtl: isRtl
+                        });
+
+                    }
+                });
+            }
+        });
+
+
+    });
 
     // Form Conta
     if (formConta.length) {
@@ -551,7 +604,7 @@ $(function() {
                                 opacity: 1,
                                 marginTop: "0"
                             }, 500, "easeOutQuart", function() {
-                                //historyList();
+                                dataobservacao();
                             });
                         });
                     }
@@ -690,14 +743,14 @@ $(function() {
                         orderable: false,
                         render: function(data, type, full, meta) {
                             var $id = full['id'];
-                            var $nome = full['name'];
+                            var $nome = full['obs_titulo'];
                             return (
                                 '<div class="btn-group">' +
                                 '<a class="btn btn-sm dropdown-toggle hide-arrow" data-toggle="dropdown">' +
                                 feather.icons['more-vertical'].toSvg({ class: 'font-small-4' }) +
                                 '</a>' +
                                 '<div class="dropdown-menu dropdown-menu-right">' +
-                                '<a href="javascript:;" class="dropdown-item delete-record" data-nome="' + $nome + '" data-id="' + $id + '"  id="deletar_td">' + feather.icons['trash-2'].toSvg({ class: 'font-small-4 mr-50' }) + 'Deletar</a></div>' +
+                                '<a href="javascript:;" class="dropdown-item delete-record" data-titulo="' + $nome + '" data-id="' + $id + '"  id="deletar_td_observacao">' + feather.icons['trash-2'].toSvg({ class: 'font-small-4 mr-50' }) + 'Deletar</a></div>' +
                                 '</div>' +
                                 '</div>'
                             );

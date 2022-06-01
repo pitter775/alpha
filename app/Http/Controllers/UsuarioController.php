@@ -13,9 +13,11 @@ use App\Models\Serie;
 use App\Models\Presenca;
 use App\Models\Saude_user;
 use App\Models\Habitos_alimentare;
+use App\Models\Observacao;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Auth;
 use PDOException;
 use Dirape\Token\Token;
 
@@ -375,6 +377,16 @@ class UsuarioController extends Controller
                 $dados_prof->prof_escolas_id = 1; 
                 $dados_prof->save();
             } 
+            if ($bt_salvar == 'observacao') {
+                $mensagem['observacao'] = 'entrou';
+                $dados_objservacao = new Observacao();      
+                $dados_objservacao->obs_titulo = $request->input('obs_titulo');
+                $dados_objservacao->obs_texto = $request->input('obs_texto'); 
+                $dados_objservacao->obs_users_id = Auth::user()->id; 
+                $dados_objservacao->obs_aluno_id = $id_geral; 
+                $dados_objservacao->save();    
+                $mensagem['observacao'] = 'ok';            
+            } 
 
         }
         
@@ -501,6 +513,20 @@ class UsuarioController extends Controller
     public function deleteProf($id)
     {
         $deletar = Professore::find($id);
+        if (isset($deletar)) {
+            try {
+                $deletar->delete();
+                return 'Ok';
+            } catch (PDOException $e) {
+                if (isset($e->errorInfo[1]) && $e->errorInfo[1] == '1451') {
+                    return 'Erro';
+                }
+            }
+        }
+    }
+    public function deleteObservacao($id)
+    {
+        $deletar = Observacao::find($id);
         if (isset($deletar)) {
             try {
                 $deletar->delete();

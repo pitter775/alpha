@@ -20,8 +20,8 @@
    </div>
    <div class="col-md-12">
       <div class="form-group">
-         <label for="exampleFormControlTextarea1">Observação</label>
-         <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" placeholder="Campo para observação do aluno"></textarea>
+         <label for="obs_texto">Observação</label>
+         <textarea class="form-control" id="obs_texto" name="obs_texto" rows="3" placeholder="Campo para observação do aluno"></textarea>
      </div>
    </div>
    
