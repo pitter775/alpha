@@ -2,8 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\cardapio;
-use App\Models\Presenca;
+use App\Models\Cardapio;
 use App\Models\Serie;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
