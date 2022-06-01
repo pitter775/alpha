@@ -6,14 +6,14 @@
            <thead class="thead-light" style="width: 100%">
                <tr>
                    <th style="width: 20px"></th>
-                   <th>Prof </th>
-                   <th>Prof </th>
-                   <th>Prof </th>
-                   <th>Prof </th>
-                   <th>Prof </th>
-                   <th>Prof </th>
-                   <th>Prof </th>
-                   <th>Prof </th>
+                   <th>Titulo </th>
+                   <th>Descrição</th>
+                   <th>sai</th>
+                   <th>sai</th>
+                   <th>Data</th>
+                   <th>sai</th>
+                   <th>Criador </th>
+                   <th>Referente </th>
 
                </tr>
            </thead>

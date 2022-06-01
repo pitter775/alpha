@@ -723,12 +723,21 @@ $(function() {
                     { data: 'aluno' }
 
                 ],
-                columnDefs: [
-                    // {
-                    //     "targets": [1],
-                    //     "visible": false,
-                    //     "searchable": false
-                    // },
+                columnDefs: [{
+                        "targets": [3],
+                        "visible": false,
+                        "searchable": false
+                    },
+                    {
+                        "targets": [4],
+                        "visible": false,
+                        "searchable": false
+                    },
+                    {
+                        "targets": [6],
+                        "visible": false,
+                        "searchable": false
+                    },
                     {
                         // para responsividade
                         className: 'control',
