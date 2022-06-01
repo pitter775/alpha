@@ -96,9 +96,10 @@ $(function() {
                         render: function(data, type, full, meta) {
                             // console.log(full);
                             var id = full['id'];
+                            var nome = full['car_cardapio'];
 
                             return (
-                                '<a href="javascript:;" class="item-edit delete-record" id="deletar_td"  data-id="' + id + '" style="color: #f54b20 !important">' +
+                                '<a href="javascript:;" class="item-edit delete-record" id="deletar_td" data-nome="' + nome + '"  data-id="' + id + '" style="color: #f54b20 !important">' +
                                 feather.icons['x-circle'].toSvg({ class: 'font-small-4' }) +
                                 '</a>'
                             );
@@ -275,7 +276,7 @@ $(function() {
         //mensagem de confirmar 
         Swal.fire({
             title: 'Remover Cardápio',
-            text: $(this).data('name') + '?',
+            text: $(this).data('nome') + '?',
             icon: 'warning',
             showCancelButton: true,
             confirmButtonText: 'Sim, pode deletar!',
