@@ -29,7 +29,7 @@ class SerieController extends Controller
     {
         $idserie = $id;
         $series  = DB::table('users AS u')
-            ->select('*', 'u.id AS id', 'u.name as name',(DB::raw("(SELECT p.pres_tipo FROM presencas as p  WHERE u.id = p.users_id) AS presenca")))
+            ->select('*', 'u.id AS id', 'u.name as name')
             ->leftjoin('matriculas', 'matriculas.mat_users_id', 'u.id')
             ->leftjoin('series', 'series.id', 'matriculas.mat_series_id')
             ->where('series.id', $id)
