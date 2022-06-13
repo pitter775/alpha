@@ -41,7 +41,8 @@
                             "display": "background",
                             "color": "#a6ff94"
                             },
-                        @else
+                        @endif
+                        @if ($value->pres_tipo == 2)
                             {
                             "title": "",
                             "start": "{{ $value->pres_datanaw }}",

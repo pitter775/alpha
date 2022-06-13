@@ -24,7 +24,7 @@ class Acesso
         }
         if(Auth::user()->use_perfil == '12'){ 
             $urls = [
-                'presenca/cadastro',  'serie/chamada/{id}'       
+                'presenca/cadastro',  'serie/chamada/{id}' , 'presenca/lista',    
             ];
         }
 

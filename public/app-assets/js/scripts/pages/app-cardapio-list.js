@@ -2,7 +2,7 @@
     File Name: app-cardapio.js
     Description: criação edição dos usuários
     --------------------------------------------------------------------------------------
-    autor: Pitter R. Bico
+    autor:Bico Pitter R. 
     contato: pitter775@gmail.com / 11-9 4950 6267
 ==========================================================================================*/
 $(function() {
@@ -18,6 +18,7 @@ $(function() {
 
 
     var data = new Date();
+
     var dataFormatada = data.toLocaleDateString('pt-BR', { timeZone: 'UTC' });
     $('#alteracao').val(dataFormatada);
     $('#alteracao').trigger('change');

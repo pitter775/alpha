@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Serie;
-use App\Models\Presenca;
+
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use PDOException;
@@ -24,44 +24,24 @@ class SerieController extends Controller
         $serie = Serie::all();
         return json_encode($serie);
     }
+    // trazer na chamada alem do id a data para poder pegar na tabela de presença mais um campo (0,1 de falta ou pesença) 
     public function chamada($id)
     {
+        $idserie = $id;
         $series  = DB::table('users AS u')
-            ->select('*', 'u.id AS id', 'u.name as name')
+            ->select('*', 'u.id AS id', 'u.name as name',(DB::raw("(SELECT p.pres_tipo FROM presencas as p  WHERE u.id = p.users_id) AS presenca")))
             ->leftjoin('matriculas', 'matriculas.mat_users_id', 'u.id')
             ->leftjoin('series', 'series.id', 'matriculas.mat_series_id')
             ->where('series.id', $id)
             ->get();        
+
+           // dd($series);
+
+            // (DB::raw("(SELECT u1.name FROM users u1 WHERE u1.id = friends.id_friend) AS name")))
       
 
-        return view('pages.serie.chamada', compact('series'));
-    }
-    public function cadastro_presenca(Request $request)
-    {
-        $datanaw = $this->dateEmMysql($request->input('datanaw')); 
-        $iduser = $request->input('iduser');
-        $tipo = $request->input('tipo');
-
-        $mensagem['cadastro'] = 'cadastrando';
-
-        $tem = Presenca::where([['pres_datanaw', $datanaw], ['users_id',  $iduser]])->get();
-        if (count($tem) == 0) {
-            $dados = new Presenca();
-            $mensagem['cadastro-1'] = 'novo cadastro';
-        }else{
-            $dados = Presenca::where([['pres_datanaw', $datanaw], ['users_id', $iduser]])->first();
-            $mensagem['cadastro-1'] = 'editando';
-        }
-        $dados->users_id = $iduser;
-        $dados->pres_tipo = $tipo;
-        $dados->users_id = $iduser;
-        $dados->pres_datanaw = $datanaw;
-        $dados->save();
-
-
-        return $mensagem;
-        
-    }
+        return view('pages.serie.chamada', compact('series', 'idserie'));
+    }    
     public function cadastro(Request $request)
     {
         $id_geral = $request->input('id_geral');
