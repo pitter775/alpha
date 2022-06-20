@@ -191,11 +191,13 @@ $(function() {
         let dt_inicial = $('#dt_inicial').val();
         let dt_final = $('#dt_final').val();
         totais(dt_inicial, dt_final);
+        series(dt_inicial, dt_final);
     });
     $(document).on('change', '#dt_inicial', function() {
         let dt_inicial = $('#dt_inicial').val();
         let dt_final = $('#dt_final').val();
         totais(dt_inicial, dt_final);
+        series(dt_inicial, dt_final);
     });
     $(document).on('click', '.create-new', function() {
         $("#senha").prop('required', true);
