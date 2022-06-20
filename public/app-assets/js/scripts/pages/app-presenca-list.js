@@ -76,8 +76,8 @@ $(function() {
                             var nome = full['car_cardapio'];
 
                             return (
-                                '<a href="javascript:;" class="item-edit delete-record" id="deletar_td" data-nome="' + nome + '"  data-id="' + id + '" style="color: #f54b20 !important">' +
-                                feather.icons['x-circle'].toSvg({ class: 'font-small-4' }) +
+                                '<a href="javascript:;" class="item-edit delete-record" id="deletar_td" data-nome="' + nome + '"  data-id="' + id + '" style="color: #154778 !important">' +
+                                feather.icons['eye'].toSvg({ class: 'font-small-4' }) +
                                 '</a>'
                             );
                         }
@@ -216,58 +216,58 @@ $(function() {
         $('#ser_nome').val($(this).data('ser_nome'));
         row_edit = dtserieTable.DataTable().row($(this).parents('tr')).node();
     });
-    $(document).on('click', '#deletar_td', function() {
-        var t = dtserieTable.DataTable();
-        var row = dtserieTable.DataTable().row($(this).parents('tr')).node();
-        var id = $(this).data('id');
-        //mensagem de confirmar 
-        Swal.fire({
-            title: 'Remover Cardápio',
-            text: $(this).data('nome') + '?',
-            icon: 'warning',
-            showCancelButton: true,
-            confirmButtonText: 'Sim, pode deletar!',
-            customClass: {
-                confirmButton: 'btn btn-primary',
-                cancelButton: 'btn btn-outline-danger ml-1'
-            },
-            buttonsStyling: false
-        }).then(function(result) {
-            if (result.value) {
-                $.get('/cardapio/delete/' + id, function(retorno) {
-                    if (retorno == 'Erro') {
-                        //mensagem
-                        toastr['danger']('👋 Arquivo comprometido, não pode excluir.', 'Erro!', {
-                            closeButton: true,
-                            tapToDismiss: false,
-                            rtl: isRtl
-                        });
-                    } else {
-                        //animação de saida
-                        $(row).css('background-color', '#fe7474');
-                        $(row).css('color', '#fff');
-                        $(row).animate({
-                            opacity: 0,
-                            left: "0",
-                            backgroundColor: '#c74747'
-                        }, 1000, "linear", function() {
-                            var linha = $(this).closest('tr');
-                            t.row(linha).remove().draw()
-                        });
-                        // mensagem info
-                        toastr['success']('👋 Arquivo Removido.', 'Sucesso!', {
-                            closeButton: true,
-                            tapToDismiss: false,
-                            rtl: isRtl
-                        });
+    // $(document).on('click', '#deletar_td', function() {
+    //     var t = dtserieTable.DataTable();
+    //     var row = dtserieTable.DataTable().row($(this).parents('tr')).node();
+    //     var id = $(this).data('id');
+    //     //mensagem de confirmar 
+    //     Swal.fire({
+    //         title: 'Remover Cardápio',
+    //         text: $(this).data('nome') + '?',
+    //         icon: 'warning',
+    //         showCancelButton: true,
+    //         confirmButtonText: 'Sim, pode deletar!',
+    //         customClass: {
+    //             confirmButton: 'btn btn-primary',
+    //             cancelButton: 'btn btn-outline-danger ml-1'
+    //         },
+    //         buttonsStyling: false
+    //     }).then(function(result) {
+    //         if (result.value) {
+    //             $.get('/cardapio/delete/' + id, function(retorno) {
+    //                 if (retorno == 'Erro') {
+    //                     //mensagem
+    //                     toastr['danger']('👋 Arquivo comprometido, não pode excluir.', 'Erro!', {
+    //                         closeButton: true,
+    //                         tapToDismiss: false,
+    //                         rtl: isRtl
+    //                     });
+    //                 } else {
+    //                     //animação de saida
+    //                     $(row).css('background-color', '#fe7474');
+    //                     $(row).css('color', '#fff');
+    //                     $(row).animate({
+    //                         opacity: 0,
+    //                         left: "0",
+    //                         backgroundColor: '#c74747'
+    //                     }, 1000, "linear", function() {
+    //                         var linha = $(this).closest('tr');
+    //                         t.row(linha).remove().draw()
+    //                     });
+    //                     // mensagem info
+    //                     toastr['success']('👋 Arquivo Removido.', 'Sucesso!', {
+    //                         closeButton: true,
+    //                         tapToDismiss: false,
+    //                         rtl: isRtl
+    //                     });
 
-                    }
-                });
-            }
-        });
+    //                 }
+    //             });
+    //         }
+    //     });
 
 
-    });
+    // });
 
     function totais(dt_inicial, dt_final) {
         $.ajax({
