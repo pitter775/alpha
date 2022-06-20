@@ -74,6 +74,7 @@ Route::group(['middleware' => 'acesso'], function () {
     Route::get('/presenca/lista', [App\Http\Controllers\PresencaController::class, 'listaAlunos']);
     Route::post('/presenca/totais', [App\Http\Controllers\PresencaController::class, 'totais']);
     Route::get('/presenca/series', [App\Http\Controllers\PresencaController::class, 'series']);
+    Route::get('/presenca/seriesid', [App\Http\Controllers\PresencaController::class, 'seriesid']);
 
 
     Route::get('/cardapio', [App\Http\Controllers\CardapioController::class, 'index']);

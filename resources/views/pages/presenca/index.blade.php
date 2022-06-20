@@ -101,6 +101,7 @@
                                                 <tr>
                                                     <th>id</th>
                                                     <th>serie</th>
+                                                    <th>id serie</th>
                                                     <th>professora</th>
                                                     <th>falta</th>
                                                     <th>presença</th>

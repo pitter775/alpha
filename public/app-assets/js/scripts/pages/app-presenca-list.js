@@ -25,10 +25,10 @@ $(function() {
     totais(dt_inicial, dt_final);
     series(dt_inicial, dt_final);
 
-    // listCardapio();
+    // listSeriesTab();
 
 
-    function listCardapio(datajson) {
+    function listSeriesTab(datajson) {
         //datajson = JSON.stringify(datajson);
 
         if (tableCardapio) {
@@ -47,6 +47,7 @@ $(function() {
                     // columns according to JSON
                     { data: 'id' },
                     { data: 'serie' },
+                    { data: 'idserie' },
                     { data: 'professora' },
                     { data: 'falta' },
                     { data: 'presente' },
@@ -59,24 +60,29 @@ $(function() {
                         "searchable": false
                     },
                     {
+                        "targets": [2],
+                        "visible": false,
+                        "searchable": false
+                    },
+                    {
                         // For Responsive
                         className: 'control',
                         orderable: false,
                         responsivePriority: 2,
-                        targets: 6
+                        targets: 7
                     },
                     {
                         // Actions
-                        targets: 6,
+                        targets: 7,
                         title: 'Ação',
                         orderable: false,
                         render: function(data, type, full, meta) {
                             // console.log(full);
                             var id = full['id'];
-                            var nome = full['car_cardapio'];
+                            var idserie = full['idserie'];
 
                             return (
-                                '<a href="javascript:;" class="item-edit delete-record" id="deletar_td" data-nome="' + nome + '"  data-id="' + id + '" style="color: #154778 !important">' +
+                                '<a href="javascript:;" class="item-edit delete-record" id="open_serie" data-idserie="' + idserie + '"  data-id="' + id + '" style="color: #154778 !important">' +
                                 feather.icons['eye'].toSvg({ class: 'font-small-4' }) +
                                 '</a>'
                             );
@@ -158,7 +164,7 @@ $(function() {
         dtserieTable.DataTable().row($('.alteraressatr')).data({
             "id": serealize[1]['value'],
             "ser_escolas_id": serealize[2]['value'],
-            "ser_nome": serealize[3]['value'],
+            "ser_apelido": serealize[3]['value'],
             "ser_apelido": serealize[4]['value'],
             "ser_periodo": serealize[5]['value'],
             "": ""
@@ -199,12 +205,25 @@ $(function() {
         totais(dt_inicial, dt_final);
         series(dt_inicial, dt_final);
     });
-    $(document).on('click', '.create-new', function() {
-        $("#senha").prop('required', true);
-        $(".ediadi").text('Adicionar');
-        $("#senhalabel").text('Senha');
-        $('#id_geral').val('');
-        $('#name').val('');
+    $(document).on('click', '#open_serie', function() {
+        let idseries = $(this).data('idserie');
+        console.log(idseries);
+        $.ajax({
+            type: "GET",
+            url: '/presenca/seriesid',
+            data: {
+                "_token": $('meta[name="csrf-token"]').attr('content'),
+                'dt_final': dt_final,
+                'dt_inicial': dt_inicial,
+                'idserie': idseries
+            },
+            success: function(data) {
+                console.log('listando...');
+                console.log(data);
+                //listSeriesTab(data);
+
+            }
+        });
     });
     $(document).on('click', '#editar_td', function() {
         $("#senha").prop('required', false);
@@ -215,61 +234,10 @@ $(function() {
         $('#ser_escolas_id').val($(this).data('ser_escolas_id'));
         $('#ser_apelido').val($(this).data('ser_apelido'));
         $('#ser_periodo').val($(this).data('ser_periodo'));
-        $('#ser_nome').val($(this).data('ser_nome'));
+        $('#ser_apelido').val($(this).data('ser_apelido'));
         row_edit = dtserieTable.DataTable().row($(this).parents('tr')).node();
     });
-    // $(document).on('click', '#deletar_td', function() {
-    //     var t = dtserieTable.DataTable();
-    //     var row = dtserieTable.DataTable().row($(this).parents('tr')).node();
-    //     var id = $(this).data('id');
-    //     //mensagem de confirmar 
-    //     Swal.fire({
-    //         title: 'Remover Cardápio',
-    //         text: $(this).data('nome') + '?',
-    //         icon: 'warning',
-    //         showCancelButton: true,
-    //         confirmButtonText: 'Sim, pode deletar!',
-    //         customClass: {
-    //             confirmButton: 'btn btn-primary',
-    //             cancelButton: 'btn btn-outline-danger ml-1'
-    //         },
-    //         buttonsStyling: false
-    //     }).then(function(result) {
-    //         if (result.value) {
-    //             $.get('/cardapio/delete/' + id, function(retorno) {
-    //                 if (retorno == 'Erro') {
-    //                     //mensagem
-    //                     toastr['danger']('👋 Arquivo comprometido, não pode excluir.', 'Erro!', {
-    //                         closeButton: true,
-    //                         tapToDismiss: false,
-    //                         rtl: isRtl
-    //                     });
-    //                 } else {
-    //                     //animação de saida
-    //                     $(row).css('background-color', '#fe7474');
-    //                     $(row).css('color', '#fff');
-    //                     $(row).animate({
-    //                         opacity: 0,
-    //                         left: "0",
-    //                         backgroundColor: '#c74747'
-    //                     }, 1000, "linear", function() {
-    //                         var linha = $(this).closest('tr');
-    //                         t.row(linha).remove().draw()
-    //                     });
-    //                     // mensagem info
-    //                     toastr['success']('👋 Arquivo Removido.', 'Sucesso!', {
-    //                         closeButton: true,
-    //                         tapToDismiss: false,
-    //                         rtl: isRtl
-    //                     });
 
-    //                 }
-    //             });
-    //         }
-    //     });
-
-
-    // });
 
     function totais(dt_inicial, dt_final) {
         $.ajax({
@@ -304,7 +272,7 @@ $(function() {
             success: function(data) {
                 console.log('listando...');
                 console.log(data);
-                listCardapio(data);
+                listSeriesTab(data);
 
             }
         });

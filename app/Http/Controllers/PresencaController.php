@@ -111,14 +111,29 @@ class PresencaController extends Controller
     public function series(Request $request){
 
         $colunas ='p.id as id, 
-        series.ser_nome as serie, 
+        series.ser_apelido as serie, 
+        p.pres_serie as idserie,
         up.name as professora, 
         COUNT(*) as total, 
         SUM(CASE WHEN p.pres_tipo =  1 THEN 1 ELSE 0 END) AS presente,
         SUM(CASE WHEN p.pres_tipo =  2 THEN 1 ELSE 0 END) AS falta';
-        $groupBy = 'GROUP BY series.ser_nome'; 
+        $groupBy = 'GROUP BY series.ser_apelido'; 
         $orderBy = ''; 
         $filtro = ''; 
+
+        $tabela = $this->filtros($request, $colunas, $groupBy, $orderBy, $filtro);  
+        return $tabela;
+    }
+    public function seriesid(Request $request){
+
+
+        $colunas ='p.id as id, 
+        series.ser_apelido as serie,
+        ua.name as aluno';
+        $groupBy = ''; 
+        $orderBy = ''; 
+        $filtro = 'p.pres_serie = ' . $request->idserie;
+
 
         $tabela = $this->filtros($request, $colunas, $groupBy, $orderBy, $filtro);  
         return $tabela;
