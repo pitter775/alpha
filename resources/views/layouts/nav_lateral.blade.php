@@ -48,18 +48,18 @@
                         <a class="d-flex align-items-center" href="/piloto" onclick="link('/piloto')">
                         <i data-feather='server'></i><span class="menu-title text-truncate" data-i18n="piloto">Tabela piloto</span></a>
                     </li>
-                <?php } if(Auth::user()->use_perfil == '12'){ ?>
-
-  
+                    <li class="{{ $elementActive == 'presenca' ? 'active' : '' }} nav-item">
+                        <a class="d-flex align-items-center" href="/presenca" onclick="link('/presenca')">
+                        <i data-feather='check-circle'></i><span class="menu-title text-truncate" data-i18n="piloto">Presença</span></a>
+                    </li>
+                <?php } if(Auth::user()->use_perfil == '12'){ ?>  
 
                     @foreach(Session::get('series') as $serie)
                         <li class="{{ $elementActive == $serie->ser_apelido.'' ? 'active' : '' }} nav-item">
                             <a class="d-flex align-items-center" href="/serie/chamada/{{$serie->id}}" onclick="link('/serie/chamada/{{$serie->id}}')">
                             <i data-feather='award'></i><span class="menu-title text-truncate" data-i18n="serie-{{$serie->ser_apelido}}">Série-{{$serie->ser_apelido}}</span></a>
                         </li>
-                    @endforeach
-
-                    
+                    @endforeach                    
 
                 <?php } ?>
 

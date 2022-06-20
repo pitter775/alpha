@@ -9,14 +9,14 @@ use Illuminate\Http\Request;
 
 class PresencaController extends Controller
 {
-    public function cadastro_presenca(Request $request)
+    public function index()
     {
-        $datanaw = $this->dateEmMysql($request->input('datanaw')); 
-
-        
+        // return view('pages.presenca.index', compact('professores', 'alunos'));
+        return view('pages.presenca.index');
+    }
+    public function cadastro_presenca(Request $request)
+    {       
         $car_data = $this->dateEmMysql($request->input('car_data'));
-
-
         $iduser = $request->input('iduser');
         $tipo = $request->input('tipo');
         $serie = $request->input('idserie');
@@ -37,37 +37,152 @@ class PresencaController extends Controller
         $dados->pres_serie = $serie;
         $dados->pres_datanaw = $car_data;
         $dados->save();
-
-
-        return $mensagem;
-        
+        return $mensagem;       
     }
 
     public function listaAlunos(Request $request){
 
         $idserie = $request->input('idserie');
         $data = $this->dateEmMysql($request->input('car_data'));
-
-        // DD( $data);
-
-         
-
-
         $series  = DB::table('users AS u')
         ->select('*', 'u.id AS id', 'u.name as name',(DB::raw("(SELECT p.pres_tipo FROM presencas as p  WHERE u.id = p.users_id AND p.pres_datanaw = '$data' ) AS presenca")))
         ->leftjoin('matriculas', 'matriculas.mat_users_id', 'u.id')
         ->leftjoin('series', 'series.id', 'matriculas.mat_series_id')
         ->where('series.id', $idserie)
-        ->get();        
+        ->get(); 
 
-        //  dd($series);
-
-        // (DB::raw("(SELECT u1.name FROM users u1 WHERE u1.id = friends.id_friend) AS name")))
-  
-
-    return view('pages.serie.listaChamada', compact('series'));
+        return view('pages.serie.listaChamada', compact('series'));
     }
- 
+
+    public function _totais(Request $request){
+
+        $colunas = 'p.id AS id, p.pres_datanaw, ua.name as aluno, up.name as professor';
+        $groupBy = ''; 
+        $orderBy = 'ORDER BY  p.pres_datanaw ASC, aluno ASC'; 
+        $filtro_ext = ''; 
+        $totais = $this->filtros($request, $colunas, $groupBy, $orderBy, $filtro_ext);  
+
+        return $totais;
+
+    }
+    public function totais(Request $request){
+
+        $colunas = 'COUNT(*) as total';
+        $colunas_alunos = 'p.users_id';
+
+        $groupBy = ''; 
+        $groupBy_alunos = 'GROUP BY p.users_id'; 
+
+        $orderBy = ''; 
+
+        $filtro_presente = 'p.pres_tipo = 1'; 
+        $filtro_falta = 'p.pres_tipo = 2'; 
+        $filtro_total = ''; 
+        $filtro_alunos = ''; 
+
+        $presentes = $this->filtros($request, $colunas, $groupBy, $orderBy, $filtro_presente);  
+        $faltas = $this->filtros($request, $colunas, $groupBy, $orderBy, $filtro_falta);  
+        $total = $this->filtros($request, $colunas, $groupBy, $orderBy, $filtro_total);  
+
+        $alunos = $this->filtros($request, $colunas_alunos, $groupBy_alunos, $orderBy, $filtro_alunos);  
+
+        $mensagem['presentes'] = $presentes;
+        $mensagem['faltas'] = $faltas;
+        $mensagem['total'] = $total;
+        $mensagem['alunos'] = count($alunos);      
+
+        return $mensagem;
+
+
+//         SELECT SUM(CASE 
+//              WHEN t.your_column IS NULL THEN 1
+//              ELSE 0
+//            END) AS numNull,
+//        SUM(CASE 
+//              WHEN t.your_column IS NOT NULL THEN 1
+//              ELSE 0
+//            END) AS numNotNull
+// COUNT(CASE WHEN p.pres_tipo =  1 then) presente';
+//   FROM YOUR_TABLE t
+
+
+    }
+
+    public function series(Request $request){
+
+        $colunas ='p.id as id, 
+        series.ser_nome as serie, 
+        up.name as professora, 
+        COUNT(*) as total, 
+        SUM(CASE WHEN p.pres_tipo =  1 THEN 1 ELSE 0 END) AS presente,
+        SUM(CASE WHEN p.pres_tipo =  2 THEN 1 ELSE 0 END) AS falta';
+        $groupBy = 'GROUP BY series.ser_nome'; 
+        $orderBy = ''; 
+        $filtro = ''; 
+
+        $tabela = $this->filtros($request, $colunas, $groupBy, $orderBy, $filtro);  
+        return $tabela;
+    }
+
+    public function filtros($request, $colunas, $groupBy, $orderBy = '', $filtro_ext = '')
+    {
+        
+        if($request->dt_inicial !== ''){
+            $dt_inicial = $this->dateEmMysql($request->dt_inicial);
+        }else{
+            $dt_inicial = '';
+        }
+        $dt_final = $this->dateEmMysql($request->dt_final);
+
+        $filtro = '';
+        $and = '';
+        $and_or = 'AND';
+
+        if ($dt_inicial != null) {
+            if ($filtro != null) {
+                $and = ' AND';
+            }
+            if ($filtro == null) {
+                $where = 'WHERE';
+            } else {
+                $where = '';
+            }
+            $filtro .= " $and $where p.pres_datanaw BETWEEN '$dt_inicial' AND '$dt_final'";
+        }else{
+            if ($filtro != null) {
+                $and = ' AND';
+            }
+            if ($filtro == null) {
+                $where = 'WHERE';
+            } else {
+                $where = '';
+            }
+            $filtro .= " $and $where p.pres_datanaw = '$dt_final'";
+        }
+        if ($filtro_ext != '') {
+            if ($filtro != null) {
+                $and = ' AND';
+            }
+            if ($filtro == null) {
+                $where = 'WHERE';
+            } else {
+                $where = '';
+            }
+            $filtro .= " $and $where $filtro_ext ";
+        }
+
+        $presenca = DB::select(DB::raw(
+            "SELECT $colunas
+             FROM presencas As p
+               LEFT JOIN users as ua ON ua.id = p.users_id
+               LEFT JOIN users as up ON up.id = p.pres_professor
+               LEFT JOIN series ON series.id = p.pres_serie
+               $filtro
+               $groupBy
+               $orderBy"
+        ));
+        return $presenca;
+    }
     
     public static function dateEmMysql($dateSql)
     {
