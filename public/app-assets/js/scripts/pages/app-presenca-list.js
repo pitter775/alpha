@@ -9,9 +9,14 @@ $(function() {
     'use strict';
     var password = true;
     var row_edit = '';
-    var dtcardapioTable = $('.serie-list-table'), //id da tabela q esta na div  
-        isRtl = $('html').attr('data-textdirection') === 'rtl';
-    var tableCardapio = false;
+    var dtseriesTable = $('.serie-list-table'); //id da tabela q esta na div  
+    var dtclasseTable = $('.classe-list-table');
+
+    var isRtl = $('html').attr('data-textdirection') === 'rtl';
+    var tableSeries = false;
+    var tableClasse = false;
+
+
 
 
 
@@ -20,8 +25,8 @@ $(function() {
     $('#dt_final').val(dataFormatada);
     $('#dt_final').trigger('change');
 
-    let dt_inicial = $('#dt_inicial').val();
-    let dt_final = $('#dt_final').val();
+    var dt_inicial = $('#dt_inicial').val();
+    var dt_final = $('#dt_final').val();
     totais(dt_inicial, dt_final);
     series(dt_inicial, dt_final);
 
@@ -31,13 +36,13 @@ $(function() {
     function listSeriesTab(datajson) {
         //datajson = JSON.stringify(datajson);
 
-        if (tableCardapio) {
-            tableCardapio.destroy();
+        if (tableSeries) {
+            tableSeries.destroy();
         }
         // Datatable
-        if (dtcardapioTable.length) {
+        if (dtseriesTable.length) {
 
-            var groupingTable = dtcardapioTable.DataTable({
+            var groupingTable = dtseriesTable.DataTable({
                 //busca uma rota 
                 // ajax: assetPath + 'data/cardapio-list.json', // JSON file to add data
                 retrieve: true,
@@ -152,7 +157,105 @@ $(function() {
             });
             $('div.head-label').html('<h6 class="mb-0">Listando todas as cardapios</h6>');
         }
-        tableCardapio = groupingTable;
+        tableSeries = groupingTable;
+    }
+
+    function listClasseTab(datajson) {
+        //datajson = JSON.stringify(datajson);
+
+        if (tableClasse) {
+            tableClasse.destroy();
+        }
+        // Datatable
+        if (dtclasseTable.length) {
+
+            var groupingTable = dtclasseTable.DataTable({
+                //busca uma rota 
+                // ajax: assetPath + 'data/cardapio-list.json', // JSON file to add data
+                retrieve: true,
+
+                data: datajson,
+                columns: [
+                    // columns according to JSON
+                    { data: 'id' },
+                    { data: 'serie' },
+                    { data: 'aluno' },
+                    { data: 'falta' },
+                    { data: 'presente' }
+                ],
+                columnDefs: [{
+                    "targets": [0],
+                    "visible": false,
+                    "searchable": false
+                }, {
+                    "targets": [1],
+                    "visible": false,
+                    "searchable": false
+                }],
+                order: [
+                    [2, 'desc']
+                ],
+                dom: '<"card-header border-bottom p-1"<"head-label"><"dt-action-buttons text-right"B>><"d-flex justify-content-between align-items-center mx-0 row"<"col-sm-12 col-md-6"l><"col-sm-12 col-md-6"f>>t<"d-flex justify-content-between mx-0 row"<"col-sm-12 col-md-6"i><"col-sm-12 col-md-6"p>>',
+                displayLength: 10,
+                lengthMenu: [10, 25, 50, 75, 100],
+                language: {
+                    paginate: {
+                        // remove previous & next text from pagination
+                        previous: '&nbsp;',
+                        next: '&nbsp;'
+                    }
+                },
+                // Buttons with Dropdown
+                buttons: [{
+                    extend: 'collection',
+                    className: 'btn btn-outline-secondary dropdown-toggle  waves-effect',
+                    text: feather.icons['share'].toSvg({ class: 'font-small-4 mr-50 ' }) + 'Export',
+                    buttons: [{
+                            extend: 'print',
+                            text: feather.icons['printer'].toSvg({ class: 'font-small-4 mr-50' }) + 'Print',
+                            className: 'dropdown-item',
+                            exportOptions: { columns: [0, 1, 2] }
+                        },
+                        {
+                            extend: 'csv',
+                            text: feather.icons['file-text'].toSvg({ class: 'font-small-4 mr-50' }) + 'Csv',
+                            className: 'dropdown-item',
+                            exportOptions: { columns: [0, 1, 2] }
+                        },
+                        {
+                            extend: 'excel',
+                            text: feather.icons['file'].toSvg({ class: 'font-small-4 mr-50' }) + 'Excel',
+                            className: 'dropdown-item',
+                            exportOptions: { columns: [0, 1, 2] }
+                        },
+                        {
+                            extend: 'copy',
+                            text: feather.icons['copy'].toSvg({ class: 'font-small-4 mr-50' }) + 'Copy',
+                            className: 'dropdown-item',
+                            exportOptions: { columns: [0, 1, 2] }
+                        }
+                    ],
+                    init: function(api, node, config) {
+                        $(node).removeClass('btn-secondary');
+                        $(node).parent().removeClass('btn-group');
+                        setTimeout(function() {
+                            $(node).closest('.dt-buttons').removeClass('btn-group').addClass('d-inline-flex');
+                        }, 50);
+                    }
+                }],
+
+                language: {
+                    "url": "/app-assets/pt_br.json",
+                    paginate: {
+                        // remove previous & next text from pagination
+                        previous: '&nbsp;',
+                        next: '&nbsp;'
+                    }
+                },
+            });
+            $('div.head-label').html('<h6 class="mb-0">Listando todas as cardapios</h6>');
+        }
+        tableClasse = groupingTable;
     }
 
 
@@ -194,17 +297,19 @@ $(function() {
 
 
     $(document).on('change', '#dt_final', function() {
-        let dt_inicial = $('#dt_inicial').val();
-        let dt_final = $('#dt_final').val();
+        dt_inicial = $('#dt_inicial').val();
+        dt_final = $('#dt_final').val();
         totais(dt_inicial, dt_final);
         series(dt_inicial, dt_final);
     });
     $(document).on('change', '#dt_inicial', function() {
-        let dt_inicial = $('#dt_inicial').val();
-        let dt_final = $('#dt_final').val();
+        dt_inicial = $('#dt_inicial').val();
+        dt_final = $('#dt_final').val();
         totais(dt_inicial, dt_final);
         series(dt_inicial, dt_final);
     });
+
+
     $(document).on('click', '#open_serie', function() {
         let idseries = $(this).data('idserie');
         console.log(idseries);
@@ -220,7 +325,7 @@ $(function() {
             success: function(data) {
                 console.log('listando...');
                 console.log(data);
-                //listSeriesTab(data);
+                listClasseTab(data);
 
             }
         });

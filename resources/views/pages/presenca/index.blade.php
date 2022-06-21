@@ -82,7 +82,7 @@
             </div>
 
             <div class="row">
-                <div class="content-body col-md-8">
+                <div class="content-body col-md-7">
                     <div class="content-wrapper" data-aos=fade-left data-aos-delay=0>
 
                         <div class="content-header row">
@@ -119,7 +119,7 @@
                     </div>
                     <!-- presencas list ends -->
                 </div>
-                <div class="content-body col-md-4">
+                <div class="content-body col-md-5">
                     <div class="content-wrapper" data-aos=fade-left data-aos-delay=0>
 
                         <div class="content-header row">
@@ -129,9 +129,23 @@
                             </h4>
                         </div>
                         <div class="content-body">
-                            <section class="app-cardapio-list">                
+                            <section class="app-classe-list">                
                                 <!-- list section start -->
-                                fazendo...
+                                <div class="card">
+                                    <div class=" " style="width: 100%;">
+                                        <table class="classe-list-table table table-sm table-responsive-lg">
+                                            <thead class="thead-light">
+                                                <tr>
+                                                    <th>id</th>
+                                                    <th>serie</th>
+                                                    <th>Aluno</th>
+                                                    <th>presença</th>
+                                                    <th>falta</th>
+                                                </tr>
+                                            </thead>
+                                        </table>
+                                    </div>
+                                </div>
                                 <!-- list section end -->
                             </section>
                             <!-- cardapios list ends -->
