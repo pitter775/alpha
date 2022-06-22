@@ -65,7 +65,7 @@
                                     </div>
                                 </div>
                                 <div class="col-md-3">
-                                    <label for="totalpresentes">Presentes</label>
+                                    <label for="totalpresentes">Presenças</label>
                                     <div class="input-group input-group-merge" style="font-size: 25px; color: rgb(70, 180, 88)" id="totalpresentes">
                                     </div>
                                 </div>
@@ -139,8 +139,8 @@
                                                     <th>id</th>
                                                     <th>serie</th>
                                                     <th>Aluno</th>
-                                                    <th>presença</th>
                                                     <th>falta</th>
+                                                    <th>presença</th>
                                                 </tr>
                                             </thead>
                                         </table>
