@@ -180,8 +180,8 @@ $(function() {
                     { data: 'id' },
                     { data: 'serie' },
                     { data: 'aluno' },
-                    { data: 'falta' },
-                    { data: 'presente' }
+                    { data: 'presente' },
+                    { data: 'falta' }
                 ],
                 columnDefs: [{
                     "targets": [0],
