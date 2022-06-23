@@ -54,22 +54,22 @@
                         <div class="col-md-2"></div>
                         <div class="col-md-6">
                             <div class="row" id="press_total">
-                                <div class="col-md-3">
+                                <div class="col-3">
                                     <label for="use_dt_nascimento">Alunos</label>
                                     <div class="input-group input-group-merge" style="font-size: 25px" id="totalAlunos">
                                     </div>
                                 </div>
-                                <div class="col-md-3">
+                                <div class="col-3">
                                     <label for="totalAlunos">Ocorrencias</label>
                                     <div class="input-group input-group-merge" style="font-size: 25px" id="totalOcorrencias">
                                     </div>
                                 </div>
-                                <div class="col-md-3">
+                                <div class="col-3">
                                     <label for="totalpresentes">Presenças</label>
                                     <div class="input-group input-group-merge" style="font-size: 25px; color: rgb(70, 180, 88)" id="totalpresentes">
                                     </div>
                                 </div>
-                                <div class="col-md-3">
+                                <div class="col-3">
                                     <label for="totalfaltas">Faltas</label>
                                     <div class="input-group input-group-merge" style="font-size: 25px; color: rgb(187, 78, 78)" id="totalfaltas">
                                     </div>
@@ -153,7 +153,59 @@
                     </div>
                     <!-- presencas list ends -->
                 </div>
-            </div>            
+            </div>
+            
+            <div class="row">
+                <!-- Area Chart starts -->
+                <div class="col-12">
+                    <div class="card">
+                        <div class="card-header d-flex flex-sm-row flex-column justify-content-md-between align-items-start justify-content-start">
+                            <div>
+                                <h4 class="card-title" style="margin-left: 0">Gráfico Mensal</h4>
+                            
+                                    
+                                        <div class="form-group" style="width: 100%">
+                                            <label for="mat_series_id">Selecione a classe para filtrar os dados do gráfico</label>
+                                            <select id="mat_series_id" name="mat_series_id_alu" class="form-control select2">
+                                                <option value="Todos"> Todas as Classes</option>
+                                                @foreach ($series as $key => $value)
+                                                    <option value="{{ $value->id }}"> {{ $value->ser_nome }} - {{ $value->ser_apelido }} - {{ $value->ser_periodo }} </option>
+                                                @endforeach
+                                            </select>
+                                        </div>
+                                    
+                              
+                            </div>
+                            <div class="d-flex align-items-center">
+                                <div class="form-group" style="width: 100%; margin-top: 30px">
+                                    <label for="mat_mes_id">Selecione o mês para filtrar os dados</label>
+                                    <select id="mat_mes_id" name="mat_mes_id" class="form-control select2">                                        
+                                        @foreach ($series as $key => $value)
+                                            <option value="1"> Janeiro </option>
+                                            <option value="2"> Fevereiro </option>
+                                            <option value="3"> Março </option>
+                                            <option value="4"> Abril </option>
+                                            <option value="5"> Maio </option>
+                                            <option value="6"> Junho </option>
+                                            <option value="7"> Julho </option>
+                                            <option value="8"> Agosto </option>
+                                            <option value="9"> Setembro </option>
+                                            <option value="10"> Outubro </option>
+                                            <option value="11"> Novembro </option>
+                                            <option value="12"> Desembro </option>
+                                        @endforeach
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card-body">
+                            <div id="line-area-chart"></div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Area Chart ends -->
+            </div>
+            
         </div>
     @endsection
 
@@ -170,6 +222,7 @@
         <link rel="stylesheet" type="text/css" href="../../../app-assets/vendors/css/pickers/pickadate/pickadate.css">
         <link rel="stylesheet" type="text/css" href="../../../app-assets/vendors/css/forms/select/select2.min.css">
         <link rel="stylesheet" type="text/css" href="../../../app-assets/vendors/css/extensions/toastr.min.css">
+        
 
     @endpush
 
@@ -178,6 +231,7 @@
         <link rel="stylesheet" type="text/css" href="../../../app-assets/css/plugins/extensions/ext-component-sweet-alerts.css">
         <link rel="stylesheet" type="text/css" href="../../../app-assets/css/plugins/forms/pickers/form-flat-pickr.css">
         <link rel="stylesheet" type="text/css" href="../../../app-assets/css/plugins/forms/pickers/form-pickadate.css">
+        <link rel="stylesheet" type="text/css" href="../../../app-assets/css/plugins/charts/chart-apex.css">
     @endpush
 
     @push('js_page')
@@ -199,6 +253,7 @@
         <script src="../../../app-assets/js/scripts/extensions/ext-component-sweet-alerts.js"></script>
         <script src="../../../app-assets/js/scripts/pages/app-presenca-list.js"></script>
         <script src="../../../app-assets/js/scripts/forms/pickers/form-pickers.js"></script>
+        {{-- <script src="../../../app-assets/js/scripts/charts/chart-apex.js"></script> --}}
     @endpush
 
     @push('js_vendor')
@@ -212,4 +267,5 @@
         <script src="../../../app-assets/vendors/js/pickers/pickadate/picker.time.js"></script>
         <script src="../../../app-assets/vendors/js/pickers/pickadate/legacy.js"></script>
         <script src="../../../app-assets/vendors/js/pickers/flatpickr/flatpickr.min.js"></script>
+        <script src="../../../app-assets/vendors/js/charts/apexcharts.min.js"></script>
     @endpush

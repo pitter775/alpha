@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 use App\Models\Presenca;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
+use DateTime;
 
 use Illuminate\Http\Request;
 
@@ -12,7 +13,14 @@ class PresencaController extends Controller
     public function index()
     {
         // return view('pages.presenca.index', compact('professores', 'alunos'));
-        return view('pages.presenca.index');
+        $series = DB::table('series as s')
+        ->join('presencas as p', 'p.pres_serie', 's.id')  
+        ->groupBy('s.ser_apelido')
+        ->get(['s.ser_nome','s.id as id', 's.ser_apelido', 's.ser_periodo']);
+
+    
+
+        return view('pages.presenca.index', compact('series'));
     }
     public function cadastro_presenca(Request $request)
     {       
@@ -94,20 +102,10 @@ class PresencaController extends Controller
         return $mensagem;
 
 
-//         SELECT SUM(CASE 
-//              WHEN t.your_column IS NULL THEN 1
-//              ELSE 0
-//            END) AS numNull,
-//        SUM(CASE 
-//              WHEN t.your_column IS NOT NULL THEN 1
-//              ELSE 0
-//            END) AS numNotNull
-// COUNT(CASE WHEN p.pres_tipo =  1 then) presente';
-//   FROM YOUR_TABLE t
+
 
 
     }
-
     public function series(Request $request){
 
         $colunas ='p.id as id, 
@@ -137,6 +135,36 @@ class PresencaController extends Controller
 
         $tabela = $this->filtros($request, $colunas, $groupBy, $orderBy, $filtro);  
         return $tabela;
+    }
+    public function getDataGrafico(Request $request){
+        $serie = '';
+        $mes = intval($request->mes);
+        $database = '2022-'.$mes.'-05';
+        $serieint = intval($request->serie);
+
+
+      
+        // $serie = "AND p.pres_serie = 21";
+        // $serie = "AND p.pres_serie = $serieint";
+        
+        if($request->serie !== 'Todos'){
+            $serie = "AND p.pres_serie = $serieint";
+        }
+
+        $datainicio = date("Y-m-01",strtotime( $database));
+        $datafim = date("Y-m-t",strtotime( $database));
+
+        $presenca = DB::select(DB::raw(
+            "SELECT p.pres_serie as id, p.pres_datanaw,
+                SUM(CASE WHEN p.pres_tipo =  1 THEN 1 ELSE 0 END) AS presente,
+                SUM(CASE WHEN p.pres_tipo =  2 THEN 1 ELSE 0 END) AS falta
+                FROM presencas As p                
+                WHERE p.pres_datanaw BETWEEN '$datainicio' AND '$datafim' $serie
+                
+                GROUP BY p.pres_datanaw ORDER BY p.pres_datanaw ASC "
+        ));
+
+        return $presenca;
     }
 
     public function filtros($request, $colunas, $groupBy, $orderBy = '', $filtro_ext = '')
@@ -197,8 +225,7 @@ class PresencaController extends Controller
                $orderBy"
         ));
         return $presenca;
-    }
-    
+    }    
     public static function dateEmMysql($dateSql)
     {
         if ($dateSql) {
@@ -209,5 +236,26 @@ class PresencaController extends Controller
         } else {
             return null;
         }
+    }
+    public function separa_datas($dateStart, $dateEnd)
+    {
+        $dateRange = array();
+        $mes = 0;
+        $dateStart     = new DateTime($dateStart);
+        $dateEnd     = new DateTime($dateEnd);
+
+        while ($dateStart <= $dateEnd) {
+            $mes = $dateStart->format('m');
+            $dateRange[] = $dateStart->format('Y-m-d');
+            // if($dateStart->format('N') > 5 ){
+            //   return 5;
+            // }
+
+            $dateStart = $dateStart->modify('+1day');
+            //  if($dateEnd->format('m') !== $mes ){
+            //   return 5;
+            //  }            
+        }
+        return $dateRange;
     }
 }

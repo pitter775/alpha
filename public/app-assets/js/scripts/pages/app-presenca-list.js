@@ -16,11 +16,9 @@ $(function() {
     var tableSeries = false;
     var tableClasse = false;
 
-
-
-
-
     var data = new Date();
+    var mesatual = data.getMonth();
+    var mesatual = mesatual + 1;
     var dataFormatada = data.toLocaleDateString('pt-BR', { timeZone: 'UTC' });
     $('#dt_final').val(dataFormatada);
     $('#dt_final').trigger('change');
@@ -29,9 +27,19 @@ $(function() {
     var dt_final = $('#dt_final').val();
     totais(dt_inicial, dt_final);
     series(dt_inicial, dt_final);
+    var serieativo = $("#mat_series_id option:selected").val();
 
-    // listSeriesTab();
 
+    // $("#mat_mes_id select").val(mesatual + 1).change();
+
+    $('#mat_mes_id option[value=' + mesatual + ']').attr('selected', 'selected');
+
+
+
+    getDataGrafico(mesatual, serieativo);
+    var dias = [];
+    var faltas = [];
+    var presencas = [];
 
     function listSeriesTab(datajson) {
         //datajson = JSON.stringify(datajson);
@@ -258,7 +266,6 @@ $(function() {
         tableClasse = groupingTable;
     }
 
-
     function editarlinha(serealize, data) {
         $(row_edit).addClass('alteraressatr');
         //  var rowData = dtserieTable.DataTable().row($('.alteraressatr')).data();  //mostra todos os dados dessa tr;
@@ -288,14 +295,6 @@ $(function() {
         });
     }
 
-    function addnovalinha(serealize, data) {
-        console.log('addlinha');
-        listTabSeries();
-    }
-
-
-
-
     $(document).on('change', '#dt_final', function() {
         dt_inicial = $('#dt_inicial').val();
         dt_final = $('#dt_final').val();
@@ -308,8 +307,6 @@ $(function() {
         totais(dt_inicial, dt_final);
         series(dt_inicial, dt_final);
     });
-
-
     $(document).on('click', '#open_serie', function() {
         let idseries = $(this).data('idserie');
         console.log(idseries);
@@ -330,19 +327,16 @@ $(function() {
             }
         });
     });
-    $(document).on('click', '#editar_td', function() {
-        $("#senha").prop('required', false);
-        $(".ediadi").text('Editar');
-        $("#senhalabel").text('Nova Senha');
-
-        $('#id_geral').val($(this).data('id'));
-        $('#ser_escolas_id').val($(this).data('ser_escolas_id'));
-        $('#ser_apelido').val($(this).data('ser_apelido'));
-        $('#ser_periodo').val($(this).data('ser_periodo'));
-        $('#ser_apelido').val($(this).data('ser_apelido'));
-        row_edit = dtserieTable.DataTable().row($(this).parents('tr')).node();
+    $(document).on('change', '#mat_mes_id', function() {
+        var mes = $("#mat_mes_id option:selected").val();
+        var serie = $("#mat_series_id option:selected").val();
+        getDataGrafico(mes, serie);
     });
-
+    $(document).on('change', '#mat_series_id', function() {
+        var mes = $("#mat_mes_id option:selected").val();
+        var serie = $("#mat_series_id option:selected").val();
+        getDataGrafico(mes, serie);
+    });
 
     function totais(dt_inicial, dt_final) {
         $.ajax({
@@ -383,24 +377,100 @@ $(function() {
         });
     }
 
-    function contaChamada() {
-        let presenca = 0;
-        let falta = 0;
+    function getDataGrafico(mes, serie) {
+        $.ajax({
+            type: "GET",
+            url: '/presenca/getDataGrafico',
+            data: {
+                "_token": $('meta[name="csrf-token"]').attr('content'),
+                'mes': mes,
+                'serie': serie
+            },
+            success: function(data) {
+                dias = [];
+                faltas = [];
+                presencas = [];
+                $('#line-area-chart').html('');
+                data.forEach(separardadosgrafico);
+                graficoMensal()
 
-        $(".cardcardapio ").each(function() {
-            if ($(this).hasClass("divpresente")) {
-                presenca = presenca + 1;
-            }
-            if ($(this).hasClass("divfalta")) {
-                falta = falta + 1;
             }
         });
-
-        $('.sppresente').text(presenca);
-        $('.spfalta').text(falta);
-
-
     }
+
+
+
+    function separardadosgrafico(element) {
+        dias.push(element['pres_datanaw']);
+        faltas.push(element['falta']);
+        presencas.push(element['presente']);
+    }
+
+    function graficoMensal() {
+
+        // console.log(dias);
+        // Area Chart - grafico mensal de presenças
+        // --------------------------------------------------------------------
+
+        var areaChartEl = document.querySelector('#line-area-chart'),
+            areaChartConfig = {
+                chart: {
+                    height: 400,
+                    type: 'area',
+                    parentHeightOffset: 0,
+                    toolbar: {
+                        show: false
+                    }
+                },
+                dataLabels: {
+                    enabled: false
+                },
+                stroke: {
+                    show: false,
+                    curve: 'straight'
+                },
+                legend: {
+                    show: true,
+                    position: 'top',
+                    horizontalAlign: 'start'
+                },
+                grid: {
+                    xaxis: {
+                        lines: {
+                            show: true
+                        }
+                    }
+                },
+                colors: ['rgba(0, 255, 0, 0.5)', 'rgba(255, 0, 0, 0.5)'],
+                series: [{
+                        name: 'Presenças',
+                        data: presencas
+                    },
+                    {
+                        name: 'Faltas',
+                        data: faltas
+                    }
+                ],
+                xaxis: {
+                    categories: dias
+                },
+                fill: {
+                    opacity: 1,
+                    type: 'solid'
+                },
+                tooltip: {
+                    shared: false
+                },
+                yaxis: {
+                    opposite: isRtl
+                }
+            };
+        if (typeof areaChartEl !== undefined && areaChartEl !== null) {
+            var areaChart = new ApexCharts(areaChartEl, areaChartConfig);
+            areaChart.render();
+        }
+    }
+
     // To initialize tooltip with body container
     $('body').tooltip({
         selector: '[data-toggle="tooltip"]',
