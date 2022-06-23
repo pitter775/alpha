@@ -155,7 +155,7 @@ class PresencaController extends Controller
         $datafim = date("Y-m-t",strtotime( $database));
 
         $presenca = DB::select(DB::raw(
-            "SELECT p.pres_serie as id, p.pres_datanaw,
+            "SELECT p.pres_serie as id, DATE_FORMAT(p.pres_datanaw, '%d/%m/%Y') as pres_datanaw,
                 SUM(CASE WHEN p.pres_tipo =  1 THEN 1 ELSE 0 END) AS presente,
                 SUM(CASE WHEN p.pres_tipo =  2 THEN 1 ELSE 0 END) AS falta
                 FROM presencas As p                
@@ -163,6 +163,8 @@ class PresencaController extends Controller
                 
                 GROUP BY p.pres_datanaw ORDER BY p.pres_datanaw ASC "
         ));
+
+      
 
         return $presenca;
     }
