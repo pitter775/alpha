@@ -18,25 +18,30 @@ $(function() {
     var formSaude = $('.form-saude'); //formulario
     var formAlimento = $('.form-alimentares'); //formulario
     var formControle = $('.form-controle'); //formulario
+    var formControleAluno = $('.form-controle-aluno'); //formulario
     var formObservacao = $('.form-observacao'); //formulario
     var iduser = $('#iduser').val();
     var perfiluser = $('#perfiluser').val();
+
+    // tabelas
     var tableProf = false;
     var tableObservacao = false;
-
-    console.log(perfiluser);
-
+    var tableAlteracao = false;
     var dtProfTable = $('.prof-list-table');
     var dtObservacaoTable = $('.observacao-list-table');
+    var dtAlteracaoTable = $('.alt-list-table');
+
 
     divUser();
     dataprof();
-    console.log('dataob');
     dataobservacao();
+    dataAlteracao();
+    atualizarSituacao();
 
     $('.divperfilAluno').hide();
     $('.divperfilProfessor').hide();
     $('.divperfilOutro').hide();
+    $('.seriealuno').hide();
 
     if (perfiluser == 11) {
         $('#salvarDados-cont').val('controle-aluno');
@@ -58,8 +63,12 @@ $(function() {
     }
     var data = new Date();
     var dataFormatada = data.toLocaleDateString('pt-BR', { timeZone: 'UTC' });
+    $('#alt_data').val(dataFormatada);
+    $('#alt_data').trigger('change');
+
     $('#alteracao').val(dataFormatada);
     $('#alteracao').trigger('change');
+
     $('#alteracao2').val(dataFormatada);
     $('#alteracao2').trigger('change');
 
@@ -159,6 +168,59 @@ $(function() {
 
 
     });
+    $(document).on('click', '#deletar_td_alteracao', function() {
+        var t = dtAlteracaoTable.DataTable();
+        var row = dtAlteracaoTable.DataTable().row($(this).parents('tr')).node();
+        var id = $(this).data('id');
+        console.log($(this));
+        //mensagem de confirmar 
+        Swal.fire({
+            title: 'Remover Alteracao',
+            text: $(this).data('titulo') + '?',
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonText: 'Sim, pode deletar!',
+            customClass: {
+                confirmButton: 'btn btn-primary',
+                cancelButton: 'btn btn-outline-danger ml-1'
+            },
+            buttonsStyling: false
+        }).then(function(result) {
+            if (result.value) {
+                $.get('/usuario/alteracao/delete/' + id, function(retorno) {
+                    if (retorno == 'Erro') {
+                        //mensagem
+                        toastr['danger']('👋 Arquivo comprometido, não pode excluir.', 'Erro!', {
+                            closeButton: true,
+                            tapToDismiss: false,
+                            rtl: isRtl
+                        });
+                    } else {
+                        //animação de saida
+                        $(row).css('background-color', '#fe7474');
+                        $(row).css('color', '#fff');
+                        $(row).animate({
+                            opacity: 0,
+                            left: "0",
+                            backgroundColor: '#c74747'
+                        }, 1000, "linear", function() {
+                            var linha = $(this).closest('tr');
+                            t.row(linha).remove().draw()
+                        });
+                        // mensagem info
+                        toastr['success']('👋 Arquivo Removido.', 'Sucesso!', {
+                            closeButton: true,
+                            tapToDismiss: false,
+                            rtl: isRtl
+                        });
+
+                    }
+                });
+            }
+        });
+
+
+    });
     $(document).on('click', '#deletar_td_observacao', function() {
         var t = dtObservacaoTable.DataTable();
         var row = dtObservacaoTable.DataTable().row($(this).parents('tr')).node();
@@ -211,6 +273,16 @@ $(function() {
         });
 
 
+    });
+
+    $(document).on('change', '#tipo_alteracao', function() {
+        var tipo = $('select[name=tipo_alteracao] option').filter(':selected').val()
+        if (tipo == 'Remanejamento') {
+            $('.seriealuno').show();
+        } else {
+            $('.seriealuno').hide();
+        }
+        console.log(tipo);
     });
 
     // Form Conta
@@ -560,6 +632,60 @@ $(function() {
             }
         });
     }
+    // Form Controle
+    if (formControleAluno.length) {
+        formControle.validate({
+            errorClass: 'error',
+            rules: {
+                //   'end_rua': { required: true },
+                //   'end_numero': { required: true },
+                //   'end_cep': { required: true }
+            }
+        });
+
+        formControleAluno.on('submit', function(e) {
+            e.preventDefault();
+            var isValid = formControleAluno.valid();
+
+            if (isValid) {
+                let serealize = formControleAluno.serializeArray();
+
+                console.log(serealize);
+
+                $.ajax({
+                    type: "POST",
+                    url: '/usuario/cadastro',
+                    data: serealize,
+                    success: function(data) {
+                        console.log(data);
+                        if (data['gravados'] == 'tudo ok') {
+                            //mensagem
+                            toastr['success']('👋 Dados de controle alterado.', 'Sucesso!', {
+                                closeButton: true,
+                                tapToDismiss: true,
+                                rtl: isRtl
+                            });
+                        }
+                        var divcarduser = $('#divcarduser');
+                        divcarduser.animate({
+                            opacity: 0,
+                            marginTop: "100px"
+                        }, 500, "easeInQuart", function() {
+                            divUser();
+                            dataAlteracao();
+                            atualizarSituacao();
+                            divcarduser.animate({
+                                opacity: 1,
+                                marginTop: "0"
+                            }, 500, "easeOutQuart", function() {
+                                //historyList();
+                            });
+                        });
+                    }
+                });
+            }
+        });
+    }
     // Form Observacao
     if (formObservacao.length) {
         formObservacao.validate({
@@ -612,7 +738,6 @@ $(function() {
             }
         });
     }
-
     // Datatable - user
     function dataprof() {
         if (tableProf) {
@@ -793,6 +918,102 @@ $(function() {
             $('div.head-label').html('<h6 class="mb-0">Todos os Usuários</h6>');
         }
         tableObservacao = groupingTable;
+    }
+    // Datatable - alteracao
+    function dataAlteracao() {
+        if (tableAlteracao) {
+            tableAlteracao.destroy();
+        }
+        if (dtAlteracaoTable.length) {
+            var groupingTable = dtAlteracaoTable.DataTable({
+                retrieve: true,
+                ajax: { url: "/usuario/alteracaos/" + iduser, dataSrc: "" },
+                columns: [
+
+                    { data: 'id' },
+                    { data: 'alt_tipo' },
+                    { data: 'alt_series' },
+                    { data: 'alt_data' }
+
+                ],
+                columnDefs: [{
+                        // para responsividade
+                        className: 'control',
+                        orderable: false,
+                        responsivePriority: 2,
+                        targets: 0
+                    },
+                    {
+                        // Actions
+                        targets: 0,
+                        title: 'Ação',
+                        orderable: false,
+                        render: function(data, type, full, meta) {
+                            var $id = full['id'];
+                            var $nome = full['alt_tipo'];
+                            return (
+                                '<div class="btn-group">' +
+                                '<a class="btn btn-sm dropdown-toggle hide-arrow" data-toggle="dropdown">' +
+                                feather.icons['more-vertical'].toSvg({ class: 'font-small-4' }) +
+                                '</a>' +
+                                '<div class="dropdown-menu dropdown-menu-right">' +
+                                '<a href="javascript:;" class="dropdown-item delete-record" data-titulo="' + $nome + '" data-id="' + $id + '"  id="deletar_td_alteracao">' + feather.icons['trash-2'].toSvg({ class: 'font-small-4 mr-50' }) + 'Deletar</a></div>' +
+                                '</div>' +
+                                '</div>'
+                            );
+                        }
+                    }
+                ],
+                order: [
+                    [1, 'asc']
+                ],
+                dom: '<"d-flex justify-content-between align-items-center mx-0">',
+                displayLength: 10,
+                lengthMenu: [10, 25, 50, 75, 100],
+                language: {
+                    "url": "/app-assets/pt_br.json",
+                    paginate: {
+                        // remove previous & next text da pagina
+                        previous: '&nbsp;',
+                        next: '&nbsp;'
+                    }
+                },
+
+                language: {
+                    "url": "/app-assets/pt_br.json",
+                    paginate: {
+                        // remove previous & next text from pagination
+                        previous: '&nbsp;',
+                        next: '&nbsp;'
+                    }
+                },
+            });
+            $('div.head-label').html('<h6 class="mb-0">Todos os Usuários</h6>');
+        }
+        tableAlteracao = groupingTable;
+    }
+
+    function atualizarSituacao() {
+        $.get('/usuario/atualizasituacao/' + iduser, function(retorno) {
+            var dados = JSON.parse(retorno)
+            var situ_matricula = dados['mat_status'];
+            var situ_prof = dados['name_prof'];
+            var situ_serie = dados['ser_nome'] + ' - ' + dados['ser_periodo'] + ' - ' + dados['ser_apelido'];
+
+            console.log(situ_prof);
+
+            if (situ_matricula == 1) {
+                $('#situ_matricula').text('Matriculado');
+            } else {
+                $('#situ_matricula').text('Não Matriculado');
+            }
+            if (situ_prof) {
+                $('#situ_prof').text(situ_prof);
+            }
+            if (situ_serie) {
+                $('#situ_serie').text(situ_serie);
+            }
+        });
     }
 
 });

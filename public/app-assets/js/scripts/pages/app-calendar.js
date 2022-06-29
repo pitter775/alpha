@@ -17,7 +17,6 @@ if ($('html').data('textdirection') == 'rtl') {
     direction = 'rtl';
 }
 
-console.log('dfasfdasf');
 
 if ($('body').attr('data-framework') === 'laravel') {
     assetPath = $('body').attr('data-asset-path');

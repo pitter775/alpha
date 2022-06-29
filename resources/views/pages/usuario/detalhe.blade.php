@@ -164,17 +164,9 @@
                                                 @include('pages.usuario.alimentares')
                                             </form>
                                         </div>
-                                        <div class="tab-pane fade " id="controle" aria-labelledby="controle-tab"
-                                            role="tabpanel">
-                                            <form class="form-controle">
-                                                @csrf
-                                                <input type="hidden" value="{{ $user->id ?? '' }}" name="id_geral"
-                                                    id="id_geral" />
-                                                @include('pages.usuario.controle')
-                                            </form>
+                                        <div class="tab-pane fade " id="controle" aria-labelledby="controle-tab" role="tabpanel">
+                                            @include('pages.usuario.controle')
                                             @include('pages.usuario.controle-prof-list')
-
-
                                         </div>
                                         <div class="tab-pane fade " id="observacao" aria-labelledby="observacao-tab"
                                             role="tabpanel">

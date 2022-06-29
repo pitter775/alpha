@@ -34,6 +34,14 @@ $(function() {
 
     $('#mat_mes_id option[value=' + mesatual + ']').attr('selected', 'selected');
 
+    function stringNumber(params) {
+        if (params) {
+            var inteiro = parseInt(params);
+            return inteiro;
+        } else {
+            return null;
+        }
+    }
 
 
     getDataGrafico(mesatual, serieativo);
@@ -62,9 +70,21 @@ $(function() {
                     { data: 'serie' },
                     { data: 'idserie' },
                     { data: 'professora' },
-                    { data: 'falta' },
-                    { data: 'presente' },
-                    { data: 'total' },
+                    {
+                        data: function(dados) {
+                            return stringNumber(dados.falta);
+                        }
+                    },
+                    {
+                        data: function(dados) {
+                            return stringNumber(dados.presente);
+                        }
+                    },
+                    {
+                        data: function(dados) {
+                            return stringNumber(dados.total);
+                        }
+                    },
                     { data: '' }
                 ],
                 columnDefs: [{
@@ -188,8 +208,16 @@ $(function() {
                     { data: 'id' },
                     { data: 'serie' },
                     { data: 'aluno' },
-                    { data: 'falta' },
-                    { data: 'presente' }
+                    {
+                        data: function(dados) {
+                            return stringNumber(dados.falta);
+                        }
+                    },
+                    {
+                        data: function(dados) {
+                            return stringNumber(dados.presente);
+                        }
+                    },
                 ],
                 columnDefs: [{
                     "targets": [0],

@@ -14,6 +14,7 @@ use App\Models\Presenca;
 use App\Models\Saude_user;
 use App\Models\Habitos_alimentare;
 use App\Models\Observacao;
+use App\Models\Alteracao;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
@@ -67,6 +68,17 @@ class UsuarioController extends Controller
 
         return json_encode($users);
     }
+    public function alteracoesList($id)
+    {
+        $alteracaos  = DB::table('alteracaos AS a')
+        ->select('a.id AS id', 'a.alt_tipo', (DB::raw("(SELECT series.ser_apelido FROM series WHERE a.alt_series = series.id) as alt_series")), (DB::raw("(DATE_FORMAT(a.alt_data, '%d/%m/%Y')) as alt_data") ))
+        ->where('a.alt_user', $id)
+        ->get();
+        return json_encode($alteracaos);
+
+
+        // ->where(DB::raw("(STR_TO_DATE(booking.date,'%m/%d/%y'))"), ">=", $now)
+    }
     public function observacoes($id)
     {
         $users  = DB::table('observacaos AS u')
@@ -117,6 +129,22 @@ class UsuarioController extends Controller
 
             // dd($user);
         return view('pages.usuario.getuser', compact('user'));
+    }
+    public function atualizasituacao($id){
+        $situacao  = DB::table('users AS u')      
+            ->leftjoin('matriculas as m', 'm.mat_users_id', 'u.id')  
+            ->leftjoin('series as s', 'm.mat_series_id', 's.id') 
+            ->leftjoin('professores as pr', 'pr.prof_series_id', 's.id') 
+            ->select(
+                'm.mat_status', 
+                (DB::raw("(SELECT users.name FROM users WHERE users.id = pr.prof_users_id) as name_prof")),
+                's.ser_nome','s.ser_periodo','s.ser_apelido'
+            )
+            ->where('u.id', $id)
+            ->first();
+
+            // dd($user);
+        return json_encode($situacao);
     }
     public function cadastro(Request $request)
     {
@@ -363,12 +391,36 @@ class UsuarioController extends Controller
                 $dados_alime->save();               
             }
             if ($bt_salvar == 'controle-aluno') {
-                $mensagem['dados-cont-aluno'] = 'entrou';
-                $mensagem['dados-matriculas_id'] = $matriculas_id;  
-                $dados_mat = Matricula::find($matriculas_id);
-                $dados_mat->mat_series_id = $request->input('mat_series_id_alu');             
-                $dados_mat->save();               
+
+                $alt_data = $request->input('alt_data');
+                if (isset($alt_data)) {
+                    $alt_data = $this->dateEmMysql($alt_data);
+                    $alt_data = $alt_data;
+                } 
+                
+                $retroativo =  $request->input('altsimnao');
+                $alt_tipo = $request->input("tipo_alteracao");
+
+                if(!$retroativo){
+                    $mensagem['dados-matriculas_id'] = $matriculas_id;  
+                    $dados_mat = Matricula::find($matriculas_id);
+                    $dados_mat->mat_series_id = $request->input('mat_series_id_alu'); 
+                    $dados_mat->save();   
+                }
+
+                $dados_alt = new Alteracao();
+                $dados_alt->alt_tipo = $alt_tipo;
+                if($alt_tipo == "Remanejamento"){
+                    $dados_alt->alt_series = $request->input('mat_series_id_alu');
+                }
+                $dados_alt->alt_data = $alt_data;
+                $dados_alt->alt_user = $id_geral;
+                $dados_alt->save();   
+                $mensagem['dados-alteração'] = 'ok';
             }   
+
+
+
             if ($bt_salvar == 'controle-professor') {
                 $mensagem['dados-cont-professor'] = 'entrou';
                 $dados_prof = new Professore();      
@@ -506,6 +558,20 @@ class UsuarioController extends Controller
                     // $mensagem['erro2'] = $e->errorInfo; 
                     $mensagem = 'erro'; 
                     return $mensagem; 
+                }
+            }
+        }
+    }
+    public function deleteAlteracao($id)
+    {
+        $deletar = Alteracao::find($id);
+        if (isset($deletar)) {
+            try {
+                $deletar->delete();
+                return 'Ok';
+            } catch (PDOException $e) {
+                if (isset($e->errorInfo[1]) && $e->errorInfo[1] == '1451') {
+                    return 'Erro';
                 }
             }
         }

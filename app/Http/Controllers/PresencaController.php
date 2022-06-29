@@ -142,11 +142,6 @@ class PresencaController extends Controller
         $database = '2022-'.$mes.'-05';
         $serieint = intval($request->serie);
 
-
-      
-        // $serie = "AND p.pres_serie = 21";
-        // $serie = "AND p.pres_serie = $serieint";
-        
         if($request->serie !== 'Todos'){
             $serie = "AND p.pres_serie = $serieint";
         }
@@ -159,12 +154,9 @@ class PresencaController extends Controller
                 SUM(CASE WHEN p.pres_tipo =  1 THEN 1 ELSE 0 END) AS presente,
                 SUM(CASE WHEN p.pres_tipo =  2 THEN 1 ELSE 0 END) AS falta
                 FROM presencas As p                
-                WHERE p.pres_datanaw BETWEEN '$datainicio' AND '$datafim' $serie
-                
+                WHERE p.pres_datanaw BETWEEN '$datainicio' AND '$datafim' $serie                
                 GROUP BY p.pres_datanaw ORDER BY p.pres_datanaw ASC "
-        ));
-
-      
+        ));     
 
         return $presenca;
     }
