@@ -41,7 +41,6 @@ $(function() {
     $('.divperfilAluno').hide();
     $('.divperfilProfessor').hide();
     $('.divperfilOutro').hide();
-    $('.seriealuno').hide();
     $('.divAltTab').hide();
 
     if (perfiluser == 11) {
