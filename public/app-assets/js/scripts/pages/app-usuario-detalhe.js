@@ -42,10 +42,12 @@ $(function() {
     $('.divperfilProfessor').hide();
     $('.divperfilOutro').hide();
     $('.seriealuno').hide();
+    $('.divAltTab').hide();
 
     if (perfiluser == 11) {
         $('#salvarDados-cont').val('controle-aluno');
         $('.divperfilAluno').show();
+        $('.divAltTab').show();
         $('#titcont').text('do Aluno');
     }
     if (perfiluser == 12) {
@@ -56,6 +58,7 @@ $(function() {
         $('.liinfo').hide();
         $('.lisaud').hide();
         $('.lialimen').hide();
+        $('.divAltTab').hide();
     }
     if ($('#hempresa').val() == '') {
         $('#empresa').val(0);

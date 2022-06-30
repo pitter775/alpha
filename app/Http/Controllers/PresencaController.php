@@ -52,11 +52,47 @@ class PresencaController extends Controller
 
         $idserie = $request->input('idserie');
         $data = $this->dateEmMysql($request->input('car_data'));
+
+        // todos os alunos da serie com a presença
+        $seriesF  = DB::table('users AS u')
+        ->select('*', 'u.id AS id', 'u.name as name',(DB::raw("(SELECT p.pres_tipo FROM presencas as p  WHERE u.id = p.users_id AND p.pres_datanaw = '$data' ) AS presenca")))
+        ->leftjoin('matriculas', 'matriculas.mat_users_id', 'u.id')
+        ->leftjoin('series', 'series.id', 'matriculas.mat_series_id')
+        ->orderBy('name', 'asc')
+        ->where('series.id', $idserie);
+
+        
+
+        // alunos que fazem parte da idserie na car_data
+        // falta adicionalos na consulta 
+        $retroativos = DB::select(DB::raw(
+            "SELECT alt_user  FROM (
+                SELECT * FROM (
+                    SELECT * FROM alteracaos 
+                        WHERE alt_data < '$data'
+                        ORDER BY alt_data DESC
+                        LIMIT 18446744073709551615
+                    ) As subsub
+                    GROUP BY alt_user
+                ) AS sub
+            WHERE alt_series = '$idserie'"
+        ));
+
+        $novosAlunos = [];
+        foreach ($retroativos as $key => $value) {
+            array_push($novosAlunos, $value->alt_user);
+        }
+
+
+
+        // todos os alunos da serie com a presença
         $series  = DB::table('users AS u')
         ->select('*', 'u.id AS id', 'u.name as name',(DB::raw("(SELECT p.pres_tipo FROM presencas as p  WHERE u.id = p.users_id AND p.pres_datanaw = '$data' ) AS presenca")))
         ->leftjoin('matriculas', 'matriculas.mat_users_id', 'u.id')
         ->leftjoin('series', 'series.id', 'matriculas.mat_series_id')
-        ->where('series.id', $idserie)
+        ->orderBy('name', 'asc')
+        ->whereIn('u.id', $novosAlunos)
+        ->union($seriesF)
         ->get(); 
 
         return view('pages.serie.listaChamada', compact('series'));
