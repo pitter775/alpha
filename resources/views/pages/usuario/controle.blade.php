@@ -84,9 +84,10 @@
                             <div class="form-group">
                                 <label for="tipo_alteracao">Tipo de Alteração</label>
                                 <select id="tipo_alteracao" name="tipo_alteracao" class="form-control select2">
-                                    <option value="Abandono">Abandono</option>  
+                                    <option value="Matricula">Matricula</option>  
                                     <option value="Remanejamento">Remanejamento</option>
-                                    <option value="Transferência">Transferência</option>                                                      
+                                    <option value="Transferência">Transferência</option>   
+                                    <option value="Abandono">Abandono</option>  
                                 </select>
                             </div>
                         </div>

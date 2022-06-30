@@ -280,7 +280,7 @@ $(function() {
 
     $(document).on('change', '#tipo_alteracao', function() {
         var tipo = $('select[name=tipo_alteracao] option').filter(':selected').val()
-        if (tipo == 'Remanejamento') {
+        if (tipo == 'Remanejamento' || tipo == 'Matricula') {
             $('.seriealuno').show();
         } else {
             $('.seriealuno').hide();
