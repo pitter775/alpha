@@ -1005,7 +1005,7 @@ $(function() {
             console.log(situ_prof);
 
             if (situ_matricula == 1) {
-                $('#situ_matricula').text('Matriculado');
+                $('#situ_matricula').text('Matrículado');
             } else {
                 $('#situ_matricula').text('Não Matriculado');
             }

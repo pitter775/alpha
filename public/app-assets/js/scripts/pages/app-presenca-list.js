@@ -144,25 +144,25 @@ $(function() {
                             extend: 'print',
                             text: feather.icons['printer'].toSvg({ class: 'font-small-4 mr-50' }) + 'Print',
                             className: 'dropdown-item',
-                            exportOptions: { columns: [0, 1, 2] }
+                            exportOptions: { columns: [1, 3, 4, 5, 6] }
                         },
                         {
                             extend: 'csv',
                             text: feather.icons['file-text'].toSvg({ class: 'font-small-4 mr-50' }) + 'Csv',
                             className: 'dropdown-item',
-                            exportOptions: { columns: [0, 1, 2] }
+                            exportOptions: { columns: [1, 3, 4, 5, 6] }
                         },
                         {
                             extend: 'excel',
                             text: feather.icons['file'].toSvg({ class: 'font-small-4 mr-50' }) + 'Excel',
                             className: 'dropdown-item',
-                            exportOptions: { columns: [0, 1, 2] }
+                            exportOptions: { columns: [1, 3, 4, 5, 6] }
                         },
                         {
                             extend: 'copy',
                             text: feather.icons['copy'].toSvg({ class: 'font-small-4 mr-50' }) + 'Copy',
                             className: 'dropdown-item',
-                            exportOptions: { columns: [0, 1, 2] }
+                            exportOptions: { columns: [1, 3, 4, 5, 6] }
                         }
                     ],
                     init: function(api, node, config) {
@@ -250,25 +250,25 @@ $(function() {
                             extend: 'print',
                             text: feather.icons['printer'].toSvg({ class: 'font-small-4 mr-50' }) + 'Print',
                             className: 'dropdown-item',
-                            exportOptions: { columns: [0, 1, 2] }
+                            exportOptions: { columns: [1, 2, 3, 4] }
                         },
                         {
                             extend: 'csv',
                             text: feather.icons['file-text'].toSvg({ class: 'font-small-4 mr-50' }) + 'Csv',
                             className: 'dropdown-item',
-                            exportOptions: { columns: [0, 1, 2] }
+                            exportOptions: { columns: [1, 2, 3, 4] }
                         },
                         {
                             extend: 'excel',
                             text: feather.icons['file'].toSvg({ class: 'font-small-4 mr-50' }) + 'Excel',
                             className: 'dropdown-item',
-                            exportOptions: { columns: [0, 1, 2] }
+                            exportOptions: { columns: [1, 2, 3, 4] }
                         },
                         {
                             extend: 'copy',
                             text: feather.icons['copy'].toSvg({ class: 'font-small-4 mr-50' }) + 'Copy',
                             className: 'dropdown-item',
-                            exportOptions: { columns: [0, 1, 2] }
+                            exportOptions: { columns: [1, 2, 3, 4] }
                         }
                     ],
                     init: function(api, node, config) {

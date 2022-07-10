@@ -100,12 +100,12 @@
                                             <thead class="thead-light">
                                                 <tr>
                                                     <th>id</th>
-                                                    <th>serie</th>
+                                                    <th>Serie</th>
                                                     <th>id serie</th>
-                                                    <th>professora</th>
-                                                    <th>falta</th>
-                                                    <th>presença</th>
-                                                    <th>total</th>
+                                                    <th>Professora</th>
+                                                    <th>Falta</th>
+                                                    <th>Presença</th>
+                                                    <th>Total</th>
                                                     <th></th>
                                                 </tr>
                                             </thead>
@@ -136,11 +136,11 @@
                                         <table class="classe-list-table table table-sm table-responsive-lg">
                                             <thead class="thead-light">
                                                 <tr>
-                                                    <th>id</th>
-                                                    <th>serie</th>
+                                                    <th>ID</th>
+                                                    <th>Serie</th>
                                                     <th>Aluno</th>
-                                                    <th>falta</th>
-                                                    <th>presença</th>
+                                                    <th>Falta</th>
+                                                    <th>Presença</th>
                                                 </tr>
                                             </thead>
                                         </table>
