@@ -15,6 +15,13 @@ $(function() {
         isRtl = $('html').attr('data-textdirection') === 'rtl',
         newserieForm = $('.add-new-serie'); //formula
 
+    var useperfil = $('#use_perfilInput').val();
+    var displayno = 'display: none';
+    if (useperfil == '10') {
+        displayno = '';
+    }
+    // style="' + displayno + '"
+
     // Datatable
     if (dtserieTable.length) {
         dtserieTable.DataTable({
@@ -69,7 +76,7 @@ $(function() {
                             '<a class="dropdown-item">' + feather.icons['file-text'].toSvg({ class: 'font-small-4 mr-50' }) + 'Detalhes</a>' +
                             '<a data-ser_nome="' + $ser_nome + '" data-id="' + $id + '" data-ser_escolas_id="' + $ser_escolas_id + '" data-ser_nome="' + $ser_nome + '" data-ser_periodo="' + $ser_periodo + '" data-ser_apelido="' + $ser_apelido + '"     ' +
                             'class="dropdown-item" data-toggle="modal" data-target="#modals-slide-in" id="editar_td">' + feather.icons['archive'].toSvg({ class: 'font-small-4 mr-50' }) + 'Editar</a>' +
-                            '<a href="javascript:;" class="dropdown-item delete-record" data-id="' + $id + '"  id="deletar_td">' + feather.icons['trash-2'].toSvg({ class: 'font-small-4 mr-50' }) + 'Deletar</a></div>' +
+                            '<a href="javascript:;" class="dropdown-item delete-record" style="' + displayno + '" data-id="' + $id + '"  id="deletar_td">' + feather.icons['trash-2'].toSvg({ class: 'font-small-4 mr-50' }) + 'Deletar</a></div>' +
                             '</div>' +
                             '</div>'
                         );

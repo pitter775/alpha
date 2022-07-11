@@ -31,6 +31,13 @@ $(function() {
     var dtObservacaoTable = $('.observacao-list-table');
     var dtAlteracaoTable = $('.alt-list-table');
 
+    var useperfil = $('#use_perfilInput').val();
+    var displayno = 'display: none';
+    if (useperfil == '10') {
+        displayno = '';
+    }
+    // style="' + displayno + '"
+
 
     divUser();
     dataprof();
@@ -793,7 +800,7 @@ $(function() {
                                 feather.icons['more-vertical'].toSvg({ class: 'font-small-4' }) +
                                 '</a>' +
                                 '<div class="dropdown-menu dropdown-menu-right">' +
-                                '<a href="javascript:;" class="dropdown-item delete-record" data-nome="' + $nome + '" data-id="' + $id + '"  id="deletar_td">' + feather.icons['trash-2'].toSvg({ class: 'font-small-4 mr-50' }) + 'Deletar</a></div>' +
+                                '<a href="javascript:;" class="dropdown-item delete-record" style="' + displayno + '" data-nome="' + $nome + '" data-id="' + $id + '"  id="deletar_td">' + feather.icons['trash-2'].toSvg({ class: 'font-small-4 mr-50' }) + 'Deletar</a></div>' +
                                 '</div>' +
                                 '</div>'
                             );
@@ -886,7 +893,7 @@ $(function() {
                                 feather.icons['more-vertical'].toSvg({ class: 'font-small-4' }) +
                                 '</a>' +
                                 '<div class="dropdown-menu dropdown-menu-right">' +
-                                '<a href="javascript:;" class="dropdown-item delete-record" data-titulo="' + $nome + '" data-id="' + $id + '"  id="deletar_td_observacao">' + feather.icons['trash-2'].toSvg({ class: 'font-small-4 mr-50' }) + 'Deletar</a></div>' +
+                                '<a href="javascript:;" class="dropdown-item delete-record" style="' + displayno + '" data-titulo="' + $nome + '" data-id="' + $id + '"  id="deletar_td_observacao">' + feather.icons['trash-2'].toSvg({ class: 'font-small-4 mr-50' }) + 'Deletar</a></div>' +
                                 '</div>' +
                                 '</div>'
                             );
@@ -959,7 +966,7 @@ $(function() {
                                 feather.icons['more-vertical'].toSvg({ class: 'font-small-4' }) +
                                 '</a>' +
                                 '<div class="dropdown-menu dropdown-menu-right">' +
-                                '<a href="javascript:;" class="dropdown-item delete-record" data-titulo="' + $nome + '" data-id="' + $id + '"  id="deletar_td_alteracao">' + feather.icons['trash-2'].toSvg({ class: 'font-small-4 mr-50' }) + 'Deletar</a></div>' +
+                                '<a href="javascript:;" class="dropdown-item delete-record" style="' + displayno + '"  data-titulo="' + $nome + '" data-id="' + $id + '"  id="deletar_td_alteracao">' + feather.icons['trash-2'].toSvg({ class: 'font-small-4 mr-50' }) + 'Deletar</a></div>' +
                                 '</div>' +
                                 '</div>'
                             );

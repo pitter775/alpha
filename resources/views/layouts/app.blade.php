@@ -101,6 +101,13 @@
                 });
             }
         })
+
+        var useperfil = $('#use_perfilInput').val();
+
+        if (useperfil == 17) //supervisor
+        {
+            $(':input[type="submit"]').prop('disabled', true); 
+        }
         
 
 $.ajaxSetup({

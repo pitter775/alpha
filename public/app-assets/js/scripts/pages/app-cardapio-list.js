@@ -16,6 +16,12 @@ $(function() {
         newcardapioForm = $('.add-new-cardapio'); //formula
     var tableCardapio = false;
 
+    var useperfil = $('#use_perfilInput').val();
+    var displayno = 'display: none';
+    if (useperfil == '10') {
+        displayno = '';
+    }
+
 
     var data = new Date();
 
@@ -100,7 +106,7 @@ $(function() {
                             var nome = full['car_cardapio'];
 
                             return (
-                                '<a href="javascript:;" class="item-edit delete-record" id="deletar_td" data-nome="' + nome + '"  data-id="' + id + '" style="color: #f54b20 !important">' +
+                                '<a href="javascript:;" class="item-edit delete-record" id="deletar_td" style="' + displayno + '" data-nome="' + nome + '"  data-id="' + id + '" style="color: #f54b20 !important">' +
                                 feather.icons['x-circle'].toSvg({ class: 'font-small-4' }) +
                                 '</a>'
                             );

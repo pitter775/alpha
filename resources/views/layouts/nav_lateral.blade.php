@@ -6,6 +6,7 @@
         background-position: bottom left !important;  
         }
     </style>
+    <input type="hidden" value="{{Auth::user()->use_perfil}}" name="use_perfilInput" id="use_perfilInput" />
     <div class="main-menu menu_lateral menu-fixed menu-light menu-accordion menu-shadow" data-scroll-to-active="true">
         <div class="navbar-header" >
             <ul class="nav navbar-nav flex-row">
@@ -24,7 +25,7 @@
                     <i data-feather='home'></i><span class="menu-title text-truncate" data-i18n="deshboard">Dashboard</span></a>
                 </li>
 
-                <?php  if(Auth::user()->use_perfil == '10' || Auth::user()->use_perfil == '13' || Auth::user()->use_perfil == '14'){ ?>
+                <?php  if(Auth::user()->use_perfil == '10' || Auth::user()->use_perfil == '13' || Auth::user()->use_perfil == '14'|| Auth::user()->use_perfil == 17){ ?>
                     <li class="{{ $elementActive == 'usuario' ? 'active' : '' }} nav-item">
                         <a class="d-flex align-items-center" href="/usuario" onclick="link('/usuario')">
                         <i data-feather="users"></i><span class="menu-title text-truncate" data-i18n="Usuários">Usuários</span></a>
@@ -66,4 +67,8 @@
             </ul>
         </div>
     </div>
+
+    <script>
+
+    </script>
     <!-- END: Main Menu-->

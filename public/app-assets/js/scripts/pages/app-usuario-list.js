@@ -17,6 +17,11 @@ $(function() {
         newUserForm = $('.add-new-user'); //formula
     var tableHistory = false;
     var tableUser = false;
+    var useperfil = $('#use_perfilInput').val();
+    var displayno = 'display: none';
+    if (useperfil == '10') {
+        displayno = '';
+    }
     datauser();
 
 
@@ -102,6 +107,7 @@ $(function() {
                             if (dados.use_perfil == 13) { return 'Diretoria'; }
                             if (dados.use_perfil == 14) { return 'Secretaria'; }
                             if (dados.use_perfil == 16) { return 'Site - Matricula'; }
+                            if (dados.use_perfil == 17) { return 'Supervisora'; }
                         }
                     },
                     {
@@ -149,7 +155,7 @@ $(function() {
                                 '</a>' +
                                 '<div class="dropdown-menu dropdown-menu-right">' +
                                 '<a class="dropdown-item" href="usuario/detalhes/' + $id + '">' + feather.icons['file-text'].toSvg({ class: 'font-small-4 mr-50' }) + 'Detalhes</a>' +
-                                '<a href="javascript:;" class="dropdown-item delete-record" data-id="' + $id + '" data-name="' + $name + '"  id="deletar_td">' + feather.icons['trash-2'].toSvg({ class: 'font-small-4 mr-50' }) + 'Deletar</a></div>' +
+                                '<a href="javascript:;" class="dropdown-item delete-record" style="' + displayno + '" data-id="' + $id + '" data-name="' + $name + '"  id="deletar_td">' + feather.icons['trash-2'].toSvg({ class: 'font-small-4 mr-50' }) + 'Deletar</a></div>' +
                                 '</div>' +
                                 '</div>'
                             );
@@ -213,7 +219,8 @@ $(function() {
                         className: 'create-new btn btn-primary waves-effect',
                         attr: {
                             'data-toggle': 'modal',
-                            'data-target': '#modals-slide-in'
+                            'data-target': '#modals-slide-in',
+                            'style': displayno
                         },
                         init: function(api, node, config) {
                             $(node).removeClass('btn-secondary');

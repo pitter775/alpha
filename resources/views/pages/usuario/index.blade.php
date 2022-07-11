@@ -34,6 +34,7 @@
                                   <option value="13">Diretoria</option>
                                   <option value="14">Secretaria</option>
                                   <option value="16">Link Site</option>
+                                  <option value="17">Supervisor</option>
                                   <option value="10">ADM</option>
                                </select>
                             </div>
