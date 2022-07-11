@@ -417,11 +417,13 @@ class UsuarioController extends Controller
                     $dados_mat2 = Matricula::find($matriculas_id);
                     $dados_mat2->mat_status = 2;  
                     $dados_mat2->save();  
+                    $dados->use_status = 0;
                 }
                 if($alt_tipo == "Abandono"){
                     $dados_mat3 = Matricula::find($matriculas_id);
                     $dados_mat3->mat_status = 3;  
                     $dados_mat3->save();  
+                    $dados->use_status = 0;
                 }
                 $dados_alt->alt_data = $alt_data;
                 $dados_alt->alt_user = $id_geral;

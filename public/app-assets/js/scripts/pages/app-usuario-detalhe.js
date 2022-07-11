@@ -1006,7 +1006,6 @@ $(function() {
             if (situ_matricula == 0) {
                 $('#situ_matricula').text('Não Matrículado');
             }
-
             if (situ_matricula == 1) {
                 $('#situ_matricula').text('Matrículado');
             }
