@@ -413,6 +413,16 @@ class UsuarioController extends Controller
                 if($alt_tipo == "Remanejamento"){
                     $dados_alt->alt_series = $request->input('mat_series_id_alu');
                 }
+                if($alt_tipo == "Transferência"){
+                    $dados_mat2 = Matricula::find($matriculas_id);
+                    $dados_mat2->mat_status = 2;  
+                    $dados_mat2->save();  
+                }
+                if($alt_tipo == "Abandono"){
+                    $dados_mat3 = Matricula::find($matriculas_id);
+                    $dados_mat3->mat_status = 3;  
+                    $dados_mat3->save();  
+                }
                 $dados_alt->alt_data = $alt_data;
                 $dados_alt->alt_user = $id_geral;
                 $dados_alt->save();   

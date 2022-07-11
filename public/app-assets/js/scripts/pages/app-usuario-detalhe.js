@@ -1003,11 +1003,18 @@ $(function() {
             var situ_serie = dados['ser_nome'] + ' - ' + dados['ser_periodo'] + ' - ' + dados['ser_apelido'];
 
             console.log(situ_prof);
+            if (situ_matricula == 0) {
+                $('#situ_matricula').text('Não Matrículado');
+            }
 
             if (situ_matricula == 1) {
                 $('#situ_matricula').text('Matrículado');
-            } else {
-                $('#situ_matricula').text('Não Matriculado');
+            }
+            if (situ_matricula == 2) {
+                $('#situ_matricula').text('Transferido');
+            }
+            if (situ_matricula == 3) {
+                $('#situ_matricula').text('Abandono');
             }
             if (situ_prof) {
                 $('#situ_prof').text(situ_prof);
