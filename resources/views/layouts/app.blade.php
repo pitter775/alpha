@@ -107,6 +107,8 @@
         if (useperfil == 17) //supervisor
         {
             $(':input[type="submit"]').prop('disabled', true); 
+            $('#tabelaPiloto').prop('disabled', false); 
+            
         }
         
 

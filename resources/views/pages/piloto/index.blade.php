@@ -123,7 +123,7 @@
                                 </div>
                                 <div class="col-md-12 mb-1" ><tr></tr></div>
                                 <div class="col-md-12 mb-1" >
-                                    <button type="submit" class="btn btn-primary mb-1 mb-sm-0 mr-0 mr-sm-1">Criar tabela com campos selecionados</button>                        
+                                    <button type="submit" id="tabelaPiloto" class="btn btn-primary mb-1 mb-sm-0 mr-0 mr-sm-1">Criar tabela com campos selecionados</button>                        
                                  </div>
                                 </div>
                             </form>

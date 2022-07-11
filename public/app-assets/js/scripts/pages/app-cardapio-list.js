@@ -21,6 +21,7 @@ $(function() {
     if (useperfil == '10') {
         displayno = '';
     }
+    // style="' + displayno + '"
 
 
     var data = new Date();
