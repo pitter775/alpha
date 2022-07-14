@@ -28,6 +28,8 @@ $(function() {
     totais(dt_inicial, dt_final);
     series(dt_inicial, dt_final);
     var serieativo = $("#mat_series_id option:selected").val();
+    $('.divporClasse').hide();
+
 
 
     // $("#mat_mes_id select").val(mesatual + 1).change();
@@ -72,6 +74,16 @@ $(function() {
                     { data: 'professora' },
                     {
                         data: function(dados) {
+                            return dt_inicial;
+                        }
+                    },
+                    {
+                        data: function(dados) {
+                            return dt_final;
+                        }
+                    },
+                    {
+                        data: function(dados) {
                             return stringNumber(dados.falta);
                         }
                     },
@@ -85,15 +97,11 @@ $(function() {
                             return stringNumber(dados.total);
                         }
                     },
+
                     { data: '' }
                 ],
                 columnDefs: [{
-                        "targets": [0],
-                        "visible": false,
-                        "searchable": false
-                    },
-                    {
-                        "targets": [2],
+                        "targets": [0, 2, 4, 5],
                         "visible": false,
                         "searchable": false
                     },
@@ -102,11 +110,11 @@ $(function() {
                         className: 'control',
                         orderable: false,
                         responsivePriority: 2,
-                        targets: 7
+                        targets: 9
                     },
                     {
                         // Actions
-                        targets: 7,
+                        targets: 9,
                         title: 'Ação',
                         orderable: false,
                         render: function(data, type, full, meta) {
@@ -115,7 +123,7 @@ $(function() {
                             var idserie = full['idserie'];
 
                             return (
-                                '<a href="javascript:;" class="item-edit delete-record" id="open_serie" data-idserie="' + idserie + '"  data-id="' + id + '" style="color: #154778 !important">' +
+                                '<a href="javascript:;" class="item-edit" id="open_serie" data-idserie="' + idserie + '"  data-id="' + id + '" style="color: #154778 !important">' +
                                 feather.icons['eye'].toSvg({ class: 'font-small-4' }) +
                                 '</a>'
                             );
@@ -144,25 +152,25 @@ $(function() {
                             extend: 'print',
                             text: feather.icons['printer'].toSvg({ class: 'font-small-4 mr-50' }) + 'Print',
                             className: 'dropdown-item',
-                            exportOptions: { columns: [1, 3, 4, 5, 6] }
+                            exportOptions: { columns: [1, 3, 4, 5, 6, 7, 8] }
                         },
                         {
                             extend: 'csv',
                             text: feather.icons['file-text'].toSvg({ class: 'font-small-4 mr-50' }) + 'Csv',
                             className: 'dropdown-item',
-                            exportOptions: { columns: [1, 3, 4, 5, 6] }
+                            exportOptions: { columns: [1, 3, 4, 5, 6, 7, 8] }
                         },
                         {
                             extend: 'excel',
                             text: feather.icons['file'].toSvg({ class: 'font-small-4 mr-50' }) + 'Excel',
                             className: 'dropdown-item',
-                            exportOptions: { columns: [1, 3, 4, 5, 6] }
+                            exportOptions: { columns: [1, 3, 4, 5, 6, 7, 8] }
                         },
                         {
                             extend: 'copy',
                             text: feather.icons['copy'].toSvg({ class: 'font-small-4 mr-50' }) + 'Copy',
                             className: 'dropdown-item',
-                            exportOptions: { columns: [1, 3, 4, 5, 6] }
+                            exportOptions: { columns: [1, 3, 4, 5, 6, 7, 8] }
                         }
                     ],
                     init: function(api, node, config) {
@@ -210,6 +218,16 @@ $(function() {
                     { data: 'aluno' },
                     {
                         data: function(dados) {
+                            return dt_inicial;
+                        }
+                    },
+                    {
+                        data: function(dados) {
+                            return dt_final;
+                        }
+                    },
+                    {
+                        data: function(dados) {
                             return stringNumber(dados.falta);
                         }
                     },
@@ -220,11 +238,7 @@ $(function() {
                     },
                 ],
                 columnDefs: [{
-                    "targets": [0],
-                    "visible": false,
-                    "searchable": false
-                }, {
-                    "targets": [1],
+                    "targets": [0, 1, 3, 4],
                     "visible": false,
                     "searchable": false
                 }],
@@ -250,25 +264,25 @@ $(function() {
                             extend: 'print',
                             text: feather.icons['printer'].toSvg({ class: 'font-small-4 mr-50' }) + 'Print',
                             className: 'dropdown-item',
-                            exportOptions: { columns: [1, 2, 3, 4] }
+                            exportOptions: { columns: [1, 2, 3, 4, 5, 6] }
                         },
                         {
                             extend: 'csv',
                             text: feather.icons['file-text'].toSvg({ class: 'font-small-4 mr-50' }) + 'Csv',
                             className: 'dropdown-item',
-                            exportOptions: { columns: [1, 2, 3, 4] }
+                            exportOptions: { columns: [1, 2, 3, 4, 5, 6] }
                         },
                         {
                             extend: 'excel',
                             text: feather.icons['file'].toSvg({ class: 'font-small-4 mr-50' }) + 'Excel',
                             className: 'dropdown-item',
-                            exportOptions: { columns: [1, 2, 3, 4] }
+                            exportOptions: { columns: [1, 2, 3, 4, 5, 6] }
                         },
                         {
                             extend: 'copy',
                             text: feather.icons['copy'].toSvg({ class: 'font-small-4 mr-50' }) + 'Copy',
                             className: 'dropdown-item',
-                            exportOptions: { columns: [1, 2, 3, 4] }
+                            exportOptions: { columns: [1, 2, 3, 4, 5, 6] }
                         }
                     ],
                     init: function(api, node, config) {
@@ -289,7 +303,7 @@ $(function() {
                     }
                 },
             });
-            $('div.head-label').html('<h6 class="mb-0">Listando todas as cardapios</h6>');
+            // $('div.head-label').html('<h6 class="mb-0">Listando as presenças por classe</h6>');
         }
         tableClasse = groupingTable;
     }
@@ -328,14 +342,18 @@ $(function() {
         dt_final = $('#dt_final').val();
         totais(dt_inicial, dt_final);
         series(dt_inicial, dt_final);
+        $('.divporClasse').hide();
     });
     $(document).on('change', '#dt_inicial', function() {
         dt_inicial = $('#dt_inicial').val();
         dt_final = $('#dt_final').val();
         totais(dt_inicial, dt_final);
         series(dt_inicial, dt_final);
+        $('.divporClasse').hide();
     });
     $(document).on('click', '#open_serie', function() {
+        $('.divporClasse').show();
+
         let idseries = $(this).data('idserie');
         console.log(idseries);
         $.ajax({
@@ -388,6 +406,8 @@ $(function() {
     }
 
     function series(dt_inicial, dt_final) {
+
+
         $.ajax({
             type: "GET",
             url: '/presenca/series',

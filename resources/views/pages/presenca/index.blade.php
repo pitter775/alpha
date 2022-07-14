@@ -82,7 +82,7 @@
             </div>
 
             <div class="row">
-                <div class="content-body col-md-7">
+                <div class="content-body col-md-6">
                     <div class="content-wrapper" data-aos=fade-left data-aos-delay=0>
 
                         <div class="content-header row">
@@ -103,9 +103,11 @@
                                                     <th>Serie</th>
                                                     <th>id serie</th>
                                                     <th>Professora</th>
+                                                    <th>Dt Inicial</th>
+                                                    <th>Dt Final</th>
                                                     <th>Falta</th>
                                                     <th>Presença</th>
-                                                    <th>Total</th>
+                                                    <th>Total</th>                                      
                                                     <th></th>
                                                 </tr>
                                             </thead>
@@ -119,7 +121,7 @@
                     </div>
                     <!-- presencas list ends -->
                 </div>
-                <div class="content-body col-md-5">
+                <div class="content-body col-md-6">
                     <div class="content-wrapper" data-aos=fade-left data-aos-delay=0>
 
                         <div class="content-header row">
@@ -128,7 +130,7 @@
                                 <span class="align-middle">Por Classe</span>
                             </h4>
                         </div>
-                        <div class="content-body">
+                        <div class="content-body divporClasse">
                             <section class="app-classe-list">                
                                 <!-- list section start -->
                                 <div class="card">
@@ -139,6 +141,8 @@
                                                     <th>ID</th>
                                                     <th>Serie</th>
                                                     <th>Aluno</th>
+                                                    <th>Dt Inicial</th>
+                                                    <th>Dt Final</th>
                                                     <th>Falta</th>
                                                     <th>Presença</th>
                                                 </tr>

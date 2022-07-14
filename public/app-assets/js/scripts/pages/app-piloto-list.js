@@ -137,7 +137,7 @@ $(function() {
                     }
                 },
             });
-            $('div.head-label').html('<h6 class="mb-0">Listando todas as cardapios</h6>');
+            $('div.head-label').html('<h6 class="mb-0">Listando os campos selecionados</h6>');
         }
         tableCardapio = groupingTable;
     }
