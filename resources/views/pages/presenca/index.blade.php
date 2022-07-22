@@ -41,7 +41,7 @@
                             </div>
                         </div>
                         <div class="col-md-2">
-                            <label for="dt_final">Data Final</label>
+                            <label for="dt_final">Data Final .</label>
                             <div class="input-group input-group-merge">
                                 <div class="input-group-prepend">
                                         <span class="input-group-text">
