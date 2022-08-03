@@ -106,6 +106,7 @@ $(function() {
                             if (dados.use_perfil == 12) { return 'Professor'; }
                             if (dados.use_perfil == 13) { return 'Diretoria'; }
                             if (dados.use_perfil == 14) { return 'Secretaria'; }
+                            if (dados.use_perfil == 15) { return '--'; }
                             if (dados.use_perfil == 16) { return 'Site - Matricula'; }
                             if (dados.use_perfil == 17) { return 'Supervisora'; }
                         }
@@ -113,6 +114,7 @@ $(function() {
                     {
                         data: function(dados) {
                             if (dados.use_status == null) { return '<span class="badge bg-light-danger">Sem status</span>'; }
+                            if (dados.use_status == 0) { return '<span class="badge bg-light-danger">Sem status</span>'; }
                             if (dados.use_status == 2) { return '<span class="badge bg-light-danger">Inativo</span>'; }
                             if (dados.use_status == 1) { return '<span class="badge bg-light-success">Ativo</span>'; }
                             if (dados.use_status == 3) { return '<span class="badge bg-light-danger">Criando matricula</span>'; }
@@ -375,7 +377,7 @@ $(function() {
             $.each(JSON.parse(data), function(i, item) {
                 let classe = '.classe' + params;
                 dadoshtml2 += item.ser_apelido + ', ';
-                $(classe).text(dadoshtml2);
+                $(classe).html(dadoshtml2);
                 console.log(params + '-', dadoshtml2);
                 console.log(params + 'feito em - ', classe);
             });
