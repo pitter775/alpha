@@ -313,7 +313,11 @@ $(function() {
 
                 }
             });
-            $('div.head-label').html('<h6 class="mb-0">Todos os Usuários</h6>');
+            setTimeout(function() {
+                $('div.head-label').html('<h6 class="mb-0">Todos os Usuários</h6>');
+                console.log('foi');
+            }, 1000);
+           
         }
         tableUser = groupingTable;
     }

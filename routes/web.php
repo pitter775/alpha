@@ -19,6 +19,8 @@ use Illuminate\Http\Request;
 
 
 Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('site');
+Route::get('/publi/{id}', [App\Http\Controllers\HomeController::class, 'publi']);
+
 Route::get('/logout', [App\Http\Controllers\Auth\LoginController::class, 'logout']);
 Route::get('/home', [App\Http\Controllers\DashboardController::class, 'index']);
 Route::get('/dashboard/tiporesidencia', [App\Http\Controllers\DashboardController::class, 'tiporesidencia']);
@@ -39,6 +41,7 @@ Auth::routes();
 Route::get('/upload-ui', [App\Http\Controllers\FileUploadController::class, 'dropzoneUi' ]);
 Route::post('/file-upload', [App\Http\Controllers\FileUploadController::class, 'dropzoneFileUpload' ])->name('dropzoneFileUpload');
 Route::get('/file-upload/getfiles/{id}', [App\Http\Controllers\FileUploadController::class, 'getfiles' ]);
+Route::get('/file-upload/getpublicacao/{id}', [App\Http\Controllers\FileUploadController::class, 'getpublicacao' ]);
 Route::get('/file-upload/delete/{id}', [App\Http\Controllers\FileUploadController::class, 'delete' ]);
 
 Route::get('/users/{user}', [App\Http\Controllers\TestesController::class, 'show']);
@@ -95,8 +98,11 @@ Route::group(['middleware' => 'acesso'], function () {
     Route::get('/piloto', [App\Http\Controllers\PilotoController::class, 'index']);
     Route::post('/piloto/tabela', [App\Http\Controllers\PilotoController::class, 'tabela']);
 
-
-
+    Route::get('/publicacao', [App\Http\Controllers\PublicacaoController::class, 'index']);
+    Route::get('/publicacao/all', [App\Http\Controllers\PublicacaoController::class, 'all']);
+    Route::post('/publicacao/cadastro', [App\Http\Controllers\PublicacaoController::class, 'cadastro']);
+    Route::get('/publicacao/editar/{id}', [App\Http\Controllers\PublicacaoController::class, 'editar']);
+    Route::get('/publicacao/delete/{id}', [App\Http\Controllers\PublicacaoController::class, 'delete']);
 
 });
 

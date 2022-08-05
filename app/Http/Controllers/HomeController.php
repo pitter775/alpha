@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
+use Illuminate\Support\Facades\DB;
 
 use Illuminate\Http\Request;
 
@@ -23,11 +24,26 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('pages.site.home'); 
+        $publicacoes  = DB::table('publicacoes AS c')
+        ->where('pub_status', 'Ativo')
+        ->select('*')
+        ->get();
+
+        
+        return view('pages.site.home', compact('publicacoes'));
     }
     public function matricula()
     {
         return view('pages.site.matricula'); 
+    }
+    public function publi($id)
+    {
+        $publicacoes  = DB::table('publicacoes AS c')
+        ->where('id', $id)
+        ->select('*')
+        ->first();
+
+        return view('pages.site.publicacao', compact('publicacoes'));
     }
     
 }

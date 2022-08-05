@@ -53,6 +53,10 @@
                         <a class="d-flex align-items-center" href="/presenca" onclick="link('/presenca')">
                         <i data-feather='check-circle'></i><span class="menu-title text-truncate" data-i18n="piloto">Presença</span></a>
                     </li>
+                    <li class="{{ $elementActive == 'publicacao' ? 'active' : '' }} nav-item">
+                        <a class="d-flex align-items-center" href="/publicacao" onclick="link('/publicacao')">
+                        <i data-feather='book-open'></i><span class="menu-title text-truncate" data-i18n="piloto">Publicações</span></a>
+                    </li>
                 <?php } if(Auth::user()->use_perfil == '12'){ ?>  
 
                     @foreach(Session::get('series') as $serie)

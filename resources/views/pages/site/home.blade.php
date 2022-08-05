@@ -36,6 +36,9 @@
 
   <!-- Google Fonts -->
   <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@200&family=Nunito:ital,wght@0,300;0,500;1,200;1,900&family=Quicksand:wght@300&display=swap" rel="stylesheet">
 
   <!-- Vendor CSS Files -->
   <link href="{{ asset('paper') }}/assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -53,6 +56,15 @@
 <body>
 
 
+  <style>
+    a.linkpub{ color: #777; font-family: "Open Sans", sans-serif !important; font-size: 13px; margin-top: -10px}
+    a.linkpub:hover{ color: #fff;}
+    .icon-box2{ padding: 10px !important}
+    img{ padding: 5px; margin: 10px;     box-shadow: 0 0 29px 0 rgb(68 88 144 / 12%);}
+    h3 {   font-family: "Nunito"; font-weight: 500;}
+  </style>
+
+
   <!-- ======= Header ======= -->
   <header id="header" class="fixed-top header-transparent">
     <div class="container d-flex align-items-center">
@@ -66,16 +78,13 @@
         <ul>
           <li class="active"><a href="#hero">Home</a></li>
           <li><a href="#about">Quem Somos</a></li>
+          <li><a href="#publicacao">Publicações</a></li>
           <li><a href="#services">Projetos</a></li>
           <li><a href="#portfolio">Fotos</a></li>
-          <!-- <li><a href="#team">Team</a></li>  -->
           <li><a href="#contact">Contato</a></li>
           <li><a href="/home" title="Entrar no sistema" style="padding: 15px 15px" ><i class=" icofont-gnome icofont-2x"></i></a></li>
-
         </ul>
       </nav><!-- .nav-menu -->
-      
-
     </div>
   </header><!-- End Header -->
 
@@ -98,9 +107,7 @@
           <div class="content col-xl-5 d-flex align-items-stretch" data-aos="fade-up">
             <div class="content">
               <h3>Qualquer esforço pela educação...</h3>
-              <h2 style="font-size: 16px">
-              É um sonho de sociedade mais justa!
-</h2>
+              <h2 style="font-size: 16px">É um sonho de sociedade mais justa!</h2>
               <!-- <a href="https://api.whatsapp.com/send?phone=5511994662825" class="about-btn">Faça uma cotação agora!  <img src="{{ asset('paper') }}/assets/img/whats-icon.png" style="margin-left: 20px;" alt=""><i class="bx bx-chevron-right"></i></a> -->
             </div>
           </div>
@@ -125,6 +132,53 @@
 
       </div>
     </section><!-- End About Section -->
+
+    
+    <!-- ======= Publicações Section ======= -->
+    <section id="publicacao" class="services">
+      <div class="container">
+        <div class="section-title" data-aos="fade-in" data-aos-delay="100">
+          <h2>Publicações</h2>
+        </div>
+
+        <div class="row" data-aos="fade-in">
+          <div class="col-lg-12 d-flex justify-content-center">
+            <ul id="publicacao-flters">
+              <li data-filter="*" class="filter-active">Todas as pulicações</li>
+              <li data-filter=".filter-Informe">Informes</li>
+              <li data-filter=".filter-Evento">Evento</li>
+            </ul>
+          </div>
+        </div>
+
+       
+
+        <div class="row publicacao-container" data-aos="fade-up">
+          @foreach ($publicacoes as $value )
+          <div class="col-lg-4 col-md-6 publicacao-item filter-{{$value->pub_tipo}}">
+            <a href="/publi/{{$value->id}}" class="linkpub">
+            <div class="icon-box icon-box2" data-aos="fade-up">
+              
+              <?php
+                $icon = 'iconPub02.png';
+                if($value->pub_tipo == 'Informe'){
+                  $icon = 'iconPub01.png';
+                }
+              ?>
+              <img src="{{ asset('app-assets') }}/images/{{$icon}}" class="" style="float: left; margin-right: 10px; width: 80px" alt="">
+              <p style="font-family: 'Nunito'; font-weight: 500; !important; font-size: 16px">{{$value->pub_titulo}}</p>
+            
+            </div>
+          </a>
+          </div>
+            
+          @endforeach
+
+
+        </div>
+
+      </div>
+    </section><!-- End Services Section -->
 
     <!-- ======= Services Section ======= -->
     <section id="services" class="services">
@@ -197,8 +251,9 @@
       </div>
     </section><!-- End Services Section -->
 
-        <!-- ======= Portfolio Section ======= -->
-        <section id="portfolio" class="portfolio">
+
+    <!-- ======= Portfolio Section ======= -->
+    <section id="portfolio" class="portfolio">
       <div class="container">
 
         <div class="section-title" data-aos="fade-in" data-aos-delay="100">

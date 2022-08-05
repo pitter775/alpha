@@ -41,7 +41,7 @@ class PresencaController extends Controller
         }
         $dados->users_id = $iduser;
         $dados->pres_tipo = $tipo;
-        $dados->pres_professor = Auth::user()->id; ;
+        $dados->pres_professor = Auth::user()->id; 
         $dados->pres_serie = $serie;
         $dados->pres_datanaw = $car_data;
         $dados->save();
