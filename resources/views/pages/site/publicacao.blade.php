@@ -16,13 +16,13 @@
 
 <!-- Descrição do site -->
 
-    <meta name="description" content={{$publicacoes->pub_titulo}}/>
+    <meta name="description" content="{{$publicacoes->pub_texto}}"/>
     <meta name="theme-color" content="#66619c">
     <meta name="author" content="pitter775@gmail.com">
 
     <meta property="og:site_name" content="Educação para o Futuro">
-    <meta property="og:title" content="Instituto Educação para o Futuro">
-    <meta property="og:description" content={{$publicacoes->pub_titulo}}/>
+    <meta property="og:title" content="{{$publicacoes->pub_titulo}}">
+    <meta property="og:description" content="{{$publicacoes->pub_texto}}"/>
     <meta property="og:type" content="website"/>
     <meta property="og:locale" content="pt_BR"/>    
     <meta property="og:type" content="website">
