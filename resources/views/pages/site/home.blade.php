@@ -60,7 +60,6 @@
     a.linkpub{ color: #777; font-family: "Open Sans", sans-serif !important; font-size: 13px; margin-top: -10px}
     a.linkpub:hover{ color: #fff;}
     .icon-box2{ padding: 10px !important}
-    img{ padding: 5px; margin: 10px;     box-shadow: 0 0 29px 0 rgb(68 88 144 / 12%);}
     h3 {   font-family: "Nunito"; font-weight: 500;}
   </style>
 
