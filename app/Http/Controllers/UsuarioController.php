@@ -26,7 +26,7 @@ class UsuarioController extends Controller
 {
     public function __construct()
     {
-        $this->middleware('auth');
+        // $this->middleware('auth');
     }
 
     public function index()
@@ -59,7 +59,7 @@ class UsuarioController extends Controller
         $user = 'pitter';
         return view('pages.usuario.impressaoProntuario', compact('user'));
     }
-    
+
     public function seriesProfAll($id)
     {
 
