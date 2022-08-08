@@ -3,6 +3,9 @@
     'elementActive' => 'usuario'
 ])
 @section('content')
+
+
+
 <!-- Modal novo usuário-->
 <div class="modal modal-slide-in new-user-modal fade" id="modals-slide-in">
     <div class="modal-dialog">

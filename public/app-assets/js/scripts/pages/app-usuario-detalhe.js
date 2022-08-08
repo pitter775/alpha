@@ -81,7 +81,6 @@ $(function() {
     $('#alteracao2').val(dataFormatada);
     $('#alteracao2').trigger('change');
 
-
     $('#fotoUser').on('change', function(e) {
         console.log($('#fotoUser').val());
     });
@@ -113,6 +112,7 @@ $(function() {
         selector: '[data-toggle="tooltip"]',
         container: 'body'
     });
+
     $(document).on('click', '.btmudar', function() {
         $('#fotouser').data('tipo', 'nova');
         $('#temfoto').val('tem');
@@ -283,7 +283,6 @@ $(function() {
 
 
     });
-
     $(document).on('change', '#tipo_alteracao', function() {
         var tipo = $('select[name=tipo_alteracao] option').filter(':selected').val()
         if (tipo == 'Remanejamento' || tipo == 'Matricula') {

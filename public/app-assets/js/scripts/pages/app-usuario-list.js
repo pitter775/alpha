@@ -419,6 +419,7 @@ $(function() {
             backgroundColor: '#fff'
         }, 1000, "linear");
     }
+
     $(document).on('click', '.create-new', function() {
         $("#senha").prop('required', true);
         $(".ediadi").text('Adicionar');

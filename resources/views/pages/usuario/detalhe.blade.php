@@ -2,6 +2,10 @@
 'elementActive' => 'usuario'
 ])
 @section('content')
+
+<div id="imprimirprontuario" style="">
+
+</div>
     <style>
         .dropzone .dz-preview {
             zoom: 0.8;

@@ -73,6 +73,7 @@ Route::group(['middleware' => 'acesso'], function () {
     Route::get('/usuario/alteracaos/{id}', [App\Http\Controllers\UsuarioController::class, 'alteracoesList']);
     Route::get('/usuario/observacao/delete/{id}', [App\Http\Controllers\UsuarioController::class, 'deleteObservacao']);
     Route::get('/usuario/atualizasituacao/{id}', [App\Http\Controllers\UsuarioController::class, 'atualizasituacao']);
+    Route::get('/usuario/imprimirPront/{id}', [App\Http\Controllers\UsuarioController::class, 'imprimirPront']);
 
     Route::get('/serie', [App\Http\Controllers\SerieController::class, 'index']);
     Route::get('/serie/all', [App\Http\Controllers\SerieController::class, 'all']);

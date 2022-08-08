@@ -55,6 +55,11 @@ class UsuarioController extends Controller
         //dd($users);
         return json_encode($users);
     }
+    public function imprimirPront($id){
+        $user = 'pitter';
+        return view('pages.usuario.impressaoProntuario', compact('user'));
+    }
+    
     public function seriesProfAll($id)
     {
 

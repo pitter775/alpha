@@ -122,6 +122,7 @@
                             @if (Auth::user()->use_perfil !== 12) <button type="submit" class="btn btn-primary mb-1 mb-sm-0 mr-0 mr-sm-1">Salvar Dados</button> @endif  
                         </div>
                     </div>
+                    
                 </div>
                 <div class="col-md-4">
                     @include('pages.usuario.add_calendario')

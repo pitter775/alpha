@@ -40,6 +40,12 @@ switch ($user->use_perfil) {
                <span class="badge bg-light-danger">Solicitação de Matrícula</span>
                @endif
             </div>
+
+            <div class="row">
+               <div class="col-md-12" style="padding-top:20px">
+                   @if (Auth::user()->use_perfil !== 12) <a href="/usuario/imprimirPront/{{$user->id}}" target="_blank" class="btn btn-primary mb-1 mb-sm-0 mr-0 mr-sm-1 btimprimirProntuario"> <i data-feather='printer'></i> Imprimir o Prontuário</a> @endif  
+               </div>
+           </div>
          </div>
       </div>
       <div style="height: 50px;"></div>
