@@ -9,15 +9,15 @@
     .col-right{float: right;}
     .aling-right{ text-align: right}
     .font-pequena { font-size: 12px}
-    .prontuario{  font-size: 25px; margin-top: 0px; }
+    .prontuario{  font-size: 20px; margin-top: 0px; }
     .headescola{ font-size: 10px; text-align: right; float: right;}
     .headescola p{line-height: 15px;}
     .imgaluno{ margin-top: -5px; width: 130px; height: 130px; background-image: url("https://cangurunews.com.br/wp-content/uploads/2021/12/soluco-em-criancas-696x464.jpg");
         background-size: cover; background-position: center;        float: left; margin-right: 20px;        border-radius: 5px;
         box-shadow: 0 4px 8px 0 rgb(34 41 47 / 12%), 0 2px 4px 0 rgb(34 41 47 / 8%);  }
         
-    .blocofoto2{ font-size: 12px; margin-top: 40px; line-height: 20px;}
-    .blocofoto{ font-size: 12px; display: table; width: 100%;}
+    .blocofoto2{ font-size: 14px; margin-top: 40px; line-height: 20px;}
+    .blocofoto{ font-size: 13px; display: table; width: 100%;}
     .blocofoto p{ line-height: 20px;}
     .blocofoto2 p{ line-height: 20px;}
     
@@ -33,7 +33,8 @@
                 <head >
                     <div class="row" style="margin-bottom:40px">
                         <div class="col-left">
-                            <p class="prontuario">PRONTUÁRIO</p>
+                            <p class="prontuario">PRONTUÁRIO ANO 2022</p>
+                            <p style="margin-top: -20px"><b>RA </b> 3589547</p>
                         </div>
                         <div class="headescola" style="width: 400px; margin-top: -10px;">
                             <img src="https://educacaofuturo.org.br/app-assets/images/escola-drummond.jpg" class="imgescola" />
@@ -45,7 +46,7 @@
                 </head>
                 <div class="blocofoto" >
                     <div class="imgaluno"></div>   
-                    <p style="font-size: 16; margin-bottom: 25px;"><b>Abraão Leite Queiroz Castro Filho</b></p>      
+                    <p style="font-size: 20px; margin-bottom: 25px;"><b>Abraão Leite Queiroz Castro Filho</b></p>      
                     <p>
                         <b>Data de nascimento:</b> 11/07/2019 <span style=" margin: 0 10px;">-</span>
                         <b>RG:</b> 34570946-7  <span style=" margin: 0 10px;">-</span>
@@ -58,7 +59,7 @@
                     </p>           
                 </div>
                 <div class="blocofoto2" >
-                    <p style="font-size: 16; margin-bottom: 10px;"><b>Endereço</b></p> 
+                    <p style="font-size: 18; margin-bottom: 10px;">Endereço</p> 
                     <b>Rua:</b> Antonio de Oliveira, 27 <span style=" margin: 0 10px;">-</span>
                     <b>Complemento:</b> casa 8 <span style=" margin: 0 10px;">-</span>
                     <b>CEP:</b> 06533-210 <br>
@@ -67,18 +68,33 @@
                     <b>Estado:</b> São Paulo 
                 </div>
                 <div class="blocofoto2" >
-                    <p style="font-size: 16; margin-bottom: 10px;"><b>Responsáveis</b></p> 
+                    <p style="font-size: 18px; margin-bottom: 10px;">Responsáveis</p> 
                     <b>Nome do Pai:</b> Abraão Leite Queiroz Castro <span style=" margin: 0 10px;">-</span>
                     <b>Telefone:</b> (11) 9 4025-6387 <br>
                     <b>Nome do Mãe:</b> Joscinelma Oliveira de Castro Leite <span style=" margin: 0 10px;">-</span>
                     <b>Telefone:</b> (11) 9 7890-3047 
                 </div>
+                <div class="blocofoto2" >
+                    <p style="font-size: 18px; margin-bottom: 10px;">Autorização de Saída e Retirada do Aluno</p> 
+                    <b>Nome do Pai:</b> Abraão Leite Queiroz Castro <span style=" margin: 0 10px;">-</span>
+                    <b>Telefone:</b> (11) 9 4025-6387 <br>
+                    <b>Nome do Mãe:</b> Joscinelma Oliveira de Castro Leite <span style=" margin: 0 10px;">-</span>
+                    <b>Telefone:</b> (11) 9 7890-3047 
+                </div>
+                <div class="blocofoto2" >
+                    <p style="font-size: 18px; margin-bottom: 10px;">Saúde</p> 
+                    <b>Cartão Nascional de Saúde - SUS:</b> 5485 5468 5648 <br>
+                    <b>Alergia:</b> Dipirona/ As <span style=" margin: 0 10px;">-</span> 
+                    <b>Intolerância:</b> não
+                </div>
+                <div class="blocofoto2 aling-right" style="margin-top: 80px; t" >
+                    <p style="font-size: 18px; margin-bottom: 10px;">TENHO TOTAL CONHECIMENTO E COM AS QUAIS CONCORDO PLENAMENTE</p> 
+                    <p style="margin-top: 40px">Santana do Parnaíba, 10 de Agosto de 2022</p>
+                    <p style="margin-top: 70px"> Ass. ___________________________________________________________</p>
+                </div>
                 
     
             </div>    
-        </div>
-        <div class="page">
-            <div class="subpage">Page 2/2</div>    
         </div>
     </div>
 </body>
@@ -86,5 +102,5 @@
 
 
 <script>
-    // window.print();
+     window.print();
 </script>
