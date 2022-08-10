@@ -1,5 +1,6 @@
 <style>
-    body {width: 100%;height: 100%;margin: 0;padding: 0;font: 12pt "Tahoma";}
+    
+    body {width: 100%;height: 100%;margin: 0;padding: 0;font: 12pt "Tahoma"; print-color-adjust: exact; -webkit-print-color-adjust: exact;}
     * {box-sizing: border-box;-moz-box-sizing: border-box;}
     .page {width: 210mm;min-height: 297mm;padding: 10mm;margin: 5mm auto;border-radius: 5px;background: white;box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);}
     .subpage {padding: 0cm;/* border: 5px red solid; /height: 277mm;/ outline: 1cm #FFEAEA solid; */}
@@ -102,5 +103,5 @@
 
 
 <script>
-     window.print();
+ window.print();
 </script>
