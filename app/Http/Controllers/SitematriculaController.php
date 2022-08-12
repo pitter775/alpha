@@ -6,6 +6,7 @@ use App\Models\Social;
 use App\Models\Endereco;
 use App\Models\Matricula;
 use App\Models\Responsavei;
+use App\Models\Resp_autorizado;
 use App\Models\Saude_user;
 use App\Models\Habitos_alimentare;
 use Illuminate\Http\Request;
@@ -102,6 +103,35 @@ class SitematriculaController extends Controller
         ->first();
         return view('pages.site.getuser', compact('user'));
     }
+    // public function responsavel(){
+    //     $temResp = Responsavei::all();
+
+    //     foreach($temResp as $val){
+
+    //         if($val->res_nome_pai){
+    //             $resp = new Resp_autorizado();
+    //             $resp->resp_nome = $val->res_nome_pai;
+    //             $resp->resp_telefone = $val->res_telefone_pai;
+    //             $resp->resp_profissao = $val->res_profissao_pai;
+    //             $resp->resp_autorizacao = 1;
+    //             $resp->resp_users_id = $val->res_users_id;
+    //             $resp->resp_parentesco = "Pai";
+    //             $resp->save();
+    //         }
+    //         if($val->res_nome_mae){
+    //             $resp = new Resp_autorizado();
+    //             $resp->resp_nome = $val->res_nome_mae;
+    //             $resp->resp_telefone = $val->res_telefone_mae;
+    //             $resp->resp_profissao = $val->res_profissao_mae;
+    //             $resp->resp_autorizacao = 1;
+    //             $resp->resp_parentesco = "Mãe";
+    //             $resp->resp_users_id = $val->res_users_id;
+    //             $resp->save();
+    //         }
+
+    //     }
+
+    // }
     public function cadastro(Request $request)
     {
 
@@ -216,7 +246,8 @@ class SitematriculaController extends Controller
             if ($bt_salvar == 'responsavel') {
 
                 $mensagem['dados-responsavel'] = 'entrou';
-                $mensagem['dados-matriculas_id'] = $matriculas_id;              
+                $mensagem['dados-matriculas_id'] = $matriculas_id;     
+
                 $temResp = Responsavei::where('res_matriculas_id', $matriculas_id)->get();
                 if (!count($temResp) == 0) {
                     $dados_mat = Responsavei::find($temResp[0]->id);

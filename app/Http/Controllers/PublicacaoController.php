@@ -45,6 +45,7 @@ class PublicacaoController extends Controller
 
         $texto = $request->pub_texto;
         $novafrase = str_replace('src="arquivos/','src="/arquivos/' ,$texto);
+        $novafrase = str_replace('href="arquivos/','href="/arquivos/' ,$novafrase);
         $dados->pub_texto =  $novafrase;
         $dados->pub_status =  $request->pub_status;
         $dados->pub_codigo =  $pub_codigo;

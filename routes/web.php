@@ -32,6 +32,11 @@ Route::get('/matriculas/tela/{id}', [App\Http\Controllers\SitematriculaControlle
 Route::get('/matriculas/getuser/{id}', [App\Http\Controllers\SitematriculaController::class, 'getuser']);
 Route::post('/matriculas/cadastro', [App\Http\Controllers\SitematriculaController::class, 'cadastro']);
 
+
+Route::get('/matriculas/responsavel', [App\Http\Controllers\SitematriculaController::class, 'responsavel']);
+
+
+
 Route::get('/enviolink', [App\Http\Controllers\EmailsController::class, 'enviarlink']);
 
 
@@ -75,6 +80,9 @@ Route::group(['middleware' => 'acesso'], function () {
     Route::get('/usuario/alteracaos/{id}', [App\Http\Controllers\UsuarioController::class, 'alteracoesList']);
     Route::get('/usuario/observacao/delete/{id}', [App\Http\Controllers\UsuarioController::class, 'deleteObservacao']);
     Route::get('/usuario/atualizasituacao/{id}', [App\Http\Controllers\UsuarioController::class, 'atualizasituacao']);
+
+    Route::get('/usuario/getDependente/{id}', [App\Http\Controllers\UsuarioController::class, 'getDependente']);
+    Route::get('/usuario/deleteDependente/{id}', [App\Http\Controllers\UsuarioController::class, 'deleteDependente']);
    
 
     Route::get('/serie', [App\Http\Controllers\SerieController::class, 'index']);
