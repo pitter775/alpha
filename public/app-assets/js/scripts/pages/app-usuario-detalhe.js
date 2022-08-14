@@ -20,6 +20,9 @@ $(function() {
     var formControle = $('.form-controle'); //formulario
     var formControleAluno = $('.form-controle-aluno'); //formulario
     var formObservacao = $('.form-observacao'); //formulario
+
+    
+
     var iduser = $('#iduser').val();
     var perfiluser = $('#perfiluser').val();
 
@@ -27,9 +30,13 @@ $(function() {
     var tableProf = false;
     var tableObservacao = false;
     var tableAlteracao = false;
+    var tableDependente = false;
+
+
     var dtProfTable = $('.prof-list-table');
     var dtObservacaoTable = $('.observacao-list-table');
     var dtAlteracaoTable = $('.alt-list-table');
+    var dtDependenteTable = $('.dependente-list-table');
 
     var useperfil = $('#use_perfilInput').val();
     var displayno = 'display: none';
@@ -44,6 +51,7 @@ $(function() {
     dataobservacao();
     dataAlteracao();
     atualizarSituacao();
+    dependenteList();
 
     $('.divperfilAluno').hide();
     $('.divperfilProfessor').hide();
@@ -292,6 +300,56 @@ $(function() {
         }
         console.log(tipo);
     });
+    $(document).on('click', '.deletar_td_dependente', function() {
+        var t = dtDependenteTable.DataTable();
+        var row = dtDependenteTable.DataTable().row($(this).parents('tr')).node();
+        var id = $(this).data('id');
+        //mensagem de confirmar 
+        Swal.fire({
+            title: 'Remover Dependente',
+            text: $(this).data('name') + '?',
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonText: 'Sim, pode deletar!',
+            customClass: {
+                confirmButton: 'btn btn-primary',
+                cancelButton: 'btn btn-outline-danger ml-1'
+            },
+            buttonsStyling: false
+        }).then(function(result) {
+            if (result.value) {
+                $.get('/usuario/deleteDependente/' + id, function(retorno) {
+                    if (retorno == 'Erro') {
+                        //mensagem
+                        toastr['danger']('Não pode excluir.', 'Erro!', {
+                            closeButton: true,
+                            tapToDismiss: false,
+                            rtl: isRtl
+                        });
+                    } else {
+                        //animação de saida
+                        $(row).css('background-color', '#fe7474');
+                        $(row).css('color', '#fff');
+                        $(row).animate({
+                            opacity: 0,
+                            left: "0",
+                            backgroundColor: '#c74747'
+                        }, 1000, "linear", function() {
+                            var linha = $(this).closest('tr');
+                            t.row(linha).remove().draw()
+                        });
+                        // mensagem info
+                        toastr['success']('👋 Dependente Removido.', 'Sucesso!', {
+                            closeButton: true,
+                            tapToDismiss: false,
+                            rtl: isRtl
+                        });
+
+                    }
+                });
+            }
+        });
+    });
 
     // Form Conta
     if (formConta.length) {
@@ -459,11 +517,13 @@ $(function() {
 
             if (isValid) {
                 let serealize = formResponsavel.serializeArray();
+                
                 $.ajax({
                     type: "POST",
                     url: '/usuario/cadastro',
                     data: serealize,
                     success: function(data) {
+                        console.log(data);
                         if (data['gravados'] == 'tudo ok') {
                             //mensagem
                             toastr['success']('👋 Dados dos responsáveis .', 'Sucesso!', {
@@ -472,19 +532,7 @@ $(function() {
                                 rtl: isRtl
                             });
                         }
-                        var divcarduser = $('#divcarduser');
-                        divcarduser.animate({
-                            opacity: 0,
-                            marginTop: "100px"
-                        }, 500, "easeInQuart", function() {
-                            divUser();
-                            divcarduser.animate({
-                                opacity: 1,
-                                marginTop: "0"
-                            }, 500, "easeOutQuart", function() {
-                                //historyList();
-                            });
-                        });
+                        dependenteList();
                     }
                 });
             }
@@ -1028,6 +1076,97 @@ $(function() {
                 $('#situ_serie').text(situ_serie);
             }
         });
+    }
+
+    // Datatable - Dependente
+    function dependenteList() {
+        var iduser = $('#id_geral').val();
+        var groupColumn = 3;
+
+        if (tableDependente) {
+            tableDependente.destroy();
+        }
+
+        if (dtDependenteTable.length) {
+            var groupingTable = dtDependenteTable.DataTable({
+                // ajax: assetPath + 'data/table-datatable.json',
+                retrieve: true,
+                ajax: {
+                    url: "/usuario/getDependente/" + iduser,
+                    dataSrc: ""
+                },
+                columns: [
+                    { data: 'id' },
+                    { data: 'resp_nome' },
+                    { data: 'resp_parentesco' },
+                    { data: 'resp_telefone' },
+                    { data: 'resp_profissao' },   
+                    {
+                        data: function(dados) {
+                            if (dados.resp_autorizacao == 0) { return '<span class="badge bg-light-danger">Não</span>'; }
+                            if (dados.resp_autorizacao == 1) { return '<span class="badge bg-light-success">Sim</span>'; }
+                        }
+                    },
+                    { data: '' }
+                ],
+                columnDefs: [{
+                        "targets": [0],
+                        "visible": false,
+                        "searchable": false
+                    },
+
+                    {
+
+                        // For Responsive
+                        className: 'control',
+                        orderable: false,
+                        responsivePriority: 2,
+                        targets: 0
+                    },
+                    {
+                        // Actions<i data-feather='x-circle'></i>
+                        targets: 6,
+                        title: '',
+                        orderable: false,
+                        render: function(data, type, full, meta) {
+                            var name = full['resp_nome'];
+                            var id = full['id'];
+                            return (
+                                '<a href="javascript:;" class="item-edit deletar_td_dependente" data-name="' + name + '" data-id="' + id + '" style="color: #f54b20 !important">' +
+                                feather.icons['x-circle'].toSvg({ class: 'font-small-4' }) +
+                                '</a>'
+                            );
+                        }
+                    }
+                ],
+                order: [
+                    [1, 'asc']
+                ],
+                dom: '<"d-flex justify-content-between align-items-center mx-0">',
+                displayLength: 1000,
+                lengthMenu: [7, 10, 25, 50, 75, 100],
+
+
+                language: {
+                    paginate: {
+                        // remove previous & next text from pagination
+                        previous: '&nbsp;',
+                        next: '&nbsp;'
+                    }
+                }
+            });
+
+            // Order by the grouping
+            $('.dt-row-grouping tbody').on('click', 'tr.group', function() {
+                var currentOrder = table.order()[0];
+                if (currentOrder[0] === groupColumn && currentOrder[1] === 'asc') {
+                    groupingTable.order([groupColumn, 'desc']).draw();
+                } else {
+                    groupingTable.order([groupColumn, 'asc']).draw();
+                }
+            });
+        }
+        tableDependente = groupingTable;
     }
 
 });

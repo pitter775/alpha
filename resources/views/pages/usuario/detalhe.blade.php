@@ -143,12 +143,10 @@
                                         </div>
                                         <div class="tab-pane fade liresp" id="responsaveis"
                                             aria-labelledby="responsaveis-tab" role="tabpanel">
-                                            <form class="form-responsavel">
-                                                @csrf
-                                                <input type="hidden" value="{{ $user->id ?? '' }}" name="id_geral"
-                                                    id="id_geral" />
+                                        
+                                        
                                                 @include('pages.usuario.responsaveis')
-                                            </form>
+                                           
                                         </div>
                                         <div class="tab-pane fade lisaud" id="saude" aria-labelledby="saude-tab"
                                             role="tabpanel">

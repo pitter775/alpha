@@ -9,6 +9,7 @@ use App\Models\Endereco;
 use App\Models\Matricula;
 use App\Models\Professore;
 use App\Models\Responsavei;
+use App\Models\Resp_autorizado;
 use App\Models\Serie;
 use App\Models\Presenca;
 use App\Models\Saude_user;
@@ -109,7 +110,6 @@ class UsuarioController extends Controller
             ->first();
         
         $series = Serie::all();
-
         $presenca = Presenca::where([['users_id',  $id]])->get();
 
         return view('pages.usuario.detalhe', compact('user', 'series' ,'presenca'));
@@ -282,28 +282,15 @@ class UsuarioController extends Controller
             if ($bt_salvar == 'responsavel') {
 
                 $mensagem['dados-responsavel'] = 'entrou';
-                $mensagem['dados-matriculas_id'] = $matriculas_id;              
-                $temResp = Responsavei::where('res_matriculas_id', $matriculas_id)->get();
-                if (!count($temResp) == 0) {
-                    $dados_mat = Responsavei::find($temResp[0]->id);
-                    $mensagem['dados-responsavel'] = 'ja tem editando ';
-                }else{
-                    $dados_mat = new Responsavei();
-                    $mensagem['dados-responsavel'] = 'novo responsavel ';
-                }
-
-                $dados_mat->res_matriculas_id = $matriculas_id;
-                $dados_mat->res_users_id = $id_geral;
-                $dados_mat->res_nome_pai = $request->input('res_nome_pai');
-                $dados_mat->res_telefone_pai = $request->input('res_telefone_pai');
-                $dados_mat->res_profissao_pai = $request->input('res_profissao_pai');
-                $dados_mat->res_nome_mae = $request->input('res_nome_mae');
-                $dados_mat->res_telefone_mae = $request->input('res_telefone_mae');
-                $dados_mat->res_profissao_mae = $request->input('res_profissao_mae');
-                $dados_mat->res_nome_res = $request->input('res_nome_res');
-                $dados_mat->res_res_telefone = $request->input('res_res_telefone');
-                $dados_mat->res_res_profissao = $request->input('res_res_profissao');
-                $dados_mat->save();               
+               
+                $dados_resp = new Resp_autorizado();
+                $dados_resp->resp_nome = $request->input('resp_nome');
+                $dados_resp->resp_parentesco = $request->input('resp_parentesco');
+                $dados_resp->resp_profissao = $request->input('resp_profissao');
+                $dados_resp->resp_telefone = $request->input('resp_telefone');
+                $dados_resp->resp_autorizacao = $request->input('resp_autorizacao');
+                $dados_resp->resp_users_id = $id_geral;
+                $dados_resp->save();               
             }    
             if ($bt_salvar == 'saude') {
 
@@ -434,10 +421,7 @@ class UsuarioController extends Controller
                 $dados_alt->alt_user = $id_geral;
                 $dados_alt->save();   
                 $mensagem['dados-alteração'] = 'ok';
-            }   
-
-
-
+            } 
             if ($bt_salvar == 'controle-professor') {
                 $mensagem['dados-cont-professor'] = 'entrou';
                 $dados_prof = new Professore();      
@@ -620,5 +604,30 @@ class UsuarioController extends Controller
                 }
             }
         }
+    }
+    public function deleteDependente($id)
+    {
+        $deletar = Resp_autorizado::find($id);
+        if (isset($deletar)) {
+            try {
+                $deletar->delete();
+                return 'Ok';
+            } catch (PDOException $e) {
+                if (isset($e->errorInfo[1]) && $e->errorInfo[1] == '1451') {
+                    return 'Erro';
+                }
+            }
+        }
+    }
+
+
+    public function getDependente($id){
+        $dependentes =  DB::table('resp_autorizados AS d')
+        ->join('users as u', 'u.id', '=', 'd.resp_users_id')
+        ->select('*', 'd.id AS id')
+        ->where('d.resp_users_id', $id)
+        ->get();
+
+        return json_encode($dependentes);
     }
 }
