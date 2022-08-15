@@ -17,10 +17,11 @@
         background-size: cover; background-position: center;        float: left; margin-right: 20px;        border-radius: 5px;
         box-shadow: 0 4px 8px 0 rgb(34 41 47 / 12%), 0 2px 4px 0 rgb(34 41 47 / 8%);  }
         
-    .blocofoto2{ font-size: 14px; margin-top: 40px; line-height: 20px;}
+    .blocofoto2{ font-size: 14px; margin-top: 30px; line-height: 20px;}
     .blocofoto{ font-size: 13px; display: table; width: 100%;}
     .blocofoto p{ line-height: 20px;}
     .blocofoto2 p{ line-height: 20px;}
+    .titi1{font-size: 18px; margin-bottom: 10px; }
     
     @page  {size: A4; margin: 0;}
     @media  print {html, body {width: 210mm; height: 297mm;}
@@ -47,20 +48,22 @@
                 </head>
                 <div class="blocofoto" >
                     <div class="imgaluno"></div>   
-                    <p style="font-size: 20px; margin-bottom: 25px;"><b>Abraão Leite Queiroz Castro Filho</b></p>      
+                    <p style="font-size: 20px; margin-bottom: 0px"><b>Abraão Leite Queiroz Castro Filho</b></p>      
                     <p>
                         <b>Data de nascimento:</b> 11/07/2019 <span style=" margin: 0 10px;">-</span>
                         <b>RG:</b> 34570946-7  <span style=" margin: 0 10px;">-</span>
                         <b>CPF:</b> 30519902807  <br/>
                         <b>Reg. nascimento:</b> Vitoria da Conquista - SP  <span style=" margin: 0 10px;">-</span>
-                        <b>Sexo:</b> Masculino  <br><br>
+                        <b>Sexo:</b> Masculino  <br>
+                        <b>Raça / Cor definidas pelo IBGE:</b> N/declarada  <br>
+                        ______________________________________________________________________________
                         <b>Tipo:</b> Matrículado  <span style=" margin: 0 10px;">-</span>
                         <b>Professora:</b> Tamires  <span style=" margin: 0 10px;">-</span>
                         <b>Serie:</b> Maternal I - Integral - Bondade  
                     </p>           
                 </div>
                 <div class="blocofoto2" >
-                    <p style="font-size: 18; margin-bottom: 10px;">Endereço</p> 
+                    <p class="titi1">Endereço</p> 
                     <b>Rua:</b> Antonio de Oliveira, 27 <span style=" margin: 0 10px;">-</span>
                     <b>Complemento:</b> casa 8 <span style=" margin: 0 10px;">-</span>
                     <b>CEP:</b> 06533-210 <br>
@@ -69,27 +72,33 @@
                     <b>Estado:</b> São Paulo 
                 </div>
                 <div class="blocofoto2" >
-                    <p style="font-size: 18px; margin-bottom: 10px;">Responsáveis</p> 
+                    <p class="titi1">Responsáveis</p> 
                     <b>Nome do Pai:</b> Abraão Leite Queiroz Castro <span style=" margin: 0 10px;">-</span>
                     <b>Telefone:</b> (11) 9 4025-6387 <br>
                     <b>Nome do Mãe:</b> Joscinelma Oliveira de Castro Leite <span style=" margin: 0 10px;">-</span>
                     <b>Telefone:</b> (11) 9 7890-3047 
                 </div>
                 <div class="blocofoto2" >
-                    <p style="font-size: 18px; margin-bottom: 10px;">Autorização de Saída e Retirada do Aluno</p> 
+                    <p class="titi1">Autorização de Saída e Retirada do Aluno</p> 
                     <b>Nome do Pai:</b> Abraão Leite Queiroz Castro <span style=" margin: 0 10px;">-</span>
                     <b>Telefone:</b> (11) 9 4025-6387 <br>
                     <b>Nome do Mãe:</b> Joscinelma Oliveira de Castro Leite <span style=" margin: 0 10px;">-</span>
                     <b>Telefone:</b> (11) 9 7890-3047 
                 </div>
                 <div class="blocofoto2" >
-                    <p style="font-size: 18px; margin-bottom: 10px;">Saúde</p> 
+                    <p class="titi1">Saúde</p> 
                     <b>Cartão Nascional de Saúde - SUS:</b> 5485 5468 5648 <br>
                     <b>Alergia:</b> Dipirona/ As <span style=" margin: 0 10px;">-</span> 
                     <b>Intolerância:</b> não
                 </div>
-                <div class="blocofoto2 aling-right" style="margin-top: 80px; t" >
-                    <p style="font-size: 18px; margin-bottom: 10px;">TENHO TOTAL CONHECIMENTO E COM AS QUAIS CONCORDO PLENAMENTE</p> 
+                <div class="blocofoto2" >
+                    <p class="titi1">Movimentação do Aluno</p> 
+                    <b>Data:</b> 15/08/2022 <span style=" margin: 0 10px;">-</span>
+                    <b>Série:</b> Maternal II - Integral - Alegria <span style=" margin: 0 10px;">-</span> 
+                    <b>Reponsável:</b> Prof. Tamires
+                </div>
+                <div class="blocofoto2 aling-right" style="margin-top: 70px" >
+                    <p class="titi1" > Tenho total conhecimento e com as quais concordo plenamente</p> 
                     <p style="margin-top: 40px">Santana do Parnaíba, 10 de Agosto de 2022</p>
                     <p style="margin-top: 70px"> Ass. ___________________________________________________________</p>
                 </div>
