@@ -37,7 +37,7 @@
       <a href="" data-id="{{$value->id}}" data-name="{{$value->arq_name_arq}}" class="btn btn-outline-danger waves-effect btfechar">X</a>
       <div class="copiarEnd" data-url="{{$value->arq_url}}" data-name="{{$value->arq_name_arq}}" data-tipo="{{$value->arq_tipo}}">
          <div class="card-img-top file-logo-wrapper" >
-            <div class="d-flex align-items-center justify-content-center w-100">
+            <div class="d-flex align-items-center justify-content-center w-100 copiarEnd">
                <?php
                   if($value->arq_tipo == 'pdf' || $value->arq_tipo == 'PDF'){
                      echo $value->arq_name_arq;
