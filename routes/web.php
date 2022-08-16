@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Auth;
 use App\Http\Resources\UserResource;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\URL;
 
 /*
 |--------------------------------------------------------------------------
@@ -16,7 +17,7 @@ use Illuminate\Http\Request;
 | contains the "web" middleware group. Now create something great!
 |
 */
-
+URL::forceScheme('https');
 
 Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('site');
 Route::get('/publi/{id}', [App\Http\Controllers\HomeController::class, 'publi']);
