@@ -98,7 +98,7 @@
 
         <div class="row">
           <div class="col-md-12">
-            <h3>{{$publicacoes->pub_titulo}}</h3>
+            <h3 style="text-align: center">{{$publicacoes->pub_titulo}}</h3>
             <p>{!! $publicacoes->pub_texto ?? '' !!}</p>
           </div>
         </div>

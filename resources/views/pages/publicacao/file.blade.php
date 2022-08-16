@@ -38,7 +38,14 @@
       <div class="copiarEnd" data-url="{{$value->arq_url}}" data-name="{{$value->arq_name_arq}}" data-tipo="{{$value->arq_tipo}}">
          <div class="card-img-top file-logo-wrapper" >
             <div class="d-flex align-items-center justify-content-center w-100">
-               <img src="/arquivos/{{$value->arq_url}}" alt="file-icon" height="45" />
+               <?php
+                  if($value->arq_tipo == 'pdf' || $value->arq_tipo == 'PDF'){
+                     echo $value->arq_name_arq;
+                  }else{ ?>
+                     <img src="/arquivos/{{$value->arq_url}}" alt="file-icon" height="45" />
+               <?php   } ?>
+               
+               
             </div>
          </div>
          

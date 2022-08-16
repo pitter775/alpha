@@ -34,14 +34,14 @@ $(function() {
     // Multiple Files
     multipleFiles.dropzone({
         paramName: 'file', // The name that will be used to transfer the file
-        maxFilesize: 0.5, // MB
+        maxFilesize: 999.9, // MB
         clickable: true
     });
 
 
     fileUpload.dropzone({
         paramName: 'file', // The name that will be used to transfer the file
-        maxFilesize: 10, // MB      
+        maxFilesize: 999.9, // MB      
         clickable: true,
         init: function() {
             var totalFiles = 0;
