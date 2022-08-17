@@ -6,7 +6,7 @@
   <!-- <meta content="width=device-width, initial-scale=1.0" name="viewport"> -->
   <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0, shrink-to-fit=no' name='viewport' />
 
-  <title>Educação para o Futuro</title>
+  <title>{{$publicacoes->pub_titulo}}</title>
 
 
 
