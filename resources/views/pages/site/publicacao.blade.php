@@ -76,13 +76,13 @@
  
       <nav class="nav-menu d-none d-lg-block">
         <ul>
-          <li class="active"><a href="http://educacaofuturo.org.br">Home</a></li>
-          <li><a href="http://educacaofuturo.org.br##about">Quem Somos</a></li>
-          <li><a href="http://educacaofuturo.org.br#publicacao">Publicações</a></li>
-          <li><a href="http://educacaofuturo.org.br#services">Projetos</a></li>
-          <li><a href="http://educacaofuturo.org.br#portfolio">Fotos</a></li>
-          <li><a href="http://educacaofuturo.org.br#contact">Contato</a></li>
-          <li><a href="http://educacaofuturo.org.br/login" title="Entrar no sistema" style="padding: 15px 15px" ><i class=" icofont-gnome icofont-2x"></i></a></li>
+          <li class="active"><a href="https://educacaofuturo.org.br">Home</a></li>
+          <li><a href="https://educacaofuturo.org.br##about">Quem Somos</a></li>
+          <li><a href="https://educacaofuturo.org.br#publicacao">Publicações</a></li>
+          <li><a href="https://educacaofuturo.org.br#services">Projetos</a></li>
+          <li><a href="https://educacaofuturo.org.br#portfolio">Fotos</a></li>
+          <li><a href="https://educacaofuturo.org.br#contact">Contato</a></li>
+          <li><a href="https://educacaofuturo.org.br/login" title="Entrar no sistema" style="padding: 15px 15px" ><i class=" icofont-gnome icofont-2x"></i></a></li>
         </ul>
       </nav><!-- .nav-menu -->
     </div>
