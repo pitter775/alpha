@@ -14,7 +14,7 @@ body {
 }
 
 @font-face {
-  font-family: Richela;
+  font-family: Nunito;
   src: url("../img/richela.otf") format("opentype");
 }
 
@@ -38,7 +38,7 @@ a:hover {
 }
 
 h1, h2, h3, h4, h5, h6 {
-  font-family: "Richela", sans-serif;
+  font-family: "Nunito", sans-serif;
 }
 
 /*--------------------------------------------------------------

@@ -495,7 +495,11 @@
 
   <!-- Template Main JS File -->
   <script src="{{ asset('paper') }}/assets/js/main.js">
-  if (location.protocol !== 'https:') {
+
+  </script>
+
+  <script>
+      if (location.protocol !== 'https:') {
     location.replace(`https:${location.href.substring(location.protocol.length)}`);
 }
   </script>
