@@ -97,7 +97,7 @@
       <div class="container">
 
         <div class="row">
-          <div class="col-md-12">
+          <div class="col-md-12" style="background-color: rgba(255, 255, 255, 0.623)">
             <h3 style="text-align: center">{{$publicacoes->pub_titulo}}</h3>
             <p>{!! $publicacoes->pub_texto ?? '' !!}</p>
           </div>
