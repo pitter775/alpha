@@ -173,7 +173,9 @@ class UsuarioController extends Controller
             $mensagem['inputtemfoto'] = $request->input('temfoto');
             if($dados->use_perfil == 11){
                 $idmatricula = Matricula::where('mat_users_id', $id_geral)->first();
-                $matriculas_id = $idmatricula->id;
+                if($idmatricula->id){
+                    $matriculas_id = $idmatricula->id;
+                }
             }
 
             if ($bt_salvar == 'conta') {
