@@ -61,7 +61,6 @@
          <select id="use_perfil" name="use_perfil" class="form-control select2">
             <option value="11" @if($user->use_perfil == 11) selected @endif>Aluno</option>
             <option value="12" @if($user->use_perfil == 12) selected @endif>Professor</option>
-            {{-- <option value="10" @if($user->use_perfil == 17) selected @endif>Supervisor</option> --}}
             <option value="10" @if($user->use_perfil == 10) selected @endif>ADM</option>
          </select>
       </div>
