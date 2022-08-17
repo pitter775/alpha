@@ -61,11 +61,8 @@
          <select id="use_perfil" name="use_perfil" class="form-control select2">
             <option value="11" @if($user->use_perfil == 11) selected @endif>Aluno</option>
             <option value="12" @if($user->use_perfil == 12) selected @endif>Professor</option>
-            {{-- <option value="13" @if($user->use_perfil == 13) selected @endif>Diretoria</option>
-            <option value="14" @if($user->use_perfil == 14) selected @endif>Secretaria</option>
-            <option value="16" @if($user->use_perfil == 16) selected @endif>Link Site</option> --}}
-            <option value="17" @if($user->use_perfil == 17) selected @endif>Supervisor</option>
-            <option value="10" @if($user->use_perfil == 17) selected @endif>ADM</option>
+            {{-- <option value="10" @if($user->use_perfil == 17) selected @endif>Supervisor</option> --}}
+            <option value="10" @if($user->use_perfil == 10) selected @endif>ADM</option>
          </select>
       </div>
    </div>
