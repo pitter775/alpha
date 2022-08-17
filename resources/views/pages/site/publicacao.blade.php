@@ -96,8 +96,8 @@
     <section id="about" class="about">
       <div class="container">
 
-        <div class="row">
-          <div class="col-md-12" style="background-color: rgba(255, 255, 255, 0.623); box-shadow: 0 0 29px 0 rgb(68 88 144 / 12%); padding: 40px 10px">
+        <div class="row" style="margin-top: -70px">
+          <div class="col-md-12" style="background-color: rgba(255, 255, 255, 0.623); box-shadow: 0 0 29px 0 rgb(68 88 144 / 12%); padding: 40px 30px">
             <h3 style="text-align: center">{{$publicacoes->pub_titulo}}</h3>
             <p>{!! $publicacoes->pub_texto ?? '' !!}</p>
           </div>
