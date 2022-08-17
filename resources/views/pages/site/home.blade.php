@@ -494,7 +494,11 @@
   <script src="{{ asset('paper') }}/assets/vendor/aos/aos.js"></script>
 
   <!-- Template Main JS File -->
-  <script src="{{ asset('paper') }}/assets/js/main.js"></script>
+  <script src="{{ asset('paper') }}/assets/js/main.js">
+  if (location.protocol !== 'https:') {
+    location.replace(`https:${location.href.substring(location.protocol.length)}`);
+}
+  </script>
 
 </body>
 
