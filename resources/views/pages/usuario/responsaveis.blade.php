@@ -26,7 +26,9 @@
                <select id="resp_parentesco" name="resp_parentesco" class="form-control select2">
                   
                   <option value="Pai">Pai</option>
+                  <option value="Padrasto">Padrasto</option>
                   <option value="Mãe">Mãe</option>
+                  <option value="Madrasta">Madrasta</option>
                   <option value="Irmão">Irmão</option>
                   <option value="Tio">Tio</option>
                   <option value="Amigo">Amigo</option>
