@@ -55,7 +55,7 @@ class PresencaController extends Controller
 
         // todos os alunos da serie com a presença
         $seriesF  = DB::table('users AS u')
-        ->select('*', 'u.id AS id', 'u.name as name',(DB::raw("(SELECT p.pres_tipo FROM presencas as p  WHERE u.id = p.users_id AND p.pres_datanaw = '$data' ) AS presenca")))
+        ->select('*', 'u.id AS id', 'u.name as name',(DB::raw("(SELECT p.pres_tipo FROM presencas as p  WHERE u.id = p.users_id AND p.pres_datanaw = '$data' LIMIT 1) AS presenca")))
         ->leftjoin('matriculas', 'matriculas.mat_users_id', 'u.id')
         ->leftjoin('series', 'series.id', 'matriculas.mat_series_id')
         ->orderBy('name', 'asc')
