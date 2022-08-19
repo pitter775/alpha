@@ -79,7 +79,7 @@
     <!-- END: Theme JS-->
 
     <!-- BEGIN: Page JS-->
-    <script src="{{asset('app-assets/js/scripts/pages/app-invoice-list.js')}}"></script>
+    {{-- <script src="{{asset('app-assets/js/scripts/pages/app-invoice-list.js')}}"></script> --}}
     <!-- END: Page JS-->
 
     @stack('scripts')
@@ -94,9 +94,14 @@
             }
         })
 
-        if (location.protocol !== 'https:') {
-    location.replace(`https:${location.href.substring(location.protocol.length)}`);
-}
+    let prot = location.href;
+    position = prot.search("127");
+    console.log(position);
+    if(position !== 7){
+      if (location.protocol !== 'https:') {
+        location.replace(`https:${location.href.substring(location.protocol.length)}`);
+      }
+    }   
     </script>
  
 </body>
