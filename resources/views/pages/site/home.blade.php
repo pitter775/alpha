@@ -499,9 +499,14 @@
   </script>
 
   <script>
+    let prot = location.href;
+    position = prot.search("127");
+    console.log(position);
+    if(position !== 7){
       if (location.protocol !== 'https:') {
-    location.replace(`https:${location.href.substring(location.protocol.length)}`);
-}
+        location.replace(`https:${location.href.substring(location.protocol.length)}`);
+      }
+    }    
   </script>
 
 </body>
