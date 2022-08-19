@@ -245,10 +245,9 @@ class SitematriculaController extends Controller
             }    
             if ($bt_salvar == 'responsavel') {
 
-                $mensagem['dados-responsavel'] = 'entrou';
-                $mensagem['dados-matriculas_id'] = $matriculas_id;     
+                $mensagem['dados-responsavel'] = 'entrou';  
 
-                $temResp = Responsavei::where('res_matriculas_id', $matriculas_id)->get();
+                $temResp = Responsavei::where('res_users_id', $id_geral)->get();
                 if (!count($temResp) == 0) {
                     $dados_mat = Responsavei::find($temResp[0]->id);
                     $mensagem['dados-responsavel'] = 'ja tem editando ';
@@ -257,7 +256,7 @@ class SitematriculaController extends Controller
                     $mensagem['dados-responsavel'] = 'novo responsavel ';
                 }
 
-                $dados_mat->res_matriculas_id = $matriculas_id;
+                // $dados_mat->res_matriculas_id = $matriculas_id;
                 $dados_mat->res_users_id = $id_geral;
                 $dados_mat->res_nome_pai = $request->input('res_nome_pai');
                 $dados_mat->res_telefone_pai = $request->input('res_telefone_pai');

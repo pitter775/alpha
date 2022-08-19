@@ -65,7 +65,7 @@ $(function() {
                 // ajax: assetPath + 'data/cardapio-list.json', // JSON file to add data
                 retrieve: true,
                 order: [
-                    [0, 'desc']
+                    [0, 'asc']
                 ],
                 dom: '<"card-header border-bottom p-1"<"head-label"><"dt-action-buttons text-right"B>><"d-flex justify-content-between align-items-center mx-0 row"<"col-sm-12 col-md-6"l><"col-sm-12 col-md-6"f>>t<"d-flex justify-content-between mx-0 row"<"col-sm-12 col-md-6"i><"col-sm-12 col-md-6"p>>',
                 displayLength: 10,

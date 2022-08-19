@@ -292,7 +292,8 @@ class UsuarioController extends Controller
                 $dados_resp->resp_telefone = $request->input('resp_telefone');
                 $dados_resp->resp_autorizacao = $request->input('resp_autorizacao');
                 $dados_resp->resp_users_id = $id_geral;
-                $dados_resp->save();               
+                $dados_resp->save();  
+              
             }    
             if ($bt_salvar == 'saude') {
 
@@ -465,6 +466,7 @@ class UsuarioController extends Controller
 
         return $mensagem;
     }
+  
     public static function dateEmMysql($dateSql)
     {
         if ($dateSql) {

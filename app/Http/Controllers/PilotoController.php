@@ -22,16 +22,15 @@ class PilotoController extends Controller
     {
         $matriculas =  Schema::getColumnListing('matriculas');
         $alimentares =  Schema::getColumnListing('habitos_alimentares');
-        $presencas =  Schema::getColumnListing('presencas');
         $professores =  Schema::getColumnListing('professores');
-        $responsaveis =  Schema::getColumnListing('responsaveis');
+        $responsaveis =  Schema::getColumnListing('resp_autorizados');
         $saude_users =  Schema::getColumnListing('saude_users');
         $series =  Schema::getColumnListing('series');
         $socials =  Schema::getColumnListing('socials');
         $users =  Schema::getColumnListing('users');
         $enderecos =  Schema::getColumnListing('enderecos');
 
-        return view('pages.piloto.index', compact('matriculas','alimentares','presencas', 'professores', 'responsaveis', 'saude_users', 'series', 'socials', 'users', 'enderecos'));
+        return view('pages.piloto.index', compact('matriculas','alimentares', 'professores', 'responsaveis', 'saude_users', 'series', 'socials', 'users', 'enderecos'));
     }
     public function tabela(Request $request)
     {
@@ -40,9 +39,10 @@ class PilotoController extends Controller
 
         if(isset($request->users)){
             array_push($tabelas, "users");       
-            foreach ($request->users as $a){
+            foreach ($request->users as $a){                
                 array_push($colunas, $a); 
-            }     
+            } 
+             
         }
         if(isset($request->matriculas)){
             array_push($tabelas, "matriculas");  
@@ -63,7 +63,7 @@ class PilotoController extends Controller
             }     
         }
         if(isset($request->responsaveis)){
-            array_push($tabelas, "responsaveis");       
+            array_push($tabelas, "resp_autorizados");       
             foreach ($request->responsaveis as  $a){
                 array_push($colunas, $a); 
             }     
@@ -103,7 +103,10 @@ class PilotoController extends Controller
         $join = '';
         $colunasTab = '';
         foreach ($colunas as $col){
-            $colunasTab .= ','.$col.' ';
+            if($col != 'res_nome_pai'){
+                $colunasTab .= ','.$col.' ';
+            }
+            
         }        
         $colunasTab = substr($colunasTab, 1);
         $join .= ' LEFT JOIN matriculas ON matriculas.mat_users_id = u.id';
@@ -116,8 +119,8 @@ class PilotoController extends Controller
             if($tab == 'presencas'){
                 $join .= ' LEFT JOIN presencas ON presencas.users_id = u.id';
             }
-            if($tab == 'responsaveis'){
-                $join .= ' LEFT JOIN responsaveis ON responsaveis.res_users_id = u.id';
+            if($tab == 'resp_autorizados'){
+                $join .= ' LEFT JOIN resp_autorizados ON resp_autorizados.resp_users_id = u.id';
             }
             if($tab == 'saude_users'){
                 $join .= ' LEFT JOIN saude_users ON saude_users.sau_users_id = u.id';
@@ -134,8 +137,11 @@ class PilotoController extends Controller
         }      
 
         $tabela = DB::select(DB::raw(
-            "SELECT $colunasTab FROM users As u $join where u.use_perfil = 11"
+            "SELECT $colunasTab, (SELECT resp_autorizados.resp_nome from resp_autorizados limit 1) as res_nome_pai
+            FROM users As u $join where u.use_perfil = 11"
         ));
+
+        // dd($tabela);
         return $tabela;
     }
 
