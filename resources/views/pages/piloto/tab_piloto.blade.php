@@ -121,6 +121,8 @@
                                 if($dados == '0'){$dados = 'Não';}
                                 if($dados == '1'){$dados = 'Sim';}
                                 if($colum == 'use_dt_nascimento' || $colum == 'mat_data_inicio' ){$dados = date( 'd/m/Y' , strtotime($dados)); }
+                            
+
                             ?>
                            <td>
                             @if($colum == 'name')
