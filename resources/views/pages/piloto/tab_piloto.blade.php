@@ -80,16 +80,16 @@
                             case 'ser_apelido':$novoValule = 'Apelido da Série';break; 
                             
                             case 'soc_tipo_residencia':$novoValule = 'Tipo de Residência';break;
-                            case 'soc_residencia_comodos':$novoValule = 'Período';break;                                                        
-                            case 'soc_residentes':$novoValule = 'Apelido da Série';break;                               
-                            case 'soc_agua_encanada':$novoValule = 'Apelido da Série';break;                               
-                            case 'soc_esgoto':$novoValule = 'Apelido da Série';break;                               
-                            case 'soc_fossa':$novoValule = 'Apelido da Série';break;                               
-                            case 'soc_luz_eletrica':$novoValule = 'Apelido da Série';break;                               
-                            case 'soc_internet':$novoValule = 'Apelido da Série';break;                               
-                            case 'soc_computador':$novoValule = 'Apelido da Série';break;                               
-                            case 'soc_veiculo':$novoValule = 'Apelido da Série';break;                               
-                            case 'soc_renda_familiar':$novoValule = 'Apelido da Série';break; 
+                            case 'soc_residencia_comodos':$novoValule = 'Comodos na Residência';break;                                                        
+                            case 'soc_residentes':$novoValule = 'Quantos Residentes';break;                               
+                            case 'soc_agua_encanada':$novoValule = 'Água Encanada';break;                               
+                            case 'soc_esgoto':$novoValule = 'Esgoto';break;                               
+                            case 'soc_fossa':$novoValule = 'Foça';break;                               
+                            case 'soc_luz_eletrica':$novoValule = 'Luz Eletrica';break;                               
+                            case 'soc_internet':$novoValule = 'Internet';break;                               
+                            case 'soc_computador':$novoValule = 'Computador';break;                               
+                            case 'soc_veiculo':$novoValule = 'Veículo';break;                               
+                            case 'soc_renda_familiar':$novoValule = 'Renda Familiar';break; 
 
                             case 'end_rua':$novoValule = 'Nome da Rua';break;
                             case 'end_numero':$novoValule = 'Número da Casa';break;                                                        

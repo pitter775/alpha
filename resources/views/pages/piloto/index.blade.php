@@ -41,8 +41,8 @@
                                                     $novoValule = '';
                                                     switch ($value) {
                                                         case 'name':$novoValule = 'Nome';break;
-                                                        case 'use_perfil':$novoValule = 'Perfil';break;
-                                                        case 'email':$novoValule = 'E-mail';break;
+                                                        // case 'use_perfil':$novoValule = 'Perfil';break;
+                                                        // case 'email':$novoValule = 'E-mail';break;
                                                         case 'use_status':$novoValule = 'Status';break;
                                                         case 'use_rg':$novoValule = 'RG';break;
                                                         case 'use_cpf':$novoValule = 'CPF';break;
