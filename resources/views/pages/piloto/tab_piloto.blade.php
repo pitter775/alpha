@@ -121,11 +121,14 @@
                                 if($dados == '0'){$dados = 'Não';}
                                 if($dados == '1'){$dados = 'Sim';}
                                 if($colum == 'use_dt_nascimento' || $colum == 'mat_data_inicio' ){$dados = date( 'd/m/Y' , strtotime($dados)); }
-                                if($colum == 'name'){$dados = '<a href="/usuario/detalhes/'.$tab->userId.'" target="_blank" title="Entrar no prontuário">'.$dados.'</a>'; }
-                                if($colum == 'soc_residencia_comodos' || 'soc_residentes' || 'soc_veiculo'){$dados = $temp; }
-
                             ?>
-                           <td>{{$dados}}</td>                   
+                           <td>
+                            @if($colum == 'name')
+                                <a href="/usuario/detalhes/{{$tab->userId}}" target="_blank"  title="Entrar no prontuário"> {{$dados}} </a>
+                                @else
+                                {{$dados}}
+                            @endif
+                            </td>                   
                         @endforeach
                     </tr>
                 @endforeach
