@@ -137,7 +137,7 @@ class PilotoController extends Controller
         }      
 
         $tabela = DB::select(DB::raw(
-            "SELECT $colunasTab, (SELECT resp_autorizados.resp_nome from resp_autorizados limit 1) as res_nome_pai
+            "SELECT u.id as userId, $colunasTab, (SELECT resp_autorizados.resp_nome from resp_autorizados limit 1) as res_nome_pai
             FROM users As u $join where u.use_perfil = 11"
         ));
 
