@@ -45,9 +45,15 @@ $(function() {
 
     function listPiloto() {
 
+
+        if (tableCardapio) {
+            tableCardapio.destroy();
+        }
+
         var dtcardapioTable = $('.piloto-list-table'); //id da tabela q esta na div  
 
         var numColum = dtcardapioTable.data('colum');
+        console.log('qntcolum', numColum);
         const arrayColum = [];
 
 
@@ -114,17 +120,6 @@ $(function() {
                                 $(node).closest('.dt-buttons').removeClass('btn-group').addClass('d-inline-flex');
                             }, 50);
                         }
-                    },
-                    {
-                        text: feather.icons['plus'].toSvg({ class: 'mr-50 font-small-4 ' }) + 'Novo Cardápio',
-                        className: 'create-new btn btn-primary waves-effect',
-                        attr: {
-                            'data-toggle': 'modal',
-                            'data-target': '#modals-slide-in'
-                        },
-                        init: function(api, node, config) {
-                            $(node).removeClass('btn-secondary');
-                        }
                     }
                 ],
 
@@ -137,7 +132,11 @@ $(function() {
                     }
                 },
             });
-            $('div.head-label').html('<h6 class="mb-0">Listando os campos selecionados</h6>');
+            setTimeout(function() {
+                $('div.head-label').html('<h6 class="mb-0">Listando os campos selecionados</h6>');
+                console.log('foi');
+            }, 1000);
+            
         }
         tableCardapio = groupingTable;
     }

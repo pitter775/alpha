@@ -107,14 +107,23 @@
                 </tr>
             </thead>
             <TBOdy>
-                @foreach($tabArray as $key => $tab)
+                @foreach($tabArray as $key => $tab)                
                     <tr>
                         @foreach($colunas as $key => $colum)
-                            @if($colum == 'use_dt_nascimento')
-                            <td>{{ date( 'd/m/Y' , strtotime($tab->$colum))}}</td>
-                            @else
-                            <td>{{ $tab->$colum }}</td>
-                            @endif
+                            <?php
+                                $temp = $tab->$colum;
+                                $dados = $tab->$colum;
+
+                                // dd($dados);
+                                if($dados == ''){$dados = 'S/D';}
+                                if($dados == '0'){$dados = 'Não';}
+                                if($dados == '1'){$dados = 'Sim';}
+                            ?>
+                            @if($colum == 'use_dt_nascimento' || $colum == 'mat_data_inicio' )
+                                <td>{{ date( 'd/m/Y' , strtotime($dados))}}</td>  
+                            @else   
+                                <td>{{$dados}}</td>        
+                            @endif                   
                         @endforeach
                     </tr>
                 @endforeach
