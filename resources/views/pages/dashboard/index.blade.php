@@ -147,51 +147,7 @@
                 </div>
 
                 <div class="row match-height">
-                    <!--  Professores -->
-                    <div class="col-lg-4 col-md-6 col-12  btmodal"
-                    data-campo = "users[]-name;" 
-                    data-condicao = "professores" data-titulo ="Lista de Professores" 
-                    data-toggle="modal" data-target="#large">
-
-                        <div class="card card-developer-meetup">
-                            <div class="meetup-img-wrapper rounded-top text-center">
-                                <img src="../../../app-assets/images/illustration/email.svg" alt="Meeting Pic"
-                                    height="170" />
-                            </div>
-                            <div class="card-body">
-                                <div class="meetup-header d-flex align-items-center">
-                                    <div class="meetup-day">
-                                        <h6 class="mb-0">total</h6>
-                                        <h3 class="mb-0">{{count($professores)}}</h3>
-                                    </div>
-                                    <div class="my-auto">
-                                        <h4 class="card-title mb-25">Professores</h4>
-                                        <p class="card-text mb-0">Orientadores docente da pedagogia</p>
-                                    </div>
-                                </div>
-
-                                <div class="avatar-group">
-                                    @foreach ($professores->take(4) as $prof)
-                                        <div data-toggle="tooltip" data-popup="tooltip-custom" data-placement="bottom"
-                                            data-original-title="{{ $prof->name }}" class="avatar pull-up">
-
-                                            @if ($prof->use_foto == null)
-                                                <img src=" {{ asset('app-assets/images/avatars/avatar.png') }}"
-                                                    class="avatar pull-up" width="33" height="33" alt="avatar" />
-                                            @endif
-                                            @if ($prof->use_foto !== null)
-                                                <img src="{{ asset('arquivos') . '/' . $prof->use_foto }}"
-                                                    class="avatar pull-up" width="33" height="33" alt="avatar" />
-                                            @endif
-                                        </div>
-                                    @endforeach
-
-                                    <h6 class="align-self-center cursor-pointer ml-50 mb-0">+{{count($professores)-4}}</h6>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <!--/  Card -->
+                    
 
                     <!-- Tipo de residência -->
                     <div class="col-lg-4 col-md-6 col-12">
@@ -332,6 +288,52 @@
                             </div>
                         </div>
                     </div>
+
+                    <!--  Professores -->
+                    <div class="col-lg-4 col-md-6 col-12  btmodal"
+                        data-campo = "users[]-name;" 
+                        data-condicao = "professores" data-titulo ="Lista de Professores" 
+                        data-toggle="modal" data-target="#large">
+
+                        <div class="card card-developer-meetup">
+                            <div class="meetup-img-wrapper rounded-top text-center">
+                                <img src="../../../app-assets/images/illustration/email.svg" alt="Meeting Pic"
+                                    height="170" />
+                            </div>
+                            <div class="card-body">
+                                <div class="meetup-header d-flex align-items-center">
+                                    <div class="meetup-day">
+                                        <h6 class="mb-0">total</h6>
+                                        <h3 class="mb-0">{{count($professores)}}</h3>
+                                    </div>
+                                    <div class="my-auto">
+                                        <h4 class="card-title mb-25">Professores</h4>
+                                        <p class="card-text mb-0">Orientadores docente da pedagogia</p>
+                                    </div>
+                                </div>
+
+                                <div class="avatar-group">
+                                    @foreach ($professores->take(4) as $prof)
+                                        <div data-toggle="tooltip" data-popup="tooltip-custom" data-placement="bottom"
+                                            data-original-title="{{ $prof->name }}" class="avatar pull-up">
+
+                                            @if ($prof->use_foto == null)
+                                                <img src=" {{ asset('app-assets/images/avatars/avatar.png') }}"
+                                                    class="avatar pull-up" width="33" height="33" alt="avatar" />
+                                            @endif
+                                            @if ($prof->use_foto !== null)
+                                                <img src="{{ asset('arquivos') . '/' . $prof->use_foto }}"
+                                                    class="avatar pull-up" width="33" height="33" alt="avatar" />
+                                            @endif
+                                        </div>
+                                    @endforeach
+
+                                    <h6 class="align-self-center cursor-pointer ml-50 mb-0">+{{count($professores)-4}}</h6>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!--/  Card -->
 
                     <!-- Company Table Card -->
                     <div class="col-lg-12 col-12">
