@@ -181,7 +181,7 @@
                         </div>
                     </div>
 
-                    <!-- Tolerantes a lactose -->
+                    <!-- Especiais -->
                     <div class="col-lg-4 col-md-6 col-12">
                         <div class="card card-browser-states">
                             <div class="card-header d-flex justify-content-between align-items-center">
@@ -334,6 +334,84 @@
                         </div>
                     </div>
                     <!--/  Card -->
+                    <!-- Presença -->
+                    <div class="col-lg-8 col-md-8 col-12">
+                        <div class="card card-browser-states">
+                            <div class="card-header d-flex justify-content-between align-items-center">
+                                <h4 class="card-title">Presença Hoje</h4>
+
+                            </div>
+                            <div class="card-body" style="padding-top: 30px">
+                                fazendo...                             
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <!-- Movimentação -->
+                    <div class="col-lg-4 col-md-6 col-12">
+                        <div class="card card-browser-states">
+                            <div class="card-header d-flex justify-content-between align-items-center">
+                                <h4 class="card-title">Situação ano de 2022</h4>
+
+                            </div>
+                            <div class="card-body" style="padding-top: 30px">
+                                <div class="browser-states">
+                                    <div class="media ">
+                                        <img src="../../../app-assets/images/icons/situacao.png" class="rounded mr-1" height="30" alt="Google Chrome" />
+                                        <h6 class="align-self-center mb-0">Matriculados</h6>
+                                    </div>
+                                    <div class="d-flex align-items-center">
+                                        <div class="font-weight-bold text-body-heading mr-1">
+                                            <span style="">{{ $totalalunos ?? '0' }}</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="browser-states">
+                                    <div class="media ">
+                                        <img src="../../../app-assets/images/icons/situacao.png" class="rounded mr-1" height="30" alt="Google Chrome" />
+                                        <h6 class="align-self-center mb-0">Remanejado</h6>
+                                    </div>
+                                    <div class="d-flex align-items-center">
+                                        <div class="font-weight-bold text-body-heading mr-1">
+                                            <span style=" " class=" btmodal" 
+                                            data-campo = "users[]-name;series[]-ser_apelido;alteracaos[]-alt_tipo;alteracaos[]-alt_data" 
+                                            data-condicao = "alunoremanejado" data-titulo ="Alunos Remanejados" 
+                                            data-toggle="modal" data-target="#large">{{ $remanejado ?? '0' }}</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="browser-states">
+                                    <div class="media">
+                                        <img src="../../../app-assets/images/icons/situacao.png" class="rounded mr-1" height="30" alt="Google Chrome" />
+                                        <h6 class="align-self-center mb-0">Transferidos</h6>
+                                    </div>
+                                    <div class="d-flex align-items-center">
+                                        <div class="font-weight-bold text-body-heading mr-1">
+                                            <span style="" class=" btmodal" 
+                                            data-campo = "users[]-name;series[]-ser_apelido;alteracaos[]-alt_tipo;alteracaos[]-alt_data" 
+                                            data-condicao = "alunotransferido" data-titulo ="Alunos Transferidos" 
+                                            data-toggle="modal" data-target="#large">{{ $transferido ?? '0' }}</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="browser-states">
+                                    <div class="media">
+                                        <img src="../../../app-assets/images/icons/situacao.png" class="rounded mr-1" height="30" alt="Google Chrome" />
+                                        <h6 class="align-self-center mb-0">Abandono</h6>
+                                    </div>
+                                    <div class="d-flex align-items-center">
+                                        <div class="font-weight-bold text-body-heading mr-1">
+                                            <span style="" class=" btmodal" 
+                                            data-campo = "users[]-name;series[]-ser_apelido;alteracaos[]-alt_tipo;alteracaos[]-alt_data" 
+                                            data-condicao = "alunoabandono" data-titulo ="Alunos em Abandono" 
+                                            data-toggle="modal" data-target="#large">{{ $abandono ?? '0' }}</span>
+                                        </div>
+                                    </div>
+                                </div>                                
+                            </div>
+                        </div>
+                    </div>
 
                     <!-- Company Table Card -->
                     <div class="col-lg-12 col-12">

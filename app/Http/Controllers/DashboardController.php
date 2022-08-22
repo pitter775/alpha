@@ -29,7 +29,11 @@ class DashboardController extends Controller
     $especiais = $this->especiais();
     $sau_fala = $this->sau_fala();
     $sau_escuta = $this->sau_escuta();
-    return view("pages.dashboard.index", compact( 'sau_escuta', 'sau_fala', 'especiais','alergicos','totalalunos','meninos','meninas','socio1e2','socio3e4','socio5e10','sociomaisde10','allseries','tiporesidencia','saude','professores'));
+    $remanejado = $this->remanejamento();
+    $transferido = $this->transferido();
+    $abandono = $this->abandono();
+    return view("pages.dashboard.index", compact( 'abandono','transferido','remanejado', 'sau_escuta', 'sau_fala', 'especiais','alergicos','totalalunos','meninos','meninas','socio1e2','socio3e4','socio5e10',
+    'sociomaisde10','allseries','tiporesidencia','saude','professores'));
   }
 
   public function alunos()
@@ -199,6 +203,31 @@ class DashboardController extends Controller
 
       return $saude;
    }
+   public function remanejamento(){
+      $saude  = DB::table('users AS u')
+      ->leftjoin('alteracaos', 'u.id', 'alteracaos.alt_user')  
+      ->where('u.use_perfil', 11)
+      ->where('alteracaos.alt_tipo', 'Remanejamento')
+      ->count();
+      return $saude;
+   }
+   public function transferido(){
+      $saude  = DB::table('users AS u')
+      ->leftjoin('alteracaos', 'u.id', 'alteracaos.alt_user')  
+      ->where('u.use_perfil', 11)
+      ->where('alteracaos.alt_tipo', 'Transferência')
+      ->count();
+      return $saude;
+   }
+   public function abandono(){
+      $saude  = DB::table('users AS u')
+      ->leftjoin('alteracaos', 'u.id', 'alteracaos.alt_user')  
+      ->where('u.use_perfil', 11)
+      ->where('alteracaos.alt_tipo', 'Abandono')
+      ->count();
+      return $saude;
+   }
+
 
    public function professores(){
       $prof  = DB::table('users AS u')

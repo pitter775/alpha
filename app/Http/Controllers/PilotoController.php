@@ -301,6 +301,15 @@ class PilotoController extends Controller
             case 'nullescuta':                
                 $filtro = "where u.use_perfil = 11 and u.use_status = 1 and saude_users.sau_escuta  is null";
                 break;
+            case 'alunoremanejado':                
+                $filtro = "where u.use_perfil = 11 and u.use_status = 1 and alteracaos.alt_tipo  = 'Remanejamento'";
+                break;
+            case 'alunotransferido':                
+                $filtro = "where u.use_perfil = 11 and alteracaos.alt_tipo  = 'Transferência'";
+                break;
+            case 'alunoabandono':                
+                $filtro = "where u.use_perfil = 11 and alteracaos.alt_tipo  = 'Abandono'";
+                break;
         }
        
 
