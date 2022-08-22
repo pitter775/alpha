@@ -206,11 +206,10 @@
                                 @foreach ($tiporesidencia as $tipores)
                                     <div class="browser-states">
                                         <div class="media btmodal"
-                                        data-campo = "users[]-name;series[]-ser_apelido;socials[]-soc_tipo_residencia" 
-                                        data-condicao = "{{ $tipores->soc_tipo_residencia ?? 'Sem definição' }}" data-titulo ="Tipo de residência de alunos ativos" 
-                                        data-toggle="modal" data-target="#large">
-                                            <img src="../../../app-assets/images/icons/home.png" class="rounded mr-1"
-                                                height="30" alt="Google Chrome" />
+                                            data-campo = "users[]-name;series[]-ser_apelido;socials[]-soc_tipo_residencia" 
+                                            data-condicao = "{{ $tipores->soc_tipo_residencia ?? 'Sem definição' }}" data-titulo ="Tipo de residência de alunos ativos" 
+                                            data-toggle="modal" data-target="#large">
+                                            <img src="../../../app-assets/images/icons/home.png" class="rounded mr-1" height="30" alt="Google Chrome" />
                                             <h6 class="align-self-center mb-0">
                                                 {{ $tipores->soc_tipo_residencia ?? 'Sem definição' }}</h6>
                                         </div>
@@ -218,7 +217,6 @@
                                             <div class="font-weight-bold text-body-heading mr-1">
                                                 {{ $tipores->sum ?? '' }}
                                             </div>
-
                                         </div>
                                     </div>
                                 @endforeach
@@ -229,32 +227,106 @@
 
                     <!-- Tolerantes a lactose -->
                     <div class="col-lg-4 col-md-6 col-12">
-                        <div class="card">
+                        <div class="card card-browser-states">
                             <div class="card-header d-flex justify-content-between align-items-center">
-                                <h4 class="card-title">Não Alergicos</h4>
+                                <h4 class="card-title">Alunos Especiais</h4>
 
                             </div>
-                            <div class="card-body p-0">
-                                <?php $nalerg = ($saude[1]->sum * 100) / $totalalunos; ?>
-
-                                <div id="goal-overview-radial-bar-chart" class="my-2"
-                                    data-nalerg="{{ $nalerg }}"></div>
-                                <div class="row border-top text-center mx-0">
-                                    <div class="col-6 border-right py-1 btmodal"
-                                    data-campo = "users[]-name;series[]-ser_apelido;saude_users[]-sau_alergia" 
-                                    data-condicao = "naoalergico" data-titulo ="Alunos ativos não alergicos" 
-                                    data-toggle="modal" data-target="#large">
-                                        <p class="card-text text-muted mb-0">Não Alergicos</p>
-                                        {{-- <h3 class="font-weight-bolder mb-0">{{$saude[1]->sau_alergia}}</h3> --}}
-                                        <h3 class="font-weight-bolder mb-0">{{ $saude[1]->sum }}</h3>
+                            <div class="card-body" style="padding-top: 30px">
+                                <div class="browser-states">
+                                    <div class="media ">
+                                        <img src="../../../app-assets/images/icons/necessidade.png" class="rounded mr-1" height="30" alt="Google Chrome" />
+                                        <h6 class="align-self-center mb-0">Especiais</h6>
                                     </div>
-                                    <div class="col-6 py-1  btmodal"
-                                    data-campo = "users[]-name;series[]-ser_apelido;saude_users[]-sau_alergia;saude_users[]-sau_alergia_detalhe" 
-                                    data-condicao = "simalergico" data-titulo ="Alunos ativos alergicos" 
-                                    data-toggle="modal" data-target="#large">
-                                        <p class="card-text text-muted mb-0">Alergicos</p>
-                                        {{-- <h3 class="font-weight-bolder mb-0">{{$saude[2]->sau_alergia}}</h3> --}}
-                                        <h3 class="font-weight-bolder mb-0">{{ $saude[2]->sum }}</h3>
+                                    <div class="d-flex align-items-center">
+                                        <div class="font-weight-bold text-body-heading mr-1">
+                                            @foreach ($especiais as $tipoale)
+                                                @if($tipoale->sau_necessidades_especial == 'Sim')
+                                                    <span style=" padding: 0 10px" class=" btmodal" 
+                                                    data-campo = "users[]-name;series[]-ser_apelido;saude_users[]-sau_necessidades_especial;saude_users[]-sau_necessidades_especial_detalhe" 
+                                                    data-condicao = "especialsim" data-titulo ="Alunos com Necessidades Especiais" 
+                                                    data-toggle="modal" data-target="#large">{{$tipoale->sum }} </span>
+                                                @endif
+                                                @if($tipoale->sau_necessidades_especial == null)
+                                                    <span style="padding: 0 0 0 10px; float: right; color: #ccc" class=" btmodal" 
+                                                    data-campo = "users[]-name;series[]-ser_apelido;saude_users[]-sau_necessidades_especial" 
+                                                    data-condicao = "especialnull" data-titulo ="Ativos sem mensionar se tem a Necessidades Especiais" 
+                                                    data-toggle="modal" data-target="#large"> {{$tipoale->sum}}</span>
+                                                @endif
+                                            @endforeach
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="browser-states">
+                                    <div class="media">
+                                        <img src="../../../app-assets/images/icons/necessidade.png" class="rounded mr-1" height="30" alt="Google Chrome" />
+                                        <h6 class="align-self-center mb-0">Alergicos</h6>
+                                    </div>
+                                    <div class="d-flex align-items-center">
+                                        <div class="font-weight-bold text-body-heading mr-1">                                            
+                                            @foreach ($alergicos as $tipoale)
+                                                @if($tipoale->sau_alergia == 'Sim')
+                                                    <span style=" padding: 0 10px" class=" btmodal" 
+                                                    data-campo = "users[]-name;series[]-ser_apelido;saude_users[]-sau_alergia;saude_users[]-sau_alergia_detalhe; " 
+                                                    data-condicao = "simalergico" data-titulo ="Alunos Alergicos" 
+                                                    data-toggle="modal" data-target="#large">{{$tipoale->sum }} </span>
+                                                @endif
+                                                @if($tipoale->sau_alergia == null)
+                                                    <span style="padding: 0 0 0 10px; float: right; color: #ccc" class=" btmodal" 
+                                                    data-campo = "users[]-name;series[]-ser_apelido;saude_users[]-sau_alergia" 
+                                                    data-condicao = "nulllergico" data-titulo ="Ativos sem mensionar se tem a Alergia" 
+                                                    data-toggle="modal" data-target="#large"> {{$tipoale->sum}}</span>
+                                                @endif
+                                            @endforeach
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="browser-states">
+                                    <div class="media">
+                                        <img src="../../../app-assets/images/icons/necessidade.png" class="rounded mr-1" height="30" alt="Google Chrome" />
+                                        <h6 class="align-self-center mb-0">Dificuldade na Fala</h6>
+                                    </div>
+                                    <div class="d-flex align-items-center">
+                                        <div class="font-weight-bold text-body-heading mr-1">
+                                            @foreach ($sau_fala as $tipoale)
+                                                @if($tipoale->sau_fala == 'Não')
+                                                    <span style=" padding: 0 10px"  class=" btmodal" 
+                                                    data-campo = "users[]-name;series[]-ser_apelido;saude_users[]-sau_fala" 
+                                                    data-condicao = "naofala" data-titulo ="Alunos com Dificuldade na Fala" 
+                                                    data-toggle="modal" data-target="#large">{{$tipoale->sum }} </span>
+                                                @endif
+                                                @if($tipoale->sau_fala == null)
+                                                    <span style="padding: 0 0 0 10px; float: right; color: #ccc" class=" btmodal" 
+                                                    data-campo = "users[]-name;series[]-ser_apelido;saude_users[]-sau_fala" 
+                                                    data-condicao = "nullfala" data-titulo ="Ativos sem mensionar se tem a Fala" 
+                                                    data-toggle="modal" data-target="#large"> {{$tipoale->sum}}</span>
+                                                @endif
+                                            @endforeach
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="browser-states">
+                                    <div class="media ">
+                                        <img src="../../../app-assets/images/icons/necessidade.png" class="rounded mr-1" height="30" alt="Google Chrome" />
+                                        <h6 class="align-self-center mb-0">Dificuldade na Escuta</h6>
+                                    </div>
+                                    <div class="d-flex align-items-center">
+                                        <div class="font-weight-bold text-body-heading mr-1">
+                                            @foreach ($sau_escuta as $tipoale)
+                                                @if($tipoale->sau_escuta == 'Não')
+                                                    <span style=" padding: 0 10px"  class=" btmodal" 
+                                                    data-campo = "users[]-name;series[]-ser_apelido;saude_users[]-sau_escuta" 
+                                                    data-condicao = "naoescuta" data-titulo ="Alunos com Dificuldade na Escuta" 
+                                                    data-toggle="modal" data-target="#large">{{$tipoale->sum }} </span>
+                                                @endif
+                                                @if($tipoale->sau_escuta == null)
+                                                    <span style="padding: 0 0 0 10px; float: right; color: #ccc"  class=" btmodal" 
+                                                    data-campo = "users[]-name;series[]-ser_apelido;saude_users[]-sau_escuta" 
+                                                    data-condicao = "nullescuta" data-titulo ="Ativos sem mensionar se tem a Escuta" 
+                                                    data-toggle="modal" data-target="#large"> {{$tipoale->sum}}</span>
+                                                @endif
+                                            @endforeach
+                                        </div>
                                     </div>
                                 </div>
                             </div>

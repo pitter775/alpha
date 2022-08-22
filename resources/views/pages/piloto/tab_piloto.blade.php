@@ -80,6 +80,9 @@
                             case 'sau_menigite':$novoValule = 'Menigite';break;            
                             case 'sau_outras':$novoValule = 'Outras doenças';break;    
 
+                            case 'sau_fala':$novoValule = 'Fala Bem';break;    
+                            case 'sau_escuta':$novoValule = 'Escuta Bem';break;  
+
                             case 'ser_nome':$novoValule = 'Nome da Série';break;
                             case 'ser_periodo':$novoValule = 'Período';break;                                                        
                             case 'ser_apelido':$novoValule = 'Apelido da Série';break; 

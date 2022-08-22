@@ -25,7 +25,11 @@ class DashboardController extends Controller
     $tiporesidencia = $this->tiporesidencia();
     $saude = $this->saude();
     $professores = $this->professores();
-    return view("pages.dashboard.index", compact('totalalunos','meninos','meninas','socio1e2','socio3e4','socio5e10','sociomaisde10','allseries','tiporesidencia','saude','professores'));
+    $alergicos = $this->alergicos();
+    $especiais = $this->especiais();
+    $sau_fala = $this->sau_fala();
+    $sau_escuta = $this->sau_escuta();
+    return view("pages.dashboard.index", compact( 'sau_escuta', 'sau_fala', 'especiais','alergicos','totalalunos','meninos','meninas','socio1e2','socio3e4','socio5e10','sociomaisde10','allseries','tiporesidencia','saude','professores'));
   }
 
   public function alunos()
@@ -124,19 +128,34 @@ class DashboardController extends Controller
           return $series;
   }
 
-  public function tiporesidencia(){
-        $tipores  = DB::table('users AS u')
-        ->join('socials', 'socials.id', 'u.use_social_id')  
-      //   ->leftjoin('matriculas as m', 'u.id', 'm.mat_users_id')  
-        ->groupBy('socials.soc_tipo_residencia')
-        ->selectRaw('socials.soc_tipo_residencia, count(*) as sum')
-        ->where('u.use_perfil', 11)
-        ->where('u.use_status', 1)
-        ->get();
+   public function tiporesidencia(){
+         $tipores  = DB::table('users AS u')
+         ->join('socials', 'socials.id', 'u.use_social_id')  
+         //   ->leftjoin('matriculas as m', 'u.id', 'm.mat_users_id')  
+         ->groupBy('socials.soc_tipo_residencia')
+         ->selectRaw('socials.soc_tipo_residencia, count(*) as sum')
+         ->where('u.use_perfil', 11)
+         ->where('u.use_status', 1)
+         ->get();
 
-   return $tipores;
-  }
+      return $tipores;
+   }
    public function saude(){
+      $saude  = DB::table('users AS u')
+      ->leftjoin('saude_users', 'u.id', 'saude_users.sau_users_id')  
+      ->groupBy('saude_users.sau_alergia')
+         ->selectRaw('saude_users.sau_alergia, count(*) as sum')
+         ->where('u.use_perfil', 11)
+         ->where('u.use_status', 1)
+         ->get();
+      // ->where('u.use_perfil', 11)
+      // ->where('saude_users.sau_alergia', 'Sim')
+      // ->count();
+      // dd($saude);
+
+      return $saude;
+   }
+   public function alergicos(){
       $saude  = DB::table('users AS u')
       ->leftjoin('saude_users', 'u.id', 'saude_users.sau_users_id')  
       ->groupBy('saude_users.sau_alergia')
@@ -144,12 +163,41 @@ class DashboardController extends Controller
         ->where('u.use_perfil', 11)
         ->where('u.use_status', 1)
         ->get();
-      // ->where('u.use_perfil', 11)
-      // ->where('saude_users.sau_alergia', 'Sim')
-      // ->count();
-      // dd($saude);
 
-   return $saude;
+      return $saude;
+   }
+   public function especiais(){
+      $saude  = DB::table('users AS u')
+      ->leftjoin('saude_users', 'u.id', 'saude_users.sau_users_id')  
+      ->groupBy('saude_users.sau_necessidades_especial')
+        ->selectRaw('saude_users.sau_necessidades_especial, count(*) as sum')
+        ->where('u.use_perfil', 11)
+        ->where('u.use_status', 1)
+        ->get();
+
+      return $saude;
+   }
+   public function sau_fala(){
+      $saude  = DB::table('users AS u')
+      ->leftjoin('saude_users', 'u.id', 'saude_users.sau_users_id')  
+      ->groupBy('saude_users.sau_fala')
+        ->selectRaw('saude_users.sau_fala, count(*) as sum')
+        ->where('u.use_perfil', 11)
+        ->where('u.use_status', 1)
+        ->get();
+
+      return $saude;
+   }
+   public function sau_escuta(){
+      $saude  = DB::table('users AS u')
+      ->leftjoin('saude_users', 'u.id', 'saude_users.sau_users_id')  
+      ->groupBy('saude_users.sau_escuta')
+        ->selectRaw('saude_users.sau_escuta, count(*) as sum')
+        ->where('u.use_perfil', 11)
+        ->where('u.use_status', 1)
+        ->get();
+
+      return $saude;
    }
 
    public function professores(){

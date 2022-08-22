@@ -277,8 +277,29 @@ class PilotoController extends Controller
             case 'simalergico':
                 $filtro = "where u.use_perfil = 11 and u.use_status = 1 and saude_users.sau_alergia = 'Sim'";
                 break;
+            case 'nulllergico':
+                $filtro = "where u.use_perfil = 11 and u.use_status = 1 and saude_users.sau_alergia  is null";
+                break;
             case 'condicaodetalhada':
                 $filtro = "where u.use_perfil = 11 and u.use_status = 1 and series.ser_apelido = '$condicaodetalhada'";
+                break;
+            case 'especialnull':                
+                $filtro = "where u.use_perfil = 11 and u.use_status = 1 and saude_users.sau_necessidades_especial is null";
+                break;
+            case 'especialsim':                
+                $filtro = "where u.use_perfil = 11 and u.use_status = 1 and saude_users.sau_necessidades_especial = 'Sim'";
+                break;
+            case 'naofala':                
+                $filtro = "where u.use_perfil = 11 and u.use_status = 1 and saude_users.sau_fala = 'Não'";
+                break;
+            case 'nullfala':                
+                $filtro = "where u.use_perfil = 11 and u.use_status = 1 and saude_users.sau_fala  is null";
+                break;
+            case 'naoescuta':                
+                $filtro = "where u.use_perfil = 11 and u.use_status = 1 and saude_users.sau_escuta  = 'Não'";
+                break;
+            case 'nullescuta':                
+                $filtro = "where u.use_perfil = 11 and u.use_status = 1 and saude_users.sau_escuta  is null";
                 break;
         }
        
@@ -287,7 +308,6 @@ class PilotoController extends Controller
             "SELECT u.id as userId, $colunasTab FROM users As u $join $filtro"
         ));
 
-        // dd($tabela);
         return $tabela;
     }
 
