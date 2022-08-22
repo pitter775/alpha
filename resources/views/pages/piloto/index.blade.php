@@ -58,15 +58,15 @@
                                     </select>
                                 </div>
                                 <div class="col-md-4 mb-1">
-                                    <label>Matriculas</label>
-                                    <select class="select2 form-control" name="matriculas[]" id="matriculas" multiple>
+                                    <label>Situação</label>
+                                    <select class="select2 form-control" name="alteracaos[]" id="alteracaos" multiple>
                                         <optgroup label="Dados de Matrícula">
-                                            @foreach($matriculas as $key => $value)
+                                            @foreach($alteracaos as $key => $value)
                                                 <?php
                                                     $novoValule = '';
                                                     switch ($value) {
-                                                        case 'mat_status':$novoValule = 'Status da Matrícula';break;
-                                                        case 'mat_data_inicio':$novoValule = 'Data da Matrícula';break;                                                        
+                                                        case 'alt_tipo':$novoValule = 'Situação';break;
+                                                        case 'alt_data':$novoValule = 'Data da Situação';break;                                                        
                                                     }
                                                 ?>
                                                 @if($novoValule) <option value="{{ $value }}" >{{ $novoValule }}</option> @endif

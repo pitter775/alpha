@@ -8,7 +8,7 @@
                     <?php
                         $novoValule = $value;
                         switch ($value) {
-                            case 'name':$novoValule = 'Nome do Aluno';break;
+                            case 'name':$novoValule = 'Nome';break;
                             case 'use_perfil':$novoValule = 'Perfil';break;
                             case 'email':$novoValule = 'E-mail';break;
                             case 'use_status':$novoValule = 'Status';break;
@@ -19,7 +19,11 @@
                             case 'use_dt_nascimento':$novoValule = 'Data de Nascimento';break;
                             case 'use_cartao_sus':$novoValule = 'Cartão do SUS';break;                           
                             case 'mat_status':$novoValule = 'Status da Matrícula';break;
-                            case 'mat_data_inicio':$novoValule = 'Data da Matrícula';break;                             
+                            case 'mat_data_inicio':$novoValule = 'Data da Matrícula';break;        
+
+                            case 'alt_tipo':$novoValule = 'Situação';break;
+                            case 'alt_data':$novoValule = 'Data da Situação';break;       
+
                             case 'hab_leite':$novoValule = 'Leite';break;
                             case 'hab_salsicha':$novoValule = 'Salsicha';break;                                                        
                             case 'hab_salgadinhos_doces':$novoValule = 'Salgadinhos e Doces';break;                                                        
@@ -60,8 +64,9 @@
                             case 'sau_convulsoes':$novoValule = 'Convulsões';break;            
                             case 'sau_intolerancia_outros':$novoValule = 'Intolerâncias Outros';break;            
                             case 'sau_intolerancia_glutem':$novoValule = 'Intolerância Glutem';break;            
-                            case 'sau_intolerancia_lactose':$novoValule = 'Intolerância Lactose';break;            
-                            case 'sau_alergia_detalhe':$novoValule = 'Alergias';break;            
+                            case 'sau_intolerancia_lactose':$novoValule = 'Intolerância Lactose';break;        
+                            case 'sau_alergia':$novoValule = 'Alergia';break;        
+                            case 'sau_alergia_detalhe':$novoValule = 'Tipo de Alergia';break;            
                             case 'sau_parto':$novoValule = 'Parto Normal';break;            
                             case 'sau_sarampo':$novoValule = 'Sarampo';break;            
                             case 'sau_caxumba':$novoValule = 'Caxumba';break;            
@@ -120,9 +125,21 @@
                                 if($dados == ''){$dados = '-';}
                                 if($dados == '0'){$dados = 'Não';}
                                 if($dados == '1'){$dados = 'Sim';}
-                                if($colum == 'use_dt_nascimento' || $colum == 'mat_data_inicio' ){$dados = date( 'd/m/Y' , strtotime($dados)); }
-                            
-
+                                if($colum == 'use_dt_nascimento' || $colum == 'mat_data_inicio' || $colum == 'alt_data' ){
+                                    if($dados != '-'){
+                                        $dados = date( 'd/m/Y' , strtotime($dados)); 
+                                    }
+                                }
+                                if($colum == 'mat_status'){
+                                    if($dados == '3'){$dados = 'Abandono';}
+                                    if($dados == '2'){$dados = 'Transferido';}
+                                    if($dados == '1'){$dados = 'Ativo';}
+                                    if($dados == '1'){$dados = 'Ativo';}
+                                }
+                                if($colum == 'use_status'){
+                                    if($dados == 'Sim'){ $dados = 'Ativo'; }
+                                    if($dados == '2'){ $dados = 'Inativo'; }
+                                }
                             ?>
                            <td>
                             @if($colum == 'name')

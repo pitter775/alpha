@@ -405,6 +405,9 @@ class UsuarioController extends Controller
 
                 $dados_alt = new Alteracao();
                 $dados_alt->alt_tipo = $alt_tipo;
+                if($alt_tipo == "Matricula"){
+                    $dados_alt->alt_series = $request->input('mat_series_id_alu');
+                }
                 if($alt_tipo == "Remanejamento"){
                     $dados_alt->alt_series = $request->input('mat_series_id_alu');
                 }

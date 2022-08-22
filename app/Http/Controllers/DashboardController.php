@@ -35,7 +35,7 @@ class DashboardController extends Controller
          ->select('u.id AS id')
          ->leftjoin('matriculas as m', 'u.id', 'm.mat_users_id')  
          ->where('u.use_perfil', 11)
-         ->where('m.mat_status', 1)
+         ->where('u.use_status', 1)
          ->count();
 
           return $users;
@@ -47,7 +47,7 @@ class DashboardController extends Controller
          ->select('u.id AS id')
          ->leftjoin('matriculas as m', 'u.id', 'm.mat_users_id')  
          ->where('u.use_sexo', 'Masculino')
-         ->where('m.mat_status', 1)
+         ->where('u.use_status', 1)
          ->count();
 
           return $users;
@@ -59,7 +59,7 @@ class DashboardController extends Controller
          ->select('u.id AS id')
          ->leftjoin('matriculas as m', 'u.id', 'm.mat_users_id')  
          ->where('u.use_sexo', 'Feminino')
-         ->where('m.mat_status', 1)
+         ->where('u.use_status', 1)
          ->count();
 
           return $users;
@@ -72,7 +72,7 @@ class DashboardController extends Controller
          ->leftjoin('matriculas as m', 'u.id', 'm.mat_users_id')  
          ->select('u.id AS id')
          ->where('socials.soc_renda_familiar', '1 a 2 salários')
-         ->where('m.mat_status', 1)
+         ->where('u.use_status', 1)
          ->count();
 
           return $users;
@@ -85,7 +85,7 @@ class DashboardController extends Controller
          ->leftjoin('matriculas as m', 'u.id', 'm.mat_users_id')  
          ->select('u.id AS id')
          ->where('socials.soc_renda_familiar', '3 a 4 salários')
-         ->where('m.mat_status', 1)
+         ->where('u.use_status', 1)
          ->count();
 
           return $users;
@@ -98,7 +98,7 @@ class DashboardController extends Controller
          ->leftjoin('matriculas as m', 'u.id', 'm.mat_users_id')  
          ->select('u.id AS id')
          ->where('socials.soc_renda_familiar', '5 a 10 salários')
-         ->where('m.mat_status', 1)
+         ->where('u.use_status', 1)
          ->count();
 
           return $users;
@@ -112,7 +112,7 @@ class DashboardController extends Controller
          ->select('u.id AS id')
          ->where('socials.soc_renda_familiar', 'mais de 10 salários')
          ->where('u.use_perfil', 11)
-         ->where('m.mat_status', 1)
+         ->where('u.use_status', 1)
          ->count();
 
           return $users;
@@ -127,11 +127,11 @@ class DashboardController extends Controller
   public function tiporesidencia(){
         $tipores  = DB::table('users AS u')
         ->join('socials', 'socials.id', 'u.use_social_id')  
-        ->leftjoin('matriculas as m', 'u.id', 'm.mat_users_id')  
+      //   ->leftjoin('matriculas as m', 'u.id', 'm.mat_users_id')  
         ->groupBy('socials.soc_tipo_residencia')
         ->selectRaw('socials.soc_tipo_residencia, count(*) as sum')
         ->where('u.use_perfil', 11)
-        ->where('m.mat_status', 1)
+        ->where('u.use_status', 1)
         ->get();
 
    return $tipores;
@@ -142,6 +142,7 @@ class DashboardController extends Controller
       ->groupBy('saude_users.sau_alergia')
         ->selectRaw('saude_users.sau_alergia, count(*) as sum')
         ->where('u.use_perfil', 11)
+        ->where('u.use_status', 1)
         ->get();
       // ->where('u.use_perfil', 11)
       // ->where('saude_users.sau_alergia', 'Sim')
@@ -156,6 +157,7 @@ class DashboardController extends Controller
          ->join('professores', 'professores.prof_users_id', 'u.id')  
          ->groupBy('u.id')
          ->select('*')
+         ->where('u.use_status', 1)
          ->get();
 
          // dd($prof);

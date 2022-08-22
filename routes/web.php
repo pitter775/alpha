@@ -109,6 +109,7 @@ Route::group(['middleware' => 'acesso'], function () {
 
     Route::get('/piloto', [App\Http\Controllers\PilotoController::class, 'index']);
     Route::post('/piloto/tabela', [App\Http\Controllers\PilotoController::class, 'tabela']);
+    Route::post('/piloto/tabelaDash', [App\Http\Controllers\PilotoController::class, 'tabelaDash']);
 
     Route::get('/publicacao', [App\Http\Controllers\PublicacaoController::class, 'index']);
     Route::get('/publicacao/all', [App\Http\Controllers\PublicacaoController::class, 'all']);

@@ -5,8 +5,23 @@
     use Illuminate\Support\Facades\DB;
     
     ?>
-    <div class="content-wrapper" data-aos=fade-left data-aos-delay=0>
 
+<div class="modal-size-lg d-inline-block">
+    <div class="modal fade text-left" id="large"tabindex="-1"role="dialog"aria-labelledby="myModalLabel17"aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+        <div class="modal-content" id="tabela-piloto">
+          
+        </div>
+      </div>
+    </div>
+</div>
+
+<style>
+    .btmodal{ cursor: pointer;}
+</style>
+
+
+    <div class="content-wrapper" data-aos=fade-left data-aos-delay=0>
         <div class="content-body">
             <!-- Dashboard Ecommerce Starts -->
             <section id="dashboard-ecommerce">
@@ -59,20 +74,27 @@
                             <div class="card-body statistics-body">
                                 <div class="row">
                                     <div class="col-xl-3 col-sm-6 col-12 mb-2 mb-xl-0">
-                                        <div class="media">
+                                        <div class="media  btmodal"
+                                        data-campo = "users[]-name;series[]-ser_apelido;socials[]-soc_renda_familiar" 
+                                        data-condicao = "socio1e2" data-titulo ="Alunos ativos com 1 a 2 salários" 
+                                        data-toggle="modal" data-target="#large">
+
                                             <div class="avatar bg-light-danger mr-2">
                                                 <div class="avatar-content">
                                                     <i data-feather="dollar-sign" class="avatar-icon"></i>
                                                 </div>
                                             </div>
-                                            <div class="media-body my-auto">
+                                            <div class="media-body my-auto" >
                                                 <h4 class="font-weight-bolder mb-0">{{ $socio1e2 ?? '0' }}</h4>
                                                 <p class="card-text font-small-3 mb-0">1 a 2 salários</p>
                                             </div>
                                         </div>
                                     </div>
                                     <div class="col-xl-3 col-sm-6 col-12 mb-2 mb-xl-0">
-                                        <div class="media">
+                                        <div class="media btmodal"
+                                        data-campo = "users[]-name;series[]-ser_apelido;socials[]-soc_renda_familiar" 
+                                        data-condicao = "socio3e4" data-titulo ="Alunos ativos com 3 a 4 salários" 
+                                        data-toggle="modal" data-target="#large">
                                             <div class="avatar bg-light-primary mr-2">
                                                 <div class="avatar-content">
                                                     <i data-feather="dollar-sign" class="avatar-icon"></i>
@@ -85,7 +107,10 @@
                                         </div>
                                     </div>
                                     <div class="col-xl-3 col-sm-6 col-12 mb-2 mb-sm-0">
-                                        <div class="media">
+                                        <div class="media btmodal"
+                                        data-campo = "users[]-name;series[]-ser_apelido;socials[]-soc_renda_familiar" 
+                                        data-condicao = "socio5e10" data-titulo ="Alunos ativos com 5 a 10 salários" 
+                                        data-toggle="modal" data-target="#large">
                                             <div class="avatar bg-light-info mr-2">
                                                 <div class="avatar-content">
                                                     <i data-feather="dollar-sign" class="avatar-icon"></i>
@@ -98,7 +123,10 @@
                                         </div>
                                     </div>
                                     <div class="col-xl-3 col-sm-6 col-12">
-                                        <div class="media">
+                                        <div class="media btmodal"
+                                                data-campo = "users[]-name;series[]-ser_apelido;socials[]-soc_renda_familiar" 
+                                                data-condicao = "sociomaisde10" data-titulo ="Alunos ativos com mais de 10 salários" 
+                                                data-toggle="modal" data-target="#large">
                                             <div class="avatar bg-light-success mr-2">
                                                 <div class="avatar-content">
                                                     <i data-feather="dollar-sign" class="avatar-icon"></i>
@@ -120,7 +148,11 @@
 
                 <div class="row match-height">
                     <!--  Professores -->
-                    <div class="col-lg-4 col-md-6 col-12">
+                    <div class="col-lg-4 col-md-6 col-12  btmodal"
+                    data-campo = "users[]-name;" 
+                    data-condicao = "professores" data-titulo ="Lista de Professores" 
+                    data-toggle="modal" data-target="#large">
+
                         <div class="card card-developer-meetup">
                             <div class="meetup-img-wrapper rounded-top text-center">
                                 <img src="../../../app-assets/images/illustration/email.svg" alt="Meeting Pic"
@@ -173,7 +205,10 @@
                             <div class="card-body" style="padding-top: 30px">
                                 @foreach ($tiporesidencia as $tipores)
                                     <div class="browser-states">
-                                        <div class="media">
+                                        <div class="media btmodal"
+                                        data-campo = "users[]-name;series[]-ser_apelido;socials[]-soc_tipo_residencia" 
+                                        data-condicao = "{{ $tipores->soc_tipo_residencia ?? 'Sem definição' }}" data-titulo ="Tipo de residência de alunos ativos" 
+                                        data-toggle="modal" data-target="#large">
                                             <img src="../../../app-assets/images/icons/home.png" class="rounded mr-1"
                                                 height="30" alt="Google Chrome" />
                                             <h6 class="align-self-center mb-0">
@@ -205,12 +240,18 @@
                                 <div id="goal-overview-radial-bar-chart" class="my-2"
                                     data-nalerg="{{ $nalerg }}"></div>
                                 <div class="row border-top text-center mx-0">
-                                    <div class="col-6 border-right py-1">
+                                    <div class="col-6 border-right py-1 btmodal"
+                                    data-campo = "users[]-name;series[]-ser_apelido;saude_users[]-sau_alergia" 
+                                    data-condicao = "naoalergico" data-titulo ="Alunos ativos não alergicos" 
+                                    data-toggle="modal" data-target="#large">
                                         <p class="card-text text-muted mb-0">Não Alergicos</p>
                                         {{-- <h3 class="font-weight-bolder mb-0">{{$saude[1]->sau_alergia}}</h3> --}}
                                         <h3 class="font-weight-bolder mb-0">{{ $saude[1]->sum }}</h3>
                                     </div>
-                                    <div class="col-6 py-1">
+                                    <div class="col-6 py-1  btmodal"
+                                    data-campo = "users[]-name;series[]-ser_apelido;saude_users[]-sau_alergia;saude_users[]-sau_alergia_detalhe" 
+                                    data-condicao = "simalergico" data-titulo ="Alunos ativos alergicos" 
+                                    data-toggle="modal" data-target="#large">
                                         <p class="card-text text-muted mb-0">Alergicos</p>
                                         {{-- <h3 class="font-weight-bolder mb-0">{{$saude[2]->sau_alergia}}</h3> --}}
                                         <h3 class="font-weight-bolder mb-0">{{ $saude[2]->sum }}</h3>
@@ -262,6 +303,8 @@
                                                                 ->select('u.id AS id')
                                                                 ->where('series.ser_apelido', $serie->ser_apelido)
                                                                 ->where('u.use_sexo', 'Masculino')
+                                                                ->where('u.use_perfil', 11)
+                                                                ->where('u.use_status', 1)
                                                                 ->count();
                                                             
                                                             ?>
@@ -280,6 +323,8 @@
                                                                 ->select('u.id AS id')
                                                                 ->where('series.ser_apelido', $serie->ser_apelido)
                                                                 ->where('u.use_sexo', 'Feminino')
+                                                                ->where('u.use_perfil', 11)
+                                                                ->where('u.use_status', 1)
                                                                 ->count();
                                                             
                                                             ?>
@@ -290,13 +335,18 @@
                                                         </div>
                                                     </td>
                                                     <td>
-                                                        <div class="d-flex align-items-center">
+                                                        <div class="d-flex align-items-center btmodal"
+                                                        data-campo = "users[]-name;series[]-ser_apelido" 
+                                                        data-condicao = "condicaodetalhada" data-condicaodetalhada ="{{$serie->ser_apelido}}" data-titulo ="Alunos ativos da serie {{$serie->ser_apelido}}" 
+                                                        data-toggle="modal" data-target="#large">
                                                             <?php
                                                             $conttotal = DB::table('users AS u')
                                                                 ->leftjoin('matriculas', 'matriculas.mat_users_id', 'u.id')
                                                                 ->leftjoin('series', 'series.id', 'matriculas.mat_series_id')
                                                                 ->select('u.id AS id')
                                                                 ->where('series.ser_apelido', $serie->ser_apelido)
+                                                                ->where('u.use_perfil', 11)
+                                                                ->where('u.use_status', 1)
                                                                 ->count();
                                                             
                                                             ?>
@@ -324,6 +374,7 @@
         </div>
 
     </div>
+
 @endsection
 
 @push('css_vendor')
@@ -336,8 +387,24 @@
 @endpush
 
 @push('js_page')
+    <script src="../../../app-assets/vendors/js/tables/datatable/jquery.dataTables.min.js"></script>
+    <script src="../../../app-assets/vendors/js/forms/validation/jquery.validate.min.js"></script>
+    <script src="../../../app-assets/vendors/js/tables/datatable/datatables.bootstrap4.min.js"></script>
+    <script src="../../../app-assets/vendors/js/tables/datatable/dataTables.responsive.min.js"></script>
+    <script src="../../../app-assets/vendors/js/tables/datatable/responsive.bootstrap4.js"></script>
+    <script src="../../../app-assets/vendors/js/tables/datatable/datatables.checkboxes.min.js"></script>
+    <script src="../../../app-assets/vendors/js/tables/datatable/datatables.buttons.min.js"></script>
+    <script src="../../../app-assets/vendors/js/tables/datatable/jszip.min.js"></script>
+    <!-- <script src="../../../app-assets/vendors/js/tables/datatable/pdfmake.min.js"></script> -->
+    <script src="../../../app-assets/vendors/js/tables/datatable/vfs_fonts.js"></script>
+    <script src="../../../app-assets/vendors/js/tables/datatable/buttons.html5.min.js"></script>
+    <script src="../../../app-assets/vendors/js/tables/datatable/buttons.print.min.js"></script>
+    <script src="../../../app-assets/vendors/js/tables/datatable/dataTables.rowGroup.min.js"></script>
     <script src="../../../app-assets/vendors/js/charts/apexcharts.js"></script>
     <script src="../../../app-assets/js/scripts/pages/dashboard-ecommerce.js"></script>
+    <script src="../../../app-assets/js/scripts/pages/app-dash-list.js"></script>
+    
+
 @endpush
 
 @push('js_vendor')
