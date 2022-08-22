@@ -73,11 +73,11 @@
                             </div>
                             <div class="card-body statistics-body">
                                 <div class="row">
-                                    <div class="col-xl-3 col-sm-6 col-12 mb-2 mb-xl-0">
-                                        <div class="media  btmodal"
+                                    <div class="col-xl-3 col-sm-6 col-12 mb-2 mb-xl-0   btmodal"
                                         data-campo = "users[]-name;series[]-ser_apelido;socials[]-soc_renda_familiar" 
                                         data-condicao = "socio1e2" data-titulo ="Alunos ativos com 1 a 2 salários" 
                                         data-toggle="modal" data-target="#large">
+                                        <div class="media">
 
                                             <div class="avatar bg-light-danger mr-2">
                                                 <div class="avatar-content">
@@ -160,11 +160,11 @@
                             </div>
                             <div class="card-body" style="padding-top: 30px">
                                 @foreach ($tiporesidencia as $tipores)
-                                    <div class="browser-states">
-                                        <div class="media btmodal"
-                                            data-campo = "users[]-name;series[]-ser_apelido;socials[]-soc_tipo_residencia" 
-                                            data-condicao = "{{ $tipores->soc_tipo_residencia ?? 'Sem definição' }}" data-titulo ="Tipo de residência de alunos ativos" 
-                                            data-toggle="modal" data-target="#large">
+                                    <div class="browser-states btmodal"
+                                    data-campo = "users[]-name;series[]-ser_apelido;socials[]-soc_tipo_residencia" 
+                                    data-condicao = "{{ $tipores->soc_tipo_residencia ?? 'Sem definição' }}" data-titulo ="Tipo de residência de alunos ativos" 
+                                    data-toggle="modal" data-target="#large">
+                                        <div class="media ">
                                             <img src="../../../app-assets/images/icons/home.png" class="rounded mr-1" height="30" alt="Google Chrome" />
                                             <h6 class="align-self-center mb-0">
                                                 {{ $tipores->soc_tipo_residencia ?? 'Sem definição' }}</h6>
@@ -367,45 +367,45 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="browser-states">
+                                <div class="browser-states btmodal" 
+                                data-campo = "users[]-name;series[]-ser_apelido;alteracaos[]-alt_tipo;alteracaos[]-alt_data" 
+                                data-condicao = "alunoremanejado" data-titulo ="Alunos Remanejados">
                                     <div class="media ">
                                         <img src="../../../app-assets/images/icons/situacao.png" class="rounded mr-1" height="30" alt="Google Chrome" />
                                         <h6 class="align-self-center mb-0">Remanejado</h6>
                                     </div>
                                     <div class="d-flex align-items-center">
                                         <div class="font-weight-bold text-body-heading mr-1">
-                                            <span style=" " class=" btmodal" 
-                                            data-campo = "users[]-name;series[]-ser_apelido;alteracaos[]-alt_tipo;alteracaos[]-alt_data" 
-                                            data-condicao = "alunoremanejado" data-titulo ="Alunos Remanejados" 
+                                            <span style=" " class=" " 
                                             data-toggle="modal" data-target="#large">{{ $remanejado ?? '0' }}</span>
                                         </div>
                                     </div>
                                 </div>
-                                <div class="browser-states">
+                                <div class="browser-states btmodal" 
+                                data-campo = "users[]-name;series[]-ser_apelido;alteracaos[]-alt_tipo;alteracaos[]-alt_data" 
+                                data-condicao = "alunotransferido" data-titulo ="Alunos Transferidos" 
+                                data-toggle="modal" data-target="#large">
                                     <div class="media">
                                         <img src="../../../app-assets/images/icons/situacao.png" class="rounded mr-1" height="30" alt="Google Chrome" />
                                         <h6 class="align-self-center mb-0">Transferidos</h6>
                                     </div>
                                     <div class="d-flex align-items-center">
                                         <div class="font-weight-bold text-body-heading mr-1">
-                                            <span style="" class=" btmodal" 
-                                            data-campo = "users[]-name;series[]-ser_apelido;alteracaos[]-alt_tipo;alteracaos[]-alt_data" 
-                                            data-condicao = "alunotransferido" data-titulo ="Alunos Transferidos" 
-                                            data-toggle="modal" data-target="#large">{{ $transferido ?? '0' }}</span>
+                                            <span style="" class=" ">{{ $transferido ?? '0' }}</span>
                                         </div>
                                     </div>
                                 </div>
-                                <div class="browser-states">
+                                <div class="browser-states btmodal" 
+                                data-campo = "users[]-name;series[]-ser_apelido;alteracaos[]-alt_tipo;alteracaos[]-alt_data" 
+                                data-condicao = "alunoabandono" data-titulo ="Alunos em Abandono" 
+                                data-toggle="modal" data-target="#large">
                                     <div class="media">
                                         <img src="../../../app-assets/images/icons/situacao.png" class="rounded mr-1" height="30" alt="Google Chrome" />
                                         <h6 class="align-self-center mb-0">Abandono</h6>
                                     </div>
                                     <div class="d-flex align-items-center">
                                         <div class="font-weight-bold text-body-heading mr-1">
-                                            <span style="" class=" btmodal" 
-                                            data-campo = "users[]-name;series[]-ser_apelido;alteracaos[]-alt_tipo;alteracaos[]-alt_data" 
-                                            data-condicao = "alunoabandono" data-titulo ="Alunos em Abandono" 
-                                            data-toggle="modal" data-target="#large">{{ $abandono ?? '0' }}</span>
+                                            <span style="" class=" ">{{ $abandono ?? '0' }}</span>
                                         </div>
                                     </div>
                                 </div>                                
@@ -429,7 +429,10 @@
                                         </thead>
                                         <tbody>
                                             @foreach ($allseries as $serie)
-                                                <tr>
+                                                <tr class="btmodal"
+                                                data-campo = "users[]-name;series[]-ser_apelido" 
+                                                data-condicao = "condicaodetalhada" data-condicaodetalhada ="{{$serie->ser_apelido}}" data-titulo ="Alunos ativos da serie {{$serie->ser_apelido}}" 
+                                                data-toggle="modal" data-target="#large">
                                                     <td>
                                                         <div class="d-flex align-items-center">
                                                             <div class="avatar rounded">
@@ -487,10 +490,7 @@
                                                         </div>
                                                     </td>
                                                     <td>
-                                                        <div class="d-flex align-items-center btmodal"
-                                                        data-campo = "users[]-name;series[]-ser_apelido" 
-                                                        data-condicao = "condicaodetalhada" data-condicaodetalhada ="{{$serie->ser_apelido}}" data-titulo ="Alunos ativos da serie {{$serie->ser_apelido}}" 
-                                                        data-toggle="modal" data-target="#large">
+                                                        <div class="d-flex align-items-center ">
                                                             <?php
                                                             $conttotal = DB::table('users AS u')
                                                                 ->leftjoin('matriculas', 'matriculas.mat_users_id', 'u.id')
