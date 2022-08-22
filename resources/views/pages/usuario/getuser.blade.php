@@ -118,7 +118,13 @@ switch ($user->use_perfil) {
             @if ($user->sau_alergia)
                <li class="mb-75">
                   <i data-feather='heart' class="icongetuser"></i>
-                  <span class="me-25">{{$user->sau_alergia}} tem Alergia</span>
+                  <span class="me-25">Aluno Alérgico: {{$user->sau_alergia}} </span>
+               </li>
+            @endif            
+            @if ($user->sau_necessidades_especial)
+               <li class="mb-75">
+                  <i data-feather='heart' class="icongetuser"></i>
+                  <span class="me-25">Aluno Espedical: {{$user->sau_necessidades_especial}}</span>
                </li>
             @endif            
             @if ($user->sau_sus)

@@ -70,6 +70,38 @@
    </div>
    <div class="col-md-3 ">
       <div class="form-group">
+         <label class="d-block mb-1">Necessidade Especial</label>
+         <?php
+            $checkednece = null;
+            if(isset($user->sau_necessidades_especial)){
+               $checkednece = $user->sau_necessidades_especial;
+            }
+         ?>
+         <div class="custom-control custom-radio custom-control-inline">
+            <input type="radio" id="sau_necessidades_especial1" name="sau_necessidades_especial" value="Sim" class="custom-control-input" 
+            <?php if($checkednece == 'Sim'){ echo 'checked';} ?> />
+            <label class="custom-control-label check" for="sau_necessidades_especial1">Sim</label>
+         </div>
+         <div class="custom-control custom-radio custom-control-inline">
+            <input type="radio" id="sau_necessidades_especial2" name="sau_necessidades_especial" class="custom-control-input" value="Não" 
+            <?php if($checkednece == 'Não'){ echo 'checked';} ?> />
+            <label class="custom-control-label check" for="sau_necessidades_especial2">Não</label>
+         </div>
+      </div>
+   </div>
+   <div class="col-md-9">
+      <label for="sau_necessidades_especial_detalhe">Detalhes da necessidade</label>
+      <div class="input-group input-group-merge">
+         <div class="input-group-prepend">
+            <span class="input-group-text">
+               <i data-feather='heart'></i>
+            </span>
+         </div>
+         <input id="sau_necessidades_especial_detalhe" type="text" class="form-control" value="{{$user->sau_necessidades_especial_detalhe ?? ''}}" name="sau_necessidades_especial_detalhe" />
+      </div>
+   </div>
+   <div class="col-md-3 ">
+      <div class="form-group">
          <label class="d-block mb-1">Tipo de parto</label>
          <?php
             $checkedparto = null;

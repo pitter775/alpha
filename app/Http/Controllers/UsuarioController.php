@@ -308,6 +308,8 @@ class UsuarioController extends Controller
                 }
 
                 $dados_sau->sau_users_id = $id_geral;
+                $dados_sau->sau_necessidades_especial = $request->input('sau_necessidades_especial');
+                $dados_sau->sau_necessidades_especial_detalhe = $request->input('sau_necessidades_especial_detalhe');
                 $dados_sau->sau_sarampo = $request->input('sau_sarampo');
                 $dados_sau->sau_sus = $request->input('sau_sus');
                 $dados_sau->sau_caxumba = $request->input('sau_caxumba');
