@@ -346,14 +346,15 @@
                                 <img src="../../../app-assets/images/icons/ico-presente.png" class="rounded icodash" alt="Presença" /> 
                             </div>
                             <div class="card-body" style="padding-top: 20px">
-                                <p class="card-text font-small-2">22/08/2022</p>
+                                <input id="dt_inicial" type="text" class="form-control flatpickr-basic" name="dt_inicial" style="display: none" />
+                                <input id="dt_final" type="text" class="form-control flatpickr-basic"  name="dt_final" disabled/>
                                 <div class="browser-states">
                                     <div class="media">
                                         <img src="../../../app-assets/images/icons/ico-alu.png" class="rounded mr-1" height="30" alt="Google Chrome" />
                                         <h6 class="align-self-center mb-0">Presentes</h6>
                                     </div>
                                     <div class="d-flex align-items-center">
-                                        <div class="font-weight-bold text-body-heading mr-1">--</div>
+                                        <div class="font-weight-bold text-body-heading mr-1" id="ppresente">--</div>
                                         <div class="state-chart-primary"></div>
                                     </div>
                                 </div>
@@ -363,7 +364,7 @@
                                         <h6 class="align-self-center mb-0">Faltantes</h6>
                                     </div>
                                     <div class="d-flex align-items-center">
-                                        <div class="font-weight-bold text-body-heading mr-1">--</div>
+                                        <div class="font-weight-bold text-body-heading mr-1" id="ffaltantes">--</div>
                                         <div class="state-chart-warning"></div>
                                     </div>
                                 </div>
@@ -373,7 +374,7 @@
                                         <h6 class="align-self-center mb-0">Registrados</h6>
                                     </div>
                                     <div class="d-flex align-items-center">
-                                        <div class="font-weight-bold text-body-heading mr-1">--</div>
+                                        <div class="font-weight-bold text-body-heading mr-1" id="rregistrados">--</div>
                                         <div class="state-chart-secondary"></div>
                                     </div>
                                 </div>

@@ -11,9 +11,17 @@ $(function() {
     var isRtl = $('html').attr('data-textdirection') === 'rtl';
 
     var tableCardapio = false;
-
     console.log('piloto');
+    var data = new Date();
+    var mesatual = data.getMonth();
+    var mesatual = mesatual + 1;
+    var dataFormatada = data.toLocaleDateString('pt-BR', { timeZone: 'UTC' });
+    $('#dt_final').val(dataFormatada);
+    $('#dt_final').trigger('change');
 
+    var dt_inicial = $('#dt_inicial').val();
+    var dt_final = $('#dt_final').val();
+    totais(dt_inicial, dt_final);
 
 
 
@@ -148,4 +156,26 @@ $(function() {
             }
         });
     });
+
+    function totais(dt_inicial, dt_final) {
+        $.ajax({
+            type: "POST",
+            url: '/presenca/totais',
+            data: {
+                "_token": $('meta[name="csrf-token"]').attr('content'),
+                'dt_final': dt_final,
+                'dt_inicial': dt_inicial
+            },
+            success: function(data) {
+                console.log('resultado');
+                console.log(data);
+
+                $('#ppresente').html(data.presentes[0]['total']);
+                $('#ffaltantes').html(data.faltas[0]['total']);
+                $('#rregistrados').html(data.total[0]['total']);
+                // $('#totalAlunos').html(data.alunos);
+
+            }
+        });
+    }
 });
