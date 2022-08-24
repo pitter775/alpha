@@ -18,6 +18,7 @@
 
 <style>
     .btmodal{ cursor: pointer;}
+    .icodash{ position: absolute; height: 90px; right: 5px; top: 5px}
 </style>
 
 
@@ -69,6 +70,7 @@
                         <div class="card card-statistics">
                             <div class="card-header">
                                 <h4 class="card-title">Sócio-Econômicos</h4>
+                                <img src="../../../app-assets/images/icons/ico-socio.png" class="rounded icodash" alt="Sócio-Econômicos" /> 
 
                             </div>
                             <div class="card-body statistics-body">
@@ -153,12 +155,12 @@
                     <div class="col-lg-4 col-md-6 col-12">
                         <div class="card card-browser-states">
                             <div class="card-header">
-                                <div>
-                                    <h4 class="card-title">Tipo de residência</h4>
-                                </div>
-
+                                <h4 class="card-title">Tipo de residência</h4>
+                                <img src="../../../app-assets/images/icons/ico-casa.png" class="rounded icodash" alt="Tipo de residência" /> 
                             </div>
-                            <div class="card-body" style="padding-top: 30px">
+
+                          
+                            <div class="card-body" style="padding-top: 40px">
                                 @foreach ($tiporesidencia as $tipores)
                                     <div class="browser-states btmodal"
                                     data-campo = "users[]-name;series[]-ser_apelido;socials[]-soc_tipo_residencia" 
@@ -186,9 +188,10 @@
                         <div class="card card-browser-states">
                             <div class="card-header d-flex justify-content-between align-items-center">
                                 <h4 class="card-title">Alunos Especiais</h4>
+                                <img src="../../../app-assets/images/icons/ico-especial.png" class="rounded icodash" alt="Presença" /> 
 
                             </div>
-                            <div class="card-body" style="padding-top: 30px">
+                            <div class="card-body" style="padding-top: 40px">
                                 <div class="browser-states">
                                     <div class="media ">
                                         <img src="../../../app-assets/images/icons/necessidade.png" class="rounded mr-1" height="30" alt="Google Chrome" />
@@ -335,30 +338,142 @@
                     </div>
                     <!--/  Card -->
                     <!-- Presença -->
-                    <div class="col-lg-8 col-md-8 col-12">
+                    <!-- Browser States Card -->
+                    <div class="col-lg-4 col-md-6 col-12">
                         <div class="card card-browser-states">
-                            <div class="card-header d-flex justify-content-between align-items-center">
+                            <div class="card-header">
                                 <h4 class="card-title">Presença Hoje</h4>
-
+                                <img src="../../../app-assets/images/icons/ico-presente.png" class="rounded icodash" alt="Presença" /> 
                             </div>
-                            <div class="card-body" style="padding-top: 30px">
-                                fazendo...                             
+                            <div class="card-body" style="padding-top: 20px">
+                                <p class="card-text font-small-2">22/08/2022</p>
+                                <div class="browser-states">
+                                    <div class="media">
+                                        <img src="../../../app-assets/images/icons/ico-alu.png" class="rounded mr-1" height="30" alt="Google Chrome" />
+                                        <h6 class="align-self-center mb-0">Presentes</h6>
+                                    </div>
+                                    <div class="d-flex align-items-center">
+                                        <div class="font-weight-bold text-body-heading mr-1">--</div>
+                                        <div class="state-chart-primary"></div>
+                                    </div>
+                                </div>
+                                <div class="browser-states">
+                                    <div class="media">
+                                        <img src="../../../app-assets/images/icons/ico-alu.png" class="rounded mr-1" height="30" alt="Mozila Firefox" />
+                                        <h6 class="align-self-center mb-0">Faltantes</h6>
+                                    </div>
+                                    <div class="d-flex align-items-center">
+                                        <div class="font-weight-bold text-body-heading mr-1">--</div>
+                                        <div class="state-chart-warning"></div>
+                                    </div>
+                                </div>
+                                <div class="browser-states">
+                                    <div class="media">
+                                        <img src="../../../app-assets/images/icons/ico-alu.png" class="rounded mr-1" height="30" alt="Apple Safari" />
+                                        <h6 class="align-self-center mb-0">Registrados</h6>
+                                    </div>
+                                    <div class="d-flex align-items-center">
+                                        <div class="font-weight-bold text-body-heading mr-1">--</div>
+                                        <div class="state-chart-secondary"></div>
+                                    </div>
+                                </div>
+                                <div class="browser-states">
+                                    <div class="media">
+                                        <img src="../../../app-assets/images/icons/ico-alu.png" class="rounded mr-1" height="30" alt="Internet Explorer" />
+                                        <h6 class="align-self-center mb-0">Não Registrados</h6>
+                                    </div>
+                                    <div class="d-flex align-items-center">
+                                        <div class="font-weight-bold text-body-heading mr-1">--</div>
+                                        <div class="state-chart-info"></div>
+                                    </div>
+                                </div>                                
                             </div>
                         </div>
                     </div>
+                    <!--/ Browser States Card -->
 
 
-                    <!-- Movimentação -->
+                     <!-- Transaction card -->
+                     <div class="col-lg-4 col-md-6 col-12">
+                        <div class="card card-transaction">
+                            <div class="card-header">
+                                <h4 class="card-title">Dados Gerais</h4>
+                                <img src="../../../app-assets/images/icons/ico-geral.png" class="rounded icodash" alt="Dados Gerais" /> 
+                            </div>
+                            <div class="card-body" style="padding-top: 30px">
+                                <div class="transaction-item">
+                                    <div class="media">
+                                        <div class="avatar bg-light-primary rounded">
+                                            <div class="avatar-content">
+                                                <i data-feather="pocket" class="avatar-icon font-medium-3"></i>
+                                            </div>
+                                        </div>
+                                        <div class="media-body">
+                                            <h6 class="transaction-title">Lista de Espera</h6>
+                                            <small>Alunos esperando vagas</small>
+                                        </div>
+                                    </div>
+                                    <div class="font-weight-bolder text-danger">--</div>
+                                </div>
+                                <div class="transaction-item">
+                                    <div class="media">
+                                        <div class="avatar bg-light-success rounded">
+                                            <div class="avatar-content">
+                                                <i data-feather="check" class="avatar-icon font-medium-3"></i>
+                                            </div>
+                                        </div>
+                                        <div class="media-body">
+                                            <h6 class="transaction-title">Numeros de Vagas</h6>
+                                            <small>Total de vagas disponiveis</small>
+                                        </div>
+                                    </div>
+                                    <div class="font-weight-bolder text-success">--</div>
+                                </div>
+                                <div class="transaction-item">
+                                    <div class="media">
+                                        <div class="avatar bg-light-danger rounded">
+                                            <div class="avatar-content">
+                                                <i data-feather="truck" class="avatar-icon font-medium-3"></i>
+                                            </div>
+                                        </div>
+                                        <div class="media-body">
+                                            <h6 class="transaction-title">Transporte</h6>
+                                            <small>Alunos que fazem Transporte Particular</small>
+                                        </div>
+                                    </div>
+                                    <div class="font-weight-bolder text-success">--</div>
+                                </div>
+                                <div class="transaction-item">
+                                    <div class="media">
+                                        <div class="avatar bg-light-warning rounded">
+                                            <div class="avatar-content">
+                                                <i data-feather="credit-card" class="avatar-icon font-medium-3"></i>
+                                            </div>
+                                        </div>
+                                        <div class="media-body">
+                                            <h6 class="transaction-title">Cargos</h6>
+                                            <small>Lista de cargos</small>
+                                        </div>
+                                    </div>
+                                    <div class="font-weight-bolder text-danger">--</div>
+                                </div>
+                           
+                            </div>
+                        </div>
+                    </div>
+                    <!--/ Transaction card -->
+
+                     <!-- Movimentação -->
                     <div class="col-lg-4 col-md-6 col-12">
                         <div class="card card-browser-states">
                             <div class="card-header d-flex justify-content-between align-items-center">
                                 <h4 class="card-title">Situação ano de 2022</h4>
-
+                                <img src="../../../app-assets/images/icons/ico-situacao.png" class="rounded icodash" alt="Situação" /> 
                             </div>
-                            <div class="card-body" style="padding-top: 30px">
+                            <div class="card-body" style="padding-top: 50px">
                                 <div class="browser-states">
                                     <div class="media ">
-                                        <img src="../../../app-assets/images/icons/situacao.png" class="rounded mr-1" height="30" alt="Google Chrome" />
+                                        <img src="../../../app-assets/images/icons/ico-sit.png" class="rounded mr-1" height="30" alt="Google Chrome" />
                                         <h6 class="align-self-center mb-0">Matriculados</h6>
                                     </div>
                                     <div class="d-flex align-items-center">
@@ -371,7 +486,7 @@
                                 data-campo = "users[]-name;series[]-ser_apelido;alteracaos[]-alt_tipo;alteracaos[]-alt_data" 
                                 data-condicao = "alunoremanejado" data-titulo ="Alunos Remanejados">
                                     <div class="media ">
-                                        <img src="../../../app-assets/images/icons/situacao.png" class="rounded mr-1" height="30" alt="Google Chrome" />
+                                        <img src="../../../app-assets/images/icons/ico-sit.png" class="rounded mr-1" height="30" alt="Google Chrome" />
                                         <h6 class="align-self-center mb-0">Remanejado</h6>
                                     </div>
                                     <div class="d-flex align-items-center">
@@ -386,7 +501,7 @@
                                 data-condicao = "alunotransferido" data-titulo ="Alunos Transferidos" 
                                 data-toggle="modal" data-target="#large">
                                     <div class="media">
-                                        <img src="../../../app-assets/images/icons/situacao.png" class="rounded mr-1" height="30" alt="Google Chrome" />
+                                        <img src="../../../app-assets/images/icons/ico-sit.png" class="rounded mr-1" height="30" alt="Google Chrome" />
                                         <h6 class="align-self-center mb-0">Transferidos</h6>
                                     </div>
                                     <div class="d-flex align-items-center">
@@ -400,7 +515,7 @@
                                 data-condicao = "alunoabandono" data-titulo ="Alunos em Abandono" 
                                 data-toggle="modal" data-target="#large">
                                     <div class="media">
-                                        <img src="../../../app-assets/images/icons/situacao.png" class="rounded mr-1" height="30" alt="Google Chrome" />
+                                        <img src="../../../app-assets/images/icons/ico-sit.png" class="rounded mr-1" height="30" alt="Google Chrome" />
                                         <h6 class="align-self-center mb-0">Abandono</h6>
                                     </div>
                                     <div class="d-flex align-items-center">
