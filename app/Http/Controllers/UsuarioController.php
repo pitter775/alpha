@@ -231,6 +231,7 @@ class UsuarioController extends Controller
                 $dados->use_sexo = $request->input('use_sexo');
                 $dados->use_cor_pele = $request->input('use_cor_pele');
                 $dados->use_regiao_nascimento = $request->input('use_regiao_nascimento');
+                $dados->use_transport_particular = $request->input('use_transport_particular');
 
                 //Inicio  add/update Socio Economico
                 $TemSocial = $dados->use_social_id;

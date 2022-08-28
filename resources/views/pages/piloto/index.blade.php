@@ -48,6 +48,7 @@
                                                         case 'use_cpf':$novoValule = 'CPF';break;
                                                         case 'use_sexo':$novoValule = 'Sexo';break;
                                                         case 'use_dt_nascimento':$novoValule = 'Data de Nascimento';break;
+                                                        case 'use_transport_particular':$novoValule = 'Transporte Particular';break;
                                                         // case 'use_cartao_sus':$novoValule = 'Cartão do SUS';break;
                                                     }
                                                 ?>

@@ -84,7 +84,7 @@
          <select id="use_status" name="use_status" class="form-control select2">
             <option value="1" @if($user->use_status == 1) selected @endif >Ativo</option>
             <option value="2" @if($user->use_status == 2) selected @endif >Inativo</option>
-            <option value="3" @if($user->use_status == 3) selected @endif >Solicitação de Matrícula</option>
+            <option value="3" @if($user->use_status == 3) selected @endif >Aguardando Vaga</option>
          </select>
       </div>
    </div>

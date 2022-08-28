@@ -37,7 +37,7 @@ switch ($user->use_perfil) {
                <span class="badge bg-light-danger">Inativo</span>
                @endif
                @if($user->use_status == 3)
-               <span class="badge bg-light-danger">Solicitação de Matrícula</span>
+               <span class="badge bg-light-danger">Aguardando Vaga</span>
                @endif
             </div>
 

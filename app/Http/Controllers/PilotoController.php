@@ -106,6 +106,12 @@ class PilotoController extends Controller
                 array_push($colunas, $a); 
             }     
         }
+        if(isset($request->resp_autorizados)){
+            array_push($tabelas, "resp_autorizados");       
+            foreach ($request->resp_autorizados as  $a){
+                array_push($colunas, $a); 
+            }     
+        }
         $titulo = $request->titulo;
         $condicao = $request->condicao;
         $condicaodetalhada = $request->condicaodetalhada;
@@ -187,6 +193,12 @@ class PilotoController extends Controller
                 array_push($colunas, $a); 
             }     
         }
+        if(isset($request->resp_autorizados)){
+            array_push($tabelas, "resp_autorizados");       
+            foreach ($request->resp_autorizados as  $a){
+                array_push($colunas, $a); 
+            }     
+        }
 
         $tabArray = $this->filtros($tabelas, $colunas);
 
@@ -196,6 +208,7 @@ class PilotoController extends Controller
     public function filtros($tabelas, $colunas, $condicao = null, $condicaodetalhada = null)
     {
         $join = '';
+        $group = '';
         $colunasTab = '';
         foreach ($colunas as $col){
             if($col != 'res_nome_pai'){
@@ -234,6 +247,7 @@ class PilotoController extends Controller
             if($tab == 'professores'){
                 $join .= ' LEFT JOIN professores ON professores.prof_users_id = u.id';
             }
+            
           
            
         }      
@@ -310,11 +324,18 @@ class PilotoController extends Controller
             case 'alunoabandono':                
                 $filtro = "where u.use_perfil = 11 and alteracaos.alt_tipo  = 'Abandono'";
                 break;
+            case 'usertransport':                
+                $filtro = "where u.use_perfil = 11 and u.use_transport_particular  = 'Sim'";
+                break;
+            case 'listaespera':                
+                $filtro = "where u.use_perfil = 11 and u.use_status = 3 and resp_autorizados.resp_telefone is not null";
+                $group = "GROUP BY u.id";
+                break;
         }
        
 
         $tabela = DB::select(DB::raw(
-            "SELECT u.id as userId, $colunasTab FROM users As u $join $filtro"
+            "SELECT u.id as userId, $colunasTab FROM users As u $join $filtro $group"
         ));
 
         return $tabela;

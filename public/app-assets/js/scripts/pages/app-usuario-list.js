@@ -117,7 +117,7 @@ $(function() {
                             if (dados.use_status == 0) { return '<span class="badge bg-light-danger">Sem status</span>'; }
                             if (dados.use_status == 2) { return '<span class="badge bg-light-danger">Inativo</span>'; }
                             if (dados.use_status == 1) { return '<span class="badge bg-light-success">Ativo</span>'; }
-                            if (dados.use_status == 3) { return '<span class="badge bg-light-danger">Criando matricula</span>'; }
+                            if (dados.use_status == 3) { return '<span class="badge bg-light-danger">Aguardando Vaga</span>'; }
                             if (dados.use_status == 4) { return '<span class="badge bg-light-danger">Fechamento de matricula</span>'; }
                         }
                     }

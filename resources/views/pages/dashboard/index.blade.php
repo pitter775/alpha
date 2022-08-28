@@ -403,7 +403,10 @@
                                 <img src="../../../app-assets/images/icons/ico-geral.png" class="rounded icodash" alt="Dados Gerais" /> 
                             </div>
                             <div class="card-body" style="padding-top: 30px">
-                                <div class="transaction-item">
+                                <div class="transaction-item btmodal" 
+                                data-campo = "users[]-name; series[]-ser_apelido; resp_autorizados[]-resp_nome; resp_autorizados[]-resp_telefone" 
+                                data-condicao = "listaespera" data-titulo ="Lista de espera" 
+                                data-toggle="modal" data-target="#large">
                                     <div class="media">
                                         <div class="avatar bg-light-primary rounded">
                                             <div class="avatar-content">
@@ -415,8 +418,9 @@
                                             <small>Alunos esperando vagas</small>
                                         </div>
                                     </div>
-                                    <div class="font-weight-bolder text-danger">--</div>
+                                    <div class="font-weight-bolder text-danger">{{$listaespera ?? 0}}</div>
                                 </div>
+
                                 <div class="transaction-item">
                                     <div class="media">
                                         <div class="avatar bg-light-success rounded">
@@ -426,12 +430,16 @@
                                         </div>
                                         <div class="media-body">
                                             <h6 class="transaction-title">Numeros de Vagas</h6>
-                                            <small>Total de vagas disponiveis</small>
+                                            <small>Máximo de Alunos na Escola</small>
                                         </div>
                                     </div>
-                                    <div class="font-weight-bolder text-success">--</div>
+                                    <div class="font-weight-bolder text-success">500</div>
                                 </div>
-                                <div class="transaction-item">
+
+                                <div class="transaction-item btmodal" 
+                                    data-campo = "users[]-name; series[]-ser_apelido" 
+                                    data-condicao = "usertransport" data-titulo ="Lista e Alunos de Transport Particular" 
+                                    data-toggle="modal" data-target="#large">
                                     <div class="media">
                                         <div class="avatar bg-light-danger rounded">
                                             <div class="avatar-content">
@@ -440,10 +448,10 @@
                                         </div>
                                         <div class="media-body">
                                             <h6 class="transaction-title">Transporte</h6>
-                                            <small>Alunos que fazem Transporte Particular</small>
+                                            <small>Alunos de Transporte Particular</small>
                                         </div>
                                     </div>
-                                    <div class="font-weight-bolder text-success">--</div>
+                                    <div class="font-weight-bolder text-success">{{$transpartic ?? 0}}</div>
                                 </div>
                                 <div class="transaction-item">
                                     <div class="media">

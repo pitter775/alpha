@@ -20,6 +20,7 @@
                             case 'use_cartao_sus':$novoValule = 'Cartão do SUS';break;                           
                             case 'mat_status':$novoValule = 'Status da Matrícula';break;
                             case 'mat_data_inicio':$novoValule = 'Data da Matrícula';break;        
+                            case 'use_transport_particular':$novoValule = 'Transporte Particular';break;
 
                             case 'alt_tipo':$novoValule = 'Situação';break;
                             case 'alt_data':$novoValule = 'Data da Situação';break;       

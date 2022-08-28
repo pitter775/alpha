@@ -78,7 +78,8 @@
          </div>
       </div>
    </div>
-   <div class="col-md-12 ">
+
+   <div class="col-md-8 ">
       <div class="form-group">
          <label class="d-block mb-1">Raça / Cor definidas pelo IBGE</label>
          <?php
@@ -110,6 +111,28 @@
          <div class="custom-control custom-radio custom-control-inline">
             <input type="radio" id="declarada" name="use_cor_pele" class="custom-control-input" value="N/ declarada" <?php if($checkedRaca == 'N/ declarada'){ echo 'checked';} ?> />
             <label class="custom-control-label check" for="declarada">N/ declarada</label>
+         </div>
+      </div>
+   </div>
+
+   <div class="col-md-4 ">
+      <div class="form-group">
+         <label class="d-block mb-1">Transporte Particular</label>
+         <?php
+            $checkedtransp = null;
+            if(isset($user->use_transport_particular)){
+               $checkedtransp = $user->use_transport_particular;
+            }
+         ?>
+         <div class="custom-control custom-radio custom-control-inline">
+            <input type="radio" id="transpsim" name="use_transport_particular" value="Sim" class="custom-control-input" 
+            <?php if($checkedtransp == 'Sim'){ echo 'checked';} ?> />
+            <label class="custom-control-label check" for="transpsim">Sim</label>
+         </div>
+         <div class="custom-control custom-radio custom-control-inline">
+            <input type="radio" id="transpnao" name="use_transport_particular" class="custom-control-input" value="Não" 
+            <?php if($checkedtransp == 'Não'){ echo 'checked';} ?> />
+            <label class="custom-control-label check" for="transpnao">Não</label>
          </div>
       </div>
    </div>
