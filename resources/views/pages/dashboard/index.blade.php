@@ -35,6 +35,7 @@
                                 <p class="card-text font-small-3">Carlos Drummond de Andrade</p>
                                 <h3 class="mb-75 mt-2 pt-50">
                                     <h1 class="font-weight-bolder mb-0">{{ $totalalunos ?? '0' }} alunos</h1>
+                                    <input id="inptotalalunos" type="hidden" value="{{ $totalalunos ?? '0' }}" />
                                 </h3>
                                 <img src="../../../app-assets/images/illustration/badge.svg" class="congratulation-medal"
                                     alt="Medal Pic" />
@@ -346,7 +347,7 @@
                                 <img src="../../../app-assets/images/icons/ico-presente.png" class="rounded icodash" alt="Presença" /> 
                             </div>
                             <div class="card-body" style="padding-top: 20px">
-                                <input id="dt_inicial" type="text" class="form-control flatpickr-basic" name="dt_inicial" style="display: none" />
+                                <input id="dt_inicial" type="hidden" class="form-control flatpickr-basic" name="dt_inicial" />
                                 <input id="dt_final" type="text" class="form-control flatpickr-basic"  name="dt_final" disabled/>
                                 <div class="browser-states">
                                     <div class="media">
@@ -371,7 +372,7 @@
                                 <div class="browser-states">
                                     <div class="media">
                                         <img src="../../../app-assets/images/icons/ico-alu.png" class="rounded mr-1" height="30" alt="Apple Safari" />
-                                        <h6 class="align-self-center mb-0">Registrados</h6>
+                                        <h6 class="align-self-center mb-0">Coletados</h6>
                                     </div>
                                     <div class="d-flex align-items-center">
                                         <div class="font-weight-bold text-body-heading mr-1" id="rregistrados">--</div>
@@ -381,10 +382,10 @@
                                 <div class="browser-states">
                                     <div class="media">
                                         <img src="../../../app-assets/images/icons/ico-alu.png" class="rounded mr-1" height="30" alt="Internet Explorer" />
-                                        <h6 class="align-self-center mb-0">Não Registrados</h6>
+                                        <h6 class="align-self-center mb-0">Não Coletados</h6>
                                     </div>
                                     <div class="d-flex align-items-center">
-                                        <div class="font-weight-bold text-body-heading mr-1">--</div>
+                                        <div class="font-weight-bold text-body-heading mr-1" id="naoregistrados">--</div>
                                         <div class="state-chart-info"></div>
                                     </div>
                                 </div>                                

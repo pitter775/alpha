@@ -169,11 +169,16 @@ $(function() {
             success: function(data) {
                 console.log('resultado');
                 console.log(data);
+                let totaldealunos = $('#inptotalalunos').val();
+                let totalregistrados = parseInt(data.presentes[0]['total'] + data.faltas[0]['total']);
+                let naoregistrados = parseInt(totaldealunos - totalregistrados);
+
+                console.log(naoregistrados);
 
                 $('#ppresente').html(data.presentes[0]['total']);
                 $('#ffaltantes').html(data.faltas[0]['total']);
-                $('#rregistrados').html(data.total[0]['total']);
-                // $('#totalAlunos').html(data.alunos);
+                $('#rregistrados').html(totalregistrados);
+                $('#naoregistrados').html(naoregistrados);
 
             }
         });
