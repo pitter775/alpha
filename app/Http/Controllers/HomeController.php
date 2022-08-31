@@ -32,6 +32,9 @@ class HomeController extends Controller
         
         return view('pages.site.home', compact('publicacoes'));
     }
+    public function teste01(){
+        return view('pages.site.teste');
+    }
     public function matricula()
     {
         return view('pages.site.matricula'); 

@@ -21,6 +21,7 @@ use Illuminate\Support\Facades\URL;
 
 Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('site');
 Route::get('/publi/{id}', [App\Http\Controllers\HomeController::class, 'publi']);
+Route::get('/teste01', [App\Http\Controllers\HomeController::class, 'teste01']);
 
 Route::get('/logout', [App\Http\Controllers\Auth\LoginController::class, 'logout']);
 Route::get('/home', [App\Http\Controllers\DashboardController::class, 'index']);
