@@ -63,6 +63,10 @@
     h3 {   font-family: "Nunito"; font-weight: 500;}
   </style>
 
-<a href="sms:11987108829?body=A Aluna Julia Rodrigues acabou de chegar">Send Hello via SMS to 1234567890</a>
+<a href="sms:11987108829?body=A Aluna Julia Rodrigues acabou de chegar">com frase!</a>
+
+<script>
+  window.location.href = "sms:11987108829?body=A Aluna Julia Rodrigues acabou de chegar";
+</script>
 </body>
 </html>
