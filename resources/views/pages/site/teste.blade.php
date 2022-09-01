@@ -14,10 +14,12 @@
 
         <div class="card">
             <div class="card-header">
-                <h2>Simple QR Code</h2>
+                <h2>Julia Rodrigues</h2>
             </div>
             <div class="card-body">
                 {!! QrCode::size(300)->generate('https://techvblogs.com/blog/generate-qr-code-laravel-8') !!}
+
+                
             </div>
         </div>
 

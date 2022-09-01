@@ -85,6 +85,7 @@ Route::group(['middleware' => 'acesso'], function () {
 
     Route::get('/usuario/getDependente/{id}', [App\Http\Controllers\UsuarioController::class, 'getDependente']);
     Route::get('/usuario/deleteDependente/{id}', [App\Http\Controllers\UsuarioController::class, 'deleteDependente']);
+    Route::get('/usuario/card/{id}', [App\Http\Controllers\UsuarioController::class, 'card']);
    
 
     Route::get('/serie', [App\Http\Controllers\SerieController::class, 'index']);
@@ -117,6 +118,10 @@ Route::group(['middleware' => 'acesso'], function () {
     Route::post('/publicacao/cadastro', [App\Http\Controllers\PublicacaoController::class, 'cadastro']);
     Route::get('/publicacao/editar/{id}', [App\Http\Controllers\PublicacaoController::class, 'editar']);
     Route::get('/publicacao/delete/{id}', [App\Http\Controllers\PublicacaoController::class, 'delete']);
+
+    Route::get('/qrcode', [App\Http\Controllers\QrcodeController::class, 'index']);
+    Route::get('/qrcode/imprimirqrcode/{id}', [App\Http\Controllers\QrcodeController::class, 'imprimirQrcode']);
+    Route::get('/qrcode/imprimirTodosQrcode', [App\Http\Controllers\QrcodeController::class, 'imprimirTodosQrcode']);
 
 });
 

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 use Illuminate\Support\Facades\DB;
+use QrCode;
 
 use Illuminate\Http\Request;
 
@@ -33,6 +34,16 @@ class HomeController extends Controller
         return view('pages.site.home', compact('publicacoes'));
     }
     public function teste01(){
+
+        $img =  \QrCode::size(300)->backgroundColor(255,90,0)->generate('https://techvblogs.com/blog/generate-qr-code-laravel-8');
+        // $img =  \QrCode::size(300)->format('png')->generate('ItSolutionStuff.com', public_path('images/qrcode.png'));
+
+        // echo $img;
+
+        
+
+        // dd($img->svg());
+
         return view('pages.site.teste');
     }
     public function matricula()

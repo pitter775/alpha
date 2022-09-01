@@ -114,6 +114,23 @@ class UsuarioController extends Controller
 
         return view('pages.usuario.detalhe', compact('user', 'series' ,'presenca'));
     }
+    public function card($id)
+    {
+        $user  = DB::table('users AS u')
+            ->select('*', 'u.id AS id', 'u.name as name')
+            ->leftjoin('socials', 'socials.id', 'u.use_social_id')  
+            ->leftjoin('enderecos', 'enderecos.end_users_id', 'u.id')  
+            ->leftjoin('matriculas', 'matriculas.mat_users_id', 'u.id')  
+            ->leftjoin('series', 'matriculas.mat_series_id', 'series.id')  
+            ->leftjoin('responsaveis', 'responsaveis.res_users_id', 'u.id') 
+            ->leftjoin('saude_users', 'saude_users.sau_users_id', 'u.id')   
+            ->leftjoin('habitos_alimentares', 'habitos_alimentares.hab_users_id', 'u.id')   
+            ->where('u.id', $id)
+            ->first();
+
+
+        return view('pages.usuario.card', compact('user'));
+    }
     public function getuser($id)
     {
         $user  = DB::table('users AS u')         

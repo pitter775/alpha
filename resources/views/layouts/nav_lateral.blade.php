@@ -57,6 +57,10 @@
                         <a class="d-flex align-items-center" href="/publicacao" onclick="link('/publicacao')">
                         <i data-feather='book-open'></i><span class="menu-title text-truncate" data-i18n="piloto">Publicações</span></a>
                     </li>
+                    <li class="{{ $elementActive == 'qrcode' ? 'active' : '' }} nav-item">
+                        <a class="d-flex align-items-center" href="/qrcode" onclick="link('/qrcode')">
+                        <i data-feather='grid'></i><span class="menu-title text-truncate" data-i18n="piloto">QR Codes</span></a>
+                    </li>
                 <?php } if(Auth::user()->use_perfil == '12'){ ?>  
 
                     @foreach(Session::get('series') as $serie)
