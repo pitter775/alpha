@@ -668,4 +668,7 @@ class UsuarioController extends Controller
     public function cardEntrada($id){
         return 'ok';
     }
+    public function cardSaida($id){
+        return 'ok';
+    }
 }
