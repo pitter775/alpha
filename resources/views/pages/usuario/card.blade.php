@@ -86,10 +86,10 @@ switch ($user->use_perfil) {
             <div class="row">
                <div class="col-md-12" style="padding-top:20px">
                   <button type="button" class="btn btn-success mb-1 mb-sm-0 mr-0 mr-sm-1 btentrada"
-                   data-nome="{{$user->ser_nome}}" data-idaluno="{{$user->id}}"> <i data-feather='arrow-up'></i> Entrada </button>
-                   
+                   data-nome="{{$user->name}}" data-idaluno="{{$user->id}}"> <i data-feather='arrow-up'></i> Entrada </button>
+
                   <button type="button" class="btn btn-warning mb-1 mb-sm-0 mr-0 mr-sm-1 btsaida"
-                   data-nome="{{$user->ser_nome}}" data-idaluno="{{$user->id}}"> <i data-feather='arrow-down'></i> Saída </button>
+                   data-nome="{{$user->name}}" data-idaluno="{{$user->id}}"> <i data-feather='arrow-down'></i> Saída </button>
                </div>
            </div>
          </div>

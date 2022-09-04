@@ -21,13 +21,18 @@ $(function() {
         let nome = $(this).data('nome');
         $.get('/usuario/card/entrada/' + id, function(retorno) {
             if(retorno == 'ok'){               
-                window.open('sms:949506267?body=Olá! '+nome +', acabou de chegar na escola.', '_blank');
+                window.open('sms:949506267?body=Olá! '+nome +', esta entrando na escola. 🥰', '_blank');
             }
         });
     });
     $(document).on('click', '.btsaida ', function() {    
         let id = $(this).data('idaluno');
-        window.open('/usuario/card/saida/'+id, '_blank');
+        let nome = $(this).data('nome');
+        $.get('/usuario/card/saida/' + id, function(retorno) {
+            if(retorno == 'ok'){               
+                window.open('sms:949506267?body=Olá! '+nome +', esta saindo da escola. 😘', '_blank');
+            }
+        });
     });
 
 
