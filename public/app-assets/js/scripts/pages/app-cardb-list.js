@@ -50,7 +50,7 @@ $(function() {
         console.log('btentrada');
         $.ajax({
             type: "POST",
-            url: '/usuario/card/entrada/',
+            url: '/usuario/card/entrad',
             data: { "_token": $('meta[name="csrf-token"]').attr('content'), 
                 id: id, 
                 nome: nome, 
@@ -74,7 +74,7 @@ $(function() {
         let sername = $(this).data('sername');
         $.ajax({
             type: "POST",
-            url: '/usuario/card/saida/',
+            url: '/usuario/card/said',
             data: { "_token": $('meta[name="csrf-token"]').attr('content'), 
                 id: id, 
                 nome: nome, 

@@ -86,10 +86,13 @@ Route::group(['middleware' => 'acesso'], function () {
     Route::get('/usuario/getDependente/{id}', [App\Http\Controllers\UsuarioController::class, 'getDependente']);
     Route::get('/usuario/deleteDependente/{id}', [App\Http\Controllers\UsuarioController::class, 'deleteDependente']);
     Route::get('/usuario/card/{id}', [App\Http\Controllers\UsuarioController::class, 'card']);
+
     Route::get('/usuario/card/entrada/bt/{id}', [App\Http\Controllers\UsuarioController::class, 'cardEntradabt']);
-    Route::post('/usuario/card/entrada', [App\Http\Controllers\UsuarioController::class, 'cardEntrada']);
-    Route::post('/usuario/card/saida', [App\Http\Controllers\UsuarioController::class, 'cardSaida']);
     Route::get('/usuario/card/saida/bt/{id}', [App\Http\Controllers\UsuarioController::class, 'cardSaidabt']);
+
+    Route::post('/usuario/card/entrad', [App\Http\Controllers\UsuarioController::class, 'cardEntrada']);
+    Route::post('/usuario/card/said', [App\Http\Controllers\UsuarioController::class, 'cardSaida']);
+
    
 
     Route::get('/serie', [App\Http\Controllers\SerieController::class, 'index']);
