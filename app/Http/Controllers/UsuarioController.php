@@ -117,7 +117,7 @@ class UsuarioController extends Controller
     public function card($id)
     {
         $user  = DB::table('users AS u')
-            ->select('*', 'u.id AS id', 'u.name as name')
+            ->select('*', 'u.id AS id', 'u.name as name', 'series.id as idserie')
             ->leftjoin('socials', 'socials.id', 'u.use_social_id')  
             ->leftjoin('enderecos', 'enderecos.end_users_id', 'u.id')  
             ->leftjoin('matriculas', 'matriculas.mat_users_id', 'u.id')  
@@ -128,8 +128,9 @@ class UsuarioController extends Controller
             ->where('u.id', $id)
             ->first();
 
+        $telresp = Resp_autorizado::where([['resp_users_id',  $id],['resp_telefone', '<>', '']])->first();
 
-        return view('pages.usuario.card', compact('user'));
+        return view('pages.usuario.card', compact('user','telresp'));
     }
     public function getuser($id)
     {
@@ -665,10 +666,35 @@ class UsuarioController extends Controller
 
         return json_encode($dependentes);
     }
-    public function cardEntrada($id){
+    public function cardEntrada(Request $request){
+        $car_data = $this->dateEmMysql(date('d/m/Y'));
+        $iduser = $request->input('id');
+        $serid = $request->input('serid');
+
+        $dados = new Presenca();
+        
+        $dados->users_id = $iduser;
+        $dados->pres_tipo = 1; //entrada
+        $dados->pres_professor = Auth::user()->id; 
+        $dados->pres_serie = $serid;
+        $dados->pres_datanaw = $car_data;
+        $dados->save();
         return 'ok';
     }
-    public function cardSaida($id){
+
+    public function cardSaida(Request $request){
+        $car_data = $this->dateEmMysql(date('d/m/Y'));
+        $iduser = $request->input('id');
+        $serid = $request->input('serid');
+
+        $dados = new Presenca();
+        
+        $dados->users_id = $iduser;
+        $dados->pres_tipo = 3; //saida
+        $dados->pres_professor = Auth::user()->id; 
+        $dados->pres_serie = $serid;
+        $dados->pres_datanaw = $car_data;
+        $dados->save();
         return 'ok';
     }
 }
