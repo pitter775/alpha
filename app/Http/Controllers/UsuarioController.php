@@ -192,6 +192,16 @@ class UsuarioController extends Controller
                 $idmatricula = Matricula::where('mat_users_id', $id_geral)->first();
                 if(isset($idmatricula->id)){
                     $matriculas_id = $idmatricula->id;
+                }else{
+                    if($dados->use_perfil == 11){
+                        //cadastrar matricula
+                        $dados_matricula = new Matricula();
+                        $dados_matricula->mat_users_id = $id_geral;
+                        $dados_matricula->mat_escolas_id = 1;
+                        $dados_matricula->mat_token = $token; 
+                        $dados_matricula->save();    
+                        $matriculas_id = $dados_matricula->id;
+                     }
                 }
             }
 
@@ -646,8 +656,6 @@ class UsuarioController extends Controller
             }
         }
     }
-
-
     public function getDependente($id){
         $dependentes =  DB::table('resp_autorizados AS d')
         ->join('users as u', 'u.id', '=', 'd.resp_users_id')
@@ -656,5 +664,8 @@ class UsuarioController extends Controller
         ->get();
 
         return json_encode($dependentes);
+    }
+    public function cardEntrada($id){
+        return 'ok';
     }
 }

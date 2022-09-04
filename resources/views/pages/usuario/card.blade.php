@@ -85,8 +85,11 @@ switch ($user->use_perfil) {
 
             <div class="row">
                <div class="col-md-12" style="padding-top:20px">
-                  <button type="button" class="btn btn-success mb-1 mb-sm-0 mr-0 mr-sm-1"> <i data-feather='arrow-up'></i> Entrada </button>
-                  <button type="button" class="btn btn-warning mb-1 mb-sm-0 mr-0 mr-sm-1"> <i data-feather='arrow-down'></i> Saída </button>
+                  <button type="button" class="btn btn-success mb-1 mb-sm-0 mr-0 mr-sm-1 btentrada"
+                   data-nome="{{$user->ser_nome}}" data-idaluno="{{$user->id}}"> <i data-feather='arrow-up'></i> Entrada </button>
+                   
+                  <button type="button" class="btn btn-warning mb-1 mb-sm-0 mr-0 mr-sm-1 btsaida"
+                   data-nome="{{$user->ser_nome}}" data-idaluno="{{$user->id}}"> <i data-feather='arrow-down'></i> Saída </button>
                </div>
            </div>
          </div>
@@ -106,6 +109,7 @@ switch ($user->use_perfil) {
       });
    }
 </script>
+
 
 @push('css_vendor')
     <link rel="stylesheet" type="text/css" href="../../../app-assets/vendors/css/tables/datatable/dataTables.bootstrap4.min.css">
@@ -129,33 +133,15 @@ switch ($user->use_perfil) {
     <link rel="stylesheet" type="text/css" href="../../../app-assets/css/plugins/forms/form-validation.css">
 @endpush
 
-@push('js_page')
-    <script src="../../../app-assets/vendors/js/forms/validation/jquery.validate.min.js"></script>
-    
-    <script src="../../../app-assets/vendors/js/tables/datatable/jquery.dataTables.min.js"></script>
-    <script src="../../../app-assets/vendors/js/tables/datatable/datatables.bootstrap4.min.js"></script>
-    <script src="../../../app-assets/vendors/js/tables/datatable/dataTables.responsive.min.js"></script>
-    <script src="../../../app-assets/vendors/js/tables/datatable/responsive.bootstrap4.js"></script>
-    <script src="../../../app-assets/vendors/js/tables/datatable/datatables.checkboxes.min.js"></script> 
-    <script src="../../../app-assets/vendors/js/tables/datatable/datatables.buttons.min.js"></script>
-    <script src="../../../app-assets/vendors/js/tables/datatable/jszip.min.js"></script>
-    <script src="../../../app-assets/vendors/js/tables/datatable/vfs_fonts.js"></script>
-    <script src="../../../app-assets/vendors/js/tables/datatable/buttons.html5.min.js"></script>
-    <script src="../../../app-assets/vendors/js/tables/datatable/buttons.print.min.js"></script>
-    <script src="../../../app-assets/vendors/js/tables/datatable/dataTables.rowGroup.min.js"></script>
-    
-    
-    <script src="../../../app-assets/js/scripts/forms/form-select2.js"></script> 
-    <script src="../../../app-assets/js/scripts/extensions/ext-component-sweet-alerts.js"></script>
-    <script src="../../../app-assets/js/scripts/forms/pickers/form-pickers.js"></script>
+@push('scripts')
+  
     <script src="../../../app-assets/js/scripts/pages/app-cardb-list.js"></script>
 
     
 @endpush
 
-@push('js_vendor')
-    <script src="../../../app-assets/vendors/js/forms/select/select2.full.min.js"></script>
-    
+@push('js_scripts')
+    <script src="../../../app-assets/vendors/js/forms/select/select2.full.min.js"></script>   
     
     <script src="../../../app-assets/vendors/js/extensions/polyfill.min.js"></script>
     <script src="../../../app-assets/vendors/js/pickers/pickadate/picker.js"></script>
