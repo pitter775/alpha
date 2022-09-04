@@ -47,7 +47,7 @@ $(function() {
         let nome = $(this).data('nome');
         let serid = $(this).data('serid');
         let sername = $(this).data('sername');
-        console.log(btentrada);
+        console.log('btentrada');
         $.ajax({
             type: "POST",
             url: '/usuario/card/entrada/',
