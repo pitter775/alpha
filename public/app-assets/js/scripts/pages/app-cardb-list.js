@@ -10,6 +10,7 @@ $(function() {
     var isRtl = $('html').attr('data-textdirection') === 'rtl';
 
     console.log('dfadsfsa');
+    let id = $('#iduser').val();
 
     
     var tableCardapio = false;
@@ -17,7 +18,7 @@ $(function() {
     var telefone = $('#telresp').val();
 
     if(telefone == ''){
-        alert('Aluno sem número de telefone');
+        alert('Aluno sem número de telefone.');
         telefone = false;
     }else{
         telefone.replace('-', ''); 
@@ -26,10 +27,22 @@ $(function() {
         telefone.replace(' ', ''); 
     }
 
+    //Verifica se o botao de entrada vai ficar ativo
+    $.get('/usuario/card/entrada/bt/' + id, function(retorno) {
+        if(retorno == 0){
+            $('.btentrada').prop("disabled",true);
+        }       
+    });
+    $.get('/usuario/card/saida/bt/' + id, function(retorno) {
+        if(retorno == 0){
+            $('.btsaida').prop("disabled",true);
+        }       
+    });
+
 
 
     $(document).on('click', '.btentrada ', function() {    
-        let id = $(this).data('idaluno');
+        
         let nome = $(this).data('nome');
         let serid = $(this).data('serid');
         let sername = $(this).data('sername');
@@ -52,7 +65,7 @@ $(function() {
     });
 
     $(document).on('click', '.btsaida ', function() {    
-        let id = $(this).data('idaluno');
+        
         let nome = $(this).data('nome');
         let serid = $(this).data('serid');
         let sername = $(this).data('sername');

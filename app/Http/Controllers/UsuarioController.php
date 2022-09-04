@@ -681,6 +681,27 @@ class UsuarioController extends Controller
         $dados->save();
         return 'ok';
     }
+    public function cardEntradabt($id){
+
+        $car_data = $this->dateEmMysql(date('d/m/Y'));
+        $tem = Presenca::where([['pres_datanaw', $car_data], ['users_id',  $id], ['pres_tipo',  1]])->get();
+        if (count($tem) == 0) {
+            return 1;
+        }else{
+            return 0;
+        }
+    }
+
+    public function cardSaidabt($id){
+
+        $car_data = $this->dateEmMysql(date('d/m/Y'));
+        $tem = Presenca::where([['pres_datanaw', $car_data], ['users_id',  $id], ['pres_tipo',  3]])->get();
+        if (count($tem) == 0) {
+            return 1;
+        }else{
+            return 0;
+        }
+    }
 
     public function cardSaida(Request $request){
         $car_data = $this->dateEmMysql(date('d/m/Y'));

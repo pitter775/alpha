@@ -27,6 +27,7 @@ switch ($user->use_perfil) {
       <div class="user-avatar-section">
          <div class="d-flex align-items-center flex-column">
             <input type="hidden" value="{{$telresp->resp_telefone}}" id="telresp" name="telresp">
+            <input type="hidden" value="{{$user->id}}" id="iduser" name="iduser">
             @if($user->use_foto == null)
             <img src=" {{asset('app-assets/images/avatars/avatar.png')}}" class="img-fluid rounded mt-3 mb-2"  width="120" alt="avatar" />
 
@@ -87,10 +88,10 @@ switch ($user->use_perfil) {
             <div class="row">
                <div class="col-md-12" style="padding-top:20px">
                   <button type="button" class="btn btn-success mb-1 mb-sm-0 mr-0 mr-sm-1 btentrada"
-                   data-nome="{{$user->name}}" data-sername="{{$user->ser_nome}}" data-serid = '{{$user->idserie}}' data-idaluno="{{$user->id}}"> <i data-feather='arrow-up'></i> Entrada </button>
+                   data-nome="{{$user->name}}" data-sername="{{$user->ser_nome}}" data-serid = '{{$user->idserie}}' > <i data-feather='arrow-up'></i> Entrada </button>
 
                   <button type="button" class="btn btn-warning mb-1 mb-sm-0 mr-0 mr-sm-1 btsaida"
-                   data-nome="{{$user->name}}" data-sername="{{$user->ser_nome}}" data-serid = '{{$user->idserie}}' data-idaluno="{{$user->id}}"> <i data-feather='arrow-down'></i> Saída </button>
+                   data-nome="{{$user->name}}" data-sername="{{$user->ser_nome}}" data-serid = '{{$user->idserie}}' > <i data-feather='arrow-down'></i> Saída </button>
                </div>
            </div>
          </div>
