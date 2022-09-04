@@ -33,6 +33,7 @@ $(function() {
             $('.btentrada').prop("disabled",true);
         }       
     });
+
     $.get('/usuario/card/saida/bt/' + id, function(retorno) {
         if(retorno == 0){
             $('.btsaida').prop("disabled",true);
@@ -46,6 +47,7 @@ $(function() {
         let nome = $(this).data('nome');
         let serid = $(this).data('serid');
         let sername = $(this).data('sername');
+        console.log(btentrada);
         $.ajax({
             type: "POST",
             url: '/usuario/card/entrada/',
@@ -55,6 +57,7 @@ $(function() {
                 serid: serid 
             },
             success: function(data) {
+                console.log(data);
                 if(data == 'ok'){   
                     if(telefone) {            
                         window.open('sms:'+telefone+'?body=Olá! '+nome +', da turma '+sername+', esta entrando na escola. 🥰', '_blank');
