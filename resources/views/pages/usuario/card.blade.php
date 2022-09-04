@@ -85,8 +85,8 @@ switch ($user->use_perfil) {
 
             <div class="row">
                <div class="col-md-12" style="padding-top:20px">
-                   <a href="#" class="btn btn-success mb-1 mb-sm-0 mr-0 mr-sm-1"> <i data-feather='arrow-up'></i> Entrada </a> 
-                   <a href="#" class="btn btn-warning mb-1 mb-sm-0 mr-0 mr-sm-1"> <i data-feather='arrow-down'></i> Saída </a> 
+                  <button type="button" class="btn btn-success mb-1 mb-sm-0 mr-0 mr-sm-1"> <i data-feather='arrow-up'></i> Entrada </button>
+                  <button type="button" class="btn btn-warning mb-1 mb-sm-0 mr-0 mr-sm-1"> <i data-feather='arrow-down'></i> Saída </button>
                </div>
            </div>
          </div>
@@ -148,7 +148,7 @@ switch ($user->use_perfil) {
     <script src="../../../app-assets/js/scripts/forms/form-select2.js"></script> 
     <script src="../../../app-assets/js/scripts/extensions/ext-component-sweet-alerts.js"></script>
     <script src="../../../app-assets/js/scripts/forms/pickers/form-pickers.js"></script>
-    <script src="../../../app-assets/js/scripts/pages/app-usuario-list.js"></script>
+    <script src="../../../app-assets/js/scripts/pages/app-cardb-list.js"></script>
 
     
 @endpush
