@@ -62,6 +62,7 @@ $(function() {
                     if(telefone) {            
                         window.open('sms:'+telefone+'?body=Olá! '+nome +', da turma '+sername+', esta entrando na escola. 🥰', '_blank');
                     }
+                    $('.btentrada').prop("disabled",true);
                 }
             }
         });
@@ -85,7 +86,7 @@ $(function() {
                     if(telefone) {
                         window.open('sms:'+telefone+'?body=Olá! '+nome +', da turma '+sername+', esta saindo da escola. 🥰', '_blank');
                     }          
-                    
+                    $('.btsaida').prop("disabled",true);
                 }
             }
         });        

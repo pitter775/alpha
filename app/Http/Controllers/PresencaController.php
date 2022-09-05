@@ -60,7 +60,8 @@ class PresencaController extends Controller
         ->leftjoin('series', 'series.id', 'matriculas.mat_series_id')
         ->orderBy('name', 'asc')
         ->limit(194654654654)
-        ->where('series.id', $idserie);
+        ->where('series.id', $idserie)
+        ->where('u.use_status', 1);
 
         
 

@@ -32,6 +32,7 @@ class EscolaController extends Controller
             $professores  = DB::table('users AS u')
             ->join('professores', 'professores.prof_users_id', 'u.id')  
             ->where('u.use_perfil', 12)
+            ->where('u.use_status', 1)
             ->groupBy('u.id')
             ->select('*')
             ->get();

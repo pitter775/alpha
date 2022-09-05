@@ -43,6 +43,7 @@ class QrcodeController extends Controller
             )
             ->orderBy('u.name', 'asc')
             ->where('u.use_perfil', 11)
+            ->where('u.use_status', 1)
             ->get();
 
         return view('pages.qrcode.index', compact('users'));
@@ -63,6 +64,7 @@ class QrcodeController extends Controller
             )
             ->orderBy('u.name', 'asc')
             ->where('u.use_perfil', 11)
+            ->where('u.use_status', 1)
             ->where('u.id', $id)
             ->first();
 
@@ -85,6 +87,7 @@ class QrcodeController extends Controller
             )
             ->orderBy('u.name', 'asc')
             ->where('u.use_perfil', 11)
+            ->where('u.use_status', 1)
             ->get();
 
         return view('pages.qrcode.imprimirTodosqrcode', compact('users'));

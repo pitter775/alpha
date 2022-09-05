@@ -56,6 +56,7 @@ class DashboardController extends Controller
             ->select('u.id AS id')
             ->leftjoin('matriculas as m', 'u.id', 'm.mat_users_id')  
             ->where('u.use_sexo', 'Masculino')
+            ->where('u.use_perfil', 11)
             ->where('u.use_status', 1)
             ->count();
 
@@ -68,6 +69,7 @@ class DashboardController extends Controller
             ->select('u.id AS id')
             ->leftjoin('matriculas as m', 'u.id', 'm.mat_users_id')  
             ->where('u.use_sexo', 'Feminino')
+            ->where('u.use_perfil', 11)
             ->where('u.use_status', 1)
             ->count();
 
@@ -82,6 +84,7 @@ class DashboardController extends Controller
             ->select('u.id AS id')
             ->where('socials.soc_renda_familiar', '1 a 2 salários')
             ->where('u.use_status', 1)
+            ->where('u.use_perfil', 11)
             ->count();
 
             return $users;
@@ -95,6 +98,7 @@ class DashboardController extends Controller
             ->select('u.id AS id')
             ->where('socials.soc_renda_familiar', '3 a 4 salários')
             ->where('u.use_status', 1)
+            ->where('u.use_perfil', 11)
             ->count();
 
             return $users;
@@ -108,6 +112,7 @@ class DashboardController extends Controller
             ->select('u.id AS id')
             ->where('socials.soc_renda_familiar', '5 a 10 salários')
             ->where('u.use_status', 1)
+            ->where('u.use_perfil', 11)
             ->count();
 
             return $users;
@@ -208,6 +213,7 @@ class DashboardController extends Controller
       ->leftjoin('alteracaos', 'u.id', 'alteracaos.alt_user')  
       ->where('u.use_perfil', 11)
       ->where('alteracaos.alt_tipo', 'Remanejamento')
+      
       ->count();
       return $saude;
    }
