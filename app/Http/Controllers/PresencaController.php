@@ -122,8 +122,8 @@ class PresencaController extends Controller
 
         $orderBy = ''; 
 
-        $filtro_presente = 'p.pres_tipo = 1'; 
-        $filtro_falta = 'p.pres_tipo = 2'; 
+        $filtro_presente = 'p.pres_tipo = 1 and ua.use_perfil = 11'; 
+        $filtro_falta = 'p.pres_tipo = 2 and ua.use_perfil = 11'; 
         $filtro_total = ''; 
         $filtro_alunos = ''; 
 
