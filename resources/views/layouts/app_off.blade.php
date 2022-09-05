@@ -6,6 +6,7 @@
 
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
+    <meta http-equiv="Cache-control" content="no-cache">
 
     <title>Instituto Educação para o Futuro</title>
     <link rel="shortcut icon" type="image/x-icon" href="{{ asset('paper') }}/assets/img/icon_logo_ge.png">
