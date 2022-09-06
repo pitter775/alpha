@@ -11,6 +11,12 @@
     .card-header {
         margin-left: 2px;
     }
+    .my-table {
+    width: 100%;
+    border: solid;
+    table-layout: fixed;
+  }
+
 
 </style>
 

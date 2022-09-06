@@ -92,7 +92,14 @@ $(function() {
                                 extend: 'print',
                                 text: feather.icons['printer'].toSvg({ class: 'font-small-4 mr-50' }) + 'Print',
                                 className: 'dropdown-item',
-                                exportOptions: { columns: arrayColum }
+                                exportOptions: { columns: arrayColum },
+                                customize: function ( win ) {
+                                    console.log(win.document.body);
+                                    $(win.document.body).css( 'display', 'absolute' );
+                                    $(win.document.body).find( 'table tr' )
+                                        // .addClass( 'compact' )
+                                        .css( 'width', '100%' );
+                                }
                             },
                             {
                                 extend: 'csv',

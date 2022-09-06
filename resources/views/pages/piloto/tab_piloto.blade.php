@@ -1,9 +1,9 @@
 <!-- list section start -->
 <div class="card">
     <div class=" " style="width: 100%;">
-        <table class="piloto-list-table table table-sm table-responsive-lg" data-colum="{{count($colunas)}}">
-            <thead class="thead-light">
-                <tr>
+        <table style="width: 100%" class="piloto-list-table table " data-colum="{{count($colunas)}}">
+            <thead class="thead-light" style="width: 100%">
+                <tr style="width: 100%">
                     @foreach($colunas as $key => $value)
                     <?php
                         $novoValule = $value;
