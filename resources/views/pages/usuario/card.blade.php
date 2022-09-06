@@ -28,14 +28,15 @@ switch ($user->use_perfil) {
          <div class="d-flex align-items-center flex-column">
             <input type="hidden" value="{{$telresp->resp_telefone}}" id="telresp" name="telresp">
             <input type="hidden" value="{{$user->id}}" id="iduser" name="iduser">
-            @if($user->use_foto == null)
-            <img src=" {{asset('app-assets/images/avatars/avatar.png')}}" class="img-fluid rounded mt-3 mb-2"  width="120" alt="avatar" />
+            <a href="/usuario/detalhes/{{$user->id}}" target="_blank">
+               @if($user->use_foto == null)
+                  <img src=" {{asset('app-assets/images/avatars/avatar.png')}}" class="img-fluid rounded mt-3 mb-2"  width="120" alt="avatar" />
+               @endif
+               @if($user->use_foto !== null)
+                  <img src="{{asset('arquivos').'/'.$user->use_foto}}" class="img-fluid rounded mt-3 mb-2"  width="200" alt="avatar" />
+               @endif
+            </a>
 
-            @endif
-            @if($user->use_foto !== null)
-            <img src="{{asset('arquivos').'/'.$user->use_foto}}" class="img-fluid rounded mt-3 mb-2"  width="200" alt="avatar" />
-
-            @endif
             <div class="user-info text-center">
                <h4> {{$user->name}}</h4>
                @if($user->use_status == 1)
