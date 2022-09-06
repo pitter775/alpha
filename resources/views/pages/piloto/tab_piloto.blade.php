@@ -138,11 +138,16 @@
                                     if($dados == '3'){$dados = 'Abandono';}
                                     if($dados == '2'){$dados = 'Transferido';}
                                     if($dados == '1'){$dados = 'Ativo';}
-                                    if($dados == '1'){$dados = 'Ativo';}
+                                    if($dados == ''){$dados = 'Ativo';}
+                                    if($dados == '-'){$dados = 'Ativo';}
                                 }
                                 if($colum == 'use_status'){
                                     if($dados == 'Sim'){ $dados = 'Ativo'; }
                                     if($dados == '2'){ $dados = 'Inativo'; }
+                                }
+                                if($colum == 'alt_tipo'){
+                                    if($dados == '-'){ $dados = 'Matriculado'; }
+                                    if($dados == 'Matricula'){ $dados = 'Matriculado'; }
                                 }
                             ?>
                            <td>
