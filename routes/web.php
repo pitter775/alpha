@@ -20,6 +20,7 @@ use Illuminate\Support\Facades\URL;
 // URL::forceScheme('https');
 
 Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('site');
+Route::get('/carlosdrummondandrade', [App\Http\Controllers\HomeController::class, 'escola'])->name('escola');
 Route::get('/publi/{id}', [App\Http\Controllers\HomeController::class, 'publi']);
 Route::get('/teste01', [App\Http\Controllers\HomeController::class, 'teste01']);
 

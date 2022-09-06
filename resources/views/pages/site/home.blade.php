@@ -77,10 +77,11 @@
         <ul>
           <li class="active"><a href="#hero">Home</a></li>
           <li><a href="#about">Quem Somos</a></li>
-          <li><a href="#publicacao">Publicações</a></li>
+          {{-- <li><a href="#publicacao">Publicações</a></li> --}}
           <li><a href="#services">Projetos</a></li>
           <li><a href="#portfolio">Fotos</a></li>
           <li><a href="#contact">Contato</a></li>
+          <li><a href="/carlosdrummondandrade" target="_blank">Carlos Drummond Andrade</a></li>
           <li><a href="/home" title="Entrar no sistema" style="padding: 15px 15px" ><i class=" icofont-gnome icofont-2x"></i></a></li>
         </ul>
       </nav><!-- .nav-menu -->

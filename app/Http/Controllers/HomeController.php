@@ -33,6 +33,16 @@ class HomeController extends Controller
         
         return view('pages.site.home', compact('publicacoes'));
     }
+    public function escola()
+    {
+        $publicacoes  = DB::table('publicacoes AS c')
+        ->where('pub_status', 'Ativo')
+        ->select('*')
+        ->get();
+
+        
+        return view('pages.site.escola', compact('publicacoes'));
+    }
     public function teste01(){
 
         $img =  \QrCode::size(300)->backgroundColor(255,90,0)->generate('https://techvblogs.com/blog/generate-qr-code-laravel-8');
