@@ -142,8 +142,9 @@
                                     if($dados == '-'){$dados = 'Ativo';}
                                 }
                                 if($colum == 'use_status'){
-                                    if($dados == 'Sim'){ $dados = 'Ativo'; }
-                                    if($dados == '2'){ $dados = 'Inativo'; }
+                                    if($dados == 'Sim'){ $dados = 'Ativo no Sistema'; }
+                                    if($dados == '2'){ $dados = 'Desativado'; }
+                                    if($dados == '3'){ $dados = 'Aguardando Vaga'; }
                                 }
                                 if($colum == 'alt_tipo'){
                                     if($dados == '-'){ $dados = 'Matriculado'; }

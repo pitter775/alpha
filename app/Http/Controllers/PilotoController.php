@@ -208,7 +208,7 @@ class PilotoController extends Controller
     public function filtros($tabelas, $colunas, $condicao = null, $condicaodetalhada = null)
     {
         $join = '';
-        $group = '';
+        $group = "GROUP BY u.id";
         $colunasTab = '';
         foreach ($colunas as $col){
             if($col != 'res_nome_pai'){
@@ -230,6 +230,7 @@ class PilotoController extends Controller
             }
             if($tab == 'resp_autorizados'){
                 $join .= ' LEFT JOIN resp_autorizados ON resp_autorizados.resp_users_id = u.id';
+                $group = '';
             }
             if($tab == 'saude_users'){
                 $join .= ' LEFT JOIN saude_users ON saude_users.sau_users_id = u.id';
