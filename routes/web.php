@@ -131,6 +131,9 @@ Route::group(['middleware' => 'acesso'], function () {
     Route::get('/qrcode/imprimirqrcode/{id}', [App\Http\Controllers\QrcodeController::class, 'imprimirQrcode']);
     Route::get('/qrcode/imprimirTodosQrcode', [App\Http\Controllers\QrcodeController::class, 'imprimirTodosQrcode']);
 
+    Route::get('/atendimento', [App\Http\Controllers\AtentimentoController::class, 'index']);
+    Route::get('/atendimento/novo', [App\Http\Controllers\AtentimentoController::class, 'novo']);
+
 });
 
 
