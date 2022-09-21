@@ -901,7 +901,8 @@ $(function() {
                     { data: 'created_at' },
                     { data: 'updated_at' },
                     { data: 'criador' },
-                    { data: 'aluno' }
+                    { data: 'aluno' },
+                    { data: 'obs_categoria' }
 
                 ],
                 columnDefs: [{

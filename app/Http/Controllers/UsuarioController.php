@@ -472,8 +472,10 @@ class UsuarioController extends Controller
                 $dados_objservacao = new Observacao();      
                 $dados_objservacao->obs_titulo = $request->input('obs_titulo');
                 $dados_objservacao->obs_texto = $request->input('obs_texto'); 
+                $dados_objservacao->obs_categoria = $request->input('obs_categoria'); 
                 $dados_objservacao->obs_users_id = Auth::user()->id; 
                 $dados_objservacao->obs_aluno_id = $id_geral; 
+                
                 $dados_objservacao->save();    
                 $mensagem['observacao'] = 'ok';            
             } 

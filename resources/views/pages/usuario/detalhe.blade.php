@@ -90,7 +90,7 @@
                             <li class="nav-item">
                                 <a class="nav-link d-flex align-items-center" onclick="addCalendar()" id="observacao-tab" data-toggle="tab"
                                     href="#observacao" aria-controls="observacao" role="tab" aria-selected="false">
-                                    <i data-feather='message-square'></i><span class="d-none d-sm-block">Observações</span>
+                                    <i data-feather='message-square'></i><span class="d-none d-sm-block">Diário do Aluno</span>
                                 </a>
                             </li>
                         </ul>
