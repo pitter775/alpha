@@ -97,8 +97,8 @@
                 </div>
                 <div class="blocofoto2" >
                     <p class="titi1">Saúde</p> 
-                    <b>Cartão Nascional de Saúde - SUS:</b> {{$user->sau_sus ?? ''}}  <br>
-                    <b>Alergia:</b>{{$user->sau_alergia_detalhe ?? ''}} <span style=" margin: 0 10px;">-</span> 
+                    <b>Cartão Nascional de Saúde - SUS: </b> {{$user->sau_sus ?? ''}}  <br>
+                    <b>Alergia: </b> {{$user->sau_alergia_detalhe ?? ''}} <span style=" margin: 0 10px;">-</span> 
       
                 </div>
                 <div class="blocofoto2" >
