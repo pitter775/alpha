@@ -45,7 +45,7 @@ $(function() {
                 // ajax: assetPath + 'data/cardapio-list.json', // JSON file to add data
                 retrieve: true,
 
-                ajax: { url: "/cardapio/all", dataSrc: "" },
+                // ajax: { url: "/cardapio/all", dataSrc: "" },
                 columns: [
                     // columns according to JSON
                     { data: 'id' },

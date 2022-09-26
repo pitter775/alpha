@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Cardapio;
+use App\Models\User;
 use App\Models\Atendimento;
 use Illuminate\Support\Facades\DB;
 use PDOException;
@@ -31,7 +32,8 @@ class AtentimentoController extends Controller
     }
     public function novo()
     {
-        return view('pages.atendimento.modalAtendimento');
+        $usuarios = User::where('use_perfil', 11)->orderBy('name', 'asc')->get();
+        return view('pages.atendimento.modalAtendimento', compact('usuarios'));
     }
 
 
