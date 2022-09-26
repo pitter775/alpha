@@ -57,8 +57,46 @@ class UsuarioController extends Controller
         return json_encode($users);
     }
     public function imprimirPront($id){
-        $user = 'pitter';
-        return view('pages.usuario.impressaoProntuario', compact('user'));
+        $user  = DB::table('users AS u')
+        ->leftjoin('socials', 'socials.id', 'u.use_social_id')  
+        ->leftjoin('enderecos', 'enderecos.end_users_id', 'u.id')  
+        ->leftjoin('matriculas', 'matriculas.mat_users_id', 'u.id')  
+        ->leftjoin('series', 'matriculas.mat_series_id', 'series.id')  
+        // ->leftjoin('responsaveis', 'responsaveis.res_users_id', 'u.id') 
+        ->leftjoin('saude_users', 'saude_users.sau_users_id', 'u.id')   
+        ->leftjoin('habitos_alimentares', 'habitos_alimentares.hab_users_id', 'u.id')   
+        ->select('*','u.id AS id')
+        ->where('u.id', $id)
+        ->orderBy('u.name', 'asc')
+        ->first();
+
+        $situacao  = DB::table('users AS u')      
+        ->leftjoin('matriculas as m', 'm.mat_users_id', 'u.id')  
+        ->leftjoin('series as s', 'm.mat_series_id', 's.id') 
+        ->leftjoin('professores as pr', 'pr.prof_series_id', 's.id') 
+        ->select(
+            'm.mat_status', 
+            (DB::raw("(SELECT users.name FROM users WHERE users.id = pr.prof_users_id) as name_prof")),
+            's.ser_nome','s.ser_periodo','s.ser_apelido'
+        )
+        ->where('u.id', $id)
+        ->first();
+
+        $dependentes =  DB::table('resp_autorizados AS d')
+        ->join('users as u', 'u.id', '=', 'd.resp_users_id')
+        ->select('*', 'd.id AS id')
+        ->where('d.resp_users_id', $id)
+        ->get();
+
+        $moviment =  DB::table('alteracaos AS d')
+        ->join('users as u', 'u.id', '=', 'd.alt_user')
+        ->leftjoin('series as s', 'd.alt_series', 's.id') 
+        ->select('*', 'd.id AS id')
+        ->where('d.alt_user', $id)
+        ->get();
+
+        
+        return view('pages.usuario.impressaoProntuario', compact('user', 'situacao', 'dependentes', 'moviment'));
     }
 
     public function seriesProfAll($id)

@@ -1,3 +1,9 @@
+<?php
+    $fotouser = '/app-assets/images/avatars/avatar.png';
+    if($user->use_foto){
+        $fotouser = '/arquivos/'.$user->use_foto;
+    }
+?>
 <style>
     
     body {width: 100%;height: 100%;margin: 0;padding: 0;font: 12pt "Tahoma"; print-color-adjust: exact; -webkit-print-color-adjust: exact;}
@@ -13,7 +19,7 @@
     .prontuario{  font-size: 20px; margin-top: 0px; }
     .headescola{ font-size: 10px; text-align: right; float: right;}
     .headescola p{line-height: 15px;}
-    .imgaluno{ margin-top: -5px; width: 130px; height: 130px; background-image: url("https://cangurunews.com.br/wp-content/uploads/2021/12/soluco-em-criancas-696x464.jpg");
+    .imgaluno{ margin-top: -5px; width: 130px; height: 130px; background-image: url("/arquivos/{{$user->use_foto}}");
         background-size: cover; background-position: center;        float: left; margin-right: 20px;        border-radius: 5px;
         box-shadow: 0 4px 8px 0 rgb(34 41 47 / 12%), 0 2px 4px 0 rgb(34 41 47 / 8%);  }
         
@@ -36,7 +42,7 @@
                     <div class="row" style="margin-bottom:40px">
                         <div class="col-left">
                             <p class="prontuario">PRONTUÁRIO ANO 2022</p>
-                            <p style="margin-top: -20px"><b>RA </b> 3589547</p>
+                            {{-- <p style="margin-top: -20px"><b>RA </b> 3589547</p> --}}
                         </div>
                         <div class="headescola" style="width: 400px; margin-top: -10px;">
                             <img src="https://educacaofuturo.org.br/app-assets/images/escola-drummond.jpg" class="imgescola" />
@@ -48,42 +54,46 @@
                 </head>
                 <div class="blocofoto" >
                     <div class="imgaluno"></div>   
-                    <p style="font-size: 20px; margin-bottom: 0px"><b>Abraão Leite Queiroz Castro Filho</b></p>      
-                    <p>
-                        <b>Data de nascimento:</b> 11/07/2019 <span style=" margin: 0 10px;">-</span>
-                        <b>RG:</b> 34570946-7  <span style=" margin: 0 10px;">-</span>
-                        <b>CPF:</b> 30519902807  <br/>
-                        <b>Reg. nascimento:</b> Vitoria da Conquista - SP  <span style=" margin: 0 10px;">-</span>
-                        <b>Sexo:</b> Masculino  <br>
-                        <b>Raça / Cor definidas pelo IBGE:</b> N/declarada  <br>
+                    <p style="font-size: 20px; margin-bottom: 0px"><b>{{$user->name ?? ''}}</b></p>      
+                    <p>                        
+                        <b>Data de nascimento:</b> {{date( 'd/m/Y' , strtotime($user->use_dt_nascimento )) ?? '' }} <span style=" margin: 0 10px;">-</span>
+                        <b>RG:</b> {{$user->use_rg ?? ''}}  <span style=" margin: 0 10px;">-</span>
+                        <b>CPF:</b> {{$user->use_cpf ?? ''}}  <br/>
+                        <b>Reg. nascimento:</b> {{$user->use_regiao_nascimento ?? ''}}  <span style=" margin: 0 10px;">-</span>
+                        <b>Sexo:</b> {{$user->use_sexo ?? ''}}   <br>
+                        <b>Raça / Cor definidas pelo IBGE:</b>{{$user->use_cor_pele ?? ''}}  <br>
                         ______________________________________________________________________________
-                        <b>Tipo:</b> Matrículado  <span style=" margin: 0 10px;">-</span>
-                        <b>Professora:</b> Tamires  <span style=" margin: 0 10px;">-</span>
-                        <b>Serie:</b> Maternal I - Integral - Bondade  
+                        <b>Tipo:</b> @if($user->mat_status == 1) Matriculado @else Inativo @endif <span style=" margin: 0 10px;">-</span>
+                        <b>Professora:</b> {{$situacao->name_prof}}  <span style=" margin: 0 10px;">-</span>
+                        <b>Serie:</b> {{$situacao->ser_nome}} - {{$situacao->ser_periodo}} - {{$situacao->ser_apelido}}  
                     </p>           
                 </div>
                 <div class="blocofoto2" >
                     <p class="titi1">Endereço</p> 
-                    <b>Rua:</b> Antonio de Oliveira, 27 <span style=" margin: 0 10px;">-</span>
-                    <b>Complemento:</b> casa 8 <span style=" margin: 0 10px;">-</span>
-                    <b>CEP:</b> 06533-210 <br>
-                    <b>Bairro:</b> Pq Jaguari <span style=" margin: 0 10px;">-</span>
-                    <b>Cidade:</b> Santana de Parnaíba <span style=" margin: 0 10px;">-</span>
-                    <b>Estado:</b> São Paulo 
+                    <b>Rua:</b> {{$user->end_rua ?? ''}}, {{$user->end_numero ?? ''}} <span style=" margin: 0 10px;">-</span>
+                    <b>Complemento:</b> {{$user->end_complemento ?? ''}} <span style=" margin: 0 10px;">-</span>
+                    <b>CEP:</b> {{$user->end_cep ?? ''}} <br>
+                    <b>Bairro:</b> {{$user->end_bairro ?? ''}} <span style=" margin: 0 10px;">-</span>
+                    <b>Cidade:</b> {{$user->end_cidade ?? ''}} <span style=" margin: 0 10px;">-</span>
+                    <b>Estado:</b> {{$user->end_estado ?? ''}} 
                 </div>
                 <div class="blocofoto2" >
                     <p class="titi1">Responsáveis</p> 
-                    <b>Nome do Pai:</b> Abraão Leite Queiroz Castro <span style=" margin: 0 10px;">-</span>
-                    <b>Telefone:</b> (11) 9 4025-6387 <br>
-                    <b>Nome do Mãe:</b> Joscinelma Oliveira de Castro Leite <span style=" margin: 0 10px;">-</span>
-                    <b>Telefone:</b> (11) 9 7890-3047 
+
+                    @foreach ($dependentes as $dep )
+                        {{$dep->resp_parentesco}}  <span style=" margin: 0 10px;">-</span>  {{$dep->resp_nome}} <span style=" margin: 0 10px;">-</span>    {{$dep->resp_telefone}}   <br>
+                    @endforeach
+                        
+                  
+                   
                 </div>
                 <div class="blocofoto2" >
                     <p class="titi1">Autorização de Saída e Retirada do Aluno</p> 
-                    <b>Nome do Pai:</b> Abraão Leite Queiroz Castro <span style=" margin: 0 10px;">-</span>
-                    <b>Telefone:</b> (11) 9 4025-6387 <br>
-                    <b>Nome do Mãe:</b> Joscinelma Oliveira de Castro Leite <span style=" margin: 0 10px;">-</span>
-                    <b>Telefone:</b> (11) 9 7890-3047 
+                    @foreach ($dependentes as $dep )
+                        @if($dep->resp_autorizacao == 1)
+                            {{$dep->resp_parentesco}}  <span style=" margin: 0 10px;">-</span>  {{$dep->resp_nome}} <span style=" margin: 0 10px;">-</span>    {{$dep->resp_telefone}}   <br>
+                        @endif
+                    @endforeach
                 </div>
                 <div class="blocofoto2" >
                     <p class="titi1">Saúde</p> 
@@ -92,14 +102,28 @@
                     <b>Intolerância:</b> não
                 </div>
                 <div class="blocofoto2" >
+                    @if($moviment->count() > 0)
                     <p class="titi1">Movimentação do Aluno</p> 
-                    <b>Data:</b> 15/08/2022 <span style=" margin: 0 10px;">-</span>
-                    <b>Série:</b> Maternal II - Integral - Alegria <span style=" margin: 0 10px;">-</span> 
-                    <b>Reponsável:</b> Prof. Tamires
+                    @endif
+
+                    @foreach ($moviment as $mov )
+                        
+                        {{$mov->alt_tipo ?? ''}} <span style=" margin: 0 5px;"> </span>  
+                        {{date( 'd/m/Y' , strtotime($mov->alt_data )) ?? '' }} <span style=" margin: 0 5px;"> </span>
+                        {{$mov->ser_nome ?? ''}}   {{$mov->ser_periodo ?? ''}}  {{$mov->ser_apelido ?? ''}} <span style=" margin: 0 5px;"> </span> <br>
+                  
+                
+                    @endforeach
+
+                    
                 </div>
                 <div class="blocofoto2 aling-right" style="margin-top: 70px" >
                     <p class="titi1" > Tenho total conhecimento e com as quais concordo plenamente</p> 
-                    <p style="margin-top: 40px">Santana do Parnaíba, 10 de Agosto de 2022</p>
+                    <p style="margin-top: 40px">Santana do Parnaíba, <?php 
+                    setlocale(LC_TIME, 'pt_BR', 'pt_BR.utf-8', 'pt_BR.utf-8', 'portuguese');
+date_default_timezone_set('America/Sao_Paulo');
+echo strftime('%A, %d de %B de %Y', strtotime('today'));
+                    ?></p>
                     <p style="margin-top: 70px"> Ass. ___________________________________________________________</p>
                 </div>
                 
