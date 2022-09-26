@@ -61,10 +61,10 @@
                         <a class="d-flex align-items-center" href="/qrcode" onclick="link('/qrcode')">
                         <i data-feather='grid'></i><span class="menu-title text-truncate" data-i18n="piloto">QR Codes</span></a>
                     </li>
-                    <li class="{{ $elementActive == 'atendimento' ? 'active' : '' }} nav-item">
+                    {{-- <li class="{{ $elementActive == 'atendimento' ? 'active' : '' }} nav-item">
                         <a class="d-flex align-items-center" href="/atendimento" onclick="link('/atendimento')">
                         <i data-feather='clipboard'></i><span class="menu-title text-truncate" data-i18n="piloto">Atendimento</span></a>
-                    </li>
+                    </li> --}}
                 <?php } if(Auth::user()->use_perfil == '12'){ ?>  
 
                     @foreach(Session::get('series') as $serie)
