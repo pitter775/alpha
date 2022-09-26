@@ -81,7 +81,7 @@
                     <p class="titi1">Responsáveis</p> 
 
                     @foreach ($dependentes as $dep )
-                        {{$dep->resp_parentesco}}  <span style=" margin: 0 10px;">-</span>  {{$dep->resp_nome}} <span style=" margin: 0 10px;">-</span>    {{$dep->resp_telefone}}   <br>
+                        {{$dep->resp_parentesco ?? ''}}  <span style=" margin: 0 10px;">-</span>  {{$dep->resp_nome ?? ''}} <span style=" margin: 0 10px;">-</span>    {{$dep->resp_telefone ?? ''}}   <br>
                     @endforeach
                         
                   
@@ -91,15 +91,15 @@
                     <p class="titi1">Autorização de Saída e Retirada do Aluno</p> 
                     @foreach ($dependentes as $dep )
                         @if($dep->resp_autorizacao == 1)
-                            {{$dep->resp_parentesco}}  <span style=" margin: 0 10px;">-</span>  {{$dep->resp_nome}} <span style=" margin: 0 10px;">-</span>    {{$dep->resp_telefone}}   <br>
+                            {{$dep->resp_parentesco ?? ''}}  <span style=" margin: 0 10px;">-</span>  {{$dep->resp_nome ?? ''}} <span style=" margin: 0 10px;">-</span>    {{$dep->resp_telefone ?? ''}}   <br>
                         @endif
                     @endforeach
                 </div>
                 <div class="blocofoto2" >
                     <p class="titi1">Saúde</p> 
-                    <b>Cartão Nascional de Saúde - SUS:</b> 5485 5468 5648 <br>
-                    <b>Alergia:</b> Dipirona/ As <span style=" margin: 0 10px;">-</span> 
-                    <b>Intolerância:</b> não
+                    <b>Cartão Nascional de Saúde - SUS:</b> {{$user->sau_sus ?? ''}}  <br>
+                    <b>Alergia:</b>{{$user->sau_alergia_detalhe ?? ''}} <span style=" margin: 0 10px;">-</span> 
+      
                 </div>
                 <div class="blocofoto2" >
                     @if($moviment->count() > 0)
