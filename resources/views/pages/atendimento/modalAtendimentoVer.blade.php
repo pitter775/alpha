@@ -17,6 +17,16 @@
                     <h6 class="mb-0">{{$ver->ate_nome ?? ''}}</h6>
                     <small>Solicitante</small>
                 </div>
+
+                <div class="media-body">
+                    <h6 class="mb-0">{{$ver->name ?? ''}}</h6>
+                    <small>Aluno</small>
+                </div>
+
+                <div class="media-body">
+                    <h6 class="mb-0"><?php echo date( 'd/m/Y' , strtotime($ver->name));  ?></h6>
+                    <small>Criado em</small>
+                </div>
             </div>   
 
         </div>
