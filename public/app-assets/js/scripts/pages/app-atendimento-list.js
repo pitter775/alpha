@@ -230,6 +230,21 @@ $(function() {
         if (e.keyCode == 13) {
             e.preventDefault();
             let texto = $('#com_texto').val();
+            let com_ate_id = $('#com_ate_id').val();
+            $('#com_texto').val('');
+            $.ajax({
+                type: "POST",
+                url: '/atendimento/cadastro_coment',
+                data: { "_token": $('meta[name="csrf-token"]').attr('content'), 'com_texto': texto, 'com_ate_id':com_ate_id},
+                success: function(retorno) {
+                    $('#modal-title').html('Novo Atendimento');
+                    $('#novoAtendimento').html(retorno);
+                    $('.novomod').show(); 
+                    $('.vermod').hide(); 
+                    
+                }
+            });
+
            console.log(texto);
         }
     });
