@@ -5,14 +5,14 @@
     </button>
 </div>
 
-    <div class="modal-body">    
+    <div class="modal-body" style="width: 100%">    
         @csrf
         <div class="divAtendimento row" style="width: 100%">
             <div class="col-md-9">
                 <h5 class="apply-job-title">{{$ver->ate_mensagem ?? ''}}</h5>
             </div>
 
-            <div class="col-md-3" style="background-color: #eee">
+            <div class="col-md-3" style="background-color: #efefef">
                 <div class="media-body">
                     <h6 class="mb-0">{{$ver->ate_nome ?? ''}}</h6>
                     <small>Solicitante</small>
