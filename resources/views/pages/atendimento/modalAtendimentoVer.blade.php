@@ -1,5 +1,5 @@
 <style>
-    .media-body{ margin-top: 20px; padding: 5px; background-color: #e2e4e9; }
+    .media-body{ margin-top: 20px; padding: 15px; background-color: #e2e4e9; }
 
 </style>
 
@@ -18,7 +18,7 @@
         </div>
 
         <div class="col-md-3" style="background-color: #efefef; padding: 0; margin-right: -20px !important">
-            <div class="media-body">
+            <div class="media-body" style="margin-top: 0px;">
                 <div class="form-group">
                     <select id="ate_status" name="ate_status" class="form-control select2">                        
                         <option value="Ativo">Ativo</option>
