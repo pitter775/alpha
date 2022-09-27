@@ -28,19 +28,25 @@
                 <textarea class="form-control" id="com_texto" name="com_texto" rows="2" placeholder="Escreva o comentário..."></textarea>
                 <input type="hidden" value="{{$ver->id ?? ''}}" name="com_ate_id" id="com_ate_id">
             </div>
-            <div class="chat">
-                <div class="chat-avatar">
-                    <span class="avatar box-shadow-1 cursor-pointer">
-                        <img src="../../../app-assets/images/portrait/small/avatar-s-20.jpg" alt="avatar" height="36" width="36">
-                    </span>
+
+            <div class="media align-items-center">
+                <div class="avatar mr-50">
+                    <img src="../../../app-assets/images/portrait/small/avatar-s-9.jpg" alt="Avatar" width="38" height="38">
                 </div>
-                <div class="chat-body">
-                    <div class="chat-content">
-                        <p>Hey John, I am looking for the best admin template.</p>
-                        <p>Could you please help me to find it out? 🤔</p>
-                    </div>                    
+                <div class="media-body">
+                    <p class="mb-0">CEO of Infibea fsdf sadf asdf sdafs df sdf sdf sadf df sam</p>
                 </div>
             </div>
+            <div class="media align-items-center">
+                <div class="avatar mr-50">
+                    <img src="../../../app-assets/images/portrait/small/avatar-s-9.jpg" alt="Avatar" width="38" height="38">
+                </div>
+                <div class="media-body">
+                    <p class="mb-0">CEO of Infibea fsdf sadf asdf sdafs df sdf sdf sadf df sam</p>
+                </div>
+            </div>
+
+           
         </div>
 
         <div class="col-md-3" style=" padding: 0; margin-right: -20px !important">
