@@ -4,7 +4,7 @@
         <span aria-hidden="true">&times;</span>
     </button>
 </div>
-<form class="add-new-cardapio modal-content pt-0">
+
     <div class="modal-body">    
         @csrf
         <div class="divAtendimento row">
@@ -79,6 +79,5 @@
         <button type="submit" class="btn btn-primary">Salvar</button>
         <button type="reset" class="btn btn-outline-secondary waves-effect" data-dismiss="modal"> </i> Cancelar</button>
     </div>
-</form>
 
 <script src="../../../app-assets/js/scripts/forms/form-select2.js"></script>
