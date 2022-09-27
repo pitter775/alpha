@@ -133,6 +133,7 @@ $(function() {
                     $(row).addClass('ver_atendimento');
                     $(row).attr('data-toggle', 'modal');
                     $(row).attr('data-target', '#modalLargo');
+                    $(row).attr('data-id', data.id);
                 }
             });
             setTimeout(function() {
@@ -206,6 +207,8 @@ $(function() {
 
     
     $(document).on('click', '.ver_atendimento', function() {
+        let id = $(this).data('id');
+        console.log(id);
         $.ajax({
             type: "GET",
             url: '/atendimento/novo',
