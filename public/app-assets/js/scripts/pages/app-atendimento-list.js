@@ -208,9 +208,6 @@ $(function() {
     $(document).on('click', '.ver_atendimento', function() {
         console.log('teste');
         $('.modal-title').html('novo tit');
-        // modalForm.modal('show');
-        modalForm.modal({ show: true });
-        
     });
 
     // To initialize tooltip with body container
