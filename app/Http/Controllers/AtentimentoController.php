@@ -25,12 +25,12 @@ class AtentimentoController extends Controller
     }
     public function all()
     {
-        $cardapio  = DB::table('cardapios AS c')
-        ->leftjoin('series', 'c.series_id', 'series.id')
+        $all  = DB::table('atendimentos AS c')
+        ->leftjoin('users', 'c.ate_users_id ', 'users.id')
         ->select('*', 'c.id AS id')
         ->get();
 
-        return $cardapio;
+        return $all;
     }
     public function novo()
     {
@@ -41,17 +41,19 @@ class AtentimentoController extends Controller
 
     public function cadastro(Request $request)
     {
-        $mensagem['cadastro'] = 'cadastrando';
+        $mensagem = 'erro';
         $dados = new Atendimento();
         $dados->ate_nome = $request->input('ate_nome');
         $dados->ate_email = $request->input('ate_email');
         $dados->ate_telefone = $request->input('ate_telefone');
         $dados->ate_tipo = $request->input('ate_tipo');
-        $dados->ate_users_id  = Auth::user()->id; ;
+        $dados->ate_users_id  = $request->input('ate_users_id');
+        $dados->ate_autor  = Auth::user()->id; 
         $dados->ate_titulo = $request->input('ate_titulo');
         $dados->ate_mensagem = $request->input('ate_mensagem');
         $dados->ate_status = $request->input('ate_status');
         $dados->save();
+        $mensagem = 'ok';
         return $mensagem; 
 
     }

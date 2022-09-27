@@ -42,12 +42,12 @@
                             <thead class="thead-light">
                                  <tr>
                                     <th>id</th>
-                                    <th>cardápio</th>
-                                    <th>data</th>
-                                    <th>series_id</th>
-                                    <th>ser_nome</th>
-                                    <th>ser_periodo</th>
-                                    <th>Série</th>
+                                    <th>Nome</th>
+                                    <th>Telefone</th>
+                                    <th>Tipo</th>
+                                    <th>Titulo</th>
+                                    <th>Data</th>
+                                    <th>Status</th>
                                     <th></th>
                                 </tr> 
                             </thead>

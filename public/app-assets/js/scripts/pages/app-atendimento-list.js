@@ -28,16 +28,18 @@ $(function() {
                 // ajax: assetPath + 'data/cardapio-list.json', // JSON file to add data
                 retrieve: true,
 
-                // ajax: { url: "/cardapio/all", dataSrc: "" },
+                ajax: { url: "/atendimento/all", dataSrc: "" },
                 columns: [
                     // columns according to JSON
                     { data: 'id' },
-                    { data: 'car_cardapio' },
-                    // { data: 'car_data' },
+                    { data: 'ate_nome' },
+                    { data: 'ate_telefone' },
+                    { data: 'ate_tipo' },
+                    { data: 'ate_titulo' },
                     {
                         data: function(dados) {
-                            if (dados.car_data) {
-                                var datef = new Date(dados.car_data);
+                            if (dados.created_at) {
+                                var datef = new Date(dados.created_at);
                                 var dataFormatada = datef.toLocaleDateString('pt-BR', { timeZone: 'UTC' });
                                 return dataFormatada;
                             } else {
@@ -46,29 +48,12 @@ $(function() {
 
                         }
                     },
-                    { data: 'series_id' },
-                    { data: 'ser_nome' },
-                    { data: 'ser_periodo' },
-                    { data: 'ser_apelido' },
+                    
+                    { data: 'ate_status' },
                     { data: '' }
                 ],
                 columnDefs: [{
                         "targets": [0],
-                        "visible": false,
-                        "searchable": false
-                    },
-                    {
-                        "targets": [3],
-                        "visible": false,
-                        "searchable": false
-                    },
-                    {
-                        "targets": [4],
-                        "visible": false,
-                        "searchable": false
-                    },
-                    {
-                        "targets": [5],
                         "visible": false,
                         "searchable": false
                     },
@@ -81,13 +66,13 @@ $(function() {
                     },
                     {
                         // Actions
-                        targets: 7,
+                        targets: 8,
                         title: 'Ação',
                         orderable: false,
                         render: function(data, type, full, meta) {
                             // console.log(full);
                             var id = full['id'];
-                            var nome = full['car_cardapio'];
+                            var nome = full['ate_titulo'];
 
                             return (
                                 '<a href="javascript:;" class="item-edit delete-record" id="deletar_td" style="' + displayno + '" data-nome="' + nome + '"  data-id="' + id + '" style="color: #f54b20 !important">' +
@@ -101,8 +86,8 @@ $(function() {
                     [2, 'desc']
                 ],
                 dom: '<"card-header border-bottom p-1"<"head-label"><"dt-action-buttons text-right"B>><"d-flex justify-content-between align-items-center mx-0 row"<"col-sm-12 col-md-6"l><"col-sm-12 col-md-6"f>>t<"d-flex justify-content-between mx-0 row"<"col-sm-12 col-md-6"i><"col-sm-12 col-md-6"p>>',
-                displayLength: 10,
-                lengthMenu: [10, 25, 50, 75, 100],
+                displayLength: 50,
+                lengthMenu: [50, 75, 100],
                 language: {
                     paginate: {
                         // remove previous & next text from pagination
@@ -170,12 +155,14 @@ $(function() {
                     }
                 },
             });
-            $('div.head-label').html('<h6 class="mb-0">Listando todas as cardapios</h6>');
+            setTimeout(function() {
+                $('div.head-label').html('<h6 class="mb-0">Listando todas o atendimentos</h6>');
+                console.log('foi');
+            }, 1000);
+            
         }
         table = groupingTable;
     }
-
-    console.log('teste ok');
 
     // Form Validation
     if (newForm.length) {
@@ -202,16 +189,28 @@ $(function() {
                     url: '/atendimento/cadastro',
                     data: serealize,
                     success: function(data) {
-                        modalForm.modal('hide');
+                        if(data == 'ok'){
+                            modalForm.modal('hide');
+                            toastr['success']('👋 Registro adicionado.', 'Sucesso!', {
+                                closeButton: true,
+                                tapToDismiss: false,
+                                rtl: isRtl
+                            });
+                            listCardapio();
+                        }else{
+                            //mensagem
+                            toastr['danger']('Não foi possivel registrar esse atendimento.', 'Erro!', {
+                                closeButton: true,
+                                tapToDismiss: false,
+                                rtl: isRtl
+                            });
+                        }
                         //recarregar tabela
                     }
                 });
             }
         });
     }
-
-
-
 
     $(document).on('click', '.btnovoatendimento', function() {
         $.ajax({
@@ -223,7 +222,6 @@ $(function() {
             }
         });
     });
-
 
     
     $(document).on('click', '#deletar_td', function() {
