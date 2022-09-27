@@ -16,6 +16,7 @@ $(function() {
     listCardapio();
 
 
+
     function listCardapio() {
         if (table) {
             table.destroy();
@@ -217,6 +218,7 @@ $(function() {
             data: { "_token": $('meta[name="csrf-token"]').attr('content') },
             success: function(retorno) {                
                 $('#verAtendimento').html(retorno);
+                listcomentario(id); 
                 $('#modal-title').html('Novo Atendimento');
                 $('.vermod').show(); 
                 $('.novomod').hide(); 
@@ -237,17 +239,24 @@ $(function() {
                 url: '/atendimento/cadastro_coment',
                 data: { "_token": $('meta[name="csrf-token"]').attr('content'), 'com_texto': texto, 'com_ate_id':com_ate_id},
                 success: function(retorno) {
-                    $('#modal-title').html('Novo Atendimento');
-                    $('#novoAtendimento').html(retorno);
-                    $('.novomod').show(); 
-                    $('.vermod').hide(); 
-                    
+                    listcomentario(com_ate_id);                 
                 }
             });
 
            console.log(texto);
         }
     });
+
+    function listcomentario(id) {
+        $.ajax({
+            type: "POST",
+            url: '/atendimento/cadastro_coment',
+            data: { "_token": $('meta[name="csrf-token"]').attr('content'), 'com_texto': texto, 'com_ate_id':com_ate_id},
+            success: function(retorno) {
+                $('#novoAtendimento').html(retorno);                   
+            }
+        });
+    }
 
     // To initialize tooltip with body container
     $('body').tooltip({
