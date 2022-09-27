@@ -47,14 +47,14 @@ class AtentimentoController extends Controller
         ->where('c.id', $id)
         ->first();
 
-        $coment  = DB::table('comentarios AS c')
-        ->leftjoin('users', 'c.com_users_id', 'users.id')
-        ->select('*', 'c.id AS id', 'c.created_at as created_at')
-        ->where('c.id', $id)
-        ->get();
+        // $coment  = DB::table('comentarios AS c')
+        // ->leftjoin('users', 'c.com_users_id', 'users.id')
+        // ->select('*', 'c.id AS id', 'c.created_at as created_at')
+        // ->where('c.id', $id)
+        // ->get();
 
 
-        return view('pages.atendimento.modalAtendimentoVer', compact('ver', 'coment'));
+        return view('pages.atendimento.modalAtendimentoVer', compact('ver'));
     }
 
 
@@ -86,6 +86,17 @@ class AtentimentoController extends Controller
         $dados->save();
         $mensagem = 'ok';
         return $mensagem; 
+    }
+
+    public function coment_list($id)
+    {
+        $coment  = DB::table('comentarios AS c')
+        ->leftjoin('users', 'c.com_users_id', 'users.id')
+        ->select('*', 'c.id AS id', 'c.created_at as created_at')
+        ->where('c.id', $id)
+        ->get();
+
+        return view('pages.atendimento.modaComent', compact('coment'));
     }
     public function delete($id)
     {

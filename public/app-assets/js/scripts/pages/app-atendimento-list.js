@@ -250,10 +250,10 @@ $(function() {
     function listcomentario(id) {
         $.ajax({
             type: "POST",
-            url: '/atendimento/cadastro_coment',
+            url: '/atendimento/comentario/list/'+id,
             data: { "_token": $('meta[name="csrf-token"]').attr('content'), 'com_ate_id':com_ate_id},
             success: function(retorno) {
-                $('#novoAtendimento').html(retorno);                   
+                $('.divcoments').html(retorno);                   
             }
         });
     }

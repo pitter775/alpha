@@ -30,22 +30,10 @@
                 <input type="hidden" value="{{$ver->id ?? ''}}" name="com_ate_id" id="com_ate_id">
             </div>
 
-            <div class="media align-items-center comentcs">
-                <div class="avatar mr-50">
-                    <img src="../../../app-assets/images/portrait/small/avatar-s-9.jpg" alt="Avatar" width="38" height="38">
-                </div>
-                <div class="media-body ">
-                    <p class="mb-0">CEO of Infibea fsdf sadf asdf sdafs df sdf sdf sadf df sam</p>
-                </div>
+            <div class="divcoments">
+
             </div>
-            <div class="media align-items-center">
-                <div class="avatar mr-50">
-                    <img src="../../../app-assets/images/portrait/small/avatar-s-9.jpg" alt="Avatar" width="38" height="38">
-                </div>
-                <div class="media-body">
-                    <p class="mb-0">CEO of Infibea fsdf sadf asdf sdafs df sdf sdf sadf df sam</p>
-                </div>
-            </div>
+
 
            
         </div>
