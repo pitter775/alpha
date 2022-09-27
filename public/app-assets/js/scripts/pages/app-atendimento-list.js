@@ -75,7 +75,7 @@ $(function() {
                             var nome = full['ate_titulo'];
 
                             return (
-                                '<a href="javascript:;" class="item-edit delete-record" id="deletar_td" style="' + displayno + '" data-nome="' + nome + '"  data-id="' + id + '" style="color: #f54b20 !important">' +
+                                '<a href="javascript:;" class="item-edit delete-record" id="deletar_td" data-nome="' + nome + '"  data-id="' + id + '" style="color: #f54b20 !important">' +
                                 feather.icons['x-circle'].toSvg({ class: 'font-small-4' }) +
                                 '</a>'
                             );
