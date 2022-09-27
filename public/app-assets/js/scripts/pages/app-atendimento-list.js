@@ -10,10 +10,8 @@ $(function() {
     var dtTableList = $('.cardapio-list-table'); //id da tabela q esta na div  
     var isRtl = $('html').attr('data-textdirection') === 'rtl';
     var newForm = $('.add-new-cardapio'); //formula 
+    var modalForm = $('#modalLargo'); //formula 
     var table = false;
-
-    console.log(newForm);
-
 
     listCardapio();
 
@@ -197,17 +195,17 @@ $(function() {
 
             if (isValid) {
                 console.log('valido');
-                // let serealize = newForm.serializeArray();
-                // console.log(serealize);
-                // $.ajax({
-                //     type: "POST",
-                //     url: '/cardapio/cadastro',
-                //     data: serealize,
-                //     success: function(data) {
-                //         addnovalinha(serealize, data);
-                //         newcardapioSidebar.modal('hide');
-                //     }
-                // });
+                let serealize = newForm.serializeArray();
+                console.log(serealize);
+                $.ajax({
+                    type: "POST",
+                    url: '/atendimento/cadastro',
+                    data: serealize,
+                    success: function(data) {
+                        modalForm.modal('hide');
+                        //recarregar tabela
+                    }
+                });
             }
         });
     }

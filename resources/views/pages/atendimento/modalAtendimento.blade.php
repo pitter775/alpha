@@ -44,19 +44,28 @@
             </div>  
             <div class="col-md-4">
                 <div class="form-group">
-                <label for="ate_users_id">Referente</label>
-                <select id="ate_users_id" name="ate_users_id" class="form-control select2">
-                        @foreach ($usuarios as $user)
-                            <option value="{{$user->id}}">{{$user->name}}</option>
-                        @endforeach
-                </select>
+                    <label for="ate_users_id">Referente</label>
+                    <select id="ate_users_id" name="ate_users_id" class="form-control select2">
+                            @foreach ($usuarios as $user)
+                                <option value="{{$user->id}}">{{$user->name}}</option>
+                            @endforeach
+                    </select>
                 </div>
             </div>
 
-            <div class="col-md-12">
+            <div class="col-md-8">
                 <label for="ate_titulo">Titulo</label>
                 <div class="input-group input-group-merge">
                     <input id="ate_titulo" type="text" class="form-control" value="{{$user->use_ate_titulo ?? ''}}" name="ate_titulo" />
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="form-group">
+                    <label for="ate_status">Status</label>
+                    <select id="ate_status" name="ate_status" class="form-control select2">                        
+                        <option value="Ativo">Ativo</option>
+                        <option value="Resolvido">Resolvido</option>                        
+                    </select>
                 </div>
             </div>
 

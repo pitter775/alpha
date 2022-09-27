@@ -133,6 +133,7 @@ Route::group(['middleware' => 'acesso'], function () {
 
     Route::get('/atendimento', [App\Http\Controllers\AtentimentoController::class, 'index']);
     Route::get('/atendimento/novo', [App\Http\Controllers\AtentimentoController::class, 'novo']);
+    Route::post('/atendimento/cadastro', [App\Http\Controllers\AtentimentoController::class, 'cadastro']);
 
 });
 
