@@ -40,9 +40,11 @@ $(function() {
                         data: function(dados) {
                             if (dados.created_at) {
                                 var datef = new Date(dados.created_at);
+                                console.log(datef);
                                 var dataFormatada = datef.toLocaleDateString('pt-BR', { timeZone: 'UTC' });
                                 return dataFormatada;
                             } else {
+                                console.log('sem data');
                                 return null;
                             }
 
