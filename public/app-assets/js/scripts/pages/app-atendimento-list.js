@@ -49,8 +49,7 @@ $(function() {
                         }
                     },
                     
-                    { data: 'ate_status' },
-                    { data: '' }
+                    { data: 'ate_status' }
                 ],
                 columnDefs: [{
                         "targets": [0],
