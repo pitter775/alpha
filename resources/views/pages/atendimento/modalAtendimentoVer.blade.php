@@ -1,5 +1,5 @@
 <style>
-    .media-body{ margin-top: 20px; padding: 15px; background-color: #e2e4e9; }
+    .media-body{ margin-bottom: 20px; padding: 15px; background-color: #e2e4e9; }
 
 </style>
 
@@ -34,7 +34,7 @@
 
             <div class="media-body">
                 <h6 class="mb-0">{{$ver->name ?? ''}}</h6>
-                <small>Aluno</small>
+                <small>Referente ao Aluno</small>
             </div>
 
             <div class="media-body">
