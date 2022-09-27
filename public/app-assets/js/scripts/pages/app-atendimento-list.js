@@ -206,8 +206,17 @@ $(function() {
 
     
     $(document).on('click', '.ver_atendimento', function() {
-        console.log('teste');
-        $('.modal-title').html('novo tit');
+        $.ajax({
+            type: "GET",
+            url: '/atendimento/novo',
+            data: { "_token": $('meta[name="csrf-token"]').attr('content') },
+            success: function(retorno) {                
+                $('#novoAtendimento').html(retorno);
+                $('.modal-title').html('novo tit');
+                $('#modal-title').html('Novo Atendimento');
+            }
+        });
+        
     });
 
     // To initialize tooltip with body container
