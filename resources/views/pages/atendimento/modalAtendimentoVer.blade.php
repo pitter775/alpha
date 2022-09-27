@@ -11,7 +11,7 @@
 </div>
 <div class="modal-body" style="width: 100%; background-color: #f4f5f7; padding: 0">    
     @csrf
-    <div class="divAtendimento row" style="width: 100%">
+    <div class="divAtendimento row" style="width: 100%; padding:0">
         <div class="col-md-9">
             <h4>Descrição:</h4>
             <h5 class="apply-job-title" style="padding: 5px; background-color: #e2e4e9">{{$ver->ate_mensagem ?? ''}}</h5>
