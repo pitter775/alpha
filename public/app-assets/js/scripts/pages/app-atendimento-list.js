@@ -218,7 +218,7 @@ $(function() {
             data: { "_token": $('meta[name="csrf-token"]').attr('content') },
             success: function(retorno) {                
                 $('#verAtendimento').html(retorno);
-                listcomentario(id); 
+                // listcomentario(id); 
                 $('#modal-title').html('Novo Atendimento');
                 $('.vermod').show(); 
                 $('.novomod').hide(); 
@@ -251,7 +251,7 @@ $(function() {
         $.ajax({
             type: "POST",
             url: '/atendimento/cadastro_coment',
-            data: { "_token": $('meta[name="csrf-token"]').attr('content'), 'com_texto': texto, 'com_ate_id':com_ate_id},
+            data: { "_token": $('meta[name="csrf-token"]').attr('content'), 'com_ate_id':com_ate_id},
             success: function(retorno) {
                 $('#novoAtendimento').html(retorno);                   
             }
