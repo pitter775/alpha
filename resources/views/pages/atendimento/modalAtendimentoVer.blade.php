@@ -16,14 +16,13 @@
             <h4 style="margin-top: 20px;">Descrição:</h4>
             <h5 class="apply-job-title" style="padding: 15px; background-color: #e2e4e9">{{$ver->ate_mensagem ?? ''}}</h5>
 
-            <div class="media align-items-center">
+            <div class="media align-items-center" >
                 <div class="avatar">
-                <img src="../../../app-assets/images/avatars/12-small.png" alt="avatar" height="38" width="38">
+                    <img src="../../../app-assets/images/avatars/12-small.png" alt="avatar" height="38" width="38">
                 </div>
-                <div class="media-body ml-50">
-                <h6 class="mb-0">John Doe (Client)</h6>
-                <span>CEO of Infibeam</span>
-                </div>
+                
+                <textarea class="form-control" id="ate_mensagem" name="ate_mensagem" rows="3" placeholder="Escreva o comentario..."></textarea>
+             
             </div>
         </div>
 
