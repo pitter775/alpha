@@ -16,36 +16,14 @@
             <h4 style="margin-top: 20px;">Descrição:</h4>
             <h5 class="apply-job-title" style="padding: 15px; background-color: #e2e4e9">{{$ver->ate_mensagem ?? ''}}</h5>
 
-            <div class="user-details d-flex justify-content-between align-items-center flex-wrap">
-              <div class="avatar mr-75">
-                <img src="../../../app-assets/images/portrait/small/avatar-s-9.jpg" alt="avatar img holder" width="48" height="48">
-              </div>
-              <div class="mail-items">
-                <h5 class="mb-0">Carlos Williamson</h5>
-                <div class="email-info-dropup dropdown">
-                  <span role="button" class="dropdown-toggle font-small-3 text-muted" id="card_top01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    carlos@gmail.com
-                  </span>
-                  <div class="dropdown-menu" aria-labelledby="card_top01" style="">
-                    <table class="table table-sm table-borderless">
-                      <tbody>
-                        <tr>
-                          <td class="text-right">From:</td>
-                          <td>carlos@gmail.com</td>
-                        </tr>
-                        <tr>
-                          <td class="text-right">To:</td>
-                          <td>johndoe@ow.ly</td>
-                        </tr>
-                        <tr>
-                          <td class="text-right">Date:</td>
-                          <td>14:58, 29 Aug 2020</td>
-                        </tr>
-                      </tbody>
-                    </table>
-                  </div>
+            <div class="media align-items-center">
+                <div class="avatar">
+                <img src="../../../app-assets/images/avatars/12-small.png" alt="avatar" height="38" width="38">
                 </div>
-              </div>
+                <div class="media-body ml-50">
+                <h6 class="mb-0">John Doe (Client)</h6>
+                <span>CEO of Infibeam</span>
+                </div>
             </div>
         </div>
 
