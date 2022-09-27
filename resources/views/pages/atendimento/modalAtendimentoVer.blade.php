@@ -6,7 +6,7 @@
 </div>
 
 <style>
-    .media-body{ margin-top: 20px; background-color: #fff;}
+    .media-body{ margin-top: 20px; }
 
 </style>
 
@@ -17,7 +17,7 @@
                 <h5 class="apply-job-title">{{$ver->ate_mensagem ?? ''}}</h5>
             </div>
 
-            <div class="col-md-3" style="background-color: #efefef">
+            <div class="col-md-3" style="background-color: #efefef; margin-right: -20px">
                 <div class="media-body">
                     <div class="form-group">
                         <select id="ate_status" name="ate_status" class="form-control select2">                        
@@ -25,7 +25,6 @@
                             <option value="Resolvido">Resolvido</option>                        
                         </select>
                     </div>
-                    <small>Status</small>
                 </div>
 
                 <div class="media-body">
