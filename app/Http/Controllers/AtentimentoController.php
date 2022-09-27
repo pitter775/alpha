@@ -7,6 +7,7 @@ use App\Models\Cardapio;
 use App\Models\User;
 use App\Models\Atendimento;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Schema;
 use PDOException;
 
 class AtentimentoController extends Controller
@@ -19,12 +20,14 @@ class AtentimentoController extends Controller
     public function index()
     {
         $atendimento = Atendimento::all();
+        
+        //dd(Schema::getColumnListing('atendimentos'));
         return view('pages.atendimento.index', compact('atendimento'));
     }
     public function all()
     {
         $cardapio  = DB::table('cardapios AS c')
-        ->leftjoin('series', 'c.series_id', 'series.id') 
+        ->leftjoin('series', 'c.series_id', 'series.id')
         ->select('*', 'c.id AS id')
         ->get();
 

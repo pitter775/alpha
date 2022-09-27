@@ -4,7 +4,7 @@
         <span aria-hidden="true">&times;</span>
     </button>
 </div>
-<form class="form-controle">
+<form class="form-controle add-new-cardapio">
 <div class="modal-body">    
     @csrf
     <div class="divAtendimento row">

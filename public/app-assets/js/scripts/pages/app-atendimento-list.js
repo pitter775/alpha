@@ -203,21 +203,22 @@ $(function() {
         });
 
         newcardapioForm.on('submit', function(e) {
-            var isValid = newcardapioForm.valid();
-            e.preventDefault();
-            if (isValid) {
-                let serealize = newcardapioForm.serializeArray();
-                console.log(serealize);
-                $.ajax({
-                    type: "POST",
-                    url: '/cardapio/cadastro',
-                    data: serealize,
-                    success: function(data) {
-                        addnovalinha(serealize, data);
-                        newcardapioSidebar.modal('hide');
-                    }
-                });
-            }
+            console.log('teste');
+            // var isValid = newcardapioForm.valid();
+            // e.preventDefault();
+            // if (isValid) {
+            //     let serealize = newcardapioForm.serializeArray();
+            //     console.log(serealize);
+            //     $.ajax({
+            //         type: "POST",
+            //         url: '/cardapio/cadastro',
+            //         data: serealize,
+            //         success: function(data) {
+            //             addnovalinha(serealize, data);
+            //             newcardapioSidebar.modal('hide');
+            //         }
+            //     });
+            // }
         });
     }
 
