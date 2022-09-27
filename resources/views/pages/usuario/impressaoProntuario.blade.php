@@ -125,7 +125,7 @@
                      
                     // date_default_timezone_set('America/Sao_Paulo');
                     // echo strftime('%A, %d de %B de %Y', strtotime('today'));
-                    setlocale(LC_TIME, 'pt_BR', 'pt_BR.utf-8', 'pt_BR.utf-8');
+                    // setlocale(LC_TIME, 'pt_BR', 'pt_BR.utf-8', 'pt_BR.utf-8');
                     date_default_timezone_set('America/Sao_Paulo');
                     $data = Carbon::now();
                     echo $data->formatLocalized('%A %d %B %Y');
