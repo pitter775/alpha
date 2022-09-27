@@ -243,16 +243,17 @@ $(function() {
                 }
             });
 
-           console.log(texto);
         }
     });
 
     function listcomentario(id) {
+        $('.divcoments').html('');    
         $.ajax({
             type: "GET",
             url: '/atendimento/comentario/list/'+id,
             data: { "_token": $('meta[name="csrf-token"]').attr('content')},
             success: function(retorno) {
+                console.log(retorno);
                 $('.divcoments').html(retorno);                   
             }
         });
