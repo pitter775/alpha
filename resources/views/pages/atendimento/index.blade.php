@@ -4,8 +4,8 @@
 @section('content')
 
 <!-- Modal -->
-<div class="modal text-left" id="modalLargo" tabindex="-1"role="dialog"aria-labelledby="myModalLabel17"aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered modal-lg" role="document" >
+<div class="modal text-left" id="modalLargo" tabindex="-1"role="dialog"aria-labelledby="myModalLabel17"aria-hidden="true" >
+    <div class="modal-dialog modal-dialog-centered modal-lg" role="document" style="background-color: #f4f5f7" >
         <div class="novomod" style="width: 100%">
             <form class="add-new-cardapio modal-content pt-0">    
                 <div class="modal-content"  id="novoAtendimento"></div>

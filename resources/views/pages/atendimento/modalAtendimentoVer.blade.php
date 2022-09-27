@@ -6,7 +6,7 @@
 </div>
 
 <style>
-    .media-body{ margin-top: 20px; }
+    .media-body{ margin-top: 20px; background-color: #e2e4e9; }
 
 </style>
 
@@ -14,7 +14,8 @@
         @csrf
         <div class="divAtendimento row" style="width: 100%">
             <div class="col-md-9">
-                <h5 class="apply-job-title">{{$ver->ate_mensagem ?? ''}}</h5>
+                <h2>Descrição:</h2>
+                <h5 class="apply-job-title" style="padding: 5px; background-color: #e2e4e9">{{$ver->ate_mensagem ?? ''}}</h5>
             </div>
 
             <div class="col-md-3" style="background-color: #efefef; margin-right: -20px">
