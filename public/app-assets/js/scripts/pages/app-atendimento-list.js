@@ -75,7 +75,7 @@ $(function() {
                             var nome = full['ate_titulo'];
 
                             return (
-                                '<a href="javascript:;" class="item-edit ver_td" data-nome="' + nome + '"  data-id="' + id + '" style="color: #f54b20 !important">' +
+                                '<a href="javascript:;" class="item-edit ver_td" data-nome="' + nome + '"  data-id="' + id + '" style="">' +
                                     feather.icons['eye'].toSvg({ class: 'font-medium-1' }) +
                                 '</a>'
                             );
@@ -154,6 +154,9 @@ $(function() {
                         next: '&nbsp;'
                     }
                 },
+                rowCallback: function (row, data) {
+                    $(row).addClass('ver_atendimento');
+                }
             });
             setTimeout(function() {
                 $('div.head-label').html('<h6 class="mb-0">Listando todos o Atendimentos</h6>');
