@@ -9,34 +9,32 @@
         @csrf
         <div class="divAtendimento row">
             <div class="col-md-7">
-                <label for="rg">Nome do solicitante</label>
+                <label for="ate_nome">Nome do solicitante</label>
                 <div class="input-group input-group-merge">
-                    <input id="rg" type="text" class="form-control" value="{{$user->use_rg ?? ''}}" name="rg" />
+                    <input id="ate_nome" type="text" class="form-control" value="{{$user->use_ate_nome ?? ''}}" name="ate_nome" />
                 </div>
             </div>
 
             <div class="col-md-5">
-                <label for="cpf">Email</label>
+                <label for="ate_email">Email</label>
                 <div class="input-group input-group-merge">
-                    
-                    
-                    <input id="cpf" type="text" class="form-control" value="{{$user->use_cpf ?? ''}}" name="cpf" />
+                    <input id="ate_email" type="text" class="form-control" value="{{$user->use_ate_email ?? ''}}" name="ate_email" />
                 </div>
             </div>   
 
             <div class="col-md-4">
-                <label for="cpf">Telefone</label>
+                <label for="ate_telefone">Telefone</label>
                 <div class="input-group input-group-merge">
                 
                     
-                    <input id="cpf" type="text" class="form-control" value="{{$user->use_cpf ?? ''}}" name="cpf" />
+                    <input id="ate_telefone" type="text" class="form-control" value="{{$user->use_ate_telefone ?? ''}}" name="ate_telefone" />
                 </div>
             </div>   
 
             <div class="col-md-4">
                 <div class="form-group">
-                    <label for="tipo_alteracao">Tipo de Atendimento</label>
-                    <select id="tipo_alteracao" name="tipo_alteracao" class="form-control select2">
+                    <label for="ate_tipo">Tipo de Atendimento</label>
+                    <select id="ate_tipo" name="ate_tipo" class="form-control select2">
                         <option value="Matricula">Matrícula</option>  
                         <option value="Rematrícula">Rematrícula</option>
                         <option value="Ocorrência">Ocorrência</option>   
@@ -46,8 +44,8 @@
             </div>  
             <div class="col-md-4">
                 <div class="form-group">
-                <label for="use_perfil">Referente</label>
-                <select id="use_perfil" name="use_perfil" class="form-control select2">
+                <label for="ate_users_id">Referente</label>
+                <select id="ate_users_id" name="ate_users_id" class="form-control select2">
                         @foreach ($usuarios as $user)
                             <option value="{{$user->id}}">{{$user->name}}</option>
                         @endforeach
@@ -56,22 +54,18 @@
             </div>
 
             <div class="col-md-12">
-                <label for="rg">Titulo</label>
+                <label for="ate_titulo">Titulo</label>
                 <div class="input-group input-group-merge">
-                    <input id="rg" type="text" class="form-control" value="{{$user->use_rg ?? ''}}" name="rg" />
+                    <input id="ate_titulo" type="text" class="form-control" value="{{$user->use_ate_titulo ?? ''}}" name="ate_titulo" />
                 </div>
             </div>
 
             <div class="col-md-12">
                 <div class="form-group">
-                <label for="obs_texto">Mensagem</label>
-                <textarea class="form-control" id="obs_texto" name="obs_texto" rows="4" placeholder="Escreva aqui..."></textarea>
+                <label for="ate_mensagem">Mensagem</label>
+                <textarea class="form-control" id="ate_mensagem" name="ate_mensagem" rows="4" placeholder="Escreva aqui..."></textarea>
             </div>
             </div>
-            
-            
-
-
         </div>
         
     </div>
