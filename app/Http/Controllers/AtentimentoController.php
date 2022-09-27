@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Cardapio;
 use App\Models\User;
 use App\Models\Atendimento;
+use App\Models\Comentario;
 use Illuminate\Support\Facades\DB;
 use PDOException;
 use Illuminate\Support\Facades\Auth;
@@ -46,8 +47,14 @@ class AtentimentoController extends Controller
         ->where('c.id', $id)
         ->first();
 
+        $coment  = DB::table('comentarios AS c')
+        ->leftjoin('users', 'c.com_users_id', 'users.id')
+        ->select('*', 'c.id AS id', 'c.created_at as created_at')
+        ->where('c.id', $id)
+        ->get();
 
-        return view('pages.atendimento.modalAtendimentoVer', compact('ver'));
+
+        return view('pages.atendimento.modalAtendimentoVer', compact('ver', 'coment'));
     }
 
 
@@ -68,6 +75,17 @@ class AtentimentoController extends Controller
         $mensagem = 'ok';
         return $mensagem; 
 
+    }
+    public function cadastro_coment(Request $request)
+    {
+        $mensagem = 'erro';
+        $dados = new Comentario();
+        $dados->com_ate_id = $request->input('com_ate_id');
+        $dados->com_texto = $request->input('com_texto');
+        $dados->com_users_id = Auth::user()->id;
+        $dados->save();
+        $mensagem = 'ok';
+        return $mensagem; 
     }
     public function delete($id)
     {

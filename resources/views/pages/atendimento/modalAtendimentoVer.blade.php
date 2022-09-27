@@ -3,7 +3,7 @@
 
 </style>
 
-<div class="modal-header">
+<div class="modal-header" style="background-color: #eee;">
     <h4 class="modal-title" id="myModalLabel17">{{$ver->ate_titulo ?? ''}}</h4>
     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
         <span aria-hidden="true">&times;</span>
@@ -25,8 +25,8 @@
                         <img src="{{asset('arquivos').'/'.Auth::user()->use_foto}}" alt="avatar" height="38" width="38">
                     @endif
                 </div>                
-                <textarea class="form-control" id="ate_mensagem" name="ate_mensagem" rows="2" placeholder="Escreva o comentario..."></textarea>
-             
+                <textarea class="form-control" id="com_texto" name="com_texto" rows="2" placeholder="Escreva o comentário..."></textarea>
+                <input type="hidden" value="{{$ver->id ?? ''}}" name="com_ate_id" id="com_ate_id">
             </div>
         </div>
 
