@@ -93,7 +93,7 @@ class AtentimentoController extends Controller
         $coment  = DB::table('comentarios AS c')
         ->leftjoin('users', 'c.com_users_id', 'users.id')
         ->select('*', 'c.id AS id', 'c.created_at as created_at')
-        ->where('c.id', $id)
+        ->where('c.com_ate_id', $id)
         ->get();
 
         return view('pages.atendimento.modaComent', compact('coment'));
