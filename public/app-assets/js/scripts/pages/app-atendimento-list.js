@@ -226,6 +226,7 @@ $(function() {
     });
 
     $('#com_texto').on('keypress', function(e){
+        console.log('teste');
         if (e.keyCode == 13) {
             e.preventDefault();
            console.log($(this).html());
