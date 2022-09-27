@@ -7,42 +7,23 @@
 ==========================================================================================*/
 $(function() {
     'use strict';
-    var password = true;
-    var row_edit = '';
-    var confirmText = $('#confirm-text');
-    var dtcardapioTable = $('.cardapio-list-table'), //id da tabela q esta na div  
-        newcardapioSidebar = $('.modalLargo'), //name do modal
+    var dtTableList = $('.cardapio-list-table'), //id da tabela q esta na div  
         isRtl = $('html').attr('data-textdirection') === 'rtl',
-        newcardapioForm = $('.add-new-cardapio'); //formula
-    var tableCardapio = false;
+        newForm = $('.add-new-cardapio'); //formula
+    var table = false;
 
-    var useperfil = $('#use_perfilInput').val();
-    var displayno = 'display: none';
-    if (useperfil == '10') {
-        displayno = '';
-    }
-    // style="' + displayno + '"
-
-    console.log('ok');
-
-
-    var data = new Date();
-
-    var dataFormatada = data.toLocaleDateString('pt-BR', { timeZone: 'UTC' });
-    $('#alteracao').val(dataFormatada);
-    $('#alteracao').trigger('change');
 
     listCardapio();
 
 
     function listCardapio() {
-        if (tableCardapio) {
-            tableCardapio.destroy();
+        if (table) {
+            table.destroy();
         }
         // Datatable
-        if (dtcardapioTable.length) {
+        if (dtTableList.length) {
 
-            var groupingTable = dtcardapioTable.DataTable({
+            var groupingTable = dtTableList.DataTable({
                 //busca uma rota 
                 // ajax: assetPath + 'data/cardapio-list.json', // JSON file to add data
                 retrieve: true,
@@ -191,11 +172,13 @@ $(function() {
             });
             $('div.head-label').html('<h6 class="mb-0">Listando todas as cardapios</h6>');
         }
-        tableCardapio = groupingTable;
+        table = groupingTable;
     }
+
+
     // Form Validation
-    if (newcardapioForm.length) {
-        newcardapioForm.validate({
+    if (newForm.length) {
+        newForm.validate({
             errorClass: 'error',
             rules: {
                 'name': {
@@ -204,63 +187,31 @@ $(function() {
             }
         });
 
-        newcardapioForm.on('submit', function(e) {
+        newForm.on('submit', function(e) {
+            e.preventDefault();
             console.log('teste');
-            // var isValid = newcardapioForm.valid();
-            // e.preventDefault();
-            // if (isValid) {
-            //     let serealize = newcardapioForm.serializeArray();
-            //     console.log(serealize);
-            //     $.ajax({
-            //         type: "POST",
-            //         url: '/cardapio/cadastro',
-            //         data: serealize,
-            //         success: function(data) {
-            //             addnovalinha(serealize, data);
-            //             newcardapioSidebar.modal('hide');
-            //         }
-            //     });
-            // }
+
+            var isValid = newForm.valid();
+            if (isValid) {
+                console.log('valido');
+                // let serealize = newForm.serializeArray();
+                // console.log(serealize);
+                // $.ajax({
+                //     type: "POST",
+                //     url: '/cardapio/cadastro',
+                //     data: serealize,
+                //     success: function(data) {
+                //         addnovalinha(serealize, data);
+                //         newcardapioSidebar.modal('hide');
+                //     }
+                // });
+            }
         });
     }
 
-    function editarlinha(serealize, data) {
-        $(row_edit).addClass('alteraressatr');
-        //  var rowData = dtcardapioTable.DataTable().row($('.alteraressatr')).data();  //mostra todos os dados dessa tr;
-        console.log('editar linha');
-        console.log(serealize);
-        dtcardapioTable.DataTable().row($('.alteraressatr')).data({
-            "id": serealize[1]['value'],
-            "ser_escolas_id": serealize[2]['value'],
-            "ser_nome": serealize[3]['value'],
-            "ser_apelido": serealize[4]['value'],
-            "ser_periodo": serealize[5]['value'],
-            "": ""
-        }).draw();
 
-        $(row_edit).css('background-color', '#749efe');
-        $(row_edit).css('color', '#fff');
-        $(row_edit).animate({
-            color: "#555",
-            backgroundColor: 'transparent'
-        }, 1000, "linear");
-        $(row_edit).removeClass('alteraressatr');
-        //mensagem
-        toastr['success']('👋 Arquivo alterado.', 'Sucesso!', {
-            closeButton: true,
-            tapToDismiss: false,
-            rtl: isRtl
-        });
-    }
 
-    function addnovalinha(serealize, data) {
-        console.log('addlinha');
-        listCardapio();
-    }
-    $(document).on('change', '#series_id', function() {
-        let val = $(this).text();
-        console.log(val)
-    });
+
     $(document).on('click', '.btnovoatendimento', function() {
         $.ajax({
             type: "GET",
@@ -273,28 +224,10 @@ $(function() {
     });
 
 
-    $(document).on('click', '.create-new', function() {
-        $("#senha").prop('required', true);
-        $(".ediadi").text('Adicionar');
-        $("#senhalabel").text('Senha');
-        $('#id_geral').val('');
-        $('#name').val('');
-    });
-    $(document).on('click', '#editar_td', function() {
-        $("#senha").prop('required', false);
-        $(".ediadi").text('Editar');
-        $("#senhalabel").text('Nova Senha');
-
-        $('#id_geral').val($(this).data('id'));
-        $('#ser_escolas_id').val($(this).data('ser_escolas_id'));
-        $('#ser_apelido').val($(this).data('ser_apelido'));
-        $('#ser_periodo').val($(this).data('ser_periodo'));
-        $('#ser_nome').val($(this).data('ser_nome'));
-        row_edit = dtcardapioTable.DataTable().row($(this).parents('tr')).node();
-    });
+    
     $(document).on('click', '#deletar_td', function() {
-        var t = dtcardapioTable.DataTable();
-        var row = dtcardapioTable.DataTable().row($(this).parents('tr')).node();
+        var t = dtTableList.DataTable();
+        var row = dtTableList.DataTable().row($(this).parents('tr')).node();
         var id = $(this).data('id');
         //mensagem de confirmar 
         Swal.fire({
@@ -345,24 +278,6 @@ $(function() {
 
     });
 
-    function contaChamada() {
-        let presenca = 0;
-        let falta = 0;
-
-        $(".cardcardapio ").each(function() {
-            if ($(this).hasClass("divpresente")) {
-                presenca = presenca + 1;
-            }
-            if ($(this).hasClass("divfalta")) {
-                falta = falta + 1;
-            }
-        });
-
-        $('.sppresente').text(presenca);
-        $('.spfalta').text(falta);
-
-
-    }
     // To initialize tooltip with body container
     $('body').tooltip({
         selector: '[data-toggle="tooltip"]',
