@@ -123,10 +123,10 @@
                     <p style="margin-top: 40px">Santana do Parnaíba, 
                     <?php 
                      
-                    // date_default_timezone_set('America/Sao_Paulo');
-                    // echo strftime('%A, %d de %B de %Y', strtotime('today'));
-                    // setlocale(LC_TIME, 'pt_BR', 'pt_BR.utf-8', 'pt_BR.utf-8');
+                     // Force locale
                     date_default_timezone_set('America/Sao_Paulo');
+                    setlocale(LC_ALL, 'pt_BR.utf-8', 'ptb', 'pt_BR', 'portuguese-brazil', 'portuguese-brazilian', 'bra', 'brazil', 'br');
+                    setlocale(LC_TIME, 'pt_BR.utf-8', 'ptb', 'pt_BR', 'portuguese-brazil', 'portuguese-brazilian', 'bra', 'brazil', 'br');
                     $data = Carbon::now();
                     echo $data->formatLocalized('%A %d %B %Y');
                     ?></p>
