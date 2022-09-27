@@ -6,7 +6,8 @@
 </div>
 
 <style>
-    .media-body{ margin-top: 20px;}
+    .media-body{ margin-top: 20px; background-color: #fff;}
+
 </style>
 
     <div class="modal-body" style="width: 100%">    
@@ -18,6 +19,16 @@
 
             <div class="col-md-3" style="background-color: #efefef">
                 <div class="media-body">
+                    <div class="form-group">
+                        <select id="ate_status" name="ate_status" class="form-control select2">                        
+                            <option value="Ativo">Ativo</option>
+                            <option value="Resolvido">Resolvido</option>                        
+                        </select>
+                    </div>
+                    <small>Status</small>
+                </div>
+
+                <div class="media-body">
                     <h6 class="mb-0">{{$ver->ate_nome ?? ''}}</h6>
                     <small>Solicitante</small>
                 </div>
@@ -28,7 +39,7 @@
                 </div>
 
                 <div class="media-body">
-                    <h6 class="mb-0"><?php echo date( 'd/m/Y' , strtotime($ver->name));  ?></h6>
+                    <h6 class="mb-0"><?php echo date( 'd/m/Y' , strtotime($ver->created_at));  ?></h6>
                     <small>Criado em</small>
                 </div>
             </div>   
