@@ -44,7 +44,7 @@ class AtentimentoController extends Controller
         ->leftjoin('users', 'c.ate_users_id', 'users.id')
         ->select('*', 'c.id AS id', 'c.created_at as created_at')
         ->where('c.id', $id)
-        ->get();
+        ->first();
 
 
         return view('pages.atendimento.modalAtendimentoVer', compact('ver'));
