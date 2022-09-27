@@ -1,4 +1,3 @@
-<?php dd($coment) ?>
 
 @foreach($coment as $com)
     <div class="media align-items-center comentcs">
