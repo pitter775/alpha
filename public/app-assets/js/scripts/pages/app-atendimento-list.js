@@ -66,11 +66,11 @@ $(function() {
                     },
                     {
                         // Actions
-                        targets: 8,
+                        targets: 7,
                         title: 'Ação',
                         orderable: false,
                         render: function(data, type, full, meta) {
-                            // console.log(full);
+              
                             var id = full['id'];
                             var nome = full['ate_titulo'];
 
@@ -156,7 +156,7 @@ $(function() {
                 },
             });
             setTimeout(function() {
-                $('div.head-label').html('<h6 class="mb-0">Listando todas o atendimentos</h6>');
+                $('div.head-label').html('<h6 class="mb-0">Listando todos o Atendimentos</h6>');
                 console.log('foi');
             }, 1000);
             
