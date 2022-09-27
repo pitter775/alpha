@@ -218,7 +218,7 @@ $(function() {
             data: { "_token": $('meta[name="csrf-token"]').attr('content') },
             success: function(retorno) {                
                 $('#verAtendimento').html(retorno);
-                // listcomentario(id); 
+                listcomentario(id); 
                 $('#modal-title').html('Novo Atendimento');
                 $('.vermod').show(); 
                 $('.novomod').hide(); 
