@@ -40,7 +40,7 @@
                     <div class=" " style="width: 100%;">
                         <table class="cardapio-list-table table table-sm table-responsive-lg">
                             <thead class="thead-light">
-                                {{-- <tr>
+                                 <tr>
                                     <th>id</th>
                                     <th>cardápio</th>
                                     <th>data</th>
@@ -49,7 +49,7 @@
                                     <th>ser_periodo</th>
                                     <th>Série</th>
                                     <th></th>
-                                </tr> --}}
+                                </tr> 
                             </thead>
                         </table>
                     </div>

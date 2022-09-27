@@ -9,8 +9,10 @@ $(function() {
     'use strict';
     var dtTableList = $('.cardapio-list-table'); //id da tabela q esta na div  
     var isRtl = $('html').attr('data-textdirection') === 'rtl';
-    var newForm = $('.add-new-cardapio'); //formula
+    var newForm = $('.add-new-cardapio'); //formula 
     var table = false;
+
+    console.log(newForm);
 
 
     listCardapio();
@@ -189,10 +191,9 @@ $(function() {
         });
 
         newForm.on('submit', function(e) {
+            var isValid = newForm.valid();
             e.preventDefault();
             console.log('teste');
-
-            var isValid = newForm.valid();
 
             if (isValid) {
                 console.log('valido');
