@@ -1,5 +1,5 @@
 <style>
-    .media-body{ margin-bottom: 20px; padding: 15px; background-color: #e2e4e9; }
+    .media-body2{ margin-bottom: 20px; padding: 15px; background-color: #e2e4e9; }
 
 </style>
 
@@ -50,7 +50,7 @@
         </div>
 
         <div class="col-md-3" style=" padding: 0; margin-right: -20px !important">
-            <div class="media-body" style="margin-top: 0px; background-color: #f4f5f7;">
+            <div class="media-body media-body2" style="margin-top: 0px; background-color: #f4f5f7;">
                 <div class="form-group">
                     <select id="ate_status" name="ate_status" class="form-control select2">                        
                         <option value="Ativo">Ativo</option>
@@ -59,17 +59,17 @@
                 </div>
             </div>
 
-            <div class="media-body">
+            <div class="media-body media-body2">
                 <h6 class="mb-0">{{$ver->ate_nome ?? ''}}</h6>
                 <small>Solicitante</small>
             </div>
 
-            <div class="media-body">
+            <div class="media-body media-body2">
                 <h6 class="mb-0">{{$ver->name ?? ''}}</h6>
                 <small>Referente ao Aluno</small>
             </div>
 
-            <div class="media-body">
+            <div class="media-body media-body2">
                 <h6 class="mb-0"><?php echo date( 'd/m/Y' , strtotime($ver->created_at));  ?></h6>
                 <small>Criado em</small>
             </div>
