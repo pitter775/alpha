@@ -131,6 +131,8 @@ $(function() {
                 },
                 rowCallback: function (row, data) {
                     $(row).addClass('ver_atendimento');
+                    $(row).attr('data-toggle', 'modal');
+                    $(row).attr('data-target', '#modalLargo');
                 }
             });
             setTimeout(function() {
