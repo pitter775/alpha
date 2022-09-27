@@ -3,6 +3,7 @@
     if($user->use_foto){
         $fotouser = '/arquivos/'.$user->use_foto;
     }
+    use Carbon\Carbon;
 ?>
 <style>
     
@@ -119,10 +120,13 @@
                 </div>
                 <div class="blocofoto2 aling-right" style="margin-top: 70px" >
                     <p class="titi1" > Tenho total conhecimento e com as quais concordo plenamente</p> 
-                    <p style="margin-top: 40px">Santana do Parnaíba, <?php 
-                    setlocale(LC_TIME, 'pt_BR', 'pt_BR.utf-8', 'pt_BR.utf-8', 'portuguese');
-date_default_timezone_set('America/Sao_Paulo');
-echo strftime('%A, %d de %B de %Y', strtotime('today'));
+                    <p style="margin-top: 40px">Santana do Parnaíba, 
+                    <?php 
+                    // setlocale(LC_TIME, 'pt_BR', 'pt_BR.utf-8', 'pt_BR.utf-8', 'portuguese');
+                    // date_default_timezone_set('America/Sao_Paulo');
+                    // echo strftime('%A, %d de %B de %Y', strtotime('today'));
+                    $data = Carbon::now();  
+                    dd($data);
                     ?></p>
                     <p style="margin-top: 70px"> Ass. ___________________________________________________________</p>
                 </div>

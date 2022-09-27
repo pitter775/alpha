@@ -9,6 +9,7 @@ use App\Models\Atendimento;
 use Illuminate\Support\Facades\DB;
 use PDOException;
 use Illuminate\Support\Facades\Auth;
+use Carbon\Carbon;
 
 class AtentimentoController extends Controller
 {
@@ -36,6 +37,17 @@ class AtentimentoController extends Controller
     {
         $usuarios = User::where('use_perfil', 11)->orderBy('name', 'asc')->get();
         return view('pages.atendimento.modalAtendimento', compact('usuarios'));
+    }
+    public function ver($id)
+    {
+        $ver  = DB::table('atendimentos AS c')
+        ->leftjoin('users', 'c.ate_users_id', 'users.id')
+        ->select('*', 'c.id AS id', 'c.created_at as created_at')
+        ->where('c.id', $id)
+        ->get();
+
+
+        return view('pages.atendimento.modalAtendimentoVer', compact('ver'));
     }
 
 
