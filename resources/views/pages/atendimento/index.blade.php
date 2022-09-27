@@ -24,6 +24,12 @@
             margin-left: 2px;
         }
 
+        .ver_atendimento {-webkit-box-shadow: none;box-shadow: none;-webkit-transition: all 0.25s ease-in-out;transition: all 0.25s ease-in-out; cursor: pointer;}
+        .ver_atendimento:hover {        -webkit-box-shadow: 0 4px 10px 0 rgba(0, 0, 0, 0.2), 0 4px 10px 0 rgba(0, 0, 0, 0.12); box-shadow: 0 4px 10px 0 rgba(0, 0, 0, 0.2), 0 4px 10px 0 rgba(0, 0, 0, 0.12);-webkit-transition: all 0.25s ease-out;transition: all 0.25s ease-out;}
+    
+
+    
+
     </style>
 
 
@@ -47,8 +53,7 @@
                                     <th>Tipo</th>
                                     <th>Titulo</th>
                                     <th>Data</th>
-                                    <th>Status</th>
-                                    <th></th>
+                                    <th>Status</th>                              
                                 </tr> 
                             </thead>
                         </table>

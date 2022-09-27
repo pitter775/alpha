@@ -56,31 +56,31 @@ $(function() {
                         "targets": [0],
                         "visible": false,
                         "searchable": false
-                    },
-                    {
-                        // For Responsive
-                        className: 'control',
-                        orderable: false,
-                        responsivePriority: 2,
-                        targets: 7
-                    },
-                    {
-                        // Actions
-                        targets: 7,
-                        title: 'Ação',
-                        orderable: false,
-                        render: function(data, type, full, meta) {
-              
-                            var id = full['id'];
-                            var nome = full['ate_titulo'];
-
-                            return (
-                                '<a href="javascript:;" class="item-edit ver_td" data-nome="' + nome + '"  data-id="' + id + '" style="">' +
-                                    feather.icons['eye'].toSvg({ class: 'font-medium-1' }) +
-                                '</a>'
-                            );
-                        }
                     }
+                    // {
+                    //     // For Responsive
+                    //     className: 'control',
+                    //     orderable: false,
+                    //     responsivePriority: 2,
+                    //     targets: 7
+                    // },
+                    // {
+                    //     // Actions
+                    //     targets: 7,
+                    //     title: 'Ação',
+                    //     orderable: false,
+                    //     render: function(data, type, full, meta) {
+              
+                    //         var id = full['id'];
+                    //         var nome = full['ate_titulo'];
+
+                    //         return (
+                    //             '<a href="javascript:;" class="item-edit ver_td" data-nome="' + nome + '"  data-id="' + id + '" style="">' +
+                    //                 feather.icons['eye'].toSvg({ class: 'font-medium-1' }) +
+                    //             '</a>'
+                    //         );
+                    //     }
+                    // }
                 ],
                 order: [
                     [2, 'desc']
