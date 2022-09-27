@@ -201,6 +201,9 @@ $(function() {
             success: function(retorno) {
                 $('#modal-title').html('Novo Atendimento');
                 $('#novoAtendimento').html(retorno);
+                $('.novomod').show(); 
+                $('.vermod').hide(); 
+                
             }
         });
     });
@@ -213,9 +216,10 @@ $(function() {
             url: '/atendimento/ver/'+id,
             data: { "_token": $('meta[name="csrf-token"]').attr('content') },
             success: function(retorno) {                
-                $('#novoAtendimento').html(retorno);
-                $('.modal-title').html('novo tit');
+                $('#verAtendimento').html(retorno);
                 $('#modal-title').html('Novo Atendimento');
+                $('.vermod').show(); 
+                $('.novomod').hide(); 
             }
         });
         
