@@ -4,7 +4,7 @@
         <span aria-hidden="true">&times;</span>
     </button>
 </div>
-<form class="form-controle add-new-cardapio">
+<form class="add-new-cardapio modal-content pt-0">
 <div class="modal-body">    
     @csrf
     <div class="divAtendimento row">
@@ -77,6 +77,10 @@
 </div>
 <div class="modal-footer">
     <button type="submit" class="btn btn-primary" data-dismiss="modal">Salvar</button>
+    <button type="submit" class="btn btn-primary mr-1 data-submit add waves-effect"><i
+                            data-feather='check-circle'></i> Salvar</button>
+                    <button type="reset" class="btn btn-outline-secondary waves-effect" data-dismiss="modal"> <i
+                            data-feather='x'></i> Cancelar</button>
 </div>
 </form>
 

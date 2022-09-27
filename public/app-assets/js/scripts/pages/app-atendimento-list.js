@@ -13,7 +13,7 @@ $(function() {
     var dtcardapioTable = $('.cardapio-list-table'), //id da tabela q esta na div  
         newcardapioSidebar = $('.modalLargo'), //name do modal
         isRtl = $('html').attr('data-textdirection') === 'rtl',
-        newcardapioForm = $('.btnovoatendimento'); //formula
+        newcardapioForm = $('.add-new-cardapio'); //formula
     var tableCardapio = false;
 
     var useperfil = $('#use_perfilInput').val();
@@ -22,6 +22,8 @@ $(function() {
         displayno = '';
     }
     // style="' + displayno + '"
+
+    console.log('ok');
 
 
     var data = new Date();
