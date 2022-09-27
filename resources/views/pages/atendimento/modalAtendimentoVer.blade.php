@@ -13,11 +13,11 @@
     @csrf
     <div class="divAtendimento row" style="width: 100%">
         <div class="col-md-9">
-            <h2>Descrição:</h2>
+            <h4>Descrição:</h4>
             <h5 class="apply-job-title" style="padding: 5px; background-color: #e2e4e9">{{$ver->ate_mensagem ?? ''}}</h5>
         </div>
 
-        <div class="col-md-3" style="background-color: #efefef; margin-right: -20px">
+        <div class="col-md-3" style="background-color: #efefef; padding: 0; margin-right: -20px !important">
             <div class="media-body">
                 <div class="form-group">
                     <select id="ate_status" name="ate_status" class="form-control select2">                        
