@@ -175,6 +175,7 @@ $(function() {
         table = groupingTable;
     }
 
+    console.log('teste ok');
 
     // Form Validation
     if (newForm.length) {
