@@ -38,6 +38,7 @@ $(function() {
                     { data: 'ate_titulo' },
                     {
                         data: function(dados) {
+                            console.log(dados);
                             if (dados.created_at) {
                                 var datef = new Date(dados.created_at);
                                 console.log(datef);
