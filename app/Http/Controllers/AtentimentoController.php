@@ -7,8 +7,8 @@ use App\Models\Cardapio;
 use App\Models\User;
 use App\Models\Atendimento;
 use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Facades\Schema;
 use PDOException;
+use Illuminate\Support\Facades\Auth;
 
 class AtentimentoController extends Controller
 {
@@ -19,8 +19,7 @@ class AtentimentoController extends Controller
 
     public function index()
     {
-        $atendimento = Atendimento::all();
-        
+        $atendimento = Atendimento::all();        
         //dd(Schema::getColumnListing('atendimentos'));
         return view('pages.atendimento.index', compact('atendimento'));
     }
