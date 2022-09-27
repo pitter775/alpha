@@ -26,7 +26,7 @@ class AtentimentoController extends Controller
     public function all()
     {
         $all  = DB::table('atendimentos AS c')
-        ->leftjoin('users', 'c.ate_users_id ', 'users.id')
+        ->leftjoin('users', 'c.ate_users_id', 'users.id')
         ->select('*', 'c.id AS id')
         ->get();
 
