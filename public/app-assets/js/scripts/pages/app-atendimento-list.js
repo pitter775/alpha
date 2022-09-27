@@ -229,7 +229,8 @@ $(function() {
         console.log('teste');
         if (e.keyCode == 13) {
             e.preventDefault();
-           console.log($(this).text());
+            let texto = $('#com_texto').val();
+           console.log(texto);
         }
     });
 
