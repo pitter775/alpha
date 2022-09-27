@@ -7,9 +7,9 @@
 ==========================================================================================*/
 $(function() {
     'use strict';
-    var dtTableList = $('.cardapio-list-table'), //id da tabela q esta na div  
-        isRtl = $('html').attr('data-textdirection') === 'rtl',
-        newForm = $('.add-new-cardapio'); //formula
+    var dtTableList = $('.cardapio-list-table'); //id da tabela q esta na div  
+    var isRtl = $('html').attr('data-textdirection') === 'rtl';
+    var newForm = $('.add-new-cardapio'); //formula
     var table = false;
 
 
@@ -192,6 +192,7 @@ $(function() {
             console.log('teste');
 
             var isValid = newForm.valid();
+
             if (isValid) {
                 console.log('valido');
                 // let serealize = newForm.serializeArray();
