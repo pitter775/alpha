@@ -229,7 +229,7 @@ $(function() {
         console.log('teste');
         if (e.keyCode == 13) {
             e.preventDefault();
-           console.log($(this).html());
+           console.log($(this).text());
         }
     });
 
