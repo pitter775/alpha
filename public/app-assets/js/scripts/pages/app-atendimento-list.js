@@ -56,30 +56,6 @@ $(function() {
                         "visible": false,
                         "searchable": false
                     }
-                    // {
-                    //     // For Responsive
-                    //     className: 'control',
-                    //     orderable: false,
-                    //     responsivePriority: 2,
-                    //     targets: 7
-                    // },
-                    // {
-                    //     // Actions
-                    //     targets: 7,
-                    //     title: 'Ação',
-                    //     orderable: false,
-                    //     render: function(data, type, full, meta) {
-              
-                    //         var id = full['id'];
-                    //         var nome = full['ate_titulo'];
-
-                    //         return (
-                    //             '<a href="javascript:;" class="item-edit ver_td" data-nome="' + nome + '"  data-id="' + id + '" style="">' +
-                    //                 feather.icons['eye'].toSvg({ class: 'font-medium-1' }) +
-                    //             '</a>'
-                    //         );
-                    //     }
-                    // }
                 ],
                 order: [
                     [2, 'desc']
@@ -220,14 +196,17 @@ $(function() {
             url: '/atendimento/novo',
             data: { "_token": $('meta[name="csrf-token"]').attr('content') },
             success: function(retorno) {
+                $('#modal-title').html('Novo Atendimento');
                 $('#novoAtendimento').html(retorno);
             }
         });
     });
 
     
-    $(document).on('click', '.ver_td', function() {
+    $(document).on('click', '.ver_atendimento', function() {
         console.log('teste');
+        $('#modal-title').html('novo tit');
+        modalForm.modal('show');
     });
 
     // To initialize tooltip with body container

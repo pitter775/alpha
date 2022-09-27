@@ -25,8 +25,6 @@
             <div class="col-md-4">
                 <label for="ate_telefone">Telefone</label>
                 <div class="input-group input-group-merge">
-                
-                    
                     <input id="ate_telefone" type="text" class="form-control" value="{{$user->use_ate_telefone ?? ''}}" name="ate_telefone" />
                 </div>
             </div>   
