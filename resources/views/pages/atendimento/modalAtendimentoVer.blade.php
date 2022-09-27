@@ -9,7 +9,7 @@
         <span aria-hidden="true">&times;</span>
     </button>
 </div>
-<div class="modal-body" style="width: 100%; background-color: #f4f5f7">    
+<div class="modal-body" style="width: 100%; background-color: #f4f5f7; padding: 0">    
     @csrf
     <div class="divAtendimento row" style="width: 100%">
         <div class="col-md-9">
