@@ -5,6 +5,10 @@
     </button>
 </div>
 
+<style>
+    .media-body{ margin-top: 20px;}
+</style>
+
     <div class="modal-body" style="width: 100%">    
         @csrf
         <div class="divAtendimento row" style="width: 100%">
