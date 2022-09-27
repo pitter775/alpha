@@ -8,26 +8,17 @@
     <div class="modal-body">    
         @csrf
         <div class="divAtendimento row" style="width: 100%">
-            <div class="col-md-7">
-                <label for="ate_nome">Nome do solicitante</label>
-                <div class="input-group input-group-merge">
-                    <input id="ate_nome" type="text" class="form-control" value="" name="ate_nome" />
-                </div>
+            <div class="col-md-9">
+                <h5 class="apply-job-title">{{$ver->ate_mensagem ?? ''}}</h5>
             </div>
 
-            <div class="col-md-5">
-                <label for="ate_email">Email</label>
-                <div class="input-group input-group-merge">
-                    <input id="ate_email" type="text" class="form-control" value="" name="ate_email" />
+            <div class="col-md-3" style="background-color: #eee">
+                <div class="media-body">
+                    <h6 class="mb-0">{{$ver->ate_nome ?? ''}}</h6>
+                    <small>Solicitante</small>
                 </div>
             </div>   
 
-            <div class="col-md-4">
-                <label for="ate_telefone">Telefone</label>
-                <div class="input-group input-group-merge">
-                    <input id="ate_telefone" type="text" class="form-control" value="" name="ate_telefone" />
-                </div>
-            </div> 
         </div>
     </div>
     
