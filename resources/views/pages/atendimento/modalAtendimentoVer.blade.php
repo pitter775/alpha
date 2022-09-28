@@ -49,7 +49,7 @@
             </div>
 
             <div class="media-body media-body2">
-                <h6 class="mb-0">{{$ver->$atendimento->ate_tipo  ?? ''}}</h6>
+                <h6 class="mb-0">{{$ver->ate_tipo  ?? ''}}</h6>
                 <small>Tipo</small>
             </div>
 
