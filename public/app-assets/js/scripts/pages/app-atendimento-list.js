@@ -306,6 +306,9 @@ $(function() {
             e.preventDefault();
             let texto = $('#com_texto').val();
             let com_ate_id = $('#com_ate_id').val();
+
+            console.log('texto',texto);
+            console.log('com_ate_id',com_ate_id);
             
             $.ajax({
                 type: "POST",
