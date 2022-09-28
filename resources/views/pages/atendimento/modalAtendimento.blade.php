@@ -38,17 +38,21 @@
                             <option value="Matricula" @if($atendimento->ate_tipo == 'Matricula') selected @endif>Matrícula</option>  
                             <option value="Rematrícula" @if($atendimento->ate_tipo == 'Rematrícula') selected @endif>Rematrícula</option>
                             <option value="Ocorrência" @if($atendimento->ate_tipo == 'Ocorrência') selected @endif>Ocorrência</option>   
+                            <option value="Agenda" @if($atendimento->ate_tipo == 'Agenda') selected @endif>Agenda</option> 
+                            <option value="Atendimento ao Pai" @if($atendimento->ate_tipo == 'Atendimento ao Pai') selected @endif>Atendimento ao Pai</option>  
                             <option value="Secretaria Educação" @if($atendimento->ate_tipo == 'Secretaria Educação') selected @endif>Secretaria Educação</option>   
                             <option value="Prefeitura" @if($atendimento->ate_tipo == 'Prefeitura') selected @endif>Prefeitura</option>   
-                            <option value="Atendimento ao Pai" @if($atendimento->ate_tipo == 'Atendimento ao Pai') selected @endif>Atendimento ao Pai</option>  
                             <option value="ADM do Sistema" @if($atendimento->ate_tipo == 'ADM do Sistema') selected @endif>ADM do Sistema</option>  
+                             
                         @else
                             <option value="Matricula">Matrícula</option>  
                             <option value="Rematrícula">Rematrícula</option>
                             <option value="Ocorrência">Ocorrência</option>   
+                            <option value="Agenda">Agenda</option>  
                             <option value="Secretaria Educação">Secretaria Educação</option>   
                             <option value="Prefeitura">Prefeitura</option>   
-                            <option value="Atendimento ao Pai">Pai</option>  
+                            <option value="Atendimento ao Pai">Atendimento ao Pai</option>  
+                            <option value="ADM do Sistema">ADM do Sistema</option>  
                         @endif
                     </select>
                 </div>
