@@ -53,12 +53,12 @@ $(function() {
                     
                     { data: 'ate_status' }
                 ],
-                columnDefs: [{
-                        "targets": [0],
-                        "visible": false,
-                        "searchable": false
-                    }
-                ],
+                // columnDefs: [{
+                //         "targets": [0],
+                //         "visible": false,
+                //         "searchable": false
+                //     }
+                // ],
                 order: [
                     [2, 'desc']
                 ],
