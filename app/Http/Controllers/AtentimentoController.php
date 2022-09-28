@@ -132,6 +132,7 @@ class AtentimentoController extends Controller
         ->leftjoin('users', 'c.com_users_id', 'users.id')
         ->select('*', 'c.id AS id', 'c.created_at as created_at')
         ->where('c.com_ate_id', $id)
+        ->orderBy('c.id', 'desc')
         ->get();
 
         return view('pages.atendimento.modaComent', compact('coment'));
