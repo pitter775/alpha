@@ -35,10 +35,10 @@
                     <label for="ate_tipo">Tipo de Atendimento</label>
                     <select id="ate_tipo" name="ate_tipo" class="form-control select2">
                         @if(isset($atendimento))
-                            <option value="Matricula" @if($atendimento->ate_telefone == 'Matricula') selected @endif>Matrícula</option>  
-                            <option value="Rematrícula" @if($atendimento->ate_telefone == 'Rematrícula') selected @endif>Rematrícula</option>
-                            <option value="Ocorrência" @if($atendimento->ate_telefone == 'Ocorrência') selected @endif>Ocorrência</option>   
-                            <option value="Atendimento ao Pai" @if($atendimento->ate_telefone == 'Atendimento ao Pai') selected @endif>Atendimento ao Pai</option>  
+                            <option value="Matricula" @if($atendimento->ate_tipo == 'Matricula') selected @endif>Matrícula</option>  
+                            <option value="Rematrícula" @if($atendimento->ate_tipo == 'Rematrícula') selected @endif>Rematrícula</option>
+                            <option value="Ocorrência" @if($atendimento->ate_tipo == 'Ocorrência') selected @endif>Ocorrência</option>   
+                            <option value="Atendimento ao Pai" @if($atendimento->ate_tipo == 'Atendimento ao Pai') selected @endif>Atendimento ao Pai</option>  
                         @else
                             <option value="Matricula">Matrícula</option>  
                             <option value="Rematrícula">Rematrícula</option>
