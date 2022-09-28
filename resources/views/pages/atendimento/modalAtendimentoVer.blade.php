@@ -5,7 +5,7 @@
 </style>
 
 <div class="modal-header" style="background-color: #eee;">
-    <h4 class="modal-title" id="myModalLabel17">{{$ver->ate_titulo ?? ''}}</h4>
+    <h4 class="modal-title" id="myModalLabel17" style="text-transform: uppercase;">#{{$ver->id ?? ''}}  {{$ver->ate_titulo ?? ''}}</h4>
     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
         <span aria-hidden="true">&times;</span>
     </button>
