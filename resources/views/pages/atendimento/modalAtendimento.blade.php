@@ -41,6 +41,7 @@
                             <option value="Secretaria Educação" @if($atendimento->ate_tipo == 'Secretaria Educação') selected @endif>Secretaria Educação</option>   
                             <option value="Prefeitura" @if($atendimento->ate_tipo == 'Prefeitura') selected @endif>Prefeitura</option>   
                             <option value="Atendimento ao Pai" @if($atendimento->ate_tipo == 'Atendimento ao Pai') selected @endif>Atendimento ao Pai</option>  
+                            <option value="ADM do Sistema" @if($atendimento->ate_tipo == 'ADM do Sistema') selected @endif>ADM do Sistema</option>  
                         @else
                             <option value="Matricula">Matrícula</option>  
                             <option value="Rematrícula">Rematrícula</option>
