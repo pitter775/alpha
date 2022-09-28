@@ -56,7 +56,7 @@
                         <table class="cardapio-list-table table table-sm table-responsive-lg">
                             <thead class="thead-light">
                                  <tr>
-                                    <th>id</th>
+                                    <th>Registro</th>
                                     <th>Nome</th>
                                     <th>Telefone</th>
                                     <th>Tipo</th>
