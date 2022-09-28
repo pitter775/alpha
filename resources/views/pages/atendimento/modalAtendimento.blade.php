@@ -38,12 +38,16 @@
                             <option value="Matricula" @if($atendimento->ate_tipo == 'Matricula') selected @endif>Matrícula</option>  
                             <option value="Rematrícula" @if($atendimento->ate_tipo == 'Rematrícula') selected @endif>Rematrícula</option>
                             <option value="Ocorrência" @if($atendimento->ate_tipo == 'Ocorrência') selected @endif>Ocorrência</option>   
+                            <option value="Secretaria Educação" @if($atendimento->ate_tipo == 'Secretaria Educação') selected @endif>Secretaria Educação</option>   
+                            <option value="Prefeitura" @if($atendimento->ate_tipo == 'Prefeitura') selected @endif>Prefeitura</option>   
                             <option value="Atendimento ao Pai" @if($atendimento->ate_tipo == 'Atendimento ao Pai') selected @endif>Atendimento ao Pai</option>  
                         @else
                             <option value="Matricula">Matrícula</option>  
                             <option value="Rematrícula">Rematrícula</option>
                             <option value="Ocorrência">Ocorrência</option>   
-                            <option value="Atendimento ao Pai">Atendimento ao Pai</option>  
+                            <option value="Secretaria Educação">Secretaria Educação</option>   
+                            <option value="Prefeitura">Prefeitura</option>   
+                            <option value="Atendimento ao Pai">Pai</option>  
                         @endif
                     </select>
                 </div>
@@ -74,11 +78,13 @@
                     <label for="ate_status">Status</label>
                     <select id="ate_status" name="ate_status" class="form-control select2">        
                         @if(isset($atendimento))                
-                            <option value="Ativo" @if($atendimento->ate_status == 'Ativo') selected @endif>Ativo</option>
-                            <option value="Resolvido" @if($atendimento->ate_status == 'Resolvido') selected @endif>Resolvido</option>      
+                            <option value="Pendente" @if($atendimento->ate_status == 'Pendente') selected @endif>Pendente</option>
+                            <option value="Andamento" @if($atendimento->ate_status == 'Andamento') selected @endif>Andamento</option>
+                            <option value="Finalizado" @if($atendimento->ate_status == 'Finalizado') selected @endif>Finalizado</option>      
                         @else    
-                            <option value="Ativo">Ativo</option>
-                            <option value="Resolvido">Resolvido</option>     
+                            <option value="Pendente">Pendente</option>
+                            <option value="Andamento">Andamento</option>     
+                            <option value="Finalizado">Finalizado</option>     
                         @endif           
                     </select>
                 </div>
