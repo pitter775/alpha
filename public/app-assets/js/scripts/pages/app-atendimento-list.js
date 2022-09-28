@@ -305,7 +305,7 @@ $(function() {
         if (e.keyCode == 13) {
             e.preventDefault();
             let texto = $('#com_texto').val();
-            let com_ate_id = $('#com_ate_id').val();
+            let com_ate_id = $('#com_ate_idd').val();
 
             console.log('texto',texto);
             console.log('com_ate_id',com_ate_id);

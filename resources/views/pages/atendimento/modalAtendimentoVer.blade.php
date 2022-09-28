@@ -27,7 +27,7 @@
                     @endif
                 </div>                
                 <textarea class="form-control" id="com_texto" name="com_texto" rows="1" placeholder="Escreva o comentário..."></textarea>
-                <input type="hidden" value="{{$ver->id ?? ''}}" name="com_ate_id" id="com_ate_id">
+                <input type="hidden" value="{{$ver->id ?? ''}}" name="com_ate_id" id="com_ate_idd">
             </div>
 
             <div class="divcoments">
