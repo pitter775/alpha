@@ -117,6 +117,10 @@ class AtentimentoController extends Controller
     public function altstatus(Request $request)
     {
         $mensagem = 'erro';
+        $ate_status = $request->input('com_ate_id');
+
+        dd($ate_status);
+
 
         $dados = Atendimento::find($request->input('com_ate_id'));
         $dados->ate_status = $request->input('ate_status');

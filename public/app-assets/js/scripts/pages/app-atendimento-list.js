@@ -255,14 +255,14 @@ $(function() {
     $(document).on('change', '#ate_status_ver', function() {
         
         let ate_status = $(this).val();  
-        let com_ate_id = $('#com_ate_id').val();
+        let idver = $(this).data('idver');
 
-        console.log(com_ate_id);
+        console.log(idver);
 
         $.ajax({
             type: "POST",
             url: '/atendimento/altstatus',
-            data: { "_token": $('meta[name="csrf-token"]').attr('content'), 'com_ate_id':com_ate_id, 'ate_status':ate_status },
+            data: { "_token": $('meta[name="csrf-token"]').attr('content'), 'com_ate_id':idver, 'ate_status':ate_status },
             success: function(data) {
                 if(data == 'ok'){
                     if(!modalativo) {
@@ -270,7 +270,7 @@ $(function() {
                         modalForm.modal('hide');
                     }else{  
                         console.log('abirir');
-                        abrirVer(com_ate_id);                                
+                        abrirVer(idver);                                
                     }
                     
                     toastr['success']('👋 Registro adicionado.', 'Sucesso!', {

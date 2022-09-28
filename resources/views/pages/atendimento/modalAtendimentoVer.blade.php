@@ -41,7 +41,7 @@
         <div class="col-md-3" style=" padding: 0; margin-right: -20px !important">
             <div class="media-body media-body2" style="margin-top: 0px; background-color: #f4f5f7;">
                 <div class="form-group">
-                    <select id="ate_status_ver" name="ate_status" class="form-control select2">                        
+                    <select id="ate_status_ver" data-idver = "{{$ver->id ?? ''}}" name="ate_status" class="form-control select2">                        
                         <option value="Ativo" @if($ver->ate_status == 'Ativo') selected @endif>Ativo</option>
                         <option value="Resolvido" @if($ver->ate_status == 'Resolvido') selected @endif>Resolvido</option>                              
                     </select>
