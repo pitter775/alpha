@@ -26,8 +26,8 @@
                         <img src="{{asset('arquivos').'/'.Auth::user()->use_foto}}" alt="avatar" height="38" width="38">
                     @endif
                 </div>                
-                <textarea class="form-control" id="com_texto" name="com_texto" rows="1" placeholder="Escreva o comentário..."></textarea>
-                <input type="hidden" value="{{$ver->id ?? ''}}" name="com_ate_id" id="com_ate_idd">
+                <textarea class="form-control" id="com_texto" name="com_texto" rows="1" data-idver = "{{$ver->id ?? ''}}" placeholder="Escreva o comentário..."></textarea>
+                
             </div>
 
             <div class="divcoments">

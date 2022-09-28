@@ -305,17 +305,17 @@ $(function() {
         if (e.keyCode == 13) {
             e.preventDefault();
             let texto = $('#com_texto').val();
-            let com_ate_id = $('#com_ate_idd').val();
+            let idver = $(this).data('idver');
 
             console.log('texto',texto);
-            console.log('com_ate_id',com_ate_id);
+            console.log('idver',idver);
             
             $.ajax({
                 type: "POST",
                 url: '/atendimento/cadastro_coment',
-                data: { "_token": $('meta[name="csrf-token"]').attr('content'), 'com_texto': texto, 'com_ate_id':com_ate_id},
-                success: function(retorno) {
-                    listcomentario(com_ate_id);     
+                data: { "_token": $('meta[name="csrf-token"]').attr('content'), 'com_texto': texto, 'com_ate_id':idver},
+                success: function() {
+                    listcomentario(idver);     
                     $('#com_texto').val('');            
                 }
             });
