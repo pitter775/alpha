@@ -4,6 +4,7 @@
         <span aria-hidden="true">&times;</span>
     </button>
 </div>
+
     <input type="hidden" value="" name="com_ate_id" id="com_ate_id">
     <div class="modal-body">    
         @csrf
@@ -33,10 +34,17 @@
                 <div class="form-group">
                     <label for="ate_tipo">Tipo de Atendimento</label>
                     <select id="ate_tipo" name="ate_tipo" class="form-control select2">
-                        <option value="Matricula" @if($atendimento->ate_telefone == 'Matricula') selected @endif>Matrícula</option>  
-                        <option value="Rematrícula" @if($atendimento->ate_telefone == 'Rematrícula') selected @endif>Rematrícula</option>
-                        <option value="Ocorrência" @if($atendimento->ate_telefone == 'Ocorrência') selected @endif>Ocorrência</option>   
-                        <option value="Atendimento ao Pai" @if($atendimento->ate_telefone == 'Atendimento ao Pai') selected @endif>Atendimento ao Pai</option>  
+                        @if(isset($atendimento))
+                            <option value="Matricula" @if($atendimento->ate_telefone == 'Matricula') selected @endif>Matrícula</option>  
+                            <option value="Rematrícula" @if($atendimento->ate_telefone == 'Rematrícula') selected @endif>Rematrícula</option>
+                            <option value="Ocorrência" @if($atendimento->ate_telefone == 'Ocorrência') selected @endif>Ocorrência</option>   
+                            <option value="Atendimento ao Pai" @if($atendimento->ate_telefone == 'Atendimento ao Pai') selected @endif>Atendimento ao Pai</option>  
+                        @else
+                            <option value="Matricula">Matrícula</option>  
+                            <option value="Rematrícula">Rematrícula</option>
+                            <option value="Ocorrência">Ocorrência</option>   
+                            <option value="Atendimento ao Pai">Atendimento ao Pai</option>  
+                        @endif
                     </select>
                 </div>
             </div>  
@@ -45,7 +53,11 @@
                     <label for="ate_users_id">Referente</label>
                     <select id="ate_users_id" name="ate_users_id" class="form-control select2">
                             @foreach ($usuarios as $user)
-                                <option value="{{$user->id}}" @if($atendimento->ate_users_id == $user->id) selected @endif >{{$user->name}}</option>
+                                @if(isset($atendimento))
+                                    <option value="{{$user->id}}" @if($atendimento->ate_users_id == $user->id) selected @endif >{{$user->name}}</option>
+                                @else
+                                    <option value="{{$user->id}}">{{$user->name}}</option>
+                                @endif
                             @endforeach
                     </select>
                 </div>
@@ -60,9 +72,14 @@
             <div class="col-md-4">
                 <div class="form-group">
                     <label for="ate_status">Status</label>
-                    <select id="ate_status" name="ate_status" class="form-control select2">                        
-                        <option value="Ativo" @if($atendimento->ate_status == 'Ativo') selected @endif>Ativo</option>
-                        <option value="Resolvido" @if($atendimento->ate_status == 'Resolvido') selected @endif>Resolvido</option>                        
+                    <select id="ate_status" name="ate_status" class="form-control select2">        
+                        @if(isset($atendimento))                
+                            <option value="Ativo" @if($atendimento->ate_status == 'Ativo') selected @endif>Ativo</option>
+                            <option value="Resolvido" @if($atendimento->ate_status == 'Resolvido') selected @endif>Resolvido</option>      
+                        @else    
+                            <option value="Ativo">Ativo</option>
+                            <option value="Resolvido">Resolvido</option>     
+                        @endif           
                     </select>
                 </div>
             </div>
