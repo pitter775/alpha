@@ -10,8 +10,8 @@
             @endif        
         </div>
         <div class="media-body ">
-            <b>{{$com->name}}</b>  <small> {{date( 'd/m/Y h:i', strtotime($com->created_at ?? ''))}}</small>
-            <p class="mb-0">{{$com->com_texto ?? ''}}</p>
+            <b>{{$com->name}}</b> {{$com->com_texto ?? ''}}   <br>
+            <small> {{date( 'd/m/Y h:i', strtotime($com->created_at ?? ''))}}</small>
         </div>
     </div>
 @endforeach
