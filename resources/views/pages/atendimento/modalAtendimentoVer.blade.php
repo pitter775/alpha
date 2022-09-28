@@ -26,7 +26,7 @@
                         <img src="{{asset('arquivos').'/'.Auth::user()->use_foto}}" alt="avatar" height="38" width="38">
                     @endif
                 </div>                
-                <textarea class="form-control" id="com_texto" name="com_texto" rows="2" placeholder="Escreva o comentário..."></textarea>
+                <textarea class="form-control" id="com_texto" name="com_texto" rows="1" placeholder="Escreva o comentário..."></textarea>
                 <input type="hidden" value="{{$ver->id ?? ''}}" name="com_ate_id" id="com_ate_id">
             </div>
 
@@ -41,9 +41,9 @@
         <div class="col-md-3" style=" padding: 0; margin-right: -20px !important">
             <div class="media-body media-body2" style="margin-top: 0px; background-color: #f4f5f7;">
                 <div class="form-group">
-                    <select id="ate_status" name="ate_status" class="form-control select2">                        
-                        <option value="Ativo">Ativo</option>
-                        <option value="Resolvido">Resolvido</option>                        
+                    <select id="ate_status_ver" name="ate_status" class="form-control select2">                        
+                        <option value="Ativo" @if($ver->ate_status == 'Ativo') selected @endif>Ativo</option>
+                        <option value="Resolvido" @if($ver->ate_status == 'Resolvido') selected @endif>Resolvido</option>                              
                     </select>
                 </div>
             </div>
@@ -71,8 +71,9 @@
 
     
     <div class="modal-footer">
-        <button type="submit" class="btn btn-primary">Salvar</button>
-        <button type="reset" class="btn btn-outline-secondary waves-effect" data-dismiss="modal"> </i> Cancelar</button>
+        {{-- <button type="submit" class="btn btn-primary">Salvar</button> --}}
+        <button type="button" class="btn btn-outline-warning waves-effect btneditar" data-id="{{$ver->id ?? ''}}" > </i> Editar</button>
+        <button type="reset" class="btn btn-outline-secondary waves-effect" data-dismiss="modal"> </i> Fechar</button>
     </div>
 
 <script src="../../../app-assets/js/scripts/forms/form-select2.js"></script>

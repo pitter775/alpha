@@ -10,6 +10,7 @@
             @endif        
         </div>
         <div class="media-body ">
+            {{$com->name}}
             <p class="mb-0">{{$com->com_texto}}</p>
         </div>
     </div>

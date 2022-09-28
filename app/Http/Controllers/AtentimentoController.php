@@ -56,12 +56,38 @@ class AtentimentoController extends Controller
 
         return view('pages.atendimento.modalAtendimentoVer', compact('ver'));
     }
+    public function editar($id)
+    {
+        $atendimento  = DB::table('atendimentos AS c')
+        ->leftjoin('users', 'c.ate_users_id', 'users.id')
+        ->select('*', 'c.id AS id', 'c.created_at as created_at')
+        ->where('c.id', $id)
+        ->first();
+
+       
+
+        $usuarios = User::where('use_perfil', 11)->orderBy('name', 'asc')->get();
+
+        // $coment  = DB::table('comentarios AS c')
+        // ->leftjoin('users', 'c.com_users_id', 'users.id')
+        // ->select('*', 'c.id AS id', 'c.created_at as created_at')
+        // ->where('c.id', $id)
+        // ->get();
+
+
+        return view('pages.atendimento.modalAtendimento', compact('atendimento', 'usuarios'));
+    }
 
 
     public function cadastro(Request $request)
     {
         $mensagem = 'erro';
-        $dados = new Atendimento();
+        $com_ate_id = $request->input('com_ate_id');
+        if ($com_ate_id == '') {
+            $dados = new Atendimento();
+        }else{
+            $dados = Atendimento::find($com_ate_id);
+        }
         $dados->ate_nome = $request->input('ate_nome');
         $dados->ate_email = $request->input('ate_email');
         $dados->ate_telefone = $request->input('ate_telefone');
@@ -83,6 +109,17 @@ class AtentimentoController extends Controller
         $dados->com_ate_id = $request->input('com_ate_id');
         $dados->com_texto = $request->input('com_texto');
         $dados->com_users_id = Auth::user()->id;
+        $dados->save();
+        $mensagem = 'ok';
+        return $mensagem; 
+    }
+
+    public function altstatus(Request $request)
+    {
+        $mensagem = 'erro';
+
+        $dados = Atendimento::find($request->input('com_ate_id'));
+        $dados->ate_status = $request->input('ate_status');
         $dados->save();
         $mensagem = 'ok';
         return $mensagem; 

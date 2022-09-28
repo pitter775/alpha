@@ -133,7 +133,9 @@ Route::group(['middleware' => 'acesso'], function () {
 
     Route::get('/atendimento', [App\Http\Controllers\AtentimentoController::class, 'index']);
     Route::get('/atendimento/novo', [App\Http\Controllers\AtentimentoController::class, 'novo']);
+    Route::post('/atendimento/altstatus', [App\Http\Controllers\AtentimentoController::class, 'altstatus']);
     Route::get('/atendimento/ver/{id}', [App\Http\Controllers\AtentimentoController::class, 'ver']);
+    Route::get('/atendimento/edit/{id}', [App\Http\Controllers\AtentimentoController::class, 'editar']);
     Route::post('/atendimento/cadastro', [App\Http\Controllers\AtentimentoController::class, 'cadastro']);
     Route::post('/atendimento/cadastro_coment', [App\Http\Controllers\AtentimentoController::class, 'cadastro_coment']);
     Route::get('/atendimento/all', [App\Http\Controllers\AtentimentoController::class, 'all']);

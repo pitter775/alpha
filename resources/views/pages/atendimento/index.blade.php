@@ -44,7 +44,7 @@
 
     <div class="content-wrapper" data-aos=fade-left data-aos-delay=0>
 
-        <div class="content-header row">
+        <div class="content-header row" style="margin-left: 0px">
             <h4>Gerenciar Atendimento</h4>
         </div>
         <div class="content-body">

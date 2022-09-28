@@ -12,6 +12,7 @@ $(function() {
     var newForm = $('.add-new-cardapio'); //formula 
     var modalForm = $('#modalLargo'); //formula 
     var table = false;
+    var modalativo = false;
 
     listCardapio();
 
@@ -139,7 +140,7 @@ $(function() {
             });
             setTimeout(function() {
                 $('div.head-label').html('<h6 class="mb-0">Listando todos o Atendimentos</h6>');
-                console.log('foi');
+      
             }, 1000);
             
         }
@@ -158,21 +159,27 @@ $(function() {
         });
 
         newForm.on('submit', function(e) {
+
             var isValid = newForm.valid();
             e.preventDefault();
-            console.log('teste');
-
             if (isValid) {
                 console.log('valido');
                 let serealize = newForm.serializeArray();
-                console.log(serealize);
+      
                 $.ajax({
                     type: "POST",
                     url: '/atendimento/cadastro',
                     data: serealize,
                     success: function(data) {
                         if(data == 'ok'){
-                            modalForm.modal('hide');
+                            if(!modalativo) {
+                                console.log('hide');
+                                modalForm.modal('hide');
+                            }else{  
+                                console.log('abirir');
+                                abrirVer($('#com_ate_id').val());                                
+                            }
+                            
                             toastr['success']('👋 Registro adicionado.', 'Sucesso!', {
                                 closeButton: true,
                                 tapToDismiss: false,
@@ -187,14 +194,16 @@ $(function() {
                                 rtl: isRtl
                             });
                         }
-                        //recarregar tabela
                     }
                 });
             }
+
         });
     }
 
     $(document).on('click', '.btnovoatendimento', function() {
+        $('#novoAtendimento').html('');
+        modalativo = false; 
         $.ajax({
             type: "GET",
             url: '/atendimento/novo',
@@ -209,22 +218,87 @@ $(function() {
         });
     });
 
-    
-    $(document).on('click', '.ver_atendimento', function() {
-        let id = $(this).data('id');        
+
+    function abrirEditar(id){
+        $('#novoAtendimento').html('');     
+        $.ajax({
+            type: "GET",
+            url: '/atendimento/edit/'+id,
+            data: { "_token": $('meta[name="csrf-token"]').attr('content') },
+            success: function(retorno) {      
+                $('#modal-title').html('Novo Atendimento');
+                $('#novoAtendimento').html(retorno);
+                $('#com_ate_id').val(id);
+                $('.novomod').show(); 
+                $('.vermod').hide(); 
+            }
+        });
+    }
+
+    function abrirVer(id){
+        console.log(id);
+        modalativo = true; 
         $.ajax({
             type: "GET",
             url: '/atendimento/ver/'+id,
             data: { "_token": $('meta[name="csrf-token"]').attr('content') },
             success: function(retorno) {                
                 $('#verAtendimento').html(retorno);
-                listcomentario(id); 
-                $('#modal-title').html('Novo Atendimento');
+                listcomentario(id);                
                 $('.vermod').show(); 
                 $('.novomod').hide(); 
             }
         });
+    }
+
+    
+    $(document).on('change', '#ate_status_ver', function() {
         
+        let ate_status = $(this).val();  
+        let com_ate_id = $('#com_ate_id').val();
+
+        console.log(com_ate_id);
+
+        $.ajax({
+            type: "POST",
+            url: '/atendimento/altstatus',
+            data: { "_token": $('meta[name="csrf-token"]').attr('content'), 'com_ate_id':com_ate_id, 'ate_status':ate_status },
+            success: function(data) {
+                if(data == 'ok'){
+                    if(!modalativo) {
+                        console.log('hide');
+                        modalForm.modal('hide');
+                    }else{  
+                        console.log('abirir');
+                        abrirVer(com_ate_id);                                
+                    }
+                    
+                    toastr['success']('👋 Registro adicionado.', 'Sucesso!', {
+                        closeButton: true,
+                        tapToDismiss: false,
+                        rtl: isRtl
+                    });
+                    listCardapio();
+                }else{
+                    //mensagem
+                    toastr['danger']('Não foi possivel registrar esse atendimento.', 'Erro!', {
+                        closeButton: true,
+                        tapToDismiss: false,
+                        rtl: isRtl
+                    });
+                }
+            }
+        });       
+    });
+
+    $(document).on('click', '.btneditar', function() {
+        let id = $(this).data('id');  
+        abrirEditar(id);        
+    });
+
+    $(document).on('click', '.ver_atendimento', function() {
+        let id = $(this).data('id'); 
+        abrirVer(id)
     });
 
     $(document).on('keyup', '#com_texto', function(e){  
@@ -253,7 +327,7 @@ $(function() {
             url: '/atendimento/comentario/list/'+id,
             data: { "_token": $('meta[name="csrf-token"]').attr('content')},
             success: function(retorno) {
-                console.log(retorno);
+                
                 $('.divcoments').html(retorno);                   
             }
         });
