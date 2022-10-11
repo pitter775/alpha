@@ -16,10 +16,16 @@ $(function() {
     var tableSeries = false;
     var tableClasse = false;
 
+    var tdiasuteis = 1;
+''
     var data = new Date();
     var mesatual = data.getMonth();
     var mesatual = mesatual + 1;
     var dataFormatada = data.toLocaleDateString('pt-BR', { timeZone: 'UTC' });
+    dataFormatada = dataFormatada.split('/').join('-');
+
+    console.log(dataFormatada);
+
     $('#dt_final').val(dataFormatada);
     $('#dt_final').trigger('change');
 
@@ -29,6 +35,8 @@ $(function() {
     series(dt_inicial, dt_final);
     var serieativo = $("#mat_series_id option:selected").val();
     $('.divporClasse').hide();
+
+    var $browserStateChartPrimary = document.querySelector('#browser-state-chart-primary');
 
 
 
@@ -92,12 +100,21 @@ $(function() {
                             return stringNumber(dados.presente);
                         }
                     },
+                    
                     {
                         data: function(dados) {
                             return stringNumber(dados.total);
                         }
                     },
-
+                    {
+                        data: function(dados) {
+                            let x100 = dados.presente * 100;
+                            let porcent = x100/dados.totseries;
+                            
+                            let tot = porcent/tdiasuteis;
+                            return tot.toFixed(1);
+                        }
+                    },
                     { data: '' }
                 ],
                 columnDefs: [{
@@ -110,11 +127,11 @@ $(function() {
                         className: 'control',
                         orderable: false,
                         responsivePriority: 2,
-                        targets: 9
+                        targets: 10
                     },
                     {
                         // Actions
-                        targets: 9,
+                        targets: 10,
                         title: 'Ação',
                         orderable: false,
                         render: function(data, type, full, meta) {
@@ -134,8 +151,8 @@ $(function() {
                     [2, 'desc']
                 ],
                 dom: '<"card-header border-bottom p-1"<"head-label"><"dt-action-buttons text-right"B>><"d-flex justify-content-between align-items-center mx-0 row"<"col-sm-12 col-md-6"l><"col-sm-12 col-md-6"f>>t<"d-flex justify-content-between mx-0 row"<"col-sm-12 col-md-6"i><"col-sm-12 col-md-6"p>>',
-                displayLength: 10,
-                lengthMenu: [10, 25, 50, 75, 100],
+                displayLength: 50,
+                lengthMenu: [50, 75, 100],
                 language: {
                     paginate: {
                         // remove previous & next text from pagination
@@ -152,25 +169,25 @@ $(function() {
                             extend: 'print',
                             text: feather.icons['printer'].toSvg({ class: 'font-small-4 mr-50' }) + 'Print',
                             className: 'dropdown-item',
-                            exportOptions: { columns: [1, 3, 4, 5, 6, 7, 8] }
+                            exportOptions: { columns: [1, 3, 4, 5, 6, 7, 8, 9] }
                         },
                         {
                             extend: 'csv',
                             text: feather.icons['file-text'].toSvg({ class: 'font-small-4 mr-50' }) + 'Csv',
                             className: 'dropdown-item',
-                            exportOptions: { columns: [1, 3, 4, 5, 6, 7, 8] }
+                            exportOptions: { columns: [1, 3, 4, 5, 6, 7, 8, 9] }
                         },
                         {
                             extend: 'excel',
                             text: feather.icons['file'].toSvg({ class: 'font-small-4 mr-50' }) + 'Excel',
                             className: 'dropdown-item',
-                            exportOptions: { columns: [1, 3, 4, 5, 6, 7, 8] }
+                            exportOptions: { columns: [1, 3, 4, 5, 6, 7, 8, 9] }
                         },
                         {
                             extend: 'copy',
                             text: feather.icons['copy'].toSvg({ class: 'font-small-4 mr-50' }) + 'Copy',
                             className: 'dropdown-item',
-                            exportOptions: { columns: [1, 3, 4, 5, 6, 7, 8] }
+                            exportOptions: { columns: [1, 3, 4, 5, 6, 7, 8, 9] }
                         }
                     ],
                     init: function(api, node, config) {
@@ -191,10 +208,14 @@ $(function() {
                     }
                 },
             });
-            $('div.head-label').html('<h6 class="mb-0">Listando todas as cardapios</h6>');
+            setTimeout(function() {
+                $('div.head-label').html('<h6 class="mb-0">Listando as Salas</h6>');
+      
+            }, 1000);
         }
         tableSeries = groupingTable;
     }
+
 
     function listClasseTab(datajson) {
         //datajson = JSON.stringify(datajson);
@@ -340,16 +361,50 @@ $(function() {
     $(document).on('change', '#dt_final', function() {
         dt_inicial = $('#dt_inicial').val();
         dt_final = $('#dt_final').val();
+
+        let data_brasileira2 = dt_inicial;
+        let data_americana2 = data_brasileira2.split('-').reverse().join('-');
+
+        let data_brasileira = dt_final;
+        let data_americana = data_brasileira.split('-').reverse().join('-');
+
+        tdiasuteis = getnumDiasUteis(data_americana2, data_americana);
+
+
         totais(dt_inicial, dt_final);
         series(dt_inicial, dt_final);
         $('.divporClasse').hide();
+
+        console.log(getnumDiasUteis('2021-01-01', '2021-12-31'));
     });
     $(document).on('change', '#dt_inicial', function() {
         dt_inicial = $('#dt_inicial').val();
         dt_final = $('#dt_final').val();
+
+        let data_brasileira2 = dt_inicial;
+        let data_americana2 = data_brasileira2.split('-').reverse().join('-');
+
+        let data_brasileira = dt_final;
+        let data_americana = data_brasileira.split('-').reverse().join('-');
+
+        tdiasuteis = getnumDiasUteis(data_americana2, data_americana);
+
+
         totais(dt_inicial, dt_final);
         series(dt_inicial, dt_final);
         $('.divporClasse').hide();
+
+ 
+
+       
+
+        
+
+
+
+
+        //console.log(getnumDiasUteis('04-10-2022', '2022-12-31'));
+   
     });
     $(document).on('click', '#open_serie', function() {
         $('.divporClasse').show();
@@ -367,7 +422,7 @@ $(function() {
             },
             success: function(data) {
                 console.log('listando...');
-                console.log(data);
+                // console.log(data);
                 listClasseTab(data);
 
             }
@@ -394,8 +449,6 @@ $(function() {
                 'dt_inicial': dt_inicial
             },
             success: function(data) {
-                console.log(data.alunos);
-
                 $('#totalpresentes').html(data.presentes[0]['total']);
                 $('#totalfaltas').html(data.faltas[0]['total']);
                 $('#totalOcorrencias').html(data.total[0]['total']);
@@ -418,7 +471,7 @@ $(function() {
             },
             success: function(data) {
                 console.log('listando...');
-                console.log(data);
+            
                 listSeriesTab(data);
 
             }
@@ -445,7 +498,6 @@ $(function() {
             }
         });
     }
-
 
 
     function separardadosgrafico(element) {
@@ -524,5 +576,88 @@ $(function() {
         selector: '[data-toggle="tooltip"]',
         container: 'body'
     });
+
+
+    function DataAdicionar(data_informada, quantidade) {
+        var fator = 24 * 60 * 60 * 1000;
+        var nova_data = new Date(data_informada.getTime() + quantidade * fator);
+        nova_data.setHours(0,0,0,0);
+        return nova_data;
+    }
+      
+    function DataSubtrair(data_informada, quantidade) {
+        var fator = 24 * 60 * 60 * 1000;
+        var nova_data = new Date(data_informada.getTime() - quantidade * fator);
+        nova_data.setHours(0,0,0,0);
+        return nova_data;
+    }
+    function FeriadosFixos(ano){
+        var resultados = [];
+        //Array de datas no formato mes/dia.
+        //OBS: O primeiro mes é 0 e o último mes é 11
+        var datas = [[0,  1], [3,  21],[4,  1], [8,  7], [9,  12], [10,  2], [10, 15], [11, 25]];
+        for (var z = 0; z < datas.length; z++){
+            resultados.push(new Date(ano, datas[z][0],  datas[z][1]).getTime());
+        }
+        return resultados;
+    }
+      
+      function Pascoa(Y) {
+          var C = Math.floor(Y/100);
+          var N = Y - 19*Math.floor(Y/19);
+          var K = Math.floor((C - 17)/25);
+          var I = C - Math.floor(C/4) - Math.floor((C - K)/3) + 19*N + 15;
+          I = I - 30*Math.floor((I/30));
+          I = I - Math.floor(I/28)*(1 - Math.floor(I/28)*Math.floor(29/(I + 1))*Math.floor((21 - N)/11));
+          var J = Y + Math.floor(Y/4) + I + 2 - C + Math.floor(C/4);
+          J = J - 7*Math.floor(J/7);
+          var L = I - J;
+          var M = 3 + Math.floor((L + 40)/44);
+          var D = L + 28 - 31*Math.floor(M/4);
+          return new Date(Y, M, D);
+      }
+      
+      function getnumDiasUteis(startDate, dataFinal) {
+          var numDiasUteis = 0;
+        var arr1 = startDate.split('-');
+        var arr2 = dataFinal.split('-');
+        var dataAtual = new Date(arr1[0],arr1[1]-1, arr1[2]);
+        dataFinal = new Date(arr2[0],arr2[1]-1, arr2[2]);
+        var ano_inicial = dataAtual.getFullYear();
+        var ano_final = dataFinal.getFullYear();
+        var ano = ano_inicial;
+        var feriados = [];
+        for (var x = ano; x <= ano_final; x++){
+            //OBS: O primeiro mes é 0 e o último mes é 11
+            //Feriados fixos.
+            feriados = feriados.concat(FeriadosFixos(ano));
+            var data_pascoa = Pascoa(ano); 
+            //Feriados variaveis de acordo com a data da Pascoa
+            feriados.push(data_pascoa.getTime());
+            feriados.push(DataAdicionar(data_pascoa, 60).getTime());
+            feriados.push(DataSubtrair(data_pascoa, 48).getTime());
+            feriados.push(DataSubtrair(data_pascoa, 47).getTime());
+                feriados.push(DataSubtrair(data_pascoa, 2).getTime());
+                ano++;
+        } 
+
+        while (dataAtual <= dataFinal) {
+            if (dataAtual.getDay() !== 0 && dataAtual.getDay() !== 6) {
+                if (!feriados.includes(dataAtual.getTime())){
+                    numDiasUteis++;
+                }
+            }
+            dataAtual = DataAdicionar(dataAtual,1);
+        }
+        return numDiasUteis;
+    }
+
+
+ 
+    console.log('dias uteis');
+
+ 
+
+
 
 });

@@ -109,6 +109,7 @@ Route::group(['middleware' => 'acesso'], function () {
     Route::get('/presenca/series', [App\Http\Controllers\PresencaController::class, 'series']);
     Route::get('/presenca/seriesid', [App\Http\Controllers\PresencaController::class, 'seriesid']);
     Route::get('/presenca/getDataGrafico', [App\Http\Controllers\PresencaController::class, 'getDataGrafico']);
+    Route::get('/presenca/getTotseie', [App\Http\Controllers\PresencaController::class, 'getTotseie']);
 
 
     Route::get('/cardapio', [App\Http\Controllers\CardapioController::class, 'index']);

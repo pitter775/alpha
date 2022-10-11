@@ -154,7 +154,14 @@ class PresencaController extends Controller
         up.name as professora, 
         COUNT(*) as total, 
         SUM(CASE WHEN p.pres_tipo =  1 THEN 1 ELSE 0 END) AS presente,
-        SUM(CASE WHEN p.pres_tipo =  2 THEN 1 ELSE 0 END) AS falta';
+        SUM(CASE WHEN p.pres_tipo =  2 THEN 1 ELSE 0 END) AS falta,
+
+        (SELECT COUNT(*) FROM users as u 
+            LEFT JOIN matriculas as m ON u.id = m.mat_users_id
+            WHERE u.use_perfil = 11 
+            AND u.use_status = 1
+            AND m.mat_series_id = p.pres_serie ) AS totseries';
+
         $groupBy = 'GROUP BY series.ser_apelido'; 
         $orderBy = ''; 
         $filtro = ''; 
@@ -175,6 +182,21 @@ class PresencaController extends Controller
 
         $tabela = $this->filtros($request, $colunas, $groupBy, $orderBy, $filtro);  
         return $tabela;
+    }
+    public function getTotseie(Request $request){
+
+
+        $users  = DB::table('users AS u')
+            ->select('u.id AS id')
+            ->leftjoin('matriculas as m', 'u.id', 'm.mat_users_id')  
+            ->where('u.use_perfil', 11)
+            ->where('u.use_status', 1)
+            ->where('m.mat_series_id', $request->serie)
+            ->count();
+
+
+        return $users;
+    
     }
     public function getDataGrafico(Request $request){
         $serie = '';

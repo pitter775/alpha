@@ -107,7 +107,8 @@
                                                     <th>Dt Final</th>
                                                     <th>Falta</th>
                                                     <th>Presença</th>
-                                                    <th>Total</th>                                      
+                                                    <th>Total</th> 
+                                                    <th>%</th>
                                                     <th></th>
                                                 </tr>
                                             </thead>
@@ -272,4 +273,5 @@
         <script src="../../../app-assets/vendors/js/pickers/pickadate/legacy.js"></script>
         <script src="../../../app-assets/vendors/js/pickers/flatpickr/flatpickr.min.js"></script>
         <script src="../../../app-assets/vendors/js/charts/apexcharts.min.js"></script>
+        
     @endpush
