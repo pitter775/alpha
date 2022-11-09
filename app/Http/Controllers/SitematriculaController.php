@@ -189,7 +189,7 @@ class SitematriculaController extends Controller
                 } else {
                     $dados->use_dt_nascimento = null;
                 }                
-                $dados->use_rg = $request->input('rg');
+                $dados->use_rg = $request->input('rg');                
                 $dados->use_cpf = $request->input('cpf');
                 $dados->use_sexo = $request->input('use_sexo');
                 $dados->use_cor_pele = $request->input('use_cor_pele');

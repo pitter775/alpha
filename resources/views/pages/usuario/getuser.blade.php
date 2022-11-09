@@ -40,6 +40,12 @@ switch ($user->use_perfil) {
                <span class="badge bg-light-danger">Aguardando Vaga</span>
                @endif
             </div>
+            <div class="user-info text-center">
+            
+               R.A 
+               <span class="me-25"> {{$user->use_ra}}</span>
+            
+            </div>
 
             <div class="row">
                <div class="col-md-12" style="padding-top:20px">

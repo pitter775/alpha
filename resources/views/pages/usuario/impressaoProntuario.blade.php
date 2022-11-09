@@ -17,7 +17,7 @@
     .col-right{float: right;}
     .aling-right{ text-align: right}
     .font-pequena { font-size: 12px}
-    .prontuario{  font-size: 20px; margin-top: 0px; }
+    .prontuario{  font-size: 20px; margin-top: 0px; margin-bottom: 5px }
     .headescola{ font-size: 10px; text-align: right; float: right;}
     .headescola p{line-height: 15px;}
     .imgaluno{ margin-top: -5px; width: 130px; height: 130px; background-image: url("/arquivos/{{$user->use_foto}}");
@@ -43,6 +43,7 @@
                     <div class="row" style="margin-bottom:40px">
                         <div class="col-left">
                             <p class="prontuario">PRONTUÁRIO ANO 2022</p>
+                            <b>R.A:</b> {{$user->use_ra ?? ''}} 
                             {{-- <p style="margin-top: -20px"><b>RA </b> 3589547</p> --}}
                         </div>
                         <div class="headescola" style="width: 400px; margin-top: -10px;">

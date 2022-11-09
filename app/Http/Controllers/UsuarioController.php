@@ -221,6 +221,7 @@ class UsuarioController extends Controller
             $mensagem['tipo-geral'] = 'novo';
             $dados->name = $request->input('fullname');
             $dados->email = $request->input('email');
+            $dados->use_ra = $request->input('use_ra');
             $dados->use_perfil = $request->input('use_perfil');
             $dados->use_status = $request->input('use_status');
         } else {
@@ -269,8 +270,10 @@ class UsuarioController extends Controller
                 $mensagem['pegando1'] = 'nome e email'; 
                 $dados->name = $request->input('fullname');
                 $dados->email = $request->input('email');
+                $dados->use_ra = $request->input('use_ra');
                 $dados->use_status = $request->input('use_status');
                 $perfil = $request->input('use_perfil');
+                $dados->use_ra = $request->input('use_ra');
                 $password = $request->input('senha');
                 if (isset($password)) {
                     if ($password !== '') {

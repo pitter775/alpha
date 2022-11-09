@@ -27,6 +27,12 @@
          </div>
       </div>
    </div>
+   <div class="col-md-4" style="margin-bottom: 15px;">
+      <label for="use_ra">R.A.</label>
+      <div class="input-group input-group-merge">         
+         <input id="use_ra" type="text" class="form-control" value="{{$user->use_ra}}" name="use_ra" />
+      </div>
+   </div>
 
 
    <div class="col-md-7">
