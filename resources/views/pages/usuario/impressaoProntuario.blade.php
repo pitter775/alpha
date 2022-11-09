@@ -130,7 +130,16 @@
                     $data = Carbon::now();
                     echo $data->formatLocalized('%A %d %B %Y');
                     ?></p>
-                    <p style="margin-top: 70px"> Ass. ___________________________________________________________</p>
+
+                    <div style="width: 100%; margin-top: 70px; ">
+                        <div style="width: 50%; float:left; text-align: left !important; ">
+                            <p> Diretora: ________________________________</p>
+                        </div>
+                        <div style="width: 50%; float:right">
+                            <p> Pai: ____________________________________</p>
+                        </div>
+                    </div>
+                    
                 </div>
                 
     

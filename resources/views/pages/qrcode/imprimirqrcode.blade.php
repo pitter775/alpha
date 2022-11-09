@@ -9,6 +9,7 @@
         .col-left{float: left;}
         .col-right{float: right;}
         .aling-right{ text-align: right}
+        .aling-left{ text-align: left}
         .font-pequena { font-size: 12px}
         .prontuario{  font-size: 20px; margin-top: 0px; }
         .headescola{ font-size: 10px; text-align: right; float: right;}
