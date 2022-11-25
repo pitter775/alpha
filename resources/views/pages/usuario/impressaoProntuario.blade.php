@@ -42,7 +42,7 @@
                 <head >
                     <div class="row" style="margin-bottom:40px">
                         <div class="col-left">
-                            <p class="prontuario">PRONTUÁRIO ANO 2022</p>
+                            <p class="prontuario">PRONTUÁRIO ANO ____</p>
                             <b>R.A:</b> {{$user->use_ra ?? ''}} 
                             {{-- <p style="margin-top: -20px"><b>RA </b> 3589547</p> --}}
                         </div>
@@ -65,7 +65,7 @@
                         <b>Sexo:</b> {{$user->use_sexo ?? ''}}   <br>
                         <b>Raça / Cor definidas pelo IBGE:</b>{{$user->use_cor_pele ?? ''}}  <br>
                         ______________________________________________________________________________
-                        <b>Tipo:</b> @if($user->mat_status == 1) Matriculado @else Inativo @endif <span style=" margin: 0 10px;">-</span>
+                        <b>@if($user->mat_status == 1) Matriculado @else Inativo @endif <span style=" margin: 0 10px;">-</span></b>
                         <b>Professora:</b> {{$situacao->name_prof}}  <span style=" margin: 0 10px;">-</span>
                         <b>Serie:</b> {{$situacao->ser_nome}} - {{$situacao->ser_periodo}} - {{$situacao->ser_apelido}}  
                     </p>           
