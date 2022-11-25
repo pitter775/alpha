@@ -112,7 +112,8 @@
                         
                         {{$mov->alt_tipo ?? ''}} <span style=" margin: 0 5px;"> </span>  
                         {{date( 'd/m/Y' , strtotime($mov->alt_data )) ?? '' }} <span style=" margin: 0 5px;"> </span>
-                        {{$mov->ser_nome ?? ''}}   {{$mov->ser_periodo ?? ''}}  {{$mov->ser_apelido ?? ''}} <span style=" margin: 0 5px;"> </span> <br>
+                        {{-- {{$mov->ser_nome ?? ''}}   {{$mov->ser_periodo ?? ''}}  {{$mov->ser_apelido ?? ''}} <span style=" margin: 0 5px;"> </span> <br> --}}
+                        {{$mov->ser_nome ?? ''}}   {{$mov->ser_periodo ?? ''}} <span style=" margin: 0 5px;"> </span> <br>
                   
                 
                     @endforeach
