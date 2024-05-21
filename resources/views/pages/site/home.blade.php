@@ -119,7 +119,7 @@
                 <h4>Histórico da Instituição</h4>
                 <p>No início do ano 2000, no distrito do Jaçanã/Tremembé, Zona Norte da capital Paulista, quando um grupo de jovens empreendedores sociais se reuniu para discutirr maneiras de atuar de forma socialmente responsável na comunidade e a partir dai poder realizar ações e movimentos de transformação social.</p>
 
-                <p>No ano de 2004, promoveram em parceria com a Subprefeitura do Jaçanã/Tremembé para realização da “1ª Feira Cultural do Jaçanã”, que mobilizou cerca de 15 mil pessoas, com o apoio da Secretaria Estadual de Cultura, do SESC Santana, da Sabesp, do CIC NORTE – Centro de Integração da Cidadania, entre outros.</p>
+                <p>No ano de 2004, promoveram em parceria com a Subprefeitura do Jaçanã/Tremembé para realização da “1ª Feira Cultural do Jaçanã”, que mobilizou cerca de 15 mil pessoas, com o apoio da Secretaria Estadual de Cultura, do SESC Santana, da Sabesp, do CIC NORTE – Centro de Integração da Cidadania, entre outros</p>
 
                 <p>Assim, oficialmente, em 15 de fevereiro de 2006 a A.T.O.- Associação Trem das Onze nasceu e quase um ano depois, em 05 de fevereiro de 2007, recebeu o “Projeto São Paulo é uma Escola” da Prefeitura Municipal de São Paulo, para ser desenvolvido nas Diretorias Regionais de Educação de Jaçanã/Tremembé, de São Mateus e do Ipiranga. Com centenas de oficinas culturais, esportivas e ambientais desenvolvidas; mais de 10.000 crianças foram atendidas. A partir daí avançou nas áreas de atuação para atendimento a primeira infância e em outros projetos que impactaram a vida de centenas de crianças e jovens.</p>
         
