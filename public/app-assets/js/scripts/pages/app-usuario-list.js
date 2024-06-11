@@ -362,6 +362,7 @@ $(function() {
                     url: '/usuario/cadastro',
                     data: serealize,
                     success: function(data) {
+                        console.log(data);
                         if (data['tipo-geral'] == 'novo') {
                             window.location.href = "/usuario/detalhes/" + data['id-geral'];
                         }

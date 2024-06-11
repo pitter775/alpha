@@ -125,6 +125,8 @@ class UsuarioController extends Controller
     }
     public function observacoes($id)
     {
+        // dd('teste');
+
         $users  = DB::table('observacaos AS u')
         ->select('*', 'u.id AS id', (DB::raw("(SELECT users.name FROM users WHERE u.obs_users_id = users.id) as criador")), 
                                     (DB::raw("(SELECT users.name FROM users WHERE u.obs_aluno_id = users.id) as aluno")))
@@ -204,7 +206,7 @@ class UsuarioController extends Controller
             ->where('u.id', $id)
             ->first();
 
-            // dd($user);
+        //  dd($situacao);
         return json_encode($situacao);
     }
     public function cadastro(Request $request)

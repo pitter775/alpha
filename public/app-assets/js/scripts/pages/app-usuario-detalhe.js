@@ -884,6 +884,7 @@ $(function() {
     }
     // Datatable - observacao
     function dataobservacao() {
+        console.log(dtObservacaoTable);
         if (tableObservacao) {
             tableObservacao.destroy();
         }
@@ -1057,7 +1058,7 @@ $(function() {
             var situ_prof = dados['name_prof'];
             var situ_serie = dados['ser_nome'] + ' - ' + dados['ser_periodo'] + ' - ' + dados['ser_apelido'];
 
-            console.log(situ_prof);
+            console.log(dados);
             if (situ_matricula == 0) {
                 $('#situ_matricula').text('Não Matrículado');
             }
